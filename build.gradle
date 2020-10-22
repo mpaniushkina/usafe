@@ -44,13 +44,14 @@ task clean(type: Delete) {
 
 def env = System.getenv()
 //to delete when receive creeds from jenkins
-def number = env['BUILD_NUMBER']
+def number = 3 // env['BUILD_NUMBER']
 def final_number = number as Integer ?: 1
-def param_version_name = env['version_name']
+def param_version_name = "2.1" // env['version_name']
 
 ext.global = [
-        versionCodeNumber       : env['BUILD_NUMBER'] as Integer ?: 1,
-        versionNameString       : env['version_name'] + "." + (env['BUILD_NUMBER'] as Integer ?: 1),
+//        versionCodeNumber       : env['BUILD_NUMBER'] as Integer ?: 1,
+//        versionNameString       : env['version_name'] + "." + (env['BUILD_NUMBER'] as Integer ?: 1),
+        versionCodeNumber       : 479,
         versionName             : param_version_name + "." + 479,
         androidMinSdkVersion    : 20,
         androidTargetSdkVersion : 30,

@@ -214,10 +214,8 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
             goToVerifyPage();
         } else if (isRegister && Arrays.equals(mBinding.personCodeLL.getEnteredText(), mEnteredText)) {
 //            viewModel.register(mBinding.personCodeLL.getEnteredText(), true);
-            // TODO remove to use biometrics
             ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
             replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
-            // TODO remove to use biometrics
         } else if (!isRegister) {
             // todo Analytics.logEvent
             viewModel.setUpPassword(mEnteredText, true);
