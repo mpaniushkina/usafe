@@ -1,0 +1,5 @@
+-dontwarn com.google.crypto.tink.proto.**
+-dontwarn com.google.crypto.tink.integration.**
+-dontwarn com.google.crypto.tink.util.**
+-dontwarn com.google.crypto.tink.subtle.**
+-dontwarn com.amazonaws.**

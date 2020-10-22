@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--dimens for long screen in dps(Nexus 5x) -->
+<resources>
+    <!-- Fragments-->
+    <dimen name="enter_verification_view_padding">32dp</dimen>
+    <dimen name="enter_verification_view_header_bottom_margin">16dp</dimen>
+    <dimen name="enter_verification_view_header_top_padding">8dp</dimen>
+    <dimen name="enter_verification_view_number_container_bottom_padding">6dp</dimen>
+    <dimen name="enter_verification_view_number_container_top_padding">6dp</dimen>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="failed_attempts_attempts_left">
+        <item quantity="zero">attempts left!</item>
+        <item quantity="one">attempt left!</item>
+        <item quantity="few">attempts left!</item>
+        <item quantity="many">attempts left!</item>
+        <item quantity="other">attempts left!</item>
+    </plurals>
+</resources>

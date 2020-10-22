@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        style="@style/PersonalCodeRowStyle"
+        android:id="@+id/codes"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/code_entered_1"
+            style="@style/PersonalCodeStyle"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/code_entered_2"
+            style="@style/PersonalCodeStyle"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/code_entered_3"
+            style="@style/PersonalCodeStyle"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/code_entered_4"
+            style="@style/PersonalCodeStyle"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/code_entered_5"
+            style="@style/PersonalCodeStyle"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/code_entered_6"
+            style="@style/PersonalCodeStyle"
+            android:clickable="true" />
+
+    </LinearLayout>
+
+
+
+
+
+    <ImageButton
+        android:layout_marginRight="@dimen/code_displayer_right_margin"
+        android:id="@+id/erased_button"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/ic_backspace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

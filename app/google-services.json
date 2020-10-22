@@ -1,0 +1,217 @@
+{
+  "project_info": {
+    "project_number": "196224125385",
+    "firebase_url": "https://covr-mobile-app.firebaseio.com",
+    "project_id": "covr-mobile-app",
+    "storage_bucket": "covr-mobile-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196224125385:android:ce5c9547d42a4b01",
+        "android_client_info": {
+          "package_name": "com.bankproof.covr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw1UpHlj4neT6PTfistogwq6sD-P-uYJc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196224125385:android:d6e60e189cd531b7",
+        "android_client_info": {
+          "package_name": "com.bankproof.covr.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw1UpHlj4neT6PTfistogwq6sD-P-uYJc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196224125385:android:0609332717e0a508",
+        "android_client_info": {
+          "package_name": "com.covrsecurity.covr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw1UpHlj4neT6PTfistogwq6sD-P-uYJc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196224125385:android:65f1cd8ff6acedb1",
+        "android_client_info": {
+          "package_name": "com.covrsecurity.covr.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw1UpHlj4neT6PTfistogwq6sD-P-uYJc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196224125385:android:536d3a6059e38209",
+        "android_client_info": {
+          "package_name": "com.covrsecurity.io"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196224125385-1cv0o4v3cte6j5t2hhcvps5qpjqo92cp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.covrsecurity.io",
+            "certificate_hash": "e3cd04ecf449958e7e7bf294b7a6b77a9fa3b741"
+          }
+        },
+        {
+          "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw1UpHlj4neT6PTfistogwq6sD-P-uYJc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "196224125385-uqk53k9r85kdcini2qnj5s370jnu3lr2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.covrsecurity.io.test"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196224125385:android:0666d4421465ee18",
+        "android_client_info": {
+          "package_name": "com.covrsecurity.io.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw1UpHlj4neT6PTfistogwq6sD-P-uYJc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

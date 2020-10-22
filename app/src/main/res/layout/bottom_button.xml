@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/bottom_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_button_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/add_partnership_button_bg"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/twenty_dp"
+        android:paddingRight="@dimen/twenty_dp"
+        tools:showIn="@layout/fragment_partnership">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/border_line_thin_thickness"
+            android:background="@color/soft_green" />
+
+        <FrameLayout
+            android:id="@+id/right_bottom_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/add_partnership_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="@dimen/standing_by_fragment_plus_side_length"
+                    android:layout_height="@dimen/standing_by_fragment_plus_side_length"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/ten_dp"
+                    android:layout_marginRight="@dimen/ten_dp"
+                    android:gravity="center_vertical"
+                    android:src="@drawable/plus" />
+
+                <TextView
+                    android:id="@+id/add_partnership"
+                    style="@style/WhiteBottomButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="@dimen/view_padding"
+                    android:paddingRight="@dimen/view_padding"
+                    android:text="@string/add_partnership" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</layout>

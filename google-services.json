@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "196224125385",
+    "firebase_url": "https://covr-mobile-app.firebaseio.com",
+    "project_id": "covr-mobile-app",
+    "storage_bucket": "covr-mobile-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196224125385:android:c3c26e3bfdc4d0dcba0018",
+        "android_client_info": {
+          "package_name": "com.covrsecurity.io.sdkapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw1UpHlj4neT6PTfistogwq6sD-P-uYJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "196224125385-uqk53k9r85kdcini2qnj5s370jnu3lr2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.covrsecurity.io.test"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

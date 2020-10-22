@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="secondaryToolbar"
+            type="com.covrsecurity.io.model.databinding.ToolbarModel" />
+
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/covr_vault_main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/covr_vault_about_toolbar"
+            layout="@layout/toolbar_binding"
+            app:toolbarModel="@{secondaryToolbar}" />
+
+        <View
+            android:id="@+id/covr_vault_divider"
+            style="@style/covr_vault_divider"
+            android:layout_below="@+id/covr_vault_about_toolbar"
+            android:visibility="@{secondaryToolbar.layoutVisibility}" />
+
+        <ViewStub
+            android:id="@+id/main_content_stub"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/covr_vault_divider" />
+
+        <include
+            android:id="@+id/progress_layout"
+            layout="@layout/progress_layout" />
+
+    </RelativeLayout>
+
+</layout>

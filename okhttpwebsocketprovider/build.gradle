@@ -1,0 +1,117 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion global.androidTargetSdkVersion
+    buildToolsVersion global.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion global.androidMinSdkVersion
+        targetSdkVersion global.androidTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        preRelease {
+            debuggable true
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debugRelease {
+            debuggable true
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':dotnetcoresignalrclient')
+//    implementation 'com.smartarmenia.dotnetcoresignalrclientjava:dotnetcoresignalrclient:0.0.1'
+
+    implementation "com.squareup.okhttp3:okhttp:$global.okhttp3Ver"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+group = 'com.smartarmenia.okhttpwebsocketprovider'
+archivesBaseName = 'okhttpwebsocketprovider'
+version = '0.0.1'
+
+publishing {
+    repositories {
+        def mavenProperties = new Properties()
+        mavenProperties.load(new FileInputStream(rootProject.file("maven.properties")))
+        maven {
+            url mavenProperties['mavenRepoWriteUrl']
+            credentials {
+                username mavenProperties['mavenRepoUsername']
+                password mavenProperties['mavenRepoWritePassword']
+            }
+        }
+    }
+    publications {
+        MyPublication(MavenPublication) {
+
+            groupId group
+            artifactId archivesBaseName
+            version project.version
+
+            pom.withXml {
+//                // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
+                def node = asNode()
+
+                // ugly hack to set the packaging property in the POM as 'aar'
+                ((NodeList) node.get('packaging')).get(0).value = 'aar'
+
+                def dependenciesNode = node.appendNode('dependencies')
+
+                def cl = { Dependency dep ->
+                    if (dep.group == null || dep.version == null || dep.name == null || dep.name == "unspecified")
+                        return // ignore invalid dependencies
+
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', dep.group)
+                    dependencyNode.appendNode('artifactId', dep.name)
+                    dependencyNode.appendNode('version', dep.version)
+
+                    if (!dep.transitive) {
+                        // If this dependency is transitive, we should force exclude all its dependencies them from the POM
+                        def exclusionNode = dependencyNode.appendNode('exclusions').appendNode('exclusion')
+                        exclusionNode.appendNode('groupId', '*')
+                        exclusionNode.appendNode('artifactId', '*')
+                    } else if (!dep.properties.excludeRules.empty) {
+                        // Otherwise add specified exclude rules
+                        def exclusionNode = dependencyNode.appendNode('exclusions').appendNode('exclusion')
+                        dep.properties.excludeRules.each { ExcludeRule rule ->
+                            exclusionNode.appendNode('groupId', rule.group ?: '*')
+                            exclusionNode.appendNode('artifactId', rule.module ?: '*')
+                        }
+                    }
+                }
+
+                // List all dependencies and write to POM
+                configurations.api.getAllDependencies().each cl
+                configurations.implementation.getAllDependencies().each cl
+            }
+
+            artifact("$buildDir/outputs/aar/${archivesBaseName}-release.aar")
+        }
+    }
+}

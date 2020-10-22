@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.covrsecurity.io.R" />
+
+        <variable
+            name="toolbarModel"
+            type="com.covrsecurity.io.model.databinding.ToolbarModel" />
+
+        <variable
+            name="noteModel"
+            type="com.covrsecurity.io.model.databinding.CovrVaultEditNoteModel" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/covr_vault_edit_toolbar"
+            layout="@layout/toolbar_binding"
+            bind:toolbarModel="@{toolbarModel}" />
+
+        <ScrollView
+            android:id="@+id/payment_card_edit_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:fillViewport="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:isScrollContainer="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/payment_card_edit_header"
+                    android:text="@string/covr_vault_payment_card_edit_my_description_title" />
+
+                <View style="@style/payment_card_edit_information_divider" />
+
+                <com.covrsecurity.io.ui.view.CopyMonitoringEditText
+                    android:id="@+id/description_edit"
+                    style="@style/payment_card_edit_edit_text"
+                    android:hint="@string/covr_vault_payment_card_edit_my_description_edit_hint"
+                    android:maxLength="@integer/payment_card_edit_description_max_length"
+                    android:nextFocusDown="@+id/notes_edit"
+                    android:text="@={noteModel.description}"
+                    bind:underlineColor="@{R.color.transparent}" />
+
+                <View style="@style/payment_card_edit_information_divider" />
+
+                <TextView
+                    style="@style/payment_card_edit_header"
+                    android:text="@string/covr_vault_edit_note_title" />
+
+                <View style="@style/payment_card_edit_information_divider" />
+
+                <com.covrsecurity.io.ui.view.CopyMonitoringEditText
+                    android:id="@+id/notes_edit"
+                    style="@style/payment_card_edit_edit_text"
+                    android:gravity="top"
+                    android:hint="@string/covr_vault_payment_card_edit_notes_edit_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLength="@integer/edit_notes_content_max_length"
+                    android:singleLine="false"
+                    android:text="@={noteModel.content}"
+                    bind:underlineColor="@{R.color.transparent}" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

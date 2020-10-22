@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="attachment_url">/api/attachments/%1$d</string>
+    <string name="gcm_sender_id">15144745636</string>
+    <string name="cfg_font_roboto_regular">fonts/Roboto-Regular.ttf</string>
+    <string name="cfg_font_roboto_light">fonts/Roboto-Light.ttf</string>
+    <string name="cfg_font_roboto_italic">fonts/Roboto-Italic.ttf</string>
+    <string name="cfg_font_roboto_light_italic">fonts/Roboto-LightItalic.ttf</string>
+    <string name="cfg_support_email_address">service@covrsecurity.com</string>
+    <string name="cfg_support_email_topic" />
+    <string name="cfg_support_read_more_file">file:///android_asset/support_read.html"</string>
+    <string name="cfg_setup_read_more_phone">file:///android_asset/setup_read_more_phone.html"</string>
+    <!--<string name="cfg_setup_read_more_greeting">file:///android_asset/setup_read_more_greeting.html"</string>-->
+    <string name="cfg_setup_read_more_info_personal_code">file:///android_asset/setup_read_more_info_personal_code.html"</string>
+    <string name="cfg_setup_read_more_personal_code">file:///android_asset/setup_read_more_personal_code.html"</string>
+    <string name="cfg_setup_read_more_personal_code_verify">file:///android_asset/setup_read_more_personal_code_verify.html"</string>
+    <string name="cfg_setup_read_more_personal_code_change">file:///android_asset/setup_read_more_personal_code_change.html"</string>
+    <string name="cfg_setup_read_more_verification_code">file:///android_asset/setup_read_more_verification_code.html"</string>
+    <string name="cfg_setup_read_more_add_partnership">file:///android_asset/read_more_add_partnership.html"</string>
+    <string name="cfg_help_read_more_whats_partnership">file:///android_asset/what_is_partnership_read.html"</string>
+    <string name="cfg_help_read_more_how_to_add_partnership">file:///android_asset/how_to_add_partnership_read.html"</string>
+    <!--<string name="cfg_about_terms_and_conditions">file:///android_asset/about_terms_and_conditions_read.html"</string>-->
+    <string name="cfg_about_privacy_policy">https://www.covrsecurity.io/mobile/privacy-policy/?displayheader=false</string>
+    <string name="cfg_about_terms_of_use">https://www.covrsecurity.io/mobile/terms-of-use/?displayheader=false</string>
+    <string name="cfg_about_privacy_policy_dev">https://www.covrsecurity.xyz/mobile/privacy-policy/?displayheader=false</string>
+    <string name="cfg_about_terms_of_use_dev">https://www.covrsecurity.xyz/mobile/terms-of-use/?displayheader=false</string>
+    <string name="cfg_about_fingerprint">file:///android_asset/about_fingerprint.html"</string>
+    <string name="cfg_covr_vault_about">file:///android_asset/covr_vault_about.html"</string>
+    <string name="cfg_covr_vault_about_quickbar">file:///android_asset/about_covr_vault_quick_bar.html"</string>
+</resources>

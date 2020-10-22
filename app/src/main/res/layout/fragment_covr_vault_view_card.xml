@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+        <import type="com.covrsecurity.io.R" />
+
+        <import type="android.text.method.PasswordTransformationMethod" />
+
+        <import type="com.covrsecurity.io.utils.CreditCardTransformationMethod" />
+
+        <variable
+            name="viewCardModel"
+            type="com.covrsecurity.io.model.databinding.CovrVaultViewCardModel" />
+
+        <variable
+            name="paymentCardModel"
+            type="com.covrsecurity.io.model.databinding.PaymentCardEditModel" />
+
+        <variable
+            name="toFavoriteAction"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="showCardNumberAction"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="showCvvAction"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="editAction"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="deleteAction"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/covr_vault_view_card_bottom_panel">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="12dp">
+
+                <RelativeLayout
+                    android:id="@+id/covr_vault_view_card_card_title_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/covr_vault_view_card_card_issuer"
+                        android:layout_width="@dimen/covr_vault_view_main_image"
+                        android:layout_height="@dimen/covr_vault_view_main_image"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:adjustViewBounds="true"
+                        bind:srcCardType="@{paymentCardModel.cardType}" />
+
+                    <TextView
+                        android:id="@+id/covr_vault_view_card_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@+id/covr_vault_view_card_card_issuer"
+                        android:text="@{paymentCardModel.description}"
+                        android:textColor="@color/text_color_black"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/covr_vault_view_card_favorite"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignBottom="@+id/covr_vault_view_card_add_to_quick_bar_text"
+                        android:layout_alignTop="@+id/covr_vault_view_card_add_to_quick_bar_text"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@+id/covr_vault_view_card_card_issuer"
+                        android:onClick="@{toFavoriteAction}"
+                        android:scaleType="centerInside"
+                        android:src="@{paymentCardModel.favorite? @drawable/favorite_in_quick_bar_active_small : @drawable/favorite_in_quick_bar_inactive_small}"
+                        tools:src="@drawable/favorite_in_quick_bar_inactive_small" />
+
+                    <TextView
+                        android:id="@+id/covr_vault_view_card_add_to_quick_bar_text"
+                        fontPath="@string/cfg_font_roboto_italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/covr_vault_view_card_description"
+                        android:layout_marginTop="0dp"
+                        android:layout_toEndOf="@+id/covr_vault_view_card_favorite"
+                        android:gravity="center_vertical"
+                        android:onClick="@{toFavoriteAction}"
+                        android:paddingStart="8dp"
+                        android:text="@{paymentCardModel.favorite? @string/covr_vault_view_card_remove_from_quick_bar_text : @string/covr_vault_view_card_add_to_quick_bar_text}"
+                        android:textColor="@color/greeting_text_gray"
+                        android:textSize="16sp"
+                        tools:ignore="RtlSymmetry"
+                        tools:text="paymentCardModel.favorite" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/covr_vault_view_card_full_name"
+                    style="@style/covr_vault_view_card_style_paramount"
+                    android:layout_below="@+id/covr_vault_view_card_card_title_container"
+                    android:layout_marginTop="12dp"
+                    android:text="@{paymentCardModel.fullName}"
+                    tools:text="Andy J Alpha" />
+
+                <TextView
+                    android:id="@+id/covr_vault_view_card_card_number"
+                    style="@style/covr_vault_view_card_style_paramount"
+                    android:layout_below="@+id/covr_vault_view_card_full_name"
+                    android:layout_toStartOf="@+id/covr_vault_view_card_view_card_number"
+                    bind:setTextOrGone="@{paymentCardModel.cardNumber}"
+                    bind:setTransformationMethod="@{CreditCardTransformationMethod.getInstance()}"
+                    bind:transform="@{viewCardModel.showCardNumber}"
+                    tools:text="4325 6513 3171 6537" />
+
+                <ImageView
+                    android:id="@+id/covr_vault_view_card_view_card_number"
+                    style="@style/covr_vault_view_card_action_image_style"
+                    android:layout_alignBottom="@+id/covr_vault_view_card_card_number"
+                    android:layout_alignTop="@+id/covr_vault_view_card_card_number"
+                    android:onClick="@{showCardNumberAction}"
+                    android:src="@{viewCardModel.showCardNumber? @drawable/content_visible_medium : @drawable/content_hidden_medium}"
+                    android:visibility="@{TextUtils.isEmpty(paymentCardModel.cardNumber) ?View.GONE : View.VISIBLE }" />
+
+                <TextView
+                    android:id="@+id/covr_vault_view_card_card_exp_date"
+                    style="@style/covr_vault_view_card_style_paramount"
+                    android:layout_below="@+id/covr_vault_view_card_card_number"
+                    android:text="@{paymentCardModel.expDate}"
+                    tools:text="12/31/17" />
+
+                <TextView
+                    android:id="@+id/covr_vault_view_card_card_cvv"
+                    style="@style/covr_vault_view_card_style_paramount"
+                    android:layout_below="@+id/covr_vault_view_card_card_exp_date"
+                    android:layout_toStartOf="@+id/covr_vault_view_card_view_card_cvv"
+                    android:maxLength="4"
+                    bind:setTextOrGone="@{paymentCardModel.cvvNumber}"
+                    bind:setTransformationMethod="@{PasswordTransformationMethod.getInstance()}"
+                    bind:transform="@{viewCardModel.showCvv}" />
+
+                <ImageView
+                    android:id="@+id/covr_vault_view_card_view_card_cvv"
+                    style="@style/covr_vault_view_card_action_image_style"
+                    android:layout_alignBottom="@+id/covr_vault_view_card_card_cvv"
+                    android:layout_alignTop="@+id/covr_vault_view_card_card_cvv"
+                    android:onClick="@{showCvvAction}"
+                    android:src="@{viewCardModel.showCvv? @drawable/content_visible_medium : @drawable/content_hidden_medium}"
+                    android:visibility="@{TextUtils.isEmpty(paymentCardModel.cvvNumber) ?View.GONE : View.VISIBLE }" />
+
+                <TextView
+                    android:id="@+id/covr_vault_view_card_bank_name"
+                    style="@style/covr_vault_view_card_style_paramount"
+                    android:layout_below="@+id/covr_vault_view_card_card_cvv"
+                    android:text="@{paymentCardModel.bankName}"
+                    tools:text="US Federal BAnk" />
+
+                <TextView
+                    android:id="@+id/covr_vault_view_card_customer_service"
+                    style="@style/covr_vault_view_card_title_style"
+                    android:layout_below="@+id/covr_vault_view_card_bank_name"
+                    android:text="@string/covr_vault_view_card_customer_service"
+                    android:visibility="@{TextUtils.isEmpty(paymentCardModel.phoneNumber) ? View.GONE : View.VISIBLE }" />
+
+                <TextView
+                    android:id="@+id/covr_vault_view_card_phone_text"
+                    style="@style/covr_vault_view_card_style"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/covr_vault_view_card_customer_service"
+                    android:layout_toStartOf="@+id/covr_vault_view_card_phone_icon"
+                    bind:setTextOrGone="@{paymentCardModel.phoneNumber}"
+                    tools:text="+375295558335" />
+
+                <ImageView
+                    android:id="@+id/covr_vault_view_card_phone_icon"
+                    style="@style/covr_vault_view_card_action_image_style"
+                    android:layout_alignBottom="@+id/covr_vault_view_card_phone_text"
+                    android:layout_alignTop="@+id/covr_vault_view_card_phone_text"
+                    android:visibility="@{TextUtils.isEmpty(paymentCardModel.phoneNumber) ? View.GONE : View.VISIBLE }"
+                    app:srcCompat="@drawable/call_phone_number_medium" />
+
+                <TextView
+                    android:id="@+id/covr_vault_view_card_notes"
+                    style="@style/covr_vault_view_card_title_style"
+                    android:layout_below="@+id/covr_vault_view_card_phone_text"
+                    android:text="@string/covr_vault_view_card_notes"
+                    android:visibility="@{TextUtils.isEmpty(paymentCardModel.notes) ? View.GONE : View.VISIBLE }" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    style="@style/covr_vault_view_card_style"
+                    android:layout_below="@+id/covr_vault_view_card_notes"
+                    bind:setTextOrGone="@{paymentCardModel.notes}"
+                    tools:text="Use only private purchases" />
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/covr_vault_view_card_bottom_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <include
+                android:id="@+id/covr_vault_edit_delete_panel"
+                layout="@layout/item_covr_vault_edit_delete_panel"
+                bind:deleteAction="@{deleteAction}"
+                bind:editAction="@{editAction}" />
+
+            <include
+                android:id="@+id/covr_vault_close_open_panel"
+                layout="@layout/item_covr_vault_close_open_panel"
+                android:visibility="gone" />
+
+            <View style="@style/covr_vault_divider" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</layout>

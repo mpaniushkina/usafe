@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/covr_vault_items_list_icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="12dp"
+        tools:src="@drawable/category_icon_paymentcard_small" />
+
+    <TextView
+        android:id="@+id/covr_vault_items_list_icon_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/covr_vault_items_list_icon"
+        android:layout_toStartOf="@+id/covr_vault_items_list_right_arrow"
+        android:textColor="@color/covr_vault_text_black"
+        android:textSize="20sp"
+        tools:text="My Debit Card" />
+
+    <TextView
+        android:id="@+id/covr_vault_items_list_icon_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/covr_vault_items_list_icon_title"
+        android:layout_below="@+id/covr_vault_items_list_icon_title"
+        android:layout_marginBottom="8dp"
+        android:layout_toEndOf="@+id/covr_vault_items_list_icon"
+        android:layout_toStartOf="@+id/covr_vault_items_list_right_arrow"
+        android:textColor="@color/greeting_text_gray"
+        android:textSize="16sp"
+        tools:text="MasterCard" />
+
+    <View
+        style="@style/AboutLineSeparatorStyle"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/covr_vault_items_list_icon_description" />
+
+    <ImageView
+        android:id="@+id/covr_vault_items_list_right_arrow"
+        android:layout_width="@dimen/list_item_arrow_size"
+        android:layout_height="@dimen/list_item_arrow_size"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/view_padding_small"
+        android:layout_marginStart="@dimen/one_dp"
+        android:src="@drawable/chevron_right_grey" />
+
+</RelativeLayout>

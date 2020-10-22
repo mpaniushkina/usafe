@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="mainToolbar"
+            type="com.covrsecurity.io.model.databinding.ToolbarModel" />
+
+        <variable
+            name="secondaryToolbar"
+            type="com.covrsecurity.io.model.databinding.ToolbarModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                android:id="@+id/covr_vault_list_toolbar"
+                layout="@layout/toolbar_binding"
+                app:toolbarModel="@{mainToolbar}" />
+
+            <FrameLayout
+                android:id="@+id/covr_vault_child_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/covr_vault_list_toolbar" />
+
+            <View
+                android:id="@+id/bottom_sheet_shadow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent_gray"
+                android:clickable="true"
+                android:longClickable="true"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/bottom_sheet"
+            layout="@layout/item_bottom_sheet" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

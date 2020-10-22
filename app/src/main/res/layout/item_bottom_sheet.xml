@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottom_sheet_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+        <View style="@style/AboutLineSeparatorStyle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/off_tealish_2"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/covr_vault_payment_card_edit_toolbar_button_new"
+            android:textColor="@color/covr_vault_text_black"
+            android:textSize="18sp" />
+
+        <View style="@style/AboutLineSeparatorStyle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/covr_vault_bottom_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/covr_vault_light_background" />
+
+        <View style="@style/AboutLineSeparatorStyle" />
+
+        <Button
+            android:id="@+id/covr_vault_bottom_close_button"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/off_tealish_2"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/covr_green"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</layout>

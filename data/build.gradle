@@ -1,0 +1,78 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion global.androidTargetSdkVersion
+    buildToolsVersion global.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion global.androidMinSdkVersion
+        targetSdkVersion global.androidTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+        }
+        preRelease {
+            debuggable true
+            minifyEnabled false
+        }
+        debugRelease {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility global.javacCompatibility
+        targetCompatibility global.javacCompatibility
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(path: ':domain')
+    api project(path: ':covrsdk')
+    implementation project(path: ':covrnetwork')
+    implementation project(path: ':covrnetworkrxadapter')
+
+    implementation 'javax.inject:javax.inject:1'
+
+    implementation "io.reactivex.rxjava2:rxandroid:$global.rxandroidVer"
+    implementation "io.reactivex.rxjava2:rxjava:$global.rxjavaVer"
+    implementation "com.squareup.retrofit2:converter-gson:$global.retrofitVer"
+
+    // play services
+    implementation 'com.google.android.gms:play-services-base:17.4.0'
+    implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
+
+    implementation 'com.github.instacart.truetime-android:library:3.3'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.2.0') {
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+}

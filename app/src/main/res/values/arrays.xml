@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="menu_items">
+        <item>History</item>
+        <item>Connections</item>
+        <!--<item>Secure Storage</item>-->
+        <item>Settings</item>
+        <item>Help</item>
+        <item>About</item>
+    </array>
+</resources>

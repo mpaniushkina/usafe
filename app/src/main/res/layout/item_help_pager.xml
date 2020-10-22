@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tutor_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_padding_big"
+        android:layout_marginBottom="@dimen/view_padding_small"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_header_small"
+        android:visibility="gone"
+        tools:text="Label" />
+
+    <ImageView
+        android:id="@+id/tutor_icon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tutor_icon_height"
+        android:adjustViewBounds="true"
+        android:paddingTop="@dimen/twenty_dp"
+        android:paddingBottom="@dimen/ten_dp"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@+id/tutor_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/view_padding_small"
+        android:layout_marginBottom="@dimen/view_padding_small"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="@dimen/text_small"
+        tools:text="Long text" />
+
+</LinearLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_history_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/about_clickable_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/history_new_element_indicator"
+        android:layout_width="@dimen/new_element_indicator_diameter"
+        android:layout_height="@dimen/new_element_indicator_diameter"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/view_padding_half_big"
+        android:background="@drawable/new_item_indicator_green"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/history_check_box"
+        android:layout_width="@dimen/fourteen_dp"
+        android:layout_height="@dimen/fourteen_dp"
+        android:layout_marginLeft="9dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible"/>
+
+    <RelativeLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/view_padding_half_big"
+        android:layout_toLeftOf="@+id/v_history_right_arrow"
+        android:layout_toRightOf="@+id/history_new_element_indicator"
+        android:gravity="center_vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_history_logo"
+            android:layout_width="@dimen/circle_view_side_length_medium"
+            android:layout_height="0dp"
+            android:src="@drawable/tut4_protect_green"
+            app:civ_border_color="@color/grey"
+            app:civ_border_width="@dimen/logo_border_thickness"
+            android:layout_alignTop="@+id/history_linear"
+            android:layout_alignBottom="@+id/history_linear"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="2dp"/>
+
+        <LinearLayout
+            android:id="@+id/history_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/view_padding_ultra_small"
+            android:layout_marginBottom="@dimen/view_padding_ultra_small"
+            android:layout_marginTop="@dimen/view_padding_ultra_small"
+            android:layout_toEndOf="@+id/iv_history_logo"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_history_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/text_regular"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:id="@+id/tv_history_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:textColor="@color/text_color_gray"
+                android:textSize="@dimen/text_small"
+                android:ellipsize="end"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:id="@+id/tv_history_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:textColor="@color/text_color_gray"
+                android:textSize="@dimen/text_ultra_small"
+                android:includeFontPadding="false"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/border_line_one_px_thickness"
+        android:layout_alignStart="@+id/main_content"
+        android:layout_below="@+id/main_content"
+        android:background="@color/partnership_delimiter" />
+
+    <ImageView
+        android:id="@+id/v_history_right_arrow"
+        android:layout_width="@dimen/list_item_arrow_size"
+        android:layout_height="@dimen/list_item_arrow_size"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/one_dp"
+        android:layout_marginRight="@dimen/view_padding_small"
+        android:src="@drawable/chevron_right_grey" />
+
+</RelativeLayout>

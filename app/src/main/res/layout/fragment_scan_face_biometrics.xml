@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/camera_guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".70" />
+
+        <com.otaliastudios.cameraview.CameraView
+            android:id="@+id/camera_preview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:cameraAudio="off"
+            app:cameraFacing="front"
+            app:cameraPictureFormat="jpeg"
+            app:cameraPictureSizeMaxHeight="1280"
+            app:cameraPictureSizeMaxWidth="960"
+            app:cameraPictureSizeMinHeight="1280"
+            app:cameraPictureSizeMinWidth="960"
+            app:layout_constraintBottom_toBottomOf="@+id/camera_guideline"
+            app:layout_constraintDimensionRatio="960:1280"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone">
+
+            <com.covrsecurity.io.ui.view.FaceFocusView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.otaliastudios.cameraview.CameraView>
+
+        <ImageView
+            android:id="@+id/capture_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/camera_guideline"
+            app:layout_constraintDimensionRatio="960:1280"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/tealish"
+            tools:visibility="gone" />
+
+        <View
+            android:id="@+id/bottom_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/camera_guideline" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/camera_hint"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="6dp"-->
+<!--            android:gravity="center"-->
+<!--            android:includeFontPadding="false"-->
+<!--            android:paddingHorizontal="24dp"-->
+<!--            android:text="@string/position_your_face_inside_the_oval"-->
+<!--            android:textColor="@color/covr_green"-->
+<!--            android:textSize="@dimen/text_header_small"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/bottom_guideline" />-->
+
+        <Button
+            android:id="@+id/capture"
+            style="@style/GreenButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/capture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_guideline" />
+
+        <ImageView
+            android:id="@+id/camera_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bottom_guideline"
+            tools:srcCompat="@drawable/selected"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

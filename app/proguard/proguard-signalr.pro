@@ -1,0 +1,2 @@
+-keep class com.microsoft.signalr.** { *; }
+-keep interface com.microsoft.signalr.** { *; }

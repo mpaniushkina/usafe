@@ -1,0 +1,4 @@
+-keep,allowobfuscation class com.covrsecurity.io.ui.component.ExpandableLayout { *; }
+-keep,allowobfuscation class com.covrsecurity.io.ui.component.ExpandableLayout$SavedState { *; }
+-keep class com.covrsecurity.io.ui.component.ExpandableLayout$LayoutParams { *; }
+-keep,allowobfuscation interface com.covrsecurity.io.ui.component.ExpandableLayout$OnExpandListener { *; }

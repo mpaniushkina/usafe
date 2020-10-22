@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="useRecovery"
+            type="java.lang.Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/recovery_title_margin_top"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/view_padding_half_big"
+            android:text="@string/use_biometric_recovery"
+            android:textColor="@color/covr_green"
+            android:textSize="@dimen/text_header"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/forty_eight_dp"
+            android:gravity="center"
+            android:padding="@dimen/view_padding_half_big"
+            android:text="@string/your_biometric_data_will_be_registered_for_account_recovery"
+            android:textColorHighlight="@android:color/transparent"
+            android:textColorLink="@color/clickable_text"
+            android:textSize="@dimen/text_regular"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description">
+
+            <RadioGroup
+                android:id="@+id/use_fingerprint_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <RadioButton
+                    android:id="@+id/radio_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@={useRecovery}"
+                    android:text="@string/yes"
+                    android:textColor="@color/covr_green"
+                    android:textSize="@dimen/text_header_small" />
+
+                <RadioButton
+                    android:id="@+id/radio_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no"
+                    android:textColor="@color/covr_green"
+                    android:textSize="@dimen/text_header_small" />
+
+            </RadioGroup>
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

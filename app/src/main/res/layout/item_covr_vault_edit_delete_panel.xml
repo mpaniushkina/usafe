@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="editAction"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="deleteAction"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/covr_vault_view_card_bottom_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/covr_vault_light_grey">
+
+        <RelativeLayout
+            android:id="@+id/covr_vault_bottom_panel_edit_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:onClick="@{editAction}">
+
+            <ImageView
+                android:id="@+id/bottom_panel_edit_image"
+                style="@style/covr_vault_view_card_bottom_panel_image_style"
+                app:srcCompat="@drawable/toolbar_edit_small_small" />
+
+            <TextView
+                style="@style/covr_vault_view_card_bottom_panel_label_style"
+                android:layout_below="@+id/bottom_panel_edit_image"
+                android:layout_centerHorizontal="true"
+                android:text="@string/phone_number_edit" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/covr_vault_bottom_panel_delete_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="1dp"
+            android:onClick="@{deleteAction}">
+
+            <ImageView
+                android:id="@+id/bottom_panel_delete_image"
+                style="@style/covr_vault_view_card_bottom_panel_image_style"
+                app:srcCompat="@drawable/toolbar_delete_small_small" />
+
+            <TextView
+                style="@style/covr_vault_view_card_bottom_panel_label_style"
+                android:layout_below="@+id/bottom_panel_delete_image"
+                android:text="@string/delete" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</layout>

@@ -1,0 +1,11 @@
+*.iml
+.gradle
+/local.properties
+/build
+/captures
+/.idea
+/gradlew
+/gradlew.bat
+/maven.properties
+/release.jks
+/server_key.properties

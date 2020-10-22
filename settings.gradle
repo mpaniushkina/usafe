@@ -1,0 +1,13 @@
+include ':app', ':domain', ':data'
+include ':covrcommon', ':covrnetwork', ':covrnetworkrxadapter', ':covrencryption', ':covrvault', ':covrsdk'
+include ':htmlSpanner', ':greenDao'
+project(':covrcommon').projectDir = new File("${rootDir.parent}/core/covrcommon")
+project(':covrnetwork').projectDir = new File("${rootDir.parent}/core/covrnetwork")
+project(':covrnetworkrxadapter').projectDir = new File("${rootDir.parent}/core/covrnetworkrxadapter")
+project(':covrencryption').projectDir = new File("${rootDir.parent}/core/covrencryption")
+project(':covrvault').projectDir = new File("${rootDir.parent}/core/covrvault")
+project(':covrsdk').projectDir = new File("${rootDir.parent}/sdk/covrsdk")
+include ':androidmock'
+//include ':covrsdk-release'
+//include ':dotnetcoresignalrclient'
+//include ':okhttpwebsocketprovider'

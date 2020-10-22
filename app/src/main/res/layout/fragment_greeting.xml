@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/about_sections_padding_left_rigth"
+                android:scaleType="centerInside"
+                android:src="@drawable/about_logo"
+                android:id="@+id/imageView2" />
+
+            <TextView
+                    android:text="@string/greeting_welcome_to_covr"
+                    style="@style/ChangeCodeHeaderStyle"
+                    android:layout_marginRight="@dimen/view_padding"
+                    android:layout_marginLeft="@dimen/view_padding"/>
+
+            <TextView
+                    android:id="@+id/info_text"
+                    android:text="@string/greeting_welcome_text"
+                    style="@style/ChangeCodeTextStyle"
+                    android:layout_marginRight="@dimen/view_padding"
+                    android:layout_marginLeft="@dimen/view_padding"
+                    android:layout_marginBottom="@dimen/view_padding_big"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

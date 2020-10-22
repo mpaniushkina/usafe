@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:custom="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="enteredCode"
+            type="java.lang.String" />
+
+    </data>
+
+    <RelativeLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.covrsecurity.io.ui.component.NonSwipableViewPager
+            android:visibility="visible"
+            android:padding="@dimen/personal_code_pager_margin"
+            android:paddingTop="@dimen/personal_code_pager_margin_vertical"
+            android:paddingBottom="@dimen/personal_code_pager_margin_vertical"
+            android:layout_above="@+id/info_message"
+            android:id="@+id/info_pager"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:visibility="gone"
+            style="@style/InfoTextStyle"
+            android:layout_above="@+id/personCodeLL"
+            android:padding="@dimen/ten_dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/info_message"
+            android:text="@string/enter_personal_code" />
+
+        <com.covrsecurity.io.ui.component.PersonalCodeLayout
+            android:layout_above="@+id/digitalKeyboard"
+            android:id="@+id/personCodeLL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.covrsecurity.io.ui.component.DigitalKeyboard
+            android:padding="@dimen/twenty_dp"
+            android:layout_alignParentBottom="true"
+            custom:canVibrate="true"
+            custom:canSound="true"
+            android:id="@+id/digitalKeyboard"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+</layout>

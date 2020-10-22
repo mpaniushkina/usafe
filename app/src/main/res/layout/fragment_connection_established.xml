@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doneClickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundMain"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/twenty_dp"
+        android:paddingRight="@dimen/twenty_dp">
+
+        <TextView
+            android:id="@+id/connection_established_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="@dimen/view_padding_small"
+            android:layout_marginTop="@dimen/setup_top_margin"
+            android:gravity="center_horizontal"
+            android:text="@string/connection_established_title"
+            android:textColor="@color/covr_green"
+            android:textSize="@dimen/text_header" />
+
+        <TextView
+            android:id="@+id/connection_established_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/connection_established_title"
+            android:layout_marginBottom="@dimen/setup_top_margin"
+            android:gravity="center_horizontal"
+            android:text="@string/connection_established_subtitle"
+            android:textColor="@color/covr_green"
+            android:textSize="@dimen/text_small" />
+
+        <ImageView
+            android:id="@+id/website_logo_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/website_name_text"
+            android:layout_below="@+id/connection_established_subtitle"
+            android:scaleType="fitCenter"
+            tools:src="@drawable/category_icon_dkbank_big" />
+
+        <TextView
+            android:id="@+id/website_name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/horizontal_border"
+            android:layout_marginBottom="@dimen/setup_top_margin"
+            android:layout_marginTop="@dimen/setup_top_margin"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:textColor="@color/covr_green"
+            android:textSize="@dimen/text_header"
+            tools:text="Fictional website" />
+
+        <View
+            android:id="@+id/horizontal_border"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/border_line_thin_thickness"
+            android:layout_above="@+id/center_bottom_button"
+            android:layout_marginLeft="@dimen/minus_twenty_dp"
+            android:layout_marginRight="@dimen/minus_twenty_dp"
+            android:background="@color/grey" />
+
+        <TextView
+            android:id="@+id/center_bottom_button"
+            style="@style/WhiteBottomButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/minus_twenty_dp"
+            android:layout_marginRight="@dimen/minus_twenty_dp"
+            android:onClick="@{doneClickListener::onClick}"
+            android:text="@string/phone_number_done" />
+
+    </RelativeLayout>
+
+</layout>

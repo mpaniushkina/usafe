@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.covrsecurity.io.R" />
+
+        <import type="com.covrsecurity.io.ui.component.LinkTouchMovementMethod" />
+
+        <variable
+            name="isFavoriteExpanded"
+            type="Boolean" />
+
+        <variable
+            name="openFavoritesReadMoreAction"
+            type="Runnable" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/blurredView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundMain"
+        android:paddingBottom="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp">
+
+        <RelativeLayout
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/twenty_dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/menu_green" />
+
+                <TextView
+                    android:id="@+id/menu_badge"
+                    android:layout_width="@dimen/text_header"
+                    android:layout_height="@dimen/text_header"
+                    android:layout_marginLeft="@dimen/thirty_dp"
+                    android:layout_marginTop="@dimen/five_dp"
+                    android:background="@drawable/badge_red_bg"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_ultra_small"
+                    android:visibility="invisible" />
+
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/menuImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/twenty_dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/menu_green"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="@dimen/topbar_logo_width"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:adjustViewBounds="true"
+                android:paddingBottom="@dimen/view_padding_ultra_small"
+                android:scaleType="centerInside"
+                android:src="@drawable/logo_large_green" />
+
+            <ImageView
+                android:id="@+id/expand_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/twenty_dp"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:clickable="false"
+                android:src="@{isFavoriteExpanded ? @drawable/ic_expand_less_black_24dp : @drawable/ic_expand_more_black_24dp}"
+                android:tint="@color/soft_green"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:id="@+id/progress_layout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/progress_view_thickness"
+                android:layout_above="@+id/iv_logo"
+                android:layout_alignEnd="@+id/iv_logo"
+                android:layout_alignStart="@+id/iv_logo">
+
+                <View
+                    android:id="@+id/progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/progress_shape" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ten_dp"
+                android:layout_above="@+id/iv_logo"
+                android:layout_toRightOf="@+id/progress_layout"
+                android:background="@color/white" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ten_dp"
+                android:layout_above="@+id/iv_logo"
+                android:layout_toLeftOf="@+id/progress_layout"
+                android:background="@color/white" />
+
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="@dimen/standing_by_fragment_logo_margin_end"
+                android:layout_marginTop="@dimen/eigth_dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo_large_green_without_strip" />
+
+            <TextView
+                android:id="@+id/label_info_new"
+                style="@style/WhiteBottomButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/fiveteen_dp"
+                android:paddingLeft="@dimen/thirty_dp"
+                android:paddingRight="@dimen/thirty_dp"
+                android:text="@string/standing_by_waiting" />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pendind_requests_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom_button"
+            android:layout_below="@+id/top_bar"
+            android:overScrollMode="ifContentScrolls"
+            android:scrollbars="vertical"
+            android:theme="@style/RecyclerViewEdgeColor"
+            android:visibility="visible" />
+
+        <!--<LinearLayout-->
+        <!--android:id="@+id/bottom_button"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/bottom_button_height"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:background="@color/add_partnership_button_bg"-->
+        <!--android:orientation="vertical"-->
+        <!--android:paddingLeft="@dimen/twenty_dp"-->
+        <!--android:paddingRight="@dimen/twenty_dp">-->
+
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/border_line_thin_thickness"-->
+        <!--android:background="@color/soft_green" />-->
+
+        <!--<FrameLayout-->
+        <!--android:id="@+id/right_bottom_button"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<LinearLayout-->
+        <!--android:id="@+id/add_partnership_plus"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="center">-->
+
+        <!--<ImageView-->
+        <!--android:layout_width="@dimen/standing_by_fragment_plus_side_length"-->
+        <!--android:layout_height="@dimen/standing_by_fragment_plus_side_length"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:layout_marginLeft="@dimen/ten_dp"-->
+        <!--android:layout_marginRight="@dimen/ten_dp"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:src="@drawable/plus"-->
+        <!--android:id="@+id/imageView" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/add_partnership"-->
+        <!--style="@style/WhiteBottomButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:paddingEnd="@dimen/view_padding"-->
+        <!--android:paddingRight="@dimen/view_padding"-->
+        <!--android:text="@string/add_partnership" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--</FrameLayout>-->
+
+        <!--</LinearLayout>-->
+
+        <include
+            android:id="@+id/bottom_button"
+            layout="@layout/bottom_button" />
+
+        <LinearLayout
+            android:id="@+id/sliding_up_panel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                android:id="@+id/child_fragment_top_shadow"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="@integer/fragment_sliding_up_transparency_weight"
+                android:background="@color/transparent_gray"
+                android:visibility="invisible" />
+
+            <FrameLayout
+                android:id="@+id/child_fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="@integer/fragment_sliding_up_content_weight"
+                android:background="@color/backgroundMain" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

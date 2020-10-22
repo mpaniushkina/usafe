@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="supportListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="whatsPartnershipListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="addPartnershipListener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:background="@color/off_tealish_2"
+            android:orientation="vertical"
+            tools:context=".ui.activity.AuthorizedActivity">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar"></include>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            style="@style/AboutSectionStyle"
+            android:layout_marginTop="@dimen/setting_item_margin_top">
+
+            <View style="@style/AboutLineSeparatorStyle"/>
+
+            <RelativeLayout style="@style/AboutTextContainerStyle"
+                android:clickable="true"
+                android:onClick="@{supportListener::onClick}"
+                android:background="@drawable/about_clickable_bg">
+
+                <TextView
+                    style="@style/AboutMainTextStyle"
+                    android:text="@string/help_support"/>
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_gray_arrow_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <View style="@style/AboutLineSeparatorStyle"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/AboutTextContainerStyle"
+            android:paddingTop="0dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_ultra_small"
+                android:textAllCaps="true"
+                android:text="@string/help_topics"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            style="@style/AboutSectionStyle"
+            android:padding="0dp"
+            android:layout_marginBottom="0dp">
+
+            <View style="@style/AboutLineSeparatorStyle"/>
+
+            <RelativeLayout style="@style/AboutTextContainerStyle"
+                android:clickable="true"
+                android:onClick="@{whatsPartnershipListener::onClick}"
+                android:background="@drawable/about_clickable_bg">
+
+                <TextView
+                    style="@style/AboutMainTextStyle"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/help_what_is_partnership"/>
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_gray_arrow_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+
+            <View   android:layout_marginLeft="@dimen/fiveteen_dp"
+                style="@style/AboutLineSeparatorStyle"/>
+
+            <RelativeLayout style="@style/AboutTextContainerStyle"
+                android:clickable="true"
+                android:onClick="@{addPartnershipListener::onClick}"
+                android:background="@drawable/about_clickable_bg">
+
+                <TextView
+                    style="@style/AboutMainTextStyle"
+                    android:text="@string/help_how_to_add_partnership"/>
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_gray_arrow_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <View style="@style/AboutLineSeparatorStyle"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

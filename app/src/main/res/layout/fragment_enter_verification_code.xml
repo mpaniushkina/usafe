@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:autofit="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="enterVerificationModel"
+            type="com.covrsecurity.io.model.databinding.EnterVerificationCodeModel"/>
+
+    </data>
+
+    <RelativeLayout
+        android:paddingLeft="@dimen/enter_verification_view_sides_padding"
+        android:paddingRight="@dimen/enter_verification_view_sides_padding"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_verification_code_header"
+            android:layout_alignParentTop="true"
+            android:text="@string/verification_header"
+            android:textColor="@color/covr_green"
+            android:gravity="center_horizontal"
+            android:paddingTop="@dimen/enter_verification_view_header_top_padding"
+            android:textSize="@dimen/text_header"
+            android:layout_marginTop="@dimen/setup_top_margin"
+            android:layout_marginBottom="@dimen/enter_verification_view_header_bottom_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/tv_phone_subheader"
+            android:layout_below="@+id/tv_verification_code_header"
+            android:text="@string/verification_explanation"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/text_small"
+            android:maxLines="3"
+            autofit:minTextSize="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/phone_number_et_container"
+            android:layout_below="@+id/tv_phone_subheader"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/tv_sms_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|center_horizontal"
+                bind:message="@{enterVerificationModel.status}" />
+
+            <View
+                android:id="@+id/status_try_space"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/enter_verification_view_padding" />
+
+            <TextView
+                android:id="@+id/tv_try_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|center_horizontal"
+                android:text="@string/verification_try_again"
+                android:textColor="@color/setting_header_black"
+                android:textSize="@dimen/text_small"
+                bind:enabled="@{enterVerificationModel.isRetryButtonEnabled}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/phone_number_et_container"
+            android:orientation="horizontal"
+            android:layout_above="@+id/keyboard_container"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:paddingTop="@dimen/enter_verification_view_number_container_top_padding"
+            android:paddingBottom="@dimen/enter_verification_view_number_container_bottom_padding"
+            android:layout_height="wrap_content">
+            <LinearLayout style="@style/VerificationCodeDigitWrapper">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/verification_code_digit_border">
+                    <TextView
+                        style="@style/VerificationCodeDigit"
+                        android:id="@+id/digit1"
+                        android:visibility="invisible"
+                        bind:digits="@{enterVerificationModel.digits}"
+                        bind:position="@{0}"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout style="@style/VerificationCodeDigitWrapper">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/verification_code_digit_border">
+                    <TextView
+                        style="@style/VerificationCodeDigit"
+                        android:id="@+id/digit2"
+                        android:visibility="invisible"
+                        bind:digits="@{enterVerificationModel.digits}"
+                        bind:position="@{1}"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout style="@style/VerificationCodeDigitWrapper">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/verification_code_digit_border">
+                    <TextView
+                        style="@style/VerificationCodeDigit"
+                        android:id="@+id/digit3"
+                        android:visibility="invisible"
+                        bind:digits="@{enterVerificationModel.digits}"
+                        bind:position="@{2}"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout style="@style/VerificationCodeDigitWrapper">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/verification_code_digit_border">
+                    <TextView
+                        style="@style/VerificationCodeDigit"
+                        android:id="@+id/digit4"
+                        android:visibility="invisible"
+                        bind:digits="@{enterVerificationModel.digits}"
+                        bind:position="@{3}"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="@dimen/view_padding_big"
+            android:paddingRight="@dimen/view_padding"
+            android:src="@drawable/ic_backspace"
+            android:layout_below="@+id/linearLayout"
+            android:layout_toEndOf="@+id/phone_number_et_container"
+            android:layout_alignBottom="@+id/phone_number_et_container" />
+
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:id="@+id/keyboard_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.covrsecurity.io.ui.component.DigitalKeyboard
+                android:id="@+id/digitalKeyboard"
+                bind:canVibrate="false"
+                bind:canSound="true"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/twenty_dp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fragments-->
+    <dimen name="enter_verification_view_padding">6dp</dimen>
+    <dimen name="enter_verification_view_header_bottom_margin">4dp</dimen>
+    <dimen name="enter_verification_view_header_top_padding">4dp</dimen>
+    <dimen name="enter_verification_view_number_container_bottom_padding">4dp</dimen>
+    <dimen name="enter_verification_view_number_container_top_padding">4dp</dimen>
+
+    <!-- Tutorial -->
+    <dimen name="tutor_texts_margin">15dp</dimen>
+    <dimen name="tutor_title_text_size">28sp</dimen>
+    <dimen name="tutor_img_max_height">1000dp</dimen>
+    <dimen name="tutor_text_text_size">14sp</dimen>
+    <dimen name="covr_vault_main_pager_adapter_text_size">13sp</dimen>
+    <dimen name="covr_vault_main_pager_adapter_text_margin">8dp</dimen>
+    <dimen name="covr_vault_main_pager_adapter_items_margin">10dp</dimen>
+</resources>

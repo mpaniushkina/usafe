@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom_button"
+            android:orientation="vertical">
+
+            <include layout="@layout/tool_bar"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/partnership_no_merchants"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="@dimen/bottom_button_height">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/tut5_start_green" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/view_padding_big"
+                        android:gravity="center"
+                        android:text="@string/partnership_no_partner_header"
+                        android:textColor="@color/setting_header_black"
+                        android:textSize="@dimen/text_header_no_partner" />
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="@dimen/view_padding_big"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="@{addPartnerClickListener::onClick}"-->
+                        <!--android:padding="@dimen/five_dp"-->
+                        <!--android:text="@string/plus_add_partnership"-->
+                        <!--android:textColor="@color/clickable_text"-->
+                        <!--android:textSize="@dimen/text_button_add_partner" />-->
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="@dimen/four_dp"
+                    android:id="@+id/partnership_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical"
+                    android:visibility="visible"
+                    android:overScrollMode="never"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/bottom_button"
+            layout="@layout/bottom_button" />
+
+        <LinearLayout
+            android:id="@+id/sliding_up_panel"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:focusable="true"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/child_fragment_top_shadow"
+                android:visibility="invisible"
+                android:layout_weight="@integer/fragment_sliding_up_transparency_weight"
+                android:background="@color/transparent_gray"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
+            <FrameLayout
+                android:id="@+id/partnerships_child_fragment_container"
+                android:background="@color/backgroundMain"
+                android:layout_weight="@integer/fragment_sliding_up_content_weight"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlMerchantProgress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent_gray"
+            android:visibility="visible">
+
+            <com.github.rahatarmanahmed.cpv.CircularProgressView
+                android:layout_width="@dimen/circular_progress_view_diameter"
+                android:layout_height="@dimen/circular_progress_view_diameter"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:padding="0dp"
+                app:cpv_animAutostart="true"
+                app:cpv_color="#FFFFFF"
+                app:cpv_indeterminate="true"
+                app:cpv_thickness="@dimen/circular_progress_view_thickness"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

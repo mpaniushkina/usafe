@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\googleg_standard_color_18.png",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-17.4.0.aar\\1e94e24c436dfdcb7b0f1bfa88c4caf9\\res\\drawable-mdpi-v4\\googleg_standard_color_18.png"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.2.0.aar\\bf082516d0c6c03aad335afa8fe0556f\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-17.4.0.aar\\1e94e24c436dfdcb7b0f1bfa88c4caf9\\res\\drawable-mdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-17.4.0.aar\\1e94e24c436dfdcb7b0f1bfa88c4caf9\\res\\drawable-mdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\googleg_disabled_color_18.png",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-17.4.0.aar\\1e94e24c436dfdcb7b0f1bfa88c4caf9\\res\\drawable-mdpi-v4\\googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\notification_bg_normal.9.png",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.2.0.aar\\bf082516d0c6c03aad335afa8fe0556f\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\notification_bg_normal_pressed.9.png",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.2.0.aar\\bf082516d0c6c03aad335afa8fe0556f\\res\\drawable-mdpi-v4\\notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\notification_bg_low_normal.9.png",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.2.0.aar\\bf082516d0c6c03aad335afa8fe0556f\\res\\drawable-mdpi-v4\\notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-17.4.0.aar\\1e94e24c436dfdcb7b0f1bfa88c4caf9\\res\\drawable-mdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\notify_panel_notification_icon_bg.png",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.2.0.aar\\bf082516d0c6c03aad335afa8fe0556f\\res\\drawable-mdpi-v4\\notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-17.4.0.aar\\1e94e24c436dfdcb7b0f1bfa88c4caf9\\res\\drawable-mdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
+    }
+]

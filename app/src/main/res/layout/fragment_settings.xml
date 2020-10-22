@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="changeCodeClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="androidSettingsClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="useFingerprintClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="pushNotificationEnableClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="pushSoundEnableClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="pushVibrateEnableClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="inAppIncomingSoundEnabledClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="inAppIncomingVibrateEnabledClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="inAppResponseSoundEnabledClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="inAppTimeoutSoundEnabledClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="kbSoundEnabledClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="kbVibrateEnabledClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="dataCollectionEnableClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="setUpRecoveryClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="isUpdateKeyVaultKeyVisible"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="useFingerprint"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="dataCollectionEnable"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="pushNotificationEnable"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="pushVibrateEnable"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="pushSoundEnable"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="inappIncomingSoundEnabled"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="inappIncomingVibrateEnabled"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="inappResponseSoundEnabled"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="inappTimeoutSoundEnabled"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="kbSoundEnabled"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="kbVibrateEnabled"
+            type="java.lang.Boolean" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tool_bar"
+            android:background="@color/off_tealish_2"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/off_tealish_2"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/AboutSectionStyle"
+                    android:layout_marginTop="@dimen/setting_item_margin_top"
+                    android:layout_marginBottom="0dp"
+                    android:gravity="center_vertical"
+                    android:padding="0dp">
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="@{changeCodeClickListener::onClick}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/settings_change_personal_code" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_gray_arrow_right" />
+                    </RelativeLayout>
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextSwitchContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:onClick="@{useFingerprintClickListener::onClick}"
+                        bind:fingerprint="@{' '}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:text="@string/settings_use_fingerprint" />
+
+                        <Switch
+                            android:id="@+id/settings_fingerprint_switch"
+                            style="@style/SettingsSwitchStyle"
+                            android:checked="@{useFingerprint}" />
+
+                    </RelativeLayout>
+
+                    <View
+                        style="@style/AboutLineSeparatorStyle"
+                        bind:fingerprint="@{' '}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/AboutTextContainerStyle"
+                    bind:fingerprint="@{' '}">
+
+                    <TextView
+                        android:id="@+id/fingerprint_read_more"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_ultra_small"
+                        tools:text="@string/settings_fingerprint_tip" />
+
+                </LinearLayout>
+
+                <!-- PUSH NOTIFICATIONS SETTINGS -->
+                <LinearLayout
+                    style="@style/AboutTextContainerStyle"
+                    android:layout_marginTop="@dimen/view_padding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_push_notifications"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_ultra_small" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/AboutSectionStyle"
+                    android:layout_marginBottom="0dp"
+                    android:gravity="center_vertical"
+                    android:padding="0dp">
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:onClick="@{androidSettingsClickListener::onClick}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/settings_android_settings" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_gray_arrow_right" />
+
+                    </RelativeLayout>
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextSwitchContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="@{pushNotificationEnableClickListener::onClick}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/settings_notification" />
+
+                        <Switch
+                            android:id="@+id/settings_notification_switch"
+                            style="@style/SettingsSwitchStyle"
+                            android:checked="@{pushNotificationEnable}" />
+
+                    </RelativeLayout>
+
+
+                    <View
+                        style="@style/AboutLineSeparatorStyle"
+                        android:layout_marginLeft="@dimen/fiveteen_dp" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextSwitchContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:onClick="@{pushSoundEnableClickListener::onClick}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:text="@string/settings_sound" />
+
+                        <Switch
+                            android:id="@+id/settings_sound_switch"
+                            style="@style/SettingsSwitchStyle"
+                            android:checked="@{pushSoundEnable}" />
+
+                    </RelativeLayout>
+
+                    <View
+                        style="@style/AboutLineSeparatorStyle"
+                        android:layout_marginLeft="@dimen/fiveteen_dp" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextSwitchContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:onClick="@{pushVibrateEnableClickListener::onClick}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:text="@string/settings_vibrate" />
+
+                        <Switch
+                            android:id="@+id/settings_vibrate_switch"
+                            style="@style/SettingsSwitchStyle"
+                            android:checked="@{pushVibrateEnable}" />
+
+                    </RelativeLayout>
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/AboutTextContainerStyle">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_push_tip"
+                        android:textSize="@dimen/text_ultra_small" />
+
+                </LinearLayout>
+
+
+                <!-- IN-APP NOTIFICATIONS (to be done) -->
+                <LinearLayout
+                    style="@style/AboutTextContainerStyle"
+                    android:layout_marginTop="@dimen/view_padding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_inapp_notifications"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_ultra_small" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/AboutSectionStyle"
+                    android:layout_marginBottom="0dp"
+                    android:gravity="center_vertical"
+                    android:padding="0dp">
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextSwitchContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:onClick="@{inAppIncomingSoundEnabledClickListener::onClick}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:text="@string/settings_inapp_incomin_request_sound" />
+
+                        <Switch
+                            android:id="@+id/settings_inapp_req_sound"
+                            style="@style/SettingsSwitchStyle"
+                            android:checked="@{inappIncomingSoundEnabled}" />
+                    </RelativeLayout>
+
+                    <View
+                        style="@style/AboutLineSeparatorStyle"
+                        android:layout_marginLeft="@dimen/fiveteen_dp" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextSwitchContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:onClick="@{inAppIncomingVibrateEnabledClickListener::onClick}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:text="@string/settings_inapp_incoming_request_vibration" />
+
+                        <Switch
+                            android:id="@+id/settings_inapp_req_vibration"
+                            style="@style/SettingsSwitchStyle"
+                            android:checked="@{inappIncomingVibrateEnabled}" />
+                    </RelativeLayout>
+
+                    <View
+                        style="@style/AboutLineSeparatorStyle"
+                        android:layout_marginLeft="@dimen/fiveteen_dp" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextSwitchContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:onClick="@{inAppResponseSoundEnabledClickListener::onClick}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:text="@string/settings_inapp_request_response_sound" />
+
+                        <Switch
+                            android:id="@+id/settings_inapp_req_response_sound"
+                            style="@style/SettingsSwitchStyle"
+                            android:checked="@{inappResponseSoundEnabled}" />
+                    </RelativeLayout>
+
+                    <View
+                        style="@style/AboutLineSeparatorStyle"
+                        android:layout_marginLeft="@dimen/fiveteen_dp" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextSwitchContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:onClick="@{inAppTimeoutSoundEnabledClickListener::onClick}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:text="@string/settings_inapp_timeout_sound" />
+
+                        <Switch
+                            android:id="@+id/settings_inapp_timeout_sound"
+                            style="@style/SettingsSwitchStyle"
+                            android:checked="@{inappTimeoutSoundEnabled}" />
+                    </RelativeLayout>
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/AboutTextContainerStyle">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_inapp_notifications_help"
+                        android:textSize="@dimen/text_ultra_small" />
+                </LinearLayout>
+
+                <!-- PERSONAL CODE INPUT -->
+                <LinearLayout
+                    style="@style/AboutTextContainerStyle"
+                    android:layout_marginTop="@dimen/view_padding_small">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_personal_code_input"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_ultra_small" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/AboutSectionStyle"
+                    android:layout_marginBottom="0dp"
+                    android:gravity="center_vertical"
+                    android:padding="0dp">
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextSwitchContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:onClick="@{kbSoundEnabledClickListener::onClick}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:text="@string/settings_sound" />
+
+                        <Switch
+                            android:id="@+id/settings_keyboard_sound_switch"
+                            style="@style/SettingsSwitchStyle"
+                            android:checked="@{kbSoundEnabled}" />
+                    </RelativeLayout>
+
+                    <View
+                        style="@style/AboutLineSeparatorStyle"
+                        android:layout_marginLeft="@dimen/fiveteen_dp" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextSwitchContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:onClick="@{kbVibrateEnabledClickListener::onClick}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:text="@string/settings_vibrate" />
+
+                        <Switch
+                            android:id="@+id/settings_keyboard_vibrate_switch"
+                            style="@style/SettingsSwitchStyle"
+                            android:checked="@{kbVibrateEnabled}" />
+                    </RelativeLayout>
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/AboutTextContainerStyle">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_personal_code_input_help"
+                        android:textSize="@dimen/text_ultra_small" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/AboutTextContainerStyle"
+                    android:layout_marginTop="@dimen/view_padding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_google_data_collection"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_ultra_small" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/AboutSectionStyle"
+                    android:layout_marginBottom="0dp"
+                    android:gravity="center_vertical"
+                    android:padding="0dp">
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+
+                    <RelativeLayout
+                        style="@style/AboutTextSwitchContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:onClick="@{dataCollectionEnableClickListener::onClick}">
+
+                        <TextView
+                            style="@style/SettingName"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/settings_data_collection" />
+
+                        <Switch
+                            android:id="@+id/settings_data_collection_switch"
+                            style="@style/SettingsSwitchStyle"
+                            android:checked="@{dataCollectionEnable}" />
+
+                    </RelativeLayout>
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/AboutTextContainerStyle">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_data_collection_tip"
+                        android:textSize="@dimen/text_ultra_small" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    style="@style/AboutTextSwitchContainerStyle"
+                    android:layout_marginBottom="@dimen/view_padding"
+                    android:background="@drawable/about_clickable_bg"
+                    android:onClick="@{setUpRecoveryClickListener::onClick}">
+
+                    <TextView
+                        android:id="@+id/set_up_recovery"
+                        style="@style/SettingName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/about_clickable_bg"
+                        android:text="@string/set_up_recovery" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+        <LinearLayout
+            android:id="@+id/settings_sliding_up_panel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                android:id="@+id/child_fragment_top_shadow"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="@integer/fragment_sliding_up_transparency_weight"
+                android:background="@color/transparent_gray"
+                android:visibility="invisible" />
+
+            <FrameLayout
+                android:id="@+id/setting_child_framgnet_container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="@integer/fragment_sliding_up_content_weight"
+                android:background="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>

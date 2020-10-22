@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_partnership_item"
+    android:layout_width="match_parent"
+    android:background="@drawable/about_clickable_bg"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/partnership_new_element_indicator"
+        android:visibility="invisible"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/view_padding_half_big"
+        android:background="@drawable/new_item_indicator_green"
+        android:layout_width="@dimen/new_element_indicator_diameter"
+        android:layout_height="@dimen/new_element_indicator_diameter"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_toRightOf="@+id/partnership_new_element_indicator"
+        android:id="@+id/iv_partnership_logo"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/partnership_list_logo"
+        android:layout_height="@dimen/partnership_list_logo"
+        android:layout_marginTop="@dimen/view_padding_small"
+        android:layout_marginBottom="@dimen/view_padding_small"
+        android:layout_marginLeft="@dimen/view_padding_half_big"
+        app:civ_border_width="@dimen/logo_border_thickness"
+        app:civ_border_color="@color/grey"
+        android:src="@drawable/tut4_protect_green" />
+
+    <LinearLayout
+        android:id="@+id/partnership_title_container"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_partnership_logo"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/view_padding_small">
+
+        <TextView
+            android:id="@+id/tv_partnership_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:textColor="@color/text_color_black"
+            android:textSize="@dimen/text_big"
+            tools:text="fdfdfdfd" />
+
+        <TextView
+            android:id="@+id/tv_partnership_action"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textColor="@color/partnership_black"
+            android:textSize="@dimen/text_small" />
+
+        <ImageView
+            android:layout_width="@dimen/list_item_arrow_size"
+            android:layout_height="@dimen/list_item_arrow_size"
+            android:src="@drawable/chevron_right_grey" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_toRightOf="@+id/iv_partnership_logo"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/view_padding_small"
+        android:layout_height="@dimen/border_line_one_px_thickness"
+        android:layout_alignParentBottom="true"
+        android:background="@color/partnership_delimiter" />
+
+</RelativeLayout>

@@ -1,0 +1,72 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.google.gms:google-services:4.3.2'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
+        classpath 'io.fabric.tools:gradle:1.31.1'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+    // Exclude the version that the android plugin depends on.
+    configurations.classpath.exclude group: 'com.android.tools.external.lombok'
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "http://repo.pageturner-reader.org" }
+        maven { url "https://jitpack.io" }
+        maven { url "https://dl.bintray.com/terl/lazysodium-maven" }
+        maven { url "http://dl.bintray.com/microsoftazuremobile/SDK" }
+        def mavenProperties = new Properties()
+        mavenProperties.load(new FileInputStream(rootProject.file("maven.properties")))
+        maven {
+            url mavenProperties['mavenRepoReadUrl']
+            credentials {
+                username mavenProperties['mavenRepoUsername']
+                password mavenProperties['mavenRepoReadPassword']
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+def env = System.getenv()
+//to delete when receive creeds from jenkins
+def number = env['BUILD_NUMBER']
+def final_number = number as Integer ?: 1
+def param_version_name = env['version_name']
+
+ext.global = [
+        versionCodeNumber       : env['BUILD_NUMBER'] as Integer ?: 1,
+        versionNameString       : env['version_name'] + "." + (env['BUILD_NUMBER'] as Integer ?: 1),
+        versionName             : param_version_name + "." + 479,
+        androidMinSdkVersion    : 20,
+        androidTargetSdkVersion : 30,
+        androidBuildToolsVersion: '28.0.3',
+        javacCompatibility      : 1.8,
+
+        androidxVer             : '1.0.0',
+        retrofitVer             : '2.6.2',
+        rxjavaVer               : '2.2.13',
+        rxandroidVer            : '2.1.1',
+        okhttp3Ver              : '4.2.2',
+        work_version            : '2.3.0-beta01',
+        daggerVer               : '2.22.1',
+        lifecycleVer            : '2.1.0',
+        signalrVer              : '3.1.0',
+        tinkVer                 : '1.1.0',
+        androidxAnnotation      : '1.1.0',
+        gsonVer                 : '2.8.5'
+]

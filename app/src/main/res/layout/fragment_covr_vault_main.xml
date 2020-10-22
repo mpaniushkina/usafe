@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="hasContent"
+            type="Boolean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/key_vault_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="@{hasContent? View.VISIBLE: View.GONE}"
+            tools:listitem="@layout/item_covr_vault"
+            tools:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/covr_vault_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{hasContent? View.GONE: View.VISIBLE}">
+
+            <LinearLayout
+                android:id="@+id/empty_covr_vault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/bottom_button_height">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/logo_vault_big" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/view_padding_big"
+                    android:gravity="center"
+                    android:text="@string/covr_vault_is_empty"
+                    android:textColor="@color/covr_green"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/view_padding_ultra_small"
+                    android:gravity="center"
+                    android:text="@string/covr_vault_is_empty_description"
+                    android:textColor="@color/setting_header_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_covr_vault_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/view_padding_big"
+                    android:gravity="center"
+                    android:text="@string/covr_vault_about_covr_vault_"
+                    android:textColor="@color/covr_green"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,1 @@
+[{"outputType":{"type":"MERGED_MANIFESTS"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1,"versionName":"1.0","enabled":true,"outputFile":"data-debugRelease.aar","fullName":"debugRelease","baseName":"debugRelease"},"path":"..\\..\\library_manifest\\debugRelease\\AndroidManifest.xml","properties":{"packageId":"com.covrsecurity.io.data","split":""}}]

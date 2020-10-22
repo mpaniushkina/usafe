@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/fingerprint_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        android:paddingTop="16dp">
+
+        <ImageView
+            android:id="@+id/fingerprint_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_padding_half_big"
+            android:layout_marginTop="@dimen/view_padding_half_big"
+            android:src="@drawable/fingerprint_deactivated_small_green3x" />
+
+        <TextView
+            android:id="@+id/fingerprint_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_padding_half_big"
+            android:gravity="center"
+            android:paddingEnd="16dp"
+            android:textStyle="bold"
+            android:paddingStart="16dp"
+            android:text="@string/fingerprint_dialog_failed_title"
+            android:textAppearance="@android:style/TextAppearance.Material.Title"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="16sp"
+            tools:targetApi="lollipop" />
+
+        <TextView
+            android:id="@+id/fingerprint_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_padding_big"
+            android:gravity="center"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:text="@string/fingerprint_dialog_failed_description"
+            android:textAppearance="@android:style/TextAppearance.Material.Subhead"
+            android:textColor="?android:attr/textColorSecondary"
+            tools:targetApi="lollipop" />
+
+        <TextView
+            android:id="@+id/fingerprint_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="@dimen/view_padding_half_big"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:text="@string/fingerprint_dialog_failed_note"
+            android:textColor="?android:attr/textColorSecondary"
+            tools:targetApi="lollipop" />
+
+        <View
+            style="@style/AboutLineSeparatorStyle"
+            android:layout_width="match_parent"
+            android:layout_height="1px" />
+
+        <Button
+            android:id="@+id/ok_button"
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="4dp"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp"
+            android:paddingTop="4dp"
+            android:text="@string/ok"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent" />
+
+    </LinearLayout>
+
+</FrameLayout>

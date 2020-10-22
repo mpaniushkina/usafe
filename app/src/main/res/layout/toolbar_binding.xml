@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.covrsecurity.io.R" />
+
+        <variable
+            name="toolbarModel"
+            type="com.covrsecurity.io.model.databinding.ToolbarModel" />
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:visibility="@{toolbarModel.layoutVisibility}"
+        bind:background_bind="@{toolbarModel.backgroundColor}"
+        bind:background_default="@{R.color.soft_green}">
+
+        <TextView
+            android:id="@+id/tool_left_button"
+            style="@style/WhiteToolbarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:onClick="@{toolbarModel.leftButtonClick}"
+            android:padding="@dimen/ten_dp"
+            bind:setTextOrGone="@{toolbarModel.leftButtonText}" />
+
+        <ImageView
+            android:id="@+id/toolbar_left_image_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:onClick="@{toolbarModel.leftImageClick}"
+            android:padding="@dimen/ten_dp"
+            bind:setImageResOrGone="@{toolbarModel.leftImageResId}" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/WhiteTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/ten_dp"
+            bind:setTextOrGone="@{toolbarModel.titleText}"
+            bind:textColorBind="@{toolbarModel.titleTextColor}"
+            bind:textColorDefault="@{R.color.white}" />
+
+        <ImageView
+            android:id="@+id/toolbar_right__image_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:onClick="@{toolbarModel.rightImageClick}"
+            android:padding="@dimen/ten_dp"
+            bind:setImageResOrGone="@{toolbarModel.rightImageResId}" />
+
+        <TextView
+            android:id="@+id/toolbar_right_button"
+            style="@style/WhiteToolbarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:onClick="@{toolbarModel.rightButtonClick}"
+            android:padding="@dimen/ten_dp"
+            bind:setTextOrGone="@{toolbarModel.rightButtonText}" />
+
+    </RelativeLayout>
+
+</layout>

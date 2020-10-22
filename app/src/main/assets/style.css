@@ -1,0 +1,30 @@
+body {
+    background-color: #fff;
+    margin: 0;
+    line-height: 1.25;
+}
+
+.covr-wrap {
+    padding: 26px 26px 0;
+}
+
+.covr-title {
+    font-size: 22px;
+    font-weight: normal;
+    color: rgb(16, 158, 125);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.covr-subtitle {
+    font-size: 16px;
+    font-weight: normal;
+    color: rgb(16, 158, 125);
+}
+
+.covr-text {
+    font-weight: normal;
+    font-size:14px;
+    color: rgb(128,128,128);
+    margin-bottom: 1rem;
+}

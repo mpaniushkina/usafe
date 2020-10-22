@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="goToPartnerSiteClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="partnerUrlName"
+            type="java.lang.String" />
+
+        <variable
+            name="partnerFullName"
+            type="java.lang.String" />
+
+        <variable
+            name="partnerStatus"
+            type="java.lang.String" />
+
+        <variable
+            name="partnerCreationDate"
+            type="java.lang.String" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/off_tealish_2">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_back_arrow" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/share_layout"
+            android:layout_below="@+id/toolbar"
+            android:overScrollMode="never"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/setting_item_margin_top"
+                    android:background="@color/white"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/view_padding_normal">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/iv_partnership_details_logo"
+                            android:layout_width="@dimen/circle_view_side_length_extra_large"
+                            android:layout_height="@dimen/circle_view_side_length_extra_large"
+                            app:civ_border_color="@color/grey"
+                            app:civ_border_width="@dimen/logo_border_thickness" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/view_padding"
+                            android:gravity="center"
+                            android:text="@{partnerFullName}"
+                            android:textColor="@color/text_color_black" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/view_padding"
+                            android:gravity="center"
+                            android:onClick="@{goToPartnerSiteClickListener::onClick}"
+                            android:padding="@dimen/five_dp"
+                            android:text="@{partnerUrlName}"
+                            android:textColor="@color/blue_green_clickable_text" />
+
+                    </LinearLayout>
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/setting_item_margin_top"
+                    android:background="@color/white"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+
+                    <LinearLayout
+                        style="@style/AboutTextContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/PartnershipTitleText"
+                            android:text="@string/partnership_added" />
+
+                        <TextView
+                            style="@style/AboutMainTextStyle"
+                            android:text="@{partnerCreationDate}"
+                            android:textSize="@dimen/text_big" />
+                    </LinearLayout>
+
+                    <View
+                        style="@style/AboutLineSeparatorStyle"
+                        android:layout_marginLeft="@dimen/ten_dp" />
+
+                    <LinearLayout
+                        style="@style/AboutTextContainerStyle"
+                        android:background="@drawable/about_clickable_bg"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/PartnershipTitleText"
+                            android:text="@string/partnership_status" />
+
+                        <TextView
+                            style="@style/AboutMainTextStyle"
+                            android:text="@{partnerStatus}"
+                            android:textSize="@dimen/text_big" />
+
+                    </LinearLayout>
+
+                    <View style="@style/AboutLineSeparatorStyle" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <include
+            android:id="@+id/share_layout"
+            layout="@layout/share_bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+
+</layout>

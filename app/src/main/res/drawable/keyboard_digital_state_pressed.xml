@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"
+    android:useLevel="false">
+    <solid android:color="@color/soft_green" />
+    <size
+        android:width="@dimen/keyboard_button_size"
+        android:height="@dimen/keyboard_button_size" />
+</shape>

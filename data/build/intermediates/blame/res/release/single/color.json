@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-17.4.0.aar\\1e94e24c436dfdcb7b0f1bfa88c4caf9\\res\\color\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\color\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-17.4.0.aar\\1e94e24c436dfdcb7b0f1bfa88c4caf9\\res\\color\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\color\\common_google_signin_btn_tint.xml",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-17.4.0.aar\\1e94e24c436dfdcb7b0f1bfa88c4caf9\\res\\color\\common_google_signin_btn_tint.xml"
+    }
+]

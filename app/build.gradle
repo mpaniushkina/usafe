@@ -1,0 +1,212 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+android {
+    compileSdkVersion global.androidTargetSdkVersion
+    buildToolsVersion global.androidBuildToolsVersion
+
+    repositories {
+        maven { url "https://dl.bintray.com/terrakok/terramaven" }
+//        maven { url "http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/" }
+//        maven { url 'https://zendesk.artifactoryonline.com/zendesk/repo' }
+        maven { url "https://zendesk.jfrog.io/zendesk/repo"}
+        maven { url "http://repo.pageturner-reader.org" }
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.fabric.io/public' }
+
+        maven {
+            url "s3://hvsdk/android/releases"
+            credentials(AwsCredentials) {
+                accessKey "AKIAIIQJNVDGKVQWN62Q"
+                secretKey "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"
+            }
+        }
+
+    }
+
+    compileOptions {
+        sourceCompatibility global.javacCompatibility
+        targetCompatibility global.javacCompatibility
+    }
+
+    defaultConfig {
+        applicationId "${APPLICATION_ID}"
+        minSdkVersion 21
+        targetSdkVersion global.androidTargetSdkVersion
+        versionCode global.versionCodeNumber
+        versionName global.versionNameString
+        archivesBaseName = "Covr-" + versionName
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../release.keystore")
+            storePassword "k@^jCuYPq9t:`#/cQn2my;Bd&v,DpJ"
+            keyAlias "CovrSecurity"
+            keyPassword "G5tQSZqW/C!@%~paBfPb29dkuhR?M6"
+        }
+    }
+
+    buildTypes {
+        debug {
+            manifestPlaceholders = [appLinkHost: DEEPLINK_HOST_STAGE]
+            resValue "string", "default_notification_channel_id", "${APPLICATION_ID}.test.notification.default"
+            applicationIdSuffix '.test'
+            minifyEnabled false
+            debuggable true
+            signingConfig signingConfigs.debug
+        }
+        preRelease {
+            manifestPlaceholders = [appLinkHost: DEEPLINK_HOST_STAGE]
+            resValue "string", "default_notification_channel_id", "${APPLICATION_ID}.test.notification.default"
+            applicationIdSuffix '.test'
+            minifyEnabled false
+            debuggable true
+            signingConfig signingConfigs.debug
+        }
+        debugRelease {
+            manifestPlaceholders = [appLinkHost: DEEPLINK_HOST_PROD]
+            resValue "string", "default_notification_channel_id", "${APPLICATION_ID}.notification.default"
+            minifyEnabled true // correct
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles fileTree('proguard').asList().toArray()
+            signingConfig signingConfigs.release
+        }
+        release {
+            manifestPlaceholders = [appLinkHost: DEEPLINK_HOST_PROD]
+            resValue "string", "default_notification_channel_id", "${APPLICATION_ID}.notification.default"
+            minifyEnabled true // corrrect
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles fileTree('proguard').asList().toArray()
+            signingConfig signingConfigs.release
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    dexOptions {
+//        maxProcessCount 1
+        javaMaxHeapSize '2g'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/MSFTSIG.SF'
+        exclude 'META-INF/MSFTSIG.RSA'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+
+    configurations {
+        all*.exclude group: 'com.google.guava', module: 'guava-jdk5'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation project(path: ':domain')
+    implementation project(path: ':data')
+    implementation project(path: ':htmlSpanner')
+    implementation project(path: ':greenDao')
+
+    //    androidx
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation "androidx.legacy:legacy-support-v13:$global.androidxVer"
+    implementation "androidx.legacy:legacy-support-v4:$global.androidxVer"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "com.google.android.material:material:$global.androidxVer"
+    implementation "androidx.annotation:annotation:$global.androidxVer"
+    implementation "androidx.work:work-runtime:$global.work_version"
+
+    // dagger
+    implementation "com.google.dagger:dagger:$global.daggerVer"
+    implementation "com.google.dagger:dagger-android-support:$global.daggerVer"
+    annotationProcessor "com.google.dagger:dagger-compiler:$global.daggerVer"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$global.daggerVer"
+
+    // lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:$global.lifecycleVer"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$global.lifecycleVer"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0-rc03"
+    implementation "androidx.lifecycle:lifecycle-livedata:$global.lifecycleVer"
+    implementation "androidx.lifecycle:lifecycle-runtime:$global.lifecycleVer"
+
+    // play services
+    implementation 'com.google.android.gms:play-services-base:17.4.0'
+    implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
+    //    firebase
+    implementation 'com.google.firebase:firebase-core:17.2.0'
+    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    //    core
+    implementation "io.reactivex.rxjava2:rxandroid:$global.rxandroidVer"
+    implementation "io.reactivex.rxjava2:rxjava:$global.rxjavaVer"
+    implementation 'joda-time:joda-time:2.10.4'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+
+    implementation "com.google.code.gson:gson:2.8.5"
+    implementation "com.squareup.okhttp3:okhttp:$global.okhttp3Ver"
+    implementation "com.squareup.retrofit2:retrofit:$global.retrofitVer"
+    implementation "com.squareup.retrofit2:converter-gson:$global.retrofitVer"
+
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+
+    //    tools
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:7.4.4'
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
+    implementation 'me.leolin:ShortcutBadger:1.1.16'
+    //    retrofit
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-joda:2.9.7'
+    //    customer service and crash report
+
+    implementation('com.zendesk:support:3.0.2') {
+        exclude group: "com.squareup.okhttp3", module: "okhttp"
+        exclude group: "com.squareup.okhttp3", module: "logging-interceptor"
+        exclude group: "com.squareup.retrofit2", module: "retrofit"
+        exclude group: "com.squareup.retrofit2", module: "converter-gson"
+        exclude group: "com.google.code.gson", module: "gson"
+    }
+
+    implementation('com.crashlytics.sdk.android:crashlytics:2.10.1@aar') {
+        transitive = true
+    }
+
+    implementation 'com.otaliastudios:cameraview:2.6.1'
+
+    //    UI
+    implementation 'fr.avianey.com.viewpagerindicator:library:2.4.1.1@aar'
+    implementation 'com.terrakok.phonematter:phonematter:1.0@aar'
+    implementation 'com.github.rahatarmanahmed:circularprogressview:2.4.0'
+    implementation 'me.grantland:autofittextview:0.2.1'
+    implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.1'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.budiyev.android:code-scanner:2.1.0'
+
+    implementation 'com.github.instacart.truetime-android:library:3.4'
+    implementation 'com.github.instacart.truetime-android:library-extension-rx:3.4'
+
+    testImplementation 'junit:junit:4.12'
+
+    implementation('co.hyperverge:hypersnapsdk:3.1.3@aar', {
+        transitive=true
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.google.android.gms'
+        exclude group: 'co.hyperverge', module: 'hypersnapsdk-instructions'
+        exclude group: 'co.hyperverge', module: 'hypersnapsdk-qrscanner'
+        exclude group: 'co.hyperverge', module: 'hypersnap-pdfconverter'
+    })
+}
+
+apply plugin: 'com.google.gms.google-services'

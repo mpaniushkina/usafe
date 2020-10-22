@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- base colors -->
+    <color name="soft_green">#00BE9A</color> <!-- 1 -->
+    <color name="dark_green">#007A56</color> <!-- 2 -->
+    <color name="light_tealish_1">#71B5A4</color> <!-- 3 -->
+    <color name="light_tealish_2">#ECFBF5</color> <!-- 4 -->
+    <color name="light_tealish_3">#EEFAF5</color> <!-- 5 -->
+    <color name="faded_tealish_2">#C4E3DC</color> <!-- 6 -->
+    <color name="faded_tealish">#b8dcd4</color> <!-- 6 -->
+    <color name="off_tealish_1">#F7F9F9</color> <!-- 7 -->
+    <color name="off_tealish_2">#EFF3F3</color> <!-- 8 -->
+    <color name="white">#FFFFFF</color>  <!-- 9 -->
+    <color name="white_semi_transparent">#BBFFFFFF</color>  <!-- 9 -->
+    <color name="black">#1A1A1A</color> <!-- 10 -->
+    <color name="dark_grey">#737373</color> <!-- 11 -->
+    <color name="grey">#B3B3B3</color> <!-- 12 -->
+    <color name="light_grey">#D8D8D8</color> <!-- 13 -->
+    <color name="red">#FF0000</color> <!-- 14 -->
+    <color name="montana">#323232</color> <!-- rgb 50,50,50 -->
+    <color name="transparent">@android:color/transparent</color> <!-- rgb 50,50,50 -->
+    <color name="covr_green">#109E7D</color>
+    <color name="recover_color">#FFA400</color>
+
+    <color name="colorPrimary">@color/soft_green</color>
+    <color name="colorPrimaryDark">@color/dark_green</color>
+    <color name="colorAccent">@color/soft_green</color>
+
+    <color name="about_gray_bg">#D9D9D9</color>
+    <color name="transparent_gray">#20000000</color>
+    <color name="partnership_delimiter">#D8D8D8</color>
+    <color name="tealish">#17B388</color>
+
+    <!-- text color -->
+    <color name="text_color_black">@color/black</color>
+    <color name="text_color_gray">@color/dark_grey</color>
+    <color name="setting_header_black">#666666</color>
+    <color name="setting_red">@color/red</color>
+    <color name="setting_blue">#00B6FF</color>
+    <color name="partnership_black">#4C4C4C</color>
+    <color name="partnership_link_blue">#0080FF</color>
+    <color name="partnership_link_blue_green">@color/covr_green</color>
+    <color name="greeting_text_gray">#808080</color>
+    <color name="greeting_text_green">@color/covr_green</color>
+    <color name="greeting_text_light_gray">#999999</color>
+    <color name="transaction_color">#333333</color>
+
+    <!-- base colors application -->
+    <color name="lockscreen_bg">@color/white</color>
+    <color name="backgroundMain">@color/white</color>
+    <color name="button_green_bg">@color/soft_green</color>
+    <color name="pressed_green_button_text">@color/dark_green</color>
+    <color name="divider_green">#53d4bb</color>
+    <color name="partnership_bg">#F7F7F7</color>
+    <color name="text_green">@color/soft_green</color>
+    <color name="add_partnership_button_bg">#EEFFFFFF</color>
+
+    <!-- timers -->
+    <color name="timer_expired">@color/red</color>
+
+    <color name="logo_border_color">@color/grey</color>
+    <color name="toolbar_gray">#EFF3F3</color>
+    <color name="covr_vault_light_grey">#F8F8F8</color>
+    <color name="covr_vault_text_black">#191919</color>
+    <color name="covr_vault_light_background">#FAFAFA</color>
+    <color name="covr_vault_bottom_line">#CCCCCC</color>
+</resources>

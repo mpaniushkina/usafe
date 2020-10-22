@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <!-- add data if need -->
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/covr_green"
+            android:id="@+id/sb_authorized"/>
+
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawer_layout"
+            android:layout_below="@+id/sb_authorized"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:background="@color/white"
+                    android:id="@+id/fragment_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="240dp"
+                android:id="@+id/left_drawer"
+                android:layout_gravity="start"
+                android:layout_height="match_parent"
+                android:background="@color/soft_green">
+
+                <ListView
+                    android:padding="@dimen/twenty_dp"
+
+                    android:id="@+id/drwer_list"
+                    android:layout_width="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:choiceMode="singleChoice"
+                    android:divider="@color/divider_green"
+                    android:dividerHeight="@dimen/border_line_thin_thickness" />
+
+            </RelativeLayout>
+
+        </androidx.drawerlayout.widget.DrawerLayout>
+
+        <LinearLayout
+            android:id="@+id/activity_sliding_up_panel"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:focusable="true"
+            android:clickable="true"
+            android:background="@android:color/transparent"
+            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/sb_authorized">
+
+            <FrameLayout
+                android:id="@+id/activity_lockscreen_container"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

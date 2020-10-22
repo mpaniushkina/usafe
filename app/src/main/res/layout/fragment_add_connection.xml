@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="closeClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="scanClickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundMain"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/twenty_dp"
+        android:paddingRight="@dimen/twenty_dp">
+
+        <TextView
+            android:id="@+id/tv_add_connection_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="@dimen/view_padding_small"
+            android:layout_marginTop="@dimen/setup_top_margin"
+            android:gravity="center_horizontal"
+            android:text="@string/add_partnership"
+            android:textColor="@color/covr_green"
+            android:textSize="@dimen/text_header" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_add_connection_info"
+            android:layout_below="@+id/tv_add_connection_header"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/view_padding_small"
+            android:layout_marginTop="@dimen/view_padding_small"
+            android:src="@drawable/qr_code_content_image" />
+
+        <TextView
+            android:id="@+id/tv_add_connection_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/add_connection_error"
+            android:layout_marginBottom="@dimen/setup_number_field_vertical_margin"
+            android:gravity="center_horizontal"
+            android:text="@string/add_connection_qr_info"
+            android:textColor="@color/covr_green"
+            android:textSize="@dimen/text_small" />
+
+        <TextView
+            android:id="@+id/add_connection_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button_scan_code"
+            android:layout_marginBottom="@dimen/setup_number_field_vertical_margin"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_small"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/button_scan_code"
+            style="@style/GreenButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/horizontal_border"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/setup_top_margin"
+            android:layout_marginLeft="@dimen/setup_top_margin"
+            android:layout_marginRight="@dimen/setup_top_margin"
+            android:onClick="@{scanClickListener::onClick}"
+            android:text="@string/add_connection_qr_button" />
+
+        <View
+            android:id="@+id/horizontal_border"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/border_line_thin_thickness"
+            android:layout_above="@+id/left_bottom_button"
+            android:layout_marginLeft="@dimen/minus_twenty_dp"
+            android:layout_marginRight="@dimen/minus_twenty_dp"
+            android:background="@color/grey" />
+
+        <TextView
+            android:id="@+id/left_bottom_button"
+            style="@style/WhiteBottomButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/minus_twenty_dp"
+            android:layout_marginRight="@dimen/minus_twenty_dp"
+            android:onClick="@{closeClickListener::onClick}"
+            android:text="@string/close" />
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout style="@style/VerificationCodeDigitWrapper">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/verification_code_digit_border">
+
+                <TextView
+                    android:id="@+id/digit1"
+                    style="@style/VerificationCodeDigit"
+                    android:visibility="invisible" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/VerificationCodeDigitWrapper">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/verification_code_digit_border">
+
+                <TextView
+                    android:id="@+id/digit2"
+                    style="@style/VerificationCodeDigit"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/VerificationCodeDigitWrapper">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/verification_code_digit_border">
+
+                <TextView
+                    android:id="@+id/digit3"
+                    style="@style/VerificationCodeDigit"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/VerificationCodeDigitWrapper">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/verification_code_digit_border">
+
+                <TextView
+                    android:id="@+id/digit4"
+                    style="@style/VerificationCodeDigit"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

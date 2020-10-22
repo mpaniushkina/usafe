@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="zendesk_url">https://covrhelp.zendesk.com</string>
+    <string name="zendesk_app_id">ccb5ade3c53b0c4a55ddc0cfcf390e660668b767111be5af</string>
+    <string name="zendesk_oauth_client_id">mobile_sdk_client_36802930e6596a458e6d</string>
+
+    <style name="ZendeskSdkTheme.Light.HelpCenter.Action" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:paddingLeft">@dimen/zs_help_row_action_padding_start</item>
+        <item name="android:paddingRight">@dimen/zs_help_row_action_padding_end</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>

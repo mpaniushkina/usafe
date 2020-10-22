@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/keyboard_btn_one"
+        style="@style/KeyboardButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:text="1"
+        app:layout_constraintEnd_toStartOf="@+id/keyboard_btn_two"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/keyboard_btn_two"
+        style="@style/KeyboardButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:text="2"
+        app:layout_constraintEnd_toStartOf="@+id/keyboard_btn_three"
+        app:layout_constraintStart_toEndOf="@+id/keyboard_btn_one"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/keyboard_btn_three"
+        style="@style/KeyboardButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"
+        android:clickable="true"
+        android:text="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/keyboard_btn_two"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/keyboard_btn_four"
+        style="@style/KeyboardButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:text="4"
+        app:layout_constraintEnd_toStartOf="@+id/keyboard_btn_five"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keyboard_btn_one"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/keyboard_btn_five"
+        style="@style/KeyboardButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:text="5"
+        app:layout_constraintEnd_toStartOf="@+id/keyboard_btn_six"
+        app:layout_constraintStart_toEndOf="@+id/keyboard_btn_four"
+        app:layout_constraintTop_toBottomOf="@+id/keyboard_btn_two"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/keyboard_btn_six"
+        style="@style/KeyboardButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:clickable="true"
+        android:text="6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/keyboard_btn_five"
+        app:layout_constraintTop_toBottomOf="@+id/keyboard_btn_three"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/keyboard_btn_seven"
+        style="@style/KeyboardButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:text="7"
+        app:layout_constraintEnd_toStartOf="@+id/keyboard_btn_eight"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keyboard_btn_four"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/keyboard_btn_eight"
+        style="@style/KeyboardButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:text="8"
+        app:layout_constraintEnd_toStartOf="@+id/keyboard_btn_nine"
+        app:layout_constraintStart_toEndOf="@+id/keyboard_btn_seven"
+        app:layout_constraintTop_toBottomOf="@+id/keyboard_btn_five"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/keyboard_btn_nine"
+        style="@style/KeyboardButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:clickable="true"
+        android:text="9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/keyboard_btn_eight"
+        app:layout_constraintTop_toBottomOf="@+id/keyboard_btn_six"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/keyboard_btn_zero"
+        style="@style/KeyboardButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:clickable="true"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/keyboard_btn_eight"
+        app:layout_constraintStart_toStartOf="@+id/keyboard_btn_eight"
+        app:layout_constraintTop_toBottomOf="@+id/keyboard_btn_eight"
+        tools:ignore="HardcodedText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

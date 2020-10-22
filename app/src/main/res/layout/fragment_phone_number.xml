@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="countryName"
+            type="java.lang.String" />
+
+        <variable
+            name="countryCode"
+            type="java.lang.String" />
+
+        <variable
+            name="phoneNumber"
+            type="java.lang.String" />
+
+        <variable
+            name="removePhoneClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="spannabeText"
+            type="android.text.SpannableString" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundMain">
+
+        <TextView
+            android:id="@+id/tv_phone_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginTop="@dimen/setup_top_margin"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="@dimen/ten_dp"
+            android:gravity="center_horizontal"
+            android:text="@string/phone_number_header"
+            android:textColor="@color/covr_green"
+            android:textSize="@dimen/text_header_dp"
+            app:layout_constrainedWidth="true"
+            custom:layout_constraintEnd_toEndOf="parent"
+            custom:layout_constraintStart_toStartOf="@+id/tv_phone_subheader"
+            custom:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_phone_subheader"
+            android:paddingStart="@dimen/twenty_dp"
+            android:paddingEnd="@dimen/twenty_dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="@{spannabeText}"
+            tools:text="@string/phone_number_subheader"
+            android:maxLines="4"
+            android:ellipsize="end"
+            android:textColorHighlight="@android:color/transparent"
+            android:textColorLink="@color/clickable_text"
+            android:textSize="@dimen/text_small_dp"
+            custom:layout_constraintEnd_toEndOf="parent"
+            custom:layout_constraintStart_toStartOf="@+id/phone_number_et_container"
+            custom:layout_constraintTop_toBottomOf="@+id/tv_phone_header" />
+
+        <LinearLayout
+            android:layout_marginStart="@dimen/twenty_dp"
+            android:layout_marginEnd="@dimen/twenty_dp"
+            android:id="@+id/phone_number_et_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/phone_number_et_bg"
+            android:orientation="vertical"
+            custom:layout_constraintEnd_toEndOf="parent"
+            custom:layout_constraintStart_toStartOf="parent"
+            custom:layout_constraintTop_toBottomOf="@+id/tv_phone_subheader">
+
+            <TextView
+                style="@style/PhoneNumberTextViewStyle"
+                android:text="@{countryName}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/border_line_one_px_thickness"
+                android:background="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        style="@style/PhoneNumberTextViewStyle"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="@{countryCode}" />
+
+                    <View
+                        android:layout_width="@dimen/border_line_one_px_thickness"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:background="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25">
+
+                    <EditText
+                        android:id="@+id/et_phone_number"
+                        style="@style/PhoneNumberTextViewStyle"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/ib_clear_phone"
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/phone_number_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@{phoneNumber}"
+                        android:textColor="@color/soft_green" />
+
+                    <FrameLayout
+                        android:id="@+id/ib_clear_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:onClick="@{removePhoneClickListener::onClick}"
+                        android:paddingStart="@dimen/twenty_dp"
+                        android:paddingEnd="@dimen/twelve_dp">
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_backspace"
+                            android:clickable="false"
+                            android:contentDescription="@string/tutorial_fragment_delete"
+                            android:focusable="false" />
+
+                    </FrameLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.covrsecurity.io.ui.component.DigitalKeyboard
+            android:id="@+id/digitalKeyboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            custom:canSound="true"
+            custom:canVibrate="false"
+            custom:layout_constraintBottom_toBottomOf="parent"
+            custom:layout_constraintEnd_toEndOf="parent"
+            custom:layout_constraintStart_toStartOf="parent"
+            custom:layout_constraintTop_toBottomOf="@id/phone_number_et_container" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

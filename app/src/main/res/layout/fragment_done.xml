@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="doneClickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom_button"
+            android:orientation="vertical"
+            android:padding="@dimen/view_padding">
+
+            <TextView
+                android:id="@+id/tutor_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/forty_dp"
+                android:layout_marginBottom="@dimen/ten_dp"
+                android:gravity="center"
+                android:text="@string/done_header"
+                android:textColor="@color/covr_green"
+                android:textSize="@dimen/text_header" />
+
+
+            <TextView
+                android:id="@+id/tutor_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tutor_label"
+                android:layout_marginBottom="@dimen/thirty_dp"
+                android:gravity="center_horizontal"
+                android:text="@string/done_subheader"
+                android:textColorHighlight="@android:color/transparent"
+                android:textColorLink="@color/clickable_text"
+                android:textSize="@dimen/text_small" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/border_line_thin_thickness"
+                android:layout_alignParentTop="true"
+                android:background="@color/grey" />
+
+            <TextView
+                android:id="@+id/right_bottom_button"
+                style="@style/WhiteBottomButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="@{doneClickListener::onClick}"
+                android:text="@string/phone_number_done" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

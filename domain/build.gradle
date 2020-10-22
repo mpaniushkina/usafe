@@ -1,0 +1,15 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'javax.inject:javax.inject:1'
+
+    implementation "androidx.annotation:annotation:$global.androidxVer"
+    implementation "io.reactivex.rxjava2:rxjava:$global.rxjavaVer"
+
+    compileOnly project(path: ':androidmock')
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

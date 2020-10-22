@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doneClickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/toolbar_back_arrow"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginBottom="@dimen/view_padding_small"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <WebView
+            android:id="@+id/wv_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_above="@+id/bottom_button"
+            android:layout_below="@id/tool_bar"
+            android:paddingTop="@dimen/view_padding"
+            android:paddingBottom="@dimen/view_padding" />
+
+        <LinearLayout
+            android:id="@+id/bottom_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/border_line_thin_thickness"
+                android:layout_alignParentTop="true"
+                android:background="@color/grey" />
+
+            <TextView
+                android:id="@+id/right_bottom_button"
+                style="@style/WhiteBottomButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="@{doneClickListener::onClick}"
+                android:text="@string/phone_number_close" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

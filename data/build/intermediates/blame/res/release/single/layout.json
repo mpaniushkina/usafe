@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\layout\\custom_dialog.xml",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.2.0.aar\\bf082516d0c6c03aad335afa8fe0556f\\res\\layout\\custom_dialog.xml"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.2.0.aar\\bf082516d0c6c03aad335afa8fe0556f\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.2.0.aar\\bf082516d0c6c03aad335afa8fe0556f\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\layout\\notification_action.xml",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.2.0.aar\\bf082516d0c6c03aad335afa8fe0556f\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.2.0.aar\\bf082516d0c6c03aad335afa8fe0556f\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "D:\\PROJECTS\\CovrApp\\usafe\\data\\build\\intermediates\\res\\merged\\release\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\142HP\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.2.0.aar\\bf082516d0c6c03aad335afa8fe0556f\\res\\layout\\notification_action_tombstone.xml"
+    }
+]

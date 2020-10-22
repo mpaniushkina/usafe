@@ -1,0 +1,2 @@
+-dontwarn org.apache.http.**
+-dontwarn org.apache.commons.logging.**

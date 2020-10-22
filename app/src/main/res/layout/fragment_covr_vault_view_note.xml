@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.covrsecurity.io.utils.RecordTypeCompat" />
+
+        <variable
+            name="toFavoriteAction"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="editAction"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="deleteAction"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="noteEditModel"
+            type="com.covrsecurity.io.model.databinding.CovrVaultEditNoteModel" />
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/covr_vault_view_card_bottom_panel">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="12dp">
+
+                <RelativeLayout
+                    android:id="@+id/covr_vault_view_card_card_title_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/covr_vault_view_card_card_issuer"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:adjustViewBounds="true"
+                        bind:src="@{RecordTypeCompat.NOTE.getIconMedium()}" />
+
+                    <TextView
+                        android:id="@+id/covr_vault_view_card_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@+id/covr_vault_view_card_card_issuer"
+                        android:text="@{noteEditModel.description}"
+                        android:textColor="@color/text_color_black"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/covr_vault_view_card_favorite"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignBottom="@+id/covr_vault_view_card_add_to_quick_bar_text"
+                        android:layout_alignTop="@+id/covr_vault_view_card_add_to_quick_bar_text"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@+id/covr_vault_view_card_card_issuer"
+                        android:onClick="@{toFavoriteAction}"
+                        android:scaleType="centerInside"
+                        android:src="@{noteEditModel.favorite? @drawable/favorite_in_quick_bar_active_small : @drawable/favorite_in_quick_bar_inactive_small}"
+                        tools:src="@drawable/favorite_in_quick_bar_inactive_small" />
+
+                    <TextView
+                        android:id="@+id/covr_vault_view_card_add_to_quick_bar_text"
+                        fontPath="@string/cfg_font_roboto_italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/covr_vault_view_card_description"
+                        android:layout_marginTop="0dp"
+                        android:layout_toEndOf="@+id/covr_vault_view_card_favorite"
+                        android:gravity="center_vertical"
+                        android:onClick="@{toFavoriteAction}"
+                        android:text="@{noteEditModel.favorite? @string/covr_vault_view_card_remove_from_quick_bar_text : @string/covr_vault_view_card_add_to_quick_bar_text}"
+                        android:textColor="@color/greeting_text_gray"
+                        android:textSize="16sp"
+                        tools:ignore="RtlSymmetry" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/covr_vault_view_note_content"
+                    style="@style/covr_vault_view_card_style_paramount"
+                    android:layout_below="@+id/covr_vault_view_card_card_title_container"
+                    android:layout_marginTop="12dp"
+                    android:text="@{noteEditModel.content}"
+                    tools:text="Andy J Alpha" />
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/covr_vault_view_card_bottom_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <include
+                android:id="@+id/covr_vault_edit_delete_panel"
+                layout="@layout/item_covr_vault_edit_delete_panel"
+                bind:deleteAction="@{deleteAction}"
+                bind:editAction="@{editAction}" />
+
+            <include
+                android:id="@+id/covr_vault_close_open_panel"
+                layout="@layout/item_covr_vault_close_open_panel"
+                android:visibility="gone" />
+
+            <View style="@style/covr_vault_divider" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    tools:background="#FF0">
+
+    <com.covrsecurity.io.ui.view.AspectRatioImageView
+        android:id="@+id/key_vault_item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/category_icon_group_notes_big"
+        app:image_dimension_to_adjust="height"
+        tools:background="#F0F0" />
+
+    <TextView
+        android:id="@+id/key_vault_item_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/key_vault_item_image"
+        android:layout_alignStart="@+id/key_vault_item_image"
+        android:layout_below="@+id/key_vault_item_image"
+        android:layout_marginEnd="@dimen/covr_vault_main_pager_adapter_text_margin"
+        android:layout_marginStart="@dimen/covr_vault_main_pager_adapter_text_margin"
+        android:layout_marginTop="6dp"
+        android:ellipsize="end"
+        android:gravity="start"
+        android:maxLines="2"
+        android:textColor="@color/covr_green"
+        android:textSize="@dimen/covr_vault_main_pager_adapter_text_size"
+        tools:background="#0FF"
+        tools:ignore="RtlSymmetry"
+        tools:text="Payment cards " />
+
+</RelativeLayout>

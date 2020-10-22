@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+                name="doneClickListener"
+                type="android.view.View.OnClickListener"/>
+    </data>
+
+    <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <WebView
+                android:id="@+id/phone_read_more_ww"
+                android:layout_above="@+id/bottom_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/view_padding"
+                android:layout_marginTop="@dimen/view_padding_big"
+                android:layout_marginBottom="@dimen/view_padding_big" />
+
+        <LinearLayout
+                android:id="@+id/bottom_button"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:visibility="visible"
+                android:layout_height="@dimen/bottom_button_height">
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/border_line_thin_thickness"
+                    android:background="@color/grey"
+                    android:layout_alignParentTop="true"/>
+            <TextView
+                    android:id="@+id/right_bottom_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="@{doneClickListener::onClick}"
+                    style="@style/WhiteBottomButton"
+                    android:text="@string/phone_number_close"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

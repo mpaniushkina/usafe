@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="closeClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="useFingerprint"
+            type="java.lang.Boolean" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/horizontal_border">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="256dp"
+                    android:padding="@dimen/view_padding_big"
+                    android:src="@drawable/ic_fingerprint_big_green" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="@dimen/view_padding_half_big"
+                    android:text="@string/fingerprint_auth_ready_title"
+                    android:textColor="@color/covr_green"
+                    android:textSize="@dimen/text_header" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/view_padding_half_big"
+                    android:text="@string/fingerprint_auth_ready_description"
+                    android:textColorHighlight="@android:color/transparent"
+                    android:textColorLink="@color/clickable_text"
+                    android:textSize="@dimen/text_regular" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioGroup
+                        android:id="@+id/use_fingerprint_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <RadioButton
+                            android:id="@+id/radio_yes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={useFingerprint}"
+                            android:text="@string/yes"
+                            android:textColor="@color/covr_green"
+                            android:textSize="@dimen/text_header_small" />
+
+                        <RadioButton
+                            android:id="@+id/radio_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/no"
+                            android:textColor="@color/covr_green"
+                            android:textSize="@dimen/text_header_small" />
+
+                    </RadioGroup>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <View
+            android:id="@+id/horizontal_border"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/border_line_thin_thickness"
+            android:layout_above="@+id/left_bottom_button"
+            android:background="@color/grey" />
+
+        <TextView
+            android:id="@+id/left_bottom_button"
+            style="@style/WhiteBottomButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:layout_alignParentBottom="true"
+            android:onClick="@{closeClickListener::onClick}"
+            android:text="@string/close" />
+
+    </RelativeLayout>
+
+</layout>
