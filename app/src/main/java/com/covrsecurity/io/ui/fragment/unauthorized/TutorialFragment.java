@@ -39,32 +39,32 @@ public class TutorialFragment extends BaseUnauthorizedFragment<FragmentTutorialB
     @Override
     public void onViewCreated(@NotNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mBinding.pager.setAdapter(new TutorialPagerAdapter(getChildFragmentManager(), items, R.layout.item_tutorial_pager));
-        mBinding.pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                mBinding.chevronLeft.setVisibility(View.VISIBLE);
-                if (position == 0) {
-                    mBinding.chevronLeft.setEnabled(false);
-                    mBinding.chevronRight.setEnabled(true);
-                } else if (position == (items.length - 1)) {
-                    mBinding.chevronLeft.setEnabled(true);
-                    mBinding.chevronRight.setEnabled(false);
-                } else {
-                    mBinding.chevronLeft.setEnabled(true);
-                    mBinding.chevronRight.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
-        mBinding.indicator.setViewPager(mBinding.pager);
+//        mBinding.pager.setAdapter(new TutorialPagerAdapter(getChildFragmentManager(), items, R.layout.item_tutorial_pager));
+//        mBinding.pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                mBinding.chevronLeft.setVisibility(View.VISIBLE);
+//                if (position == 0) {
+//                    mBinding.chevronLeft.setEnabled(false);
+//                    mBinding.chevronRight.setEnabled(true);
+//                } else if (position == (items.length - 1)) {
+//                    mBinding.chevronLeft.setEnabled(true);
+//                    mBinding.chevronRight.setEnabled(false);
+//                } else {
+//                    mBinding.chevronLeft.setEnabled(true);
+//                    mBinding.chevronRight.setEnabled(true);
+//                }
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//            }
+//        });
+//        mBinding.indicator.setViewPager(mBinding.pager);
         mBinding.buttonSetupCovr.setOnClickListener((View buttonSetup) -> {
             checkForRootWithCallback((boolean isRooted) -> {
                 if (!isRooted) {
@@ -83,27 +83,27 @@ public class TutorialFragment extends BaseUnauthorizedFragment<FragmentTutorialB
                 }
             });
         });
-        mBinding.chevronLeft.setOnClickListener((View chevronLeft) -> {
-            int current = mBinding.pager.getCurrentItem();
-            if (current > 0) {
-                mBinding.pager.setCurrentItem(current - 1);
-            }
-        });
-        mBinding.chevronRight.setOnClickListener((View chevronRight) -> {
-            int current = mBinding.pager.getCurrentItem();
-            if (current < items.length - 1) {
-                mBinding.pager.setCurrentItem(current + 1);
-            }
-        });
-        mBinding.chevronLeft.setVisibility(View.INVISIBLE);
+//        mBinding.chevronLeft.setOnClickListener((View chevronLeft) -> {
+//            int current = mBinding.pager.getCurrentItem();
+//            if (current > 0) {
+//                mBinding.pager.setCurrentItem(current - 1);
+//            }
+//        });
+//        mBinding.chevronRight.setOnClickListener((View chevronRight) -> {
+//            int current = mBinding.pager.getCurrentItem();
+//            if (current < items.length - 1) {
+//                mBinding.pager.setCurrentItem(current + 1);
+//            }
+//        });
+//        mBinding.chevronLeft.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (mBinding.pager.getCurrentItem() == 0) {
-            // mChevronLeft.setEnabled(false);
-        }
+//        if (mBinding.pager.getCurrentItem() == 0) {
+//            // mChevronLeft.setEnabled(false);
+//        }
     }
 
     @Override

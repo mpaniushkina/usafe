@@ -39,8 +39,8 @@
         <item name="android:background">@drawable/button_green</item>
         <item name="android:textColor">@color/button_green_text</item>
         <item name="android:textSize">@dimen/text_regular</item>
-        <item name="android:paddingLeft">@dimen/view_padding</item>
-        <item name="android:paddingRight">@dimen/view_padding</item>
+        <item name="android:paddingLeft">@dimen/about_sections_padding_top_bottom</item>
+        <item name="android:paddingRight">@dimen/about_sections_padding_top_bottom</item>
         <item name="android:paddingTop">@dimen/view_padding_small</item>
         <item name="android:paddingBottom">@dimen/view_padding_small</item>
         <item name="android:minHeight">20dp</item>

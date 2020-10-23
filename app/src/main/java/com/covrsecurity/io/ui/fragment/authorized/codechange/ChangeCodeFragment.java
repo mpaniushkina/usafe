@@ -230,7 +230,7 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                         DialogUtils.showOkDialog(getActivity(),
                                 getString(R.string.locked_screen_header_text),
                                 getString(R.string.locked_screen_main_text),
-                                getString(R.string.button_setup_covr),
+                                getString(R.string.button_setup_iam),
                                 (dialog, which) -> setupCovr(),
                                 false
                         );

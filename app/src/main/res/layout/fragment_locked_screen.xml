@@ -62,7 +62,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/twenty_four_dp"
             android:onClick="@{setupCovrListener}"
-            android:text="@string/button_setup_covr" />
+            android:text="@string/button_setup_iam" />
 
     </RelativeLayout>
 
