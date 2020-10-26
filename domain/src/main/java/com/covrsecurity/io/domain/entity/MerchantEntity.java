@@ -8,9 +8,9 @@ public class MerchantEntity implements Serializable {
     private String userName;
     private long createdDate;
     private CompanyEntity company;
-    private StatusEntity status;
+    private com.covrsecurity.io.domain.entity.StatusEntity status;
 
-    public MerchantEntity(String id, String userName, long createdDate, CompanyEntity company, StatusEntity status) {
+    public MerchantEntity(String id, String userName, long createdDate, CompanyEntity company, com.covrsecurity.io.domain.entity.StatusEntity status) {
         this.id = id;
         this.userName = userName;
         this.createdDate = createdDate;
@@ -50,7 +50,7 @@ public class MerchantEntity implements Serializable {
         this.company = company;
     }
 
-    public StatusEntity getStatus() {
+    public com.covrsecurity.io.domain.entity.StatusEntity getStatus() {
         return status;
     }
 

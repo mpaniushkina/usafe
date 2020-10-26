@@ -15,6 +15,7 @@ import com.covrsecurity.io.ui.viewmodel.registerbiometricrecovery.RegisterBiomet
 import com.covrsecurity.io.ui.viewmodel.registerbiometricrecovery.RegisterBiometricRecoveryViewModelFactory;
 import com.covrsecurity.io.utils.FingerprintUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
+import com.covrsecurity.io.utils.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +26,6 @@ import timber.log.Timber;
 
 import static com.covrsecurity.io.ui.fragment.unauthorized.ScanFaceBiometricsFragment.CAPTURED_DOCUMENT_JPEG;
 import static com.covrsecurity.io.ui.fragment.unauthorized.ScanFaceBiometricsFragment.CAPTURED_IMAGE_JPEG;
-import static com.covrsecurity.io.utils.FileUtils.readAllBytes;
 
 public class RegisterBiometricRecoveryFragment extends BaseUnauthorizedViewModelFragment<FragmentRegisterBiometricRecoveryBinding, RegisterBiometricRecoveryViewModel> {
 
@@ -119,7 +119,7 @@ public class RegisterBiometricRecoveryFragment extends BaseUnauthorizedViewModel
 
     public void registerRecoveryRequest() {
          try {
-            viewModel.registerRecoveryRequest(readAllBytes(getImageFile(takenSelfie)), readAllBytes(getImageFile(takenDocument)));
+            viewModel.registerRecoveryRequest(FileUtils.readAllBytes(getImageFile(takenSelfie)), FileUtils.readAllBytes(getImageFile(takenDocument)));
         } catch (IOException e) {
             Timber.e(e);
             showErrToast(e);

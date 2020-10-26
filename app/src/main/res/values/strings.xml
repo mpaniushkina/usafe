@@ -27,6 +27,7 @@
     <string name="error_unknown">Unknown Error</string>
 
     <!-- Tutorial -->
+    <string name="welcome_label">Welcome to</string>
     <string name="tut1_label">Welcome to Covr</string>
     <string name="tut1_text">The safest digital authentication\nsystem on Earth</string>
     <string name="tut2_label">Safe</string>
@@ -37,6 +38,20 @@
     <string name="tut4_text">The only multi-factor, double channel\nencryption system on the market</string>
     <string name="tut5_label">Get started</string>
     <string name="tut5_text">Pair and connect to our Partners</string>
+
+    <string name="tut1_desc1">Example content we will \nwrite new text for this \nbut it should be 3 rows</string>
+    <string name="tut1_desc2">Terms of Use / Privacy Policy</string>
+    <string name="tut1_desc3">By continuing the setup I accept the \nTerms of Use and Privacy Policy</string>
+    <string name="tut2_desc1">Take control of your \nown data, with iAM \nyou decide.</string>
+    <string name="tut2_desc2">Keep track on what data is shared \nwith whom and when</string>
+    <string name="tut2_desc3">Use your ID to log in and then \neasily revoke the access</string>
+    <string name="tut3_desc1">You will now be guided \nthrough the app set-up \nso you can start using iAM</string>
+    <string name="tut3_desc2">Terms of Use / Privacy Policy</string>
+    <string name="tut3_desc3">By continuing the setup I accept the \nTerms of Use and Privacy Policy</string>
+    <string name="tut4_desc1">You will now be guided \nthrough the app set-up \nso you can start using iAM</string>
+    <string name="tut4_desc2">Terms of Use / Privacy Policy</string>
+    <string name="tut4_desc3">By continuing the setup I accept the \nTerms of Use and Privacy Policy</string>
+
     <string name="button_setup_iam">Create new ID</string>
     <string name="tutorial_back_arrow">Previous</string>
     <string name="tutorial_next_arrow">Next</string>
@@ -430,5 +445,6 @@
     <string name="recovery_start_from_the_beginning">You should start the recovery from the beginning</string>
     <string name="position_your_face_inside_the_oval">Position your face\ninside the oval.</string>
     <string name="capture_document_back_side">Back Side</string>
+    <string name="button_iam_ready">iAM ready</string>
 
 </resources>

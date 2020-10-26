@@ -1,7 +1,6 @@
 package com.covrsecurity.io.model.databinding;
 
 import androidx.databinding.Bindable;
-import androidx.databinding.library.baseAdapters.BR;
 
 import android.os.Parcel;
 import android.os.Parcelable;

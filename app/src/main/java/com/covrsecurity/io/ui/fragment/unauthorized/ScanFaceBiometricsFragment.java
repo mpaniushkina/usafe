@@ -23,7 +23,6 @@ import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.databinding.FragmentScanFaceBiometricsBinding;
 import com.covrsecurity.io.domain.entity.TransactionEntity;
-import com.covrsecurity.io.domain.entity.request.RegisterRecoveryRequestEntity;
 import com.covrsecurity.io.manager.Analytics;
 import com.covrsecurity.io.model.BiometricsVerification;
 import com.covrsecurity.io.model.error.BioMetricDataProvideCancel;
@@ -40,8 +39,8 @@ import com.covrsecurity.io.utils.ConstantsUtils;
 import com.covrsecurity.io.utils.DialogUtils;
 import com.covrsecurity.io.utils.FileUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
+import com.covrsecurity.io.domain.entity.request.RegisterRecoveryRequestEntity;
 
-import org.apache.pdfbox.util.Charsets;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -60,12 +59,6 @@ import co.hyperverge.hypersnapsdk.objects.HVError;
 import co.hyperverge.hypersnapsdk.objects.HVFaceConfig;
 import co.hyperverge.hypersnapsdk.objects.HyperSnapParams;
 import timber.log.Timber;
-
-import static com.covrsecurity.io.ui.activity.AuthorizedActivity.hideLockScreen;
-import static com.covrsecurity.io.utils.ConstantsUtils.APP_SETTINGS_TEMPLATE;
-import static com.covrsecurity.io.utils.ConstantsUtils.CAMERA_PERMISSION;
-import static com.covrsecurity.io.utils.ConstantsUtils.CAMERA_REQUEST_CODE;
-import static com.covrsecurity.io.utils.FileUtils.readAllBytes;
 
 public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<FragmentScanFaceBiometricsBinding, ScanFaceBiometricsViewModel> {
 
@@ -86,7 +79,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
     private String selfie = null;
     private String documentFrontSide = null;
     private File file = null;
-    private RegisterRecoveryRequestEntity registerRecovery;
+    private com.covrsecurity.io.domain.entity.request.RegisterRecoveryRequestEntity registerRecovery;
 
     public ScanFaceBiometricsFragment() {}
 
@@ -239,7 +232,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             bindToLifecycle();
         } else {
-            requestPermissions(CAMERA_PERMISSION, CAMERA_REQUEST_CODE);
+            requestPermissions(ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
         }
         mBinding.capture.setOnClickListener(view1 -> {
             if ((getContext() != null || getActivity() != null) && ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
@@ -261,7 +254,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                     enableNextButton(false);
                 }
             } else {
-                requestPermissions(CAMERA_PERMISSION, CAMERA_REQUEST_CODE);
+                requestPermissions(ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
             }
         });
     }
@@ -287,7 +280,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                                 }
                             }
                         } else {
-                            hideLockScreen = true;
+                            AuthorizedActivity.hideLockScreen = true;
                             onBackPressed();
                         }
                     } catch (JSONException e) {
@@ -328,7 +321,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                         if (!documentFrontSide.equals("")) {
                             bindToLifecycle();
                         } else {
-                            hideLockScreen = true;
+                            AuthorizedActivity.hideLockScreen = true;
                             onBackPressed();
                         }
                     } catch (JSONException e) {
@@ -350,13 +343,13 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
         mBinding.cameraPreview.setLifecycleOwner(this);
         mBinding.cameraPreview.clearCameraListeners();
         if (file != null) {
-            hideLockScreen = true;
+            AuthorizedActivity.hideLockScreen = true;
             if (sharedViewModel != null) {
                 ActivityUtils.scheduleOnMainThread(() -> {
                     if (mScanReason == ScanIntention.VERIFICATION) {
                         BiometricsVerification biometricsVerification = null;
                         try {
-                            biometricsVerification = new BiometricsVerification(mTransaction, readAllBytes(getImageFile(selfie)), mAccept);
+                            biometricsVerification = new BiometricsVerification(mTransaction, FileUtils.readAllBytes(getImageFile(selfie)), mAccept);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -364,7 +357,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                     } else if (mScanReason == ScanIntention.POST_RECOVERY_FROM_SETTINGS) {
 //                        RegisterRecoveryRequestEntity registerRecovery = null;
                         try {
-                            registerRecovery = new RegisterRecoveryRequestEntity(readAllBytes(getImageFile(selfie)), readAllBytes(getImageFile(documentFrontSide)));
+                            registerRecovery = new RegisterRecoveryRequestEntity(FileUtils.readAllBytes(getImageFile(selfie)), FileUtils.readAllBytes(getImageFile(documentFrontSide)));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -423,7 +416,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAMERA_REQUEST_CODE) {
+        if (requestCode == ConstantsUtils.CAMERA_REQUEST_CODE) {
             bindToLifecycle();
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -435,13 +428,13 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
         super.onNextButtonClick();
         if (ScanIntention.RECOVERY == mScanReason) {
             try {
-                viewModel.recover(recoveryId, readAllBytes(getImageFile(selfie)));
+                viewModel.recover(recoveryId, FileUtils.readAllBytes(getImageFile(selfie)));
             } catch (IOException e) {
                 Timber.e(e);
             }
         } else if (ScanIntention.REGISTRATION == mScanReason) {
             try {
-                viewModel.register(mEnteredText, true, readAllBytes(getImageFile(selfie)), readAllBytes(getImageFile(documentFrontSide)));
+                viewModel.register(mEnteredText, true, FileUtils.readAllBytes(getImageFile(selfie)), FileUtils.readAllBytes(getImageFile(documentFrontSide)));
             } catch (IOException e) {
                 Timber.e(e);
             }
@@ -463,9 +456,9 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
     }
 
     private void openApplicationSettings() {
-        String uriString = String.format(APP_SETTINGS_TEMPLATE, getActivity().getPackageName());
+        String uriString = String.format(ConstantsUtils.APP_SETTINGS_TEMPLATE, getActivity().getPackageName());
         Intent appSettingsIntent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse(uriString));
-        startActivityForResult(appSettingsIntent, CAMERA_REQUEST_CODE);
+        startActivityForResult(appSettingsIntent, ConstantsUtils.CAMERA_REQUEST_CODE);
     }
 
     private File getImageFile(String image) {

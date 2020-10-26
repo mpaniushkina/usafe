@@ -14,13 +14,11 @@ import com.covrsecurity.io.domain.usecase.unregistered.QrCodeConnectionUseCase;
 import com.covrsecurity.io.sdk.response.QrCodeConnectionResponse;
 import com.covrsecurity.io.ui.viewmodel.base.BaseState;
 import com.covrsecurity.io.ui.viewmodel.base.BaseViewModel;
-import com.covrsecurity.io.ui.viewmodel.base.Event;
+import com.covrsecurity.io.utils.ConstantsUtils;
 
 import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-
-import static com.covrsecurity.io.utils.ConstantsUtils.DEFAULT_MERCHANT_PAGE_SIZE;
 
 public class PartnershipViewModel extends BaseViewModel {
 
@@ -54,7 +52,7 @@ public class PartnershipViewModel extends BaseViewModel {
     }
 
     public void getConnections(int pageNumber) {
-        disposable = Single.just(new GetConnectionsRequestEntity(pageNumber, DEFAULT_MERCHANT_PAGE_SIZE))
+        disposable = Single.just(new GetConnectionsRequestEntity(pageNumber, ConstantsUtils.DEFAULT_MERCHANT_PAGE_SIZE))
                 .flatMap(getConnectionsUseCase::execute)
                 .doOnSubscribe(
                         disposable1 -> connectionsLiveData.setValue(BaseState.getProcessingInstance())

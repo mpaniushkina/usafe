@@ -2,17 +2,14 @@ package com.covrsecurity.io.ui.fragment.unauthorized;
 
 import android.view.LayoutInflater;
 
-import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.fragment.BaseFragment;
 import com.covrsecurity.io.ui.fragment.interfaces.IUnregisteredFragment;
-import com.covrsecurity.io.ui.viewmodel.base.BaseViewModel;
 import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.CovrTools;
 

@@ -62,6 +62,7 @@ import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
 import com.covrsecurity.io.utils.LogUtil;
+import com.covrsecurity.io.model.Fields;
 import com.instacart.library.truetime.TrueTime;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -80,12 +81,7 @@ import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
-import static com.covrsecurity.io.model.Fields.GET_QRCODE_COMPANY_USER_ID;
-import static com.covrsecurity.io.model.Fields.GET_QRCODE_TRANSACTION_ID;
 import static com.covrsecurity.io.sdk.utils.QrCodeRequestResource.qrCodeStringValue;
-import static com.covrsecurity.io.utils.ConstantsUtils.CAMERA_PERMISSION;
-import static com.covrsecurity.io.utils.ConstantsUtils.CAMERA_REQUEST_CODE;
-import static com.covrsecurity.io.utils.ConstantsUtils.PENDING_REQUESTS_TYPE;
 
 public class StandingByFragment extends BaseViewModelFragment<FragmentStandingByBinding, StandingByViewModel>
         implements PendingRequestsAdapter.IPendingRequestListListener,
@@ -363,7 +359,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     }
 
     private void getQrCodeConnection() {
-        addConnectionViewModel.getQrCodeConnection(GET_QRCODE_COMPANY_USER_ID, GET_QRCODE_TRANSACTION_ID);
+        addConnectionViewModel.getQrCodeConnection(Fields.GET_QRCODE_COMPANY_USER_ID, Fields.GET_QRCODE_TRANSACTION_ID);
     }
 
     @Override
@@ -676,7 +672,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         mDisposable = Observable.fromIterable(pendingTransactions)
                 .map(pendingRequest -> pendingRequest.getValidTo() / ConstantsUtils.MILLISECONDS_IN_SECOND)
                 .toList()
-                .map(longs -> LogUtil.getGson().toJson(longs, PENDING_REQUESTS_TYPE))
+                .map(longs -> LogUtil.getGson().toJson(longs, ConstantsUtils.PENDING_REQUESTS_TYPE))
                 .subscribeOn(Schedulers.io())
                 .subscribe(longs -> AppAdapter.settings().savePendingRequest(longs));
     }
@@ -699,7 +695,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
             showChildFragment(fragment, fragment.getArguments());
         } else if (shouldBiometricBeProvided) {
             viewModel.setPostedTransaction(pendingTransaction, accept);
-            requestPermissions(CAMERA_PERMISSION, CAMERA_REQUEST_CODE);
+            requestPermissions(ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
         } else {
             viewModel.postTransaction(pendingTransaction, accept, null);
         }

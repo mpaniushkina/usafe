@@ -16,9 +16,9 @@ public class CompanyEntity implements Serializable {
     private String logo;
     private boolean active;
     private boolean isViewed;
-    private StatusEntity status;
+    private com.covrsecurity.io.domain.entity.StatusEntity status;
 
-    public CompanyEntity(String id, String userName, String publicKey, long createdDate, String companyId, String name, String fullName, String websiteUrl, String websiteName, String logo, boolean active, boolean isViewed, StatusEntity status) {
+    public CompanyEntity(String id, String userName, String publicKey, long createdDate, String companyId, String name, String fullName, String websiteUrl, String websiteName, String logo, boolean active, boolean isViewed, com.covrsecurity.io.domain.entity.StatusEntity status) {
         this.id = id;
         this.userName = userName;
         this.publicKey = publicKey;
@@ -130,7 +130,7 @@ public class CompanyEntity implements Serializable {
         isViewed = viewed;
     }
 
-    public StatusEntity getStatus() {
+    public com.covrsecurity.io.domain.entity.StatusEntity getStatus() {
         return status;
     }
 

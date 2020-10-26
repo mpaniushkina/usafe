@@ -87,8 +87,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
-import static com.covrsecurity.io.utils.ConstantsUtils.PENDING_REQUESTS_TYPE;
-
 public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreenBinding, LockScreenViewModel> implements
         IKeyboardListener,
         PersonalCodeLayout.LenghtCodeChecker {
@@ -205,7 +203,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
                 Single<ArrayList<Long>> pendingRequestsSingle = Single.fromCallable(() -> AppAdapter.settings().getPendingRequest())
                         .map(pendingRequests -> {
                             if (!TextUtils.isEmpty(pendingRequests)) {
-                                return LogUtil.getGson().fromJson(pendingRequests, PENDING_REQUESTS_TYPE);
+                                return LogUtil.getGson().fromJson(pendingRequests, ConstantsUtils.PENDING_REQUESTS_TYPE);
                             } else {
                                 return new ArrayList<Long>();
                             }
@@ -562,7 +560,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
         Disposable pendingRequestDisposable = Observable.just(AppAdapter.settings().getPendingRequest())
                 .map(pendingRequests -> {
                     if (!TextUtils.isEmpty(pendingRequests)) {
-                        return LogUtil.getGson().fromJson(pendingRequests, PENDING_REQUESTS_TYPE);
+                        return LogUtil.getGson().fromJson(pendingRequests, ConstantsUtils.PENDING_REQUESTS_TYPE);
                     } else {
                         return new ArrayList<Long>();
                     }

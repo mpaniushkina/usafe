@@ -25,8 +25,7 @@ import com.covrsecurity.io.model.databinding.PaymentCardEditModel;
 import com.covrsecurity.io.ui.loaders.ContentWrapper;
 import com.covrsecurity.io.utils.DialogUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
-
-import static com.covrsecurity.io.utils.ConstantsUtils.CALL_PHONE_REQUEST_CODE;
+import com.covrsecurity.io.utils.ConstantsUtils;
 
 /**
  * Created by Lenovo on 12.05.2017.
@@ -88,7 +87,7 @@ public class CovrVaultViewCardFragment extends CovrVaultBaseViewFragment<Fragmen
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
-            case CALL_PHONE_REQUEST_CODE: {
+            case ConstantsUtils.CALL_PHONE_REQUEST_CODE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     makeCall();
                 } else {
@@ -145,7 +144,7 @@ public class CovrVaultViewCardFragment extends CovrVaultBaseViewFragment<Fragmen
             if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CALL_PHONE)) {
                 showToast(R.string.covr_vault_view_card_call_permission_denied);
             } else {
-                this.requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, CALL_PHONE_REQUEST_CODE);
+                this.requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, ConstantsUtils.CALL_PHONE_REQUEST_CODE);
             }
         } else {
             makeCall();

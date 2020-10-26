@@ -2,16 +2,6 @@ package com.covrsecurity.io.data.utils;
 
 import androidx.annotation.Nullable;
 
-import com.covrsecurity.io.domain.entity.BiometricEntity;
-import com.covrsecurity.io.domain.entity.BiometricTypeEntity;
-import com.covrsecurity.io.domain.entity.CompanyEntity;
-import com.covrsecurity.io.domain.entity.LockTypeEntity;
-import com.covrsecurity.io.domain.entity.NtSignatureEntity;
-import com.covrsecurity.io.domain.entity.RequestEntity;
-import com.covrsecurity.io.domain.entity.StatusEntity;
-import com.covrsecurity.io.domain.entity.TemplateEntity;
-import com.covrsecurity.io.domain.entity.TransactionEntity;
-import com.covrsecurity.io.domain.entity.response.AppUnlockTimeEntity;
 import com.covrsecurity.io.sdk.exception.AppLockedException;
 import com.covrsecurity.io.sdk.response.AppUnlockTime;
 import com.covrsecurity.io.sdk.response.Biometric;
@@ -23,34 +13,43 @@ import com.covrsecurity.io.sdk.response.Status;
 import com.covrsecurity.io.sdk.response.Template;
 import com.covrsecurity.io.sdk.response.Transaction;
 import com.covrsecurity.io.sdk.storage.model.LockType;
-
-import static com.covrsecurity.io.common.ConstantsUtils.MILLISECONDS_IN_SECOND;
+import com.covrsecurity.io.common.ConstantsUtils;
+import com.covrsecurity.io.domain.entity.BiometricEntity;
+import com.covrsecurity.io.domain.entity.BiometricTypeEntity;
+import com.covrsecurity.io.domain.entity.CompanyEntity;
+import com.covrsecurity.io.domain.entity.LockTypeEntity;
+import com.covrsecurity.io.domain.entity.NtSignatureEntity;
+import com.covrsecurity.io.domain.entity.RequestEntity;
+import com.covrsecurity.io.domain.entity.StatusEntity;
+import com.covrsecurity.io.domain.entity.TemplateEntity;
+import com.covrsecurity.io.domain.entity.TransactionEntity;
+import com.covrsecurity.io.domain.entity.response.AppUnlockTimeEntity;
 
 public class EntityMapper {
 
     @Nullable
-    public static StatusEntity getStatusEntity(@Nullable Status status) {
+    public static com.covrsecurity.io.domain.entity.StatusEntity getStatusEntity(@Nullable Status status) {
         if (status == null) {
             return null;
         }
         switch (status) {
             case ACTIVE:
-                return StatusEntity.ACTIVE;
+                return com.covrsecurity.io.domain.entity.StatusEntity.ACTIVE;
             case EXPIRED:
-                return StatusEntity.EXPIRED;
+                return com.covrsecurity.io.domain.entity.StatusEntity.EXPIRED;
             case ACCEPTED:
-                return StatusEntity.ACCEPTED;
+                return com.covrsecurity.io.domain.entity.StatusEntity.ACCEPTED;
             case REJECTED:
-                return StatusEntity.REJECTED;
+                return com.covrsecurity.io.domain.entity.StatusEntity.REJECTED;
             case FAILED_BIOMETRIC:
-                return StatusEntity.FAILED_BIOMETRIC;
+                return com.covrsecurity.io.domain.entity.StatusEntity.FAILED_BIOMETRIC;
             default:
                 return null;
         }
     }
 
-    public static CompanyEntity getCompanyEntity(Company company) {
-        return new CompanyEntity(
+    public static com.covrsecurity.io.domain.entity.CompanyEntity getCompanyEntity(Company company) {
+        return new com.covrsecurity.io.domain.entity.CompanyEntity(
                 company.getId(),
                 company.getUserName(),
                 company.getPublicKey(),
@@ -67,16 +66,16 @@ public class EntityMapper {
         );
     }
 
-    public static TemplateEntity getTemplateEntity(Template template) {
-        return new TemplateEntity(
+    public static com.covrsecurity.io.domain.entity.TemplateEntity getTemplateEntity(Template template) {
+        return new com.covrsecurity.io.domain.entity.TemplateEntity(
                 template.getLayoutType(),
                 template.getBackgroundImage(),
                 template.getTransactionImage()
         );
     }
 
-    public static RequestEntity getRequestEntity1(Request request) {
-        return new RequestEntity(
+    public static com.covrsecurity.io.domain.entity.RequestEntity getRequestEntity1(Request request) {
+        return new com.covrsecurity.io.domain.entity.RequestEntity(
                 request.getTitle(),
                 request.getMessage(),
                 request.getAccept(),
@@ -84,8 +83,8 @@ public class EntityMapper {
         );
     }
 
-    public static NtSignatureEntity getNtSignatureEntity(NtSignature signature) {
-        return new NtSignatureEntity(
+    public static com.covrsecurity.io.domain.entity.NtSignatureEntity getNtSignatureEntity(NtSignature signature) {
+        return new com.covrsecurity.io.domain.entity.NtSignatureEntity(
                 signature.getCompanySignature(),
                 signature.getCovrSignature(),
                 signature.getClientSignature(),
@@ -94,29 +93,29 @@ public class EntityMapper {
     }
 
     @Nullable
-    private static BiometricEntity getBiometricEntity(@Nullable Biometric biometric) {
+    private static com.covrsecurity.io.domain.entity.BiometricEntity getBiometricEntity(@Nullable Biometric biometric) {
         if (biometric == null) {
             return null;
         }
-        BiometricTypeEntity biometricTypeEntity = getBiometricTypeEntity(biometric.getBiometricType());
-        return new BiometricEntity(biometricTypeEntity, biometric.getMaxAttemptCount());
+        com.covrsecurity.io.domain.entity.BiometricTypeEntity biometricTypeEntity = getBiometricTypeEntity(biometric.getBiometricType());
+        return new com.covrsecurity.io.domain.entity.BiometricEntity(biometricTypeEntity, biometric.getMaxAttemptCount());
     }
 
-    private static BiometricTypeEntity getBiometricTypeEntity(BiometricType biometricType) {
+    private static com.covrsecurity.io.domain.entity.BiometricTypeEntity getBiometricTypeEntity(BiometricType biometricType) {
         switch (biometricType) {
             case NONE:
-                return BiometricTypeEntity.NONE;
+                return com.covrsecurity.io.domain.entity.BiometricTypeEntity.NONE;
             case ACCEPT:
-                return BiometricTypeEntity.ACCEPT;
+                return com.covrsecurity.io.domain.entity.BiometricTypeEntity.ACCEPT;
             case REJECT:
-                return BiometricTypeEntity.REJECT;
+                return com.covrsecurity.io.domain.entity.BiometricTypeEntity.REJECT;
             case ALL:
                 return BiometricTypeEntity.ALL;
         }
         return null;
     }
 
-    public static TransactionEntity getTransactionEntity(Transaction transaction) {
+    public static com.covrsecurity.io.domain.entity.TransactionEntity getTransactionEntity(Transaction transaction) {
 
         Company company = transaction.getCompany();
         CompanyEntity companyEntity = company != null ? getCompanyEntity(company) : null;
@@ -132,13 +131,13 @@ public class EntityMapper {
                 transaction.getCompanyClientId(),
                 transaction.getTemplateId(),
                 templateEntity,
-                transaction.getValidTo() * MILLISECONDS_IN_SECOND,
-                transaction.getValidFrom() * MILLISECONDS_IN_SECOND,
+                transaction.getValidTo() * ConstantsUtils.MILLISECONDS_IN_SECOND,
+                transaction.getValidFrom() * ConstantsUtils.MILLISECONDS_IN_SECOND,
                 statusEntity,
                 transaction.getCreatedByIp(),
                 transaction.getVerifiedByIp(),
-                transaction.getCreated() * MILLISECONDS_IN_SECOND,
-                transaction.getUpdatedAt() * MILLISECONDS_IN_SECOND,
+                transaction.getCreated() * ConstantsUtils.MILLISECONDS_IN_SECOND,
+                transaction.getUpdatedAt() * ConstantsUtils.MILLISECONDS_IN_SECOND,
                 transaction.getAcceptHistoryMessage(),
                 transaction.getRejectHistoryMessage(),
                 transaction.getExpiredHistoryMessage(),
@@ -150,7 +149,7 @@ public class EntityMapper {
         );
     }
 
-    public static AppUnlockTimeEntity getAppUnlockTimeEntity(AppLockedException appLockedException) {
+    public static com.covrsecurity.io.domain.entity.response.AppUnlockTimeEntity getAppUnlockTimeEntity(AppLockedException appLockedException) {
         final AppUnlockTime appUnlockTime = new AppUnlockTime(
                 appLockedException.getAttemptsLeft(),
                 appLockedException.getUnlockTime(),
@@ -159,7 +158,7 @@ public class EntityMapper {
         return getAppUnlockTimeEntity(appUnlockTime);
     }
 
-    public static AppUnlockTimeEntity getAppUnlockTimeEntity(AppUnlockTime appUnlockTime) {
+    public static com.covrsecurity.io.domain.entity.response.AppUnlockTimeEntity getAppUnlockTimeEntity(AppUnlockTime appUnlockTime) {
         return new AppUnlockTimeEntity(
                 appUnlockTime.getAttemptsLeft(),
                 appUnlockTime.getUnlockedTime(),
@@ -167,12 +166,12 @@ public class EntityMapper {
         );
     }
 
-    private static LockTypeEntity getLockTypeEntity(LockType lockType) {
+    private static com.covrsecurity.io.domain.entity.LockTypeEntity getLockTypeEntity(LockType lockType) {
         switch (lockType) {
             case NOT_LOCKED:
-                return LockTypeEntity.NOT_LOCKED;
+                return com.covrsecurity.io.domain.entity.LockTypeEntity.NOT_LOCKED;
             case LOCKED_NO_TIME_OUT:
-                return LockTypeEntity.LOCKED_NO_TIME_OUT;
+                return com.covrsecurity.io.domain.entity.LockTypeEntity.LOCKED_NO_TIME_OUT;
             case LOCKED_WITH_TIME_OUT:
                 return LockTypeEntity.LOCKED_WITH_TIME_OUT;
         }

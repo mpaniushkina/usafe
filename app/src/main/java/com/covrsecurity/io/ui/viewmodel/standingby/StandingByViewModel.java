@@ -18,6 +18,7 @@ import com.covrsecurity.io.domain.usecase.unregistered.CheckLockedUseCase;
 import com.covrsecurity.io.ui.viewmodel.base.BaseState;
 import com.covrsecurity.io.ui.viewmodel.base.BaseViewModel;
 import com.covrsecurity.io.ui.viewmodel.base.Event;
+import com.covrsecurity.io.utils.ConstantsUtils;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -25,10 +26,6 @@ import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import timber.log.Timber;
-
-import static com.covrsecurity.io.utils.ConstantsUtils.DEFAULT_MERCHANT_PAGE_SIZE;
-import static com.covrsecurity.io.utils.ConstantsUtils.DEFAULT_PAGE_NUMBER;
-import static com.covrsecurity.io.utils.ConstantsUtils.DEFAULT_TRANSACTIONS_PAGE_SIZE;
 
 public class StandingByViewModel extends BaseViewModel {
 
@@ -77,13 +74,13 @@ public class StandingByViewModel extends BaseViewModel {
 
     public void loadAllData() {
         requestCounter.set(0);
-        getConnections(DEFAULT_PAGE_NUMBER);
-        getTransactions(DEFAULT_PAGE_NUMBER);
+        getConnections(ConstantsUtils.DEFAULT_PAGE_NUMBER);
+        getTransactions(ConstantsUtils.DEFAULT_PAGE_NUMBER);
         getGetUnreadHistoryCount();
     }
 
     public void getConnections(int pageNumber) {
-        Disposable disposable = Single.just(new GetConnectionsRequestEntity(pageNumber, DEFAULT_MERCHANT_PAGE_SIZE))
+        Disposable disposable = Single.just(new GetConnectionsRequestEntity(pageNumber, ConstantsUtils.DEFAULT_MERCHANT_PAGE_SIZE))
                 .flatMap(connectionsUseCase::execute)
                 .subscribe(
                         response -> {
@@ -99,7 +96,7 @@ public class StandingByViewModel extends BaseViewModel {
     }
 
     public void getTransactions(int pageNumber) {
-        Disposable disposable = Single.just(new GetTransactionsRequestEntity(pageNumber, DEFAULT_TRANSACTIONS_PAGE_SIZE))
+        Disposable disposable = Single.just(new GetTransactionsRequestEntity(pageNumber, ConstantsUtils.DEFAULT_TRANSACTIONS_PAGE_SIZE))
                 .flatMap(transactionsUseCase::execute)
                 .subscribe(
                         response -> {

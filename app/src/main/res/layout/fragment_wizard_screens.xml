@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/tools"
+    android:background="@drawable/bg_setup"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/topbar_logo_width"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/setting_item_margin_top"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/iamlogo3x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <RelativeLayout
+        android:id="@+id/pager_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineFullScreen">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineFullScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        custom:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingStart="42dp"
+        android:paddingEnd="42dp"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineFullScreen"
+        app:layout_constraintBottom_toTopOf="@+id/indicator">
+
+        <Button
+            android:id="@+id/buttonNext"
+            style="@style/GreenButton"
+            android:fontFamily="@font/helvetica_neue_normal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/six_dp"
+            android:elevation="0dp"
+            android:minWidth="@dimen/setup_button_min_size"
+            android:minHeight="@dimen/setup_button_min_size"
+            android:text="@string/tutorial_next_arrow"
+            app:elevation="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.viewpagerindicator.CirclePageIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:fillColor="@color/button_green_bg"
+        app:pageColor="@color/backgroundMain"
+        app:radius="@dimen/six_dp"
+        app:strokeColor="@color/button_green_bg"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="150dp"
+        app:layout_constraintTop_toBottomOf="@+id/button_wrapper"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

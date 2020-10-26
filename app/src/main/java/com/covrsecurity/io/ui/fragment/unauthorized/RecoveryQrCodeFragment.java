@@ -21,12 +21,7 @@ import com.covrsecurity.io.ui.dialog.ScanQrCodeDialog;
 import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.DialogUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
-
-import static com.covrsecurity.io.utils.ConstantsUtils.APP_SETTINGS_TEMPLATE;
-import static com.covrsecurity.io.utils.ConstantsUtils.CAMERA_PERMISSION;
-import static com.covrsecurity.io.utils.ConstantsUtils.CAMERA_REQUEST_CODE;
-import static com.covrsecurity.io.utils.ConstantsUtils.FOUR_HUNDRED_MILLISECONDS;
-import static com.covrsecurity.io.utils.ConstantsUtils.SCAN_QR_REQUEST_CODE;
+import com.covrsecurity.io.utils.ConstantsUtils;
 
 public class RecoveryQrCodeFragment extends BaseUnauthorizedFragment<FragmentRecoveryQrCodeBinding> {
 
@@ -89,11 +84,11 @@ public class RecoveryQrCodeFragment extends BaseUnauthorizedFragment<FragmentRec
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
+        if (requestCode == ConstantsUtils.SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
             final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
             ActivityUtils.scheduleOnMainThread(
                     () -> moveToScanFaceBiometricsFragment(qrCode),
-                    FOUR_HUNDRED_MILLISECONDS
+                    ConstantsUtils.FOUR_HUNDRED_MILLISECONDS
             );
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -102,7 +97,7 @@ public class RecoveryQrCodeFragment extends BaseUnauthorizedFragment<FragmentRec
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == CAMERA_REQUEST_CODE) {
+        if (requestCode == ConstantsUtils.CAMERA_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 sendScanIntent();
             } else if (!shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
@@ -129,20 +124,20 @@ public class RecoveryQrCodeFragment extends BaseUnauthorizedFragment<FragmentRec
     }
 
     private void requestCameraPermissions() {
-        ActivityCompat.requestPermissions(getActivity(), CAMERA_PERMISSION, CAMERA_REQUEST_CODE);
+        ActivityCompat.requestPermissions(getActivity(), ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
     }
 
     private void sendScanIntent() {
         final ScanQrCodeDialog scanQrCodeDialog = new ScanQrCodeDialog();
         scanQrCodeDialog.show(getFragmentManager(), ScanQrCodeDialog.QR_CODE_TAG);
-        scanQrCodeDialog.setTargetFragment(this, SCAN_QR_REQUEST_CODE);
+        scanQrCodeDialog.setTargetFragment(this, ConstantsUtils.SCAN_QR_REQUEST_CODE);
         mScanQrCodeDialog = scanQrCodeDialog;
     }
 
     private void openApplicationSettings() {
-        String uriString = String.format(APP_SETTINGS_TEMPLATE, getActivity().getPackageName());
+        String uriString = String.format(ConstantsUtils.APP_SETTINGS_TEMPLATE, getActivity().getPackageName());
         Intent appSettingsIntent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse(uriString));
-        startActivityForResult(appSettingsIntent, CAMERA_REQUEST_CODE);
+        startActivityForResult(appSettingsIntent, ConstantsUtils.CAMERA_REQUEST_CODE);
     }
 
     private void moveToScanFaceBiometricsFragment(String qrCode) {

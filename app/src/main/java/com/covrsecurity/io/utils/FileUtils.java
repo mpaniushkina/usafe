@@ -10,8 +10,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-import static com.covrsecurity.io.utils.BitmapUtils.rotateBitmap;
-
 /**
  * Created by Lenovo on 12.09.2017.
  */
@@ -36,7 +34,7 @@ public class FileUtils {
             final FileOutputStream outStream = new FileOutputStream(convertedImage);
 
             final Bitmap bmp = BitmapFactory.decodeFile(absolutePath);
-            final Bitmap rotateBitmap = rotateBitmap(bmp, rotation);
+            final Bitmap rotateBitmap = BitmapUtils.rotateBitmap(bmp, rotation);
             rotateBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSED_QUALITY, outStream);
 
             srcAbsolute.delete();

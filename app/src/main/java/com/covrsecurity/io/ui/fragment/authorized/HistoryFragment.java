@@ -37,8 +37,6 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
-import static com.covrsecurity.io.utils.ConstantsUtils.DEFAULT_PAGE_NUMBER;
-
 /**
  * Created by elena on 5/2/16.
  */
@@ -103,7 +101,7 @@ public class HistoryFragment extends FromMenuFragment<FragmentHistoryBinding, Hi
 
                     List<TransactionEntity> pendingTransactions = response.getTransactions();
 
-                    if (response.getPageNumber() == DEFAULT_PAGE_NUMBER) {
+                    if (response.getPageNumber() == ConstantsUtils.DEFAULT_PAGE_NUMBER) {
                         AppAdapter.setHistoryCache(pendingTransactions);
                         setScrollListener(response.isHasNext());
                         setAdapter(pendingTransactions);
@@ -201,7 +199,7 @@ public class HistoryFragment extends FromMenuFragment<FragmentHistoryBinding, Hi
         if (mAdapter != null) {
             setAdapter(mAdapter.getAll());
         } else {
-            viewModel.getHistory(DEFAULT_PAGE_NUMBER);
+            viewModel.getHistory(ConstantsUtils.DEFAULT_PAGE_NUMBER);
         }
         ActivityUtils.scheduleOnMainThread(() -> viewModel.markHistoryAsViewed(), ConstantsUtils.HALF_SECOND);
     }

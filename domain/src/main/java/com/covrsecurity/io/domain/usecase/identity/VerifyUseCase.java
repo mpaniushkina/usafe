@@ -3,10 +3,10 @@ package com.covrsecurity.io.domain.usecase.identity;
 import androidx.annotation.Nullable;
 
 import com.covrsecurity.io.domain.entity.request.AttestationRequestEntity;
+import com.covrsecurity.io.domain.usecase.base.SingleUseCase;
 import com.covrsecurity.io.domain.executor.PostExecutionThread;
 import com.covrsecurity.io.domain.executor.ThreadExecutor;
 import com.covrsecurity.io.domain.repository.IdentityRepository;
-import com.covrsecurity.io.domain.usecase.base.SingleUseCase;
 
 import javax.inject.Inject;
 
@@ -18,7 +18,7 @@ public class VerifyUseCase implements SingleUseCase<Boolean, AttestationRequestE
     private final Scheduler threadExecutorScheduler;
     private final Scheduler postExecutionThreadScheduler;
 
-    private final IdentityRepository repository;
+    private final com.covrsecurity.io.domain.repository.IdentityRepository repository;
 
     @Inject
     public VerifyUseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, IdentityRepository repository) {

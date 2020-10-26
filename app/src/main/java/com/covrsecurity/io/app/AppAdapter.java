@@ -3,7 +3,6 @@ package com.covrsecurity.io.app;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
-import android.text.Spannable;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -26,11 +25,9 @@ import com.instacart.library.truetime.TrueTime;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 

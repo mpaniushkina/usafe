@@ -126,7 +126,7 @@ public class PartnershipDetailsFragment extends FromMenuFragment<FragmentPartner
                     .into(mBinding.ivPartnershipDetailsLogo);
             mBinding.shareLayout.shareButton.setOnClickListener(v -> {
                 String subject = getString(R.string.history_details_sharing_subject, mPartnership.getCompany().getName(), mPartnership.getStatus());
-                String body = formatForEmail(mPartnership);
+                String body = EmailUtils.formatForEmail(mPartnership);
                 EmailUtils.sendEmail(subject, body, getActivity());
             });
         }

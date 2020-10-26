@@ -20,13 +20,13 @@ import com.covrsecurity.io.domain.usecase.unregistered.GetAppUnlockTimeUseCase;
 import com.covrsecurity.io.ui.viewmodel.base.BaseState;
 import com.covrsecurity.io.ui.viewmodel.base.BaseViewModel;
 import com.covrsecurity.io.utils.DeviceIDUtils;
+import com.covrsecurity.io.common.ConstantsUtils;
 
 import java.util.Date;
 
 import io.reactivex.Single;
 import io.reactivex.disposables.Disposable;
 
-import static com.covrsecurity.io.common.ConstantsUtils.CUSTOM_USER_AGENT;
 import static com.covrsecurity.io.domain.usecase.unregistered.GetAppUnlockTimeUseCase.APP_UNLOCK_TIME_NO_VAULT_STORAGE;
 
 public class SplashViewModel extends BaseViewModel {
@@ -70,7 +70,7 @@ public class SplashViewModel extends BaseViewModel {
     public void doAuth(Activity activity) {
 
         final Single<Boolean> verificationSingle = checkPlayServicesUseCase.execute(activity)
-                .flatMap(playServicesAvailable -> getNonceUseCase.execute(CUSTOM_USER_AGENT))
+                .flatMap(playServicesAvailable -> getNonceUseCase.execute(ConstantsUtils.CUSTOM_USER_AGENT))
                 .flatMap(attestSafetyNetUseCase::execute)
                 .map(statement -> new AttestationRequestEntity(statement, DeviceIDUtils.getUniquePsuedoID()))
                 .flatMap(verifyUseCase::execute);

@@ -11,14 +11,13 @@ import com.covrsecurity.io.domain.entity.request.RegisterRequestEntity;
 import com.covrsecurity.io.domain.entity.request.SetUpPasswordRequestEntity;
 import com.covrsecurity.io.domain.entity.request.UnLockRequestEntity;
 import com.covrsecurity.io.domain.entity.response.AppUnlockTimeEntity;
-import com.covrsecurity.io.domain.entity.response.QrCodeConnectionResponseEntity;
-import com.covrsecurity.io.domain.repository.UnregisteredRepository;
 import com.covrsecurity.io.sdk.CovrNewMainInterface;
 import com.covrsecurity.io.sdk.request.QrCodeConnectionRequest;
 import com.covrsecurity.io.sdk.request.RecoveryRequest;
 import com.covrsecurity.io.sdk.request.RegisterRequest;
 import com.covrsecurity.io.sdk.request.SetUpPasswordRequest;
-import com.covrsecurity.io.sdk.response.QrCodeConnectionResponse;
+import com.covrsecurity.io.common.utils.ArrayUtils;
+import com.covrsecurity.io.domain.repository.UnregisteredRepository;
 
 import java.io.File;
 
@@ -26,8 +25,6 @@ import javax.inject.Inject;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
-
-import static com.covrsecurity.io.common.utils.ArrayUtils.arrayContains;
 
 public class UnregisteredRepositoryImpl implements UnregisteredRepository {
 
@@ -64,7 +61,7 @@ public class UnregisteredRepositoryImpl implements UnregisteredRepository {
         if (applicationDirectory.exists()) {
             String[] fileNames = applicationDirectory.list();
             for (String fileName : fileNames) {
-                if (!arrayContains(DIRECTORIES_TO_PERSIST, fileName)) {
+                if (!ArrayUtils.arrayContains(DIRECTORIES_TO_PERSIST, fileName)) {
                     FileUtils.deleteAllFilesInDirectory(new File(applicationDirectory, fileName));
                 }
             }

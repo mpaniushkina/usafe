@@ -2,7 +2,6 @@ package com.covrsecurity.io.ui.fragment.authorized;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,23 +16,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
-import com.covrsecurity.io.databinding.FragmentAddConnectionBinding;
 import com.covrsecurity.io.databinding.FragmentPartnershipBinding;
 import com.covrsecurity.io.domain.entity.MerchantEntity;
 import com.covrsecurity.io.ui.adapter.PartnershipAdapter;
 import com.covrsecurity.io.ui.component.AnimationEndListner;
 import com.covrsecurity.io.ui.component.IPartnershipClickListener;
-import com.covrsecurity.io.ui.fragment.BaseChildViewModelFragment;
 import com.covrsecurity.io.ui.fragment.BaseParentFragment;
-import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeInfoFragment;
-import com.covrsecurity.io.ui.viewmodel.addconnection.AddConnectionViewModel;
-import com.covrsecurity.io.ui.viewmodel.addconnection.AddConnectionViewModelFactory;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.partnership.PartnershipViewModel;
 import com.covrsecurity.io.ui.viewmodel.partnership.PartnershipViewModelFactory;
 import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
+import com.covrsecurity.io.model.Fields;
 
 import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
@@ -44,10 +39,7 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
-import static com.covrsecurity.io.model.Fields.GET_QRCODE_COMPANY_USER_ID;
-import static com.covrsecurity.io.model.Fields.GET_QRCODE_TRANSACTION_ID;
 import static com.covrsecurity.io.sdk.utils.QrCodeRequestResource.qrCodeStringValue;
-import static com.covrsecurity.io.utils.ConstantsUtils.DEFAULT_PAGE_NUMBER;
 
 /**
  * Created by alex on 2.5.16.
@@ -168,7 +160,7 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
     @Override
     public void onResume() {
         super.onResume();
-        getAllMerchant(DEFAULT_PAGE_NUMBER);
+        getAllMerchant(ConstantsUtils.DEFAULT_PAGE_NUMBER);
     }
 
     @Override
@@ -224,7 +216,7 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
 
     @Override
     public void closeChildFragment() {
-        getAllMerchant(DEFAULT_PAGE_NUMBER);
+        getAllMerchant(ConstantsUtils.DEFAULT_PAGE_NUMBER);
         updateListContent();
         showEmpty(mBinding.partnershipRecyclerView.getAdapter() == null
                 || mBinding.partnershipRecyclerView.getAdapter().getItemCount() < 1);
@@ -249,7 +241,7 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
     }
 
     private void getQrCodeConnection() {
-        viewModel.getQrCodeConnection(GET_QRCODE_COMPANY_USER_ID, GET_QRCODE_TRANSACTION_ID);
+        viewModel.getQrCodeConnection(Fields.GET_QRCODE_COMPANY_USER_ID, Fields.GET_QRCODE_TRANSACTION_ID);
     }
 
     @Override

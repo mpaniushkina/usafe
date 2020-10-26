@@ -4,10 +4,10 @@ import androidx.annotation.Nullable;
 
 import com.covrsecurity.io.domain.entity.LockTypeEntity;
 import com.covrsecurity.io.domain.entity.response.AppUnlockTimeEntity;
+import com.covrsecurity.io.domain.usecase.base.SingleUseCase;
 import com.covrsecurity.io.domain.executor.PostExecutionThread;
 import com.covrsecurity.io.domain.executor.ThreadExecutor;
 import com.covrsecurity.io.domain.repository.UnregisteredRepository;
-import com.covrsecurity.io.domain.usecase.base.SingleUseCase;
 
 import javax.inject.Inject;
 

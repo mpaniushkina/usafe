@@ -24,8 +24,6 @@ import androidx.lifecycle.ViewModelProviders;
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.app.CovrApp;
-import com.covrsecurity.io.domain.exception.BlockCurrentAppException;
-import com.covrsecurity.io.domain.exception.ForceUpdateException;
 import com.covrsecurity.io.event.NoInternetEvent;
 import com.covrsecurity.io.event.SessionConflictEvent;
 import com.covrsecurity.io.ui.dialog.ProgressDialogFragment;
@@ -40,6 +38,8 @@ import com.covrsecurity.io.utils.DialogUtils;
 import com.covrsecurity.io.utils.ErrorMsgHelper;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
 import com.covrsecurity.io.utils.NotificationUtils;
+import com.covrsecurity.io.domain.exception.BlockCurrentAppException;
+import com.covrsecurity.io.domain.exception.ForceUpdateException;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -167,7 +167,7 @@ public abstract class BaseActivity<Binding extends ViewDataBinding, VM extends B
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(getResources().getColor(R.color.covr_green));
+            window.setStatusBarColor(getResources().getColor(R.color.dark_blue));
         }
     }
 

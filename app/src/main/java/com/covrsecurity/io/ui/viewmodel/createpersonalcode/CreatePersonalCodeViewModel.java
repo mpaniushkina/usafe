@@ -7,11 +7,11 @@ import androidx.lifecycle.MutableLiveData;
 import com.covrsecurity.io.domain.entity.request.AssessPinCodeStrengthRequestEntity;
 import com.covrsecurity.io.domain.entity.request.RegisterRequestEntity;
 import com.covrsecurity.io.domain.entity.request.SetUpPasswordRequestEntity;
+import com.covrsecurity.io.ui.viewmodel.base.BaseState;
+import com.covrsecurity.io.ui.viewmodel.base.BaseViewModel;
 import com.covrsecurity.io.domain.usecase.unregistered.AssessPinCodeStrengthUseCase;
 import com.covrsecurity.io.domain.usecase.unregistered.RegisterUseCase;
 import com.covrsecurity.io.domain.usecase.unregistered.SetUpPasswordUseCase;
-import com.covrsecurity.io.ui.viewmodel.base.BaseState;
-import com.covrsecurity.io.ui.viewmodel.base.BaseViewModel;
 
 import io.reactivex.Single;
 import io.reactivex.disposables.Disposable;
@@ -26,9 +26,9 @@ public class CreatePersonalCodeViewModel extends BaseViewModel {
     public final LiveData<BaseState<Void>> setUpPasswordLiveData = setUpPasswordMutableLiveData;
     public final LiveData<BaseState<Void>> registerLiveData = registerMutableLiveData;
 
-    private final AssessPinCodeStrengthUseCase assessPinCodeStrengthUseCase;
-    private final SetUpPasswordUseCase setUpPasswordUseCase;
-    private final RegisterUseCase registerUseCase;
+    private final com.covrsecurity.io.domain.usecase.unregistered.AssessPinCodeStrengthUseCase assessPinCodeStrengthUseCase;
+    private final com.covrsecurity.io.domain.usecase.unregistered.SetUpPasswordUseCase setUpPasswordUseCase;
+    private final com.covrsecurity.io.domain.usecase.unregistered.RegisterUseCase registerUseCase;
 
     @Nullable
     private Disposable disposable;

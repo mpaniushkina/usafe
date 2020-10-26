@@ -1,24 +1,20 @@
 package com.covrsecurity.io.data.repository;
 
-import com.covrsecurity.io.data.exception.SafetyNetNotVerified;
 import com.covrsecurity.io.domain.entity.request.AttestationRequestEntity;
 import com.covrsecurity.io.domain.entity.request.LogoutRequestEntity;
-import com.covrsecurity.io.domain.entity.request.RecoverRequestEntity;
 import com.covrsecurity.io.domain.entity.response.IsApprovedResponseEntity;
-import com.covrsecurity.io.domain.exception.BlockCurrentAppException;
-import com.covrsecurity.io.domain.exception.ForceUpdateException;
-import com.covrsecurity.io.domain.repository.IdentityRepository;
-import com.covrsecurity.io.network.request.identity.AttestationInputModel;
 import com.covrsecurity.io.network.request.identity.LogOutRequest;
 import com.covrsecurity.io.network.rx.ApiRxHolder;
 import com.covrsecurity.io.network.rx.api.IdentityApiRx;
+import com.covrsecurity.io.common.ConstantsUtils;
+import com.covrsecurity.io.domain.exception.BlockCurrentAppException;
+import com.covrsecurity.io.domain.exception.ForceUpdateException;
+import com.covrsecurity.io.domain.repository.IdentityRepository;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
-import kotlin.NotImplementedError;
 import retrofit2.HttpException;
 
-import static com.covrsecurity.io.common.ConstantsUtils.HTTP_UPGRADE_REQUIRED;
 import static java.net.HttpURLConnection.HTTP_FORBIDDEN;
 
 public class IdentityRepositoryImpl implements IdentityRepository {
@@ -58,7 +54,7 @@ public class IdentityRepositoryImpl implements IdentityRepository {
                     if (throwable instanceof HttpException) {
                         HttpException httpException = (HttpException) throwable;
                         switch (httpException.code()) {
-                            case HTTP_UPGRADE_REQUIRED:
+                            case ConstantsUtils.HTTP_UPGRADE_REQUIRED:
                                 return Single.error(new ForceUpdateException());
                             case HTTP_FORBIDDEN:
                                 return Single.error(new BlockCurrentAppException());

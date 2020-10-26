@@ -5,9 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.covrsecurity.io.domain.entity.request.PostQrCodeRequestEntity;
 import com.covrsecurity.io.domain.entity.request.QrCodeConnectionRequestEntity;
-import com.covrsecurity.io.domain.entity.request.TransactionConfirmationRequestEntity;
 import com.covrsecurity.io.domain.entity.response.PostQrCodeResponseEntity;
-import com.covrsecurity.io.domain.entity.response.QrCodeConnectionResponseEntity;
 import com.covrsecurity.io.domain.usecase.registred.AddConnectionUseCase;
 import com.covrsecurity.io.domain.usecase.unregistered.QrCodeConnectionUseCase;
 import com.covrsecurity.io.sdk.response.QrCodeConnectionResponse;

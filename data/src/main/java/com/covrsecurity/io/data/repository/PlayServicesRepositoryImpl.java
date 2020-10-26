@@ -5,10 +5,10 @@ import android.content.Context;
 import android.util.Base64;
 
 import com.covrsecurity.io.data.utils.PlayServicesUtils;
-import com.covrsecurity.io.domain.repository.PlayServicesRepository;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.safetynet.SafetyNet;
+import com.covrsecurity.io.domain.repository.PlayServicesRepository;
 
 import javax.inject.Inject;
 

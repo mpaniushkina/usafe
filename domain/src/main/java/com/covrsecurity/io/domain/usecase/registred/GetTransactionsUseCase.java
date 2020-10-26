@@ -4,10 +4,10 @@ import androidx.annotation.Nullable;
 
 import com.covrsecurity.io.domain.entity.request.GetTransactionsRequestEntity;
 import com.covrsecurity.io.domain.entity.response.TransactionsResponseEntity;
+import com.covrsecurity.io.domain.usecase.base.SingleUseCase;
 import com.covrsecurity.io.domain.executor.PostExecutionThread;
 import com.covrsecurity.io.domain.executor.ThreadExecutor;
 import com.covrsecurity.io.domain.repository.RegisteredRepository;
-import com.covrsecurity.io.domain.usecase.base.SingleUseCase;
 
 import javax.inject.Inject;
 

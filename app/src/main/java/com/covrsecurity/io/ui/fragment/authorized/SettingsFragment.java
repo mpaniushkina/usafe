@@ -23,10 +23,8 @@ import androidx.lifecycle.ViewModelProviders;
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.databinding.FragmentSettingsBinding;
-import com.covrsecurity.io.domain.entity.request.RegisterRecoveryRequestEntity;
 import com.covrsecurity.io.manager.Analytics;
 import com.covrsecurity.io.manager.SettingsManager;
-import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.component.AnimationEndListner;
 import com.covrsecurity.io.ui.fragment.BaseParentFragment;
 import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment;
@@ -46,8 +44,6 @@ import com.covrsecurity.io.utils.StringUtils;
 import javax.inject.Inject;
 
 import timber.log.Timber;
-
-import static com.covrsecurity.io.ui.fragment.unauthorized.ScanFaceBiometricsFragment.SETUP_RECOVERY;
 
 public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding, SettingsViewModel> {
 

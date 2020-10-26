@@ -7,7 +7,6 @@ import com.covrsecurity.io.domain.entity.response.GetPushNotificationsResponseEn
 import com.covrsecurity.io.domain.usecase.identity.IsApprovedUseCase;
 import com.covrsecurity.io.domain.usecase.registred.GetPushNotificationsUseCase;
 import com.covrsecurity.io.ui.viewmodel.base.BaseState;
-import com.covrsecurity.io.ui.viewmodel.base.Event;
 import com.covrsecurity.io.ui.viewmodel.baseactivity.BaseActivityViewModel;
 
 import io.reactivex.disposables.Disposable;

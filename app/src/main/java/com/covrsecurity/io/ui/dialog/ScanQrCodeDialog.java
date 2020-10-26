@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +13,9 @@ import androidx.fragment.app.DialogFragment;
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.covrsecurity.io.R;
+import com.covrsecurity.io.utils.ConstantsUtils;
 
 import timber.log.Timber;
-
-import static com.covrsecurity.io.utils.ConstantsUtils.SCAN_QR_REQUEST_CODE;
 
 public class ScanQrCodeDialog extends DialogFragment {
 
@@ -49,7 +47,7 @@ public class ScanQrCodeDialog extends DialogFragment {
             Timber.d(text);
             final Intent data = new Intent();
             data.putExtra(QR_CODE_EXTRA, text);
-            getTargetFragment().onActivityResult(SCAN_QR_REQUEST_CODE, Activity.RESULT_OK, data);
+            getTargetFragment().onActivityResult(ConstantsUtils.SCAN_QR_REQUEST_CODE, Activity.RESULT_OK, data);
             dismiss();
         }));
         return root;

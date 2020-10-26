@@ -7,7 +7,6 @@ import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
 
 import com.covrsecurity.io.R;
-import com.covrsecurity.io.ui.activity.AuthorizedActivity;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.fragment.BaseViewModelFragment;
 import com.covrsecurity.io.ui.fragment.interfaces.IUnregisteredFragment;

@@ -10,14 +10,10 @@ import androidx.fragment.app.Fragment;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
+import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import static com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment.CURRENT_CODE_PAGE;
-import static com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment.NEW_CODE_PAGE;
-import static com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment.RE_NEW_CODE_PAGE;
 
 public class ChangeCodeInfoItem extends Fragment {
 
@@ -45,13 +41,13 @@ public class ChangeCodeInfoItem extends Fragment {
         View rootView = inflater.inflate(R.layout.change_code_pager_item, container, false);
         mHeaderText = rootView.findViewById(R.id.change_code_header);
         mRemainingAttemptsText = rootView.findViewById(R.id.change_code_attempts);
-        if (currentItem == CURRENT_CODE_PAGE) {
+        if (currentItem == ChangeCodeFragment.CURRENT_CODE_PAGE) {
             mHeaderText.setText(getString(R.string.settings_change_password_enter_current));
             clearRemainingAttempts();
-        } else if (currentItem == NEW_CODE_PAGE) {
+        } else if (currentItem == ChangeCodeFragment.NEW_CODE_PAGE) {
             mHeaderText.setText(getString(R.string.settings_change_password_enter_new));
             mRemainingAttemptsText.setVisibility(View.GONE);
-        } else if (currentItem == RE_NEW_CODE_PAGE) {
+        } else if (currentItem == ChangeCodeFragment.RE_NEW_CODE_PAGE) {
             mHeaderText.setText(getString(R.string.settings_change_password_reenter_new));
             mRemainingAttemptsText.setVisibility(View.GONE);
         }

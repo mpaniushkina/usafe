@@ -7,7 +7,6 @@ import com.covrsecurity.io.domain.entity.response.IsApprovedResponseEntity;
 import com.covrsecurity.io.domain.usecase.identity.IsApprovedUseCase;
 import com.covrsecurity.io.ui.viewmodel.base.BaseState;
 import com.covrsecurity.io.ui.viewmodel.base.BaseViewModel;
-import com.covrsecurity.io.ui.viewmodel.base.Event;
 
 import io.reactivex.disposables.Disposable;
 

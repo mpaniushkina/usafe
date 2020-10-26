@@ -3,7 +3,6 @@ package com.covrsecurity.io.ui.activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.provider.Telephony;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
@@ -36,9 +35,6 @@ import com.covrsecurity.io.utils.ConstantsUtils;
 import javax.inject.Inject;
 
 import timber.log.Timber;
-
-import static com.covrsecurity.io.ui.fragment.unauthorized.ScanFaceBiometricsFragment.SETUP_RECOVERY;
-import static com.covrsecurity.io.utils.ConstantsUtils.CREATE_SMS_TOKEN_REQUEST_CODE;
 
 public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, UnauthorizedActivityViewModel> {
 
@@ -225,7 +221,7 @@ public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, Una
 
     private PendingIntent createSmsTokenPendingIntent() {
         Intent intent = new Intent(this, UnauthorizedActivity.class);
-        return PendingIntent.getActivity(this, CREATE_SMS_TOKEN_REQUEST_CODE, intent, 0);
+        return PendingIntent.getActivity(this, ConstantsUtils.CREATE_SMS_TOKEN_REQUEST_CODE, intent, 0);
     }
 
     private boolean isRegistration() {

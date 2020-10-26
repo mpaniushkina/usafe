@@ -7,13 +7,13 @@ import java.io.Serializable;
 public class TransactionEntity implements Serializable {
 
     private String id;
-    private CompanyEntity company;
+    private com.covrsecurity.io.domain.entity.CompanyEntity company;
     private String companyClientId;
     private String templateId;
-    private TemplateEntity template;
+    private com.covrsecurity.io.domain.entity.TemplateEntity template;
     private long validTo;
     private long validFrom;
-    private StatusEntity status;
+    private com.covrsecurity.io.domain.entity.StatusEntity status;
     private String createdByIp;
     private String verifiedByIp;
     private long created;
@@ -22,13 +22,13 @@ public class TransactionEntity implements Serializable {
     private String rejectHistoryMessage;
     private String expiredHistoryMessage;
     private String failedBiometricHistoryMessage;
-    private RequestEntity request;
+    private com.covrsecurity.io.domain.entity.RequestEntity request;
     private boolean isViewed;
     private NtSignatureEntity signature;
     @Nullable
-    private BiometricEntity biometric;
+    private com.covrsecurity.io.domain.entity.BiometricEntity biometric;
 
-    public TransactionEntity(String id, CompanyEntity company, String companyClientId, String templateId, TemplateEntity template, long validTo, long validFrom, StatusEntity status, String createdByIp, String verifiedByIp, long created, long updatedAt, String acceptHistoryMessage, String rejectHistoryMessage, String expiredHistoryMessage, String failedBiometricHistoryMessage, RequestEntity request, boolean isViewed, NtSignatureEntity signature, @Nullable BiometricEntity biometric) {
+    public TransactionEntity(String id, com.covrsecurity.io.domain.entity.CompanyEntity company, String companyClientId, String templateId, com.covrsecurity.io.domain.entity.TemplateEntity template, long validTo, long validFrom, com.covrsecurity.io.domain.entity.StatusEntity status, String createdByIp, String verifiedByIp, long created, long updatedAt, String acceptHistoryMessage, String rejectHistoryMessage, String expiredHistoryMessage, String failedBiometricHistoryMessage, com.covrsecurity.io.domain.entity.RequestEntity request, boolean isViewed, NtSignatureEntity signature, @Nullable com.covrsecurity.io.domain.entity.BiometricEntity biometric) {
         this.id = id;
         this.company = company;
         this.companyClientId = companyClientId;
@@ -59,7 +59,7 @@ public class TransactionEntity implements Serializable {
         this.id = id;
     }
 
-    public CompanyEntity getCompany() {
+    public com.covrsecurity.io.domain.entity.CompanyEntity getCompany() {
         return company;
     }
 
@@ -83,7 +83,7 @@ public class TransactionEntity implements Serializable {
         this.templateId = templateId;
     }
 
-    public TemplateEntity getTemplate() {
+    public com.covrsecurity.io.domain.entity.TemplateEntity getTemplate() {
         return template;
     }
 
@@ -107,7 +107,7 @@ public class TransactionEntity implements Serializable {
         this.validFrom = validFrom;
     }
 
-    public StatusEntity getStatus() {
+    public com.covrsecurity.io.domain.entity.StatusEntity getStatus() {
         return status;
     }
 
@@ -179,7 +179,7 @@ public class TransactionEntity implements Serializable {
         this.failedBiometricHistoryMessage = failedBiometricHistoryMessage;
     }
 
-    public RequestEntity getRequest() {
+    public com.covrsecurity.io.domain.entity.RequestEntity getRequest() {
         return request;
     }
 
@@ -204,7 +204,7 @@ public class TransactionEntity implements Serializable {
     }
 
     @Nullable
-    public BiometricEntity getBiometric() {
+    public com.covrsecurity.io.domain.entity.BiometricEntity getBiometric() {
         return biometric;
     }
 

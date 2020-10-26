@@ -3,10 +3,10 @@ package com.covrsecurity.io.domain.usecase.registred;
 import androidx.annotation.Nullable;
 
 import com.covrsecurity.io.domain.entity.request.NotificationHubRegistrationRequestEntity;
+import com.covrsecurity.io.domain.usecase.base.CompletableUseCase;
 import com.covrsecurity.io.domain.executor.PostExecutionThread;
 import com.covrsecurity.io.domain.executor.ThreadExecutor;
 import com.covrsecurity.io.domain.repository.RegisteredRepository;
-import com.covrsecurity.io.domain.usecase.base.CompletableUseCase;
 
 import javax.inject.Inject;
 

@@ -17,12 +17,11 @@ import com.covrsecurity.io.app.GlideApp;
 import com.covrsecurity.io.domain.entity.StatusEntity;
 import com.covrsecurity.io.domain.entity.TransactionEntity;
 import com.covrsecurity.io.utils.StatusUtils;
+import com.covrsecurity.io.utils.ConstantsUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import static com.covrsecurity.io.utils.ConstantsUtils.MILLISECONDS_IN_SECOND;
 
 /**
  * Created by alex on 11.5.16.
@@ -109,15 +108,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
             if (pendingRequest.getUpdatedAt() != 0) {
                 date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getUpdatedAt(),
-                        MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
+                        ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
             } else {
                 date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getCreated(),
-                        MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
+                        ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
             }
             if (pendingRequest.getStatus() == StatusEntity.EXPIRED) {
                 if (pendingRequest.getValidTo() != 0) {
                     date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getValidTo(),
-                            MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
+                            ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
                 }
             }
             holder.mDate.setTextColor(pendingRequest.getStatus() == StatusEntity.EXPIRED

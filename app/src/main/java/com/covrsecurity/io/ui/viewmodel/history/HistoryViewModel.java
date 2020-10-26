@@ -9,13 +9,11 @@ import com.covrsecurity.io.domain.usecase.registred.GetTransactionHistoryUseCase
 import com.covrsecurity.io.domain.usecase.registred.MarkHistoryAsViewedUseCase;
 import com.covrsecurity.io.ui.viewmodel.base.BaseState;
 import com.covrsecurity.io.ui.viewmodel.base.BaseViewModel;
-import com.covrsecurity.io.ui.viewmodel.base.Event;
+import com.covrsecurity.io.utils.ConstantsUtils;
 
 import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-
-import static com.covrsecurity.io.utils.ConstantsUtils.DEFAULT_HISTORY_PAGE_SIZE;
 
 public class HistoryViewModel extends BaseViewModel {
 
@@ -39,7 +37,7 @@ public class HistoryViewModel extends BaseViewModel {
     }
 
     public void getHistory(int pageNumber) {
-        Disposable disposable = Single.just(new GetTransactionHistoryRequestEntity(pageNumber, DEFAULT_HISTORY_PAGE_SIZE))
+        Disposable disposable = Single.just(new GetTransactionHistoryRequestEntity(pageNumber, ConstantsUtils.DEFAULT_HISTORY_PAGE_SIZE))
                 .flatMap(historyUseCase::execute)
                 .doOnSubscribe(
                         disposable1 -> historyLiveData.setValue(BaseState.getProcessingInstance())

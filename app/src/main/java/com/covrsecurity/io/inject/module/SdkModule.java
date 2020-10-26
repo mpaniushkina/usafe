@@ -13,6 +13,7 @@ import com.covrsecurity.io.domain.repository.RegisteredRepository;
 import com.covrsecurity.io.domain.repository.TrueTimeRepository;
 import com.covrsecurity.io.domain.repository.UnregisteredRepository;
 import com.covrsecurity.io.sdk.CovrNewMainInterface;
+import com.covrsecurity.io.common.ConstantsUtils;
 
 import java.io.File;
 
@@ -21,7 +22,6 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
-import static com.covrsecurity.io.common.ConstantsUtils.CUSTOM_USER_AGENT;
 import static com.covrsecurity.io.utils.ConstantsUtils.COVR_DIRECTORY_TEMPLATE;
 
 @Module
@@ -50,7 +50,7 @@ public class SdkModule {
     @Provides
     @Singleton
     public IdentityRepository provideIdentityRepository() {
-        return new IdentityRepositoryImpl(CUSTOM_USER_AGENT);
+        return new IdentityRepositoryImpl(ConstantsUtils.CUSTOM_USER_AGENT);
     }
 
     @Provides

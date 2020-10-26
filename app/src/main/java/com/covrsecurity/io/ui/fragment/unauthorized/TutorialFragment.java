@@ -3,7 +3,6 @@ package com.covrsecurity.io.ui.fragment.unauthorized;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import android.view.View;
 
@@ -12,7 +11,6 @@ import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.databinding.FragmentTutorialBinding;
 import com.covrsecurity.io.manager.Analytics;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
-import com.covrsecurity.io.ui.adapter.TutorialPagerAdapter;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
 
 import org.jetbrains.annotations.NotNull;
@@ -28,13 +26,13 @@ public class TutorialFragment extends BaseUnauthorizedFragment<FragmentTutorialB
         return R.layout.fragment_tutorial;
     }
 
-    private TutorialPagerAdapter.TutorialItem[] items = {
-            new TutorialPagerAdapter.TutorialItem(R.string.tut1_label, R.string.tut1_text, R.drawable.tut1_welcome_green),
-            new TutorialPagerAdapter.TutorialItem(R.string.tut2_label, R.string.tut2_text, R.drawable.tut2_safe_green),
-            new TutorialPagerAdapter.TutorialItem(R.string.tut3_label, R.string.tut3_text, R.drawable.tut3_easy_green),
-            new TutorialPagerAdapter.TutorialItem(R.string.tut4_label, R.string.tut4_text, R.drawable.tut4_protect_green),
-            new TutorialPagerAdapter.TutorialItem(R.string.tut5_label, R.string.tut5_text, R.drawable.tut5_start_green)
-    };
+//    private TutorialPagerAdapter.TutorialItem[] items = {
+//            new TutorialPagerAdapter.TutorialItem(R.string.tut1_label, R.string.tut1_text, R.drawable.tut1_welcome_green),
+//            new TutorialPagerAdapter.TutorialItem(R.string.tut2_label, R.string.tut2_text, R.drawable.tut2_safe_green),
+//            new TutorialPagerAdapter.TutorialItem(R.string.tut3_label, R.string.tut3_text, R.drawable.tut3_easy_green),
+//            new TutorialPagerAdapter.TutorialItem(R.string.tut4_label, R.string.tut4_text, R.drawable.tut4_protect_green),
+//            new TutorialPagerAdapter.TutorialItem(R.string.tut5_label, R.string.tut5_text, R.drawable.tut5_start_green)
+//    };
 
     @Override
     public void onViewCreated(@NotNull View view, Bundle savedInstanceState) {
@@ -65,16 +63,17 @@ public class TutorialFragment extends BaseUnauthorizedFragment<FragmentTutorialB
 //            }
 //        });
 //        mBinding.indicator.setViewPager(mBinding.pager);
-        mBinding.buttonSetupCovr.setOnClickListener((View buttonSetup) -> {
+        mBinding.buttonCreateId.setOnClickListener((View buttonSetup) -> {
             checkForRootWithCallback((boolean isRooted) -> {
                 if (!isRooted) {
-                    ((UnauthorizedActivity) getActivity()).setAllowShowingBottomButtons(true);
+                    ((UnauthorizedActivity) getActivity()).setAllowShowingBottomButtons(false);
                     Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_SETUP_START);
-                    replaceFragment(GreetingFragment.newInstance(), null, true, FragmentAnimationSet.SLIDE_UP);
+//                    replaceFragment(GreetingFragment.newInstance(), null, true, FragmentAnimationSet.SLIDE_UP);
+                    replaceFragment(WizardFragment.newInstance(), null, true, FragmentAnimationSet.SLIDE_UP);
                 }
             });
         });
-        mBinding.buttonRecoverCovr.setOnClickListener(view1 -> {
+        mBinding.buttonRecoverId.setOnClickListener(view1 -> {
             checkForRootWithCallback((boolean isRooted) -> {
                 if (!isRooted) {
                     ((UnauthorizedActivity) getActivity()).setAllowShowingBottomButtons(true);
@@ -96,14 +95,6 @@ public class TutorialFragment extends BaseUnauthorizedFragment<FragmentTutorialB
 //            }
 //        });
 //        mBinding.chevronLeft.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-//        if (mBinding.pager.getCurrentItem() == 0) {
-//            // mChevronLeft.setEnabled(false);
-//        }
     }
 
     @Override

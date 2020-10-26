@@ -2,14 +2,6 @@ package com.covrsecurity.io.data.utils;
 
 import androidx.annotation.Nullable;
 
-import com.covrsecurity.io.domain.entity.BiometricEntity;
-import com.covrsecurity.io.domain.entity.BiometricTypeEntity;
-import com.covrsecurity.io.domain.entity.CompanyEntity;
-import com.covrsecurity.io.domain.entity.NtSignatureEntity;
-import com.covrsecurity.io.domain.entity.RequestEntity;
-import com.covrsecurity.io.domain.entity.StatusEntity;
-import com.covrsecurity.io.domain.entity.TemplateEntity;
-import com.covrsecurity.io.domain.entity.TransactionEntity;
 import com.covrsecurity.io.sdk.response.Biometric;
 import com.covrsecurity.io.sdk.response.BiometricType;
 import com.covrsecurity.io.sdk.response.Company;
@@ -18,6 +10,14 @@ import com.covrsecurity.io.sdk.response.Request;
 import com.covrsecurity.io.sdk.response.Status;
 import com.covrsecurity.io.sdk.response.Template;
 import com.covrsecurity.io.sdk.response.Transaction;
+import com.covrsecurity.io.domain.entity.BiometricEntity;
+import com.covrsecurity.io.domain.entity.BiometricTypeEntity;
+import com.covrsecurity.io.domain.entity.CompanyEntity;
+import com.covrsecurity.io.domain.entity.NtSignatureEntity;
+import com.covrsecurity.io.domain.entity.RequestEntity;
+import com.covrsecurity.io.domain.entity.StatusEntity;
+import com.covrsecurity.io.domain.entity.TemplateEntity;
+import com.covrsecurity.io.domain.entity.TransactionEntity;
 
 public class SdkMapper {
 

@@ -52,7 +52,7 @@ public abstract class BaseParentFragment<T extends ViewDataBinding, VM extends B
         if (addToBackStack) {
             ft.addToBackStack(fragmentName);
         }
-        Fragment f = Fragment.instantiate(getActivity(), fragmentName, bundle);
+        Fragment f = instantiate(getActivity(), fragmentName, bundle);
         if (enterAnimationId != 0 && popExitAnimationId != 0) {
             ft.setCustomAnimations(enterAnimationId, exitAnimationId, popEnterAnimationId, popExitAnimationId);
         }

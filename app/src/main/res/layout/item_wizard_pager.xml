@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/texDescription1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="@dimen/text_header_small"
+        android:layout_marginTop="@dimen/bottom_button_height"
+        android:paddingStart="@dimen/code_displayer_right_margin"
+        android:paddingEnd="@dimen/code_displayer_right_margin"
+        android:text="Take control of your own data, with iAM you decide" />
+
+    <TextView
+        android:id="@+id/texDescription2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="@dimen/greeting_text_small"
+        android:layout_marginTop="@dimen/setting_item_margin_top"
+        android:paddingStart="@dimen/code_displayer_right_margin"
+        android:paddingEnd="@dimen/code_displayer_right_margin"
+        android:layout_below="@+id/texDescription1"
+        android:text="Take control of your own data, with iAM you decide"/>
+
+    <TextView
+        android:id="@+id/texDescription3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="@dimen/greeting_text_small"
+        android:layout_marginTop="@dimen/twenty_dp"
+        android:paddingStart="@dimen/code_displayer_right_margin"
+        android:paddingEnd="@dimen/code_displayer_right_margin"
+        android:layout_below="@+id/texDescription2"
+        android:text="Take control of your own data, with iAM you decide"/>
+
+
+</RelativeLayout>

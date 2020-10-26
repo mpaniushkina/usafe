@@ -21,7 +21,6 @@ import com.covrsecurity.io.domain.entity.response.MarkConnectionAsViewedResponse
 import com.covrsecurity.io.domain.entity.response.MarkHistoryAsViewedResponseEntity;
 import com.covrsecurity.io.domain.entity.response.PostQrCodeResponseEntity;
 import com.covrsecurity.io.domain.entity.response.TransactionsResponseEntity;
-import com.covrsecurity.io.domain.repository.RegisteredRepository;
 import com.covrsecurity.io.sdk.CovrNewMainInterface;
 import com.covrsecurity.io.sdk.request.ChangePinCodeRequest;
 import com.covrsecurity.io.sdk.request.GetConnectionsRequest;
@@ -36,6 +35,8 @@ import com.covrsecurity.io.sdk.request.TransactionConfirmationRequest;
 import com.covrsecurity.io.sdk.request.ValidatePinCodeRequest;
 import com.covrsecurity.io.sdk.response.MerchantsSdk;
 import com.covrsecurity.io.sdk.response.Transaction;
+import com.covrsecurity.io.common.ConstantsUtils;
+import com.covrsecurity.io.domain.repository.RegisteredRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,6 @@ import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 
-import static com.covrsecurity.io.common.ConstantsUtils.MILLISECONDS_IN_SECOND;
 import static com.covrsecurity.io.data.utils.EntityMapper.getCompanyEntity;
 import static com.covrsecurity.io.data.utils.EntityMapper.getStatusEntity;
 import static com.covrsecurity.io.data.utils.EntityMapper.getTransactionEntity;
@@ -91,7 +91,7 @@ public class RegisteredRepositoryImpl implements RegisteredRepository {
                         MerchantEntity merchantEntity = new MerchantEntity(
                                 merchant.getId(),
                                 merchant.getUserName(),
-                                merchant.getCreatedDate() * MILLISECONDS_IN_SECOND,
+                                merchant.getCreatedDate() * ConstantsUtils.MILLISECONDS_IN_SECOND,
                                 getCompanyEntity(merchant.getCompany()),
                                 getStatusEntity(merchant.getStatus())
                         );

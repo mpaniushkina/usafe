@@ -19,7 +19,7 @@ public class InitializeTrueTimeUseCase implements SingleUseCase<Date, Integer> {
     private final Scheduler threadExecutorScheduler;
     private final Scheduler postExecutionThreadScheduler;
 
-    private final TrueTimeRepository repository;
+    private final com.covrsecurity.io.domain.repository.TrueTimeRepository repository;
 
     @Inject
     public InitializeTrueTimeUseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, TrueTimeRepository repository) {

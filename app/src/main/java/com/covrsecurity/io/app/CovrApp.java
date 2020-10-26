@@ -20,6 +20,7 @@ import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.security.ProviderInstaller;
+import com.covrsecurity.io.model.Fields;
 import com.zendesk.logger.Logger;
 
 import java.io.File;
@@ -38,11 +39,6 @@ import zendesk.core.AnonymousIdentity;
 import zendesk.core.Identity;
 import zendesk.core.Zendesk;
 import zendesk.support.Support;
-
-import static com.covrsecurity.io.model.Fields.COVR_SDK_ID;
-import static com.covrsecurity.io.model.Fields.COVR_SDK_QRCODE_ID;
-import static com.covrsecurity.io.model.Fields.COVR_SDK_QRCODE_SECRET;
-import static com.covrsecurity.io.model.Fields.COVR_SDK_SECRET;
 
 public class CovrApp extends DaggerApplication implements
         UnsafeLifecycleCallbacks.OnApplicationMinimizedListener {
@@ -81,7 +77,7 @@ public class CovrApp extends DaggerApplication implements
             Timber.e(e.getMessage());
         }
 
-        CovrNewMainInterface.INITIALIZER_INSTANCE.init(COVR_SDK_ID, COVR_SDK_SECRET, COVR_SDK_QRCODE_ID, COVR_SDK_QRCODE_SECRET, this);
+        CovrNewMainInterface.INITIALIZER_INSTANCE.init(Fields.COVR_SDK_ID, Fields.COVR_SDK_SECRET, Fields.COVR_SDK_QRCODE_ID, Fields.COVR_SDK_QRCODE_SECRET, this);
         LogUtil.initLogging();
         AppAdapter.initAdapter(this);
         mLyfecycleCallbacks = new UnsafeLifecycleCallbacks(this);
