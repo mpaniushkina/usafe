@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -17,28 +16,17 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.budiyev.android.codescanner.CodeScanner;
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.databinding.FragmentAddConnectionBinding;
-import com.covrsecurity.io.sdk.response.QrCodeConnectionResponse;
 import com.covrsecurity.io.ui.activity.AuthorizedActivity;
 import com.covrsecurity.io.ui.dialog.ScanQrCodeDialog;
 import com.covrsecurity.io.ui.fragment.BaseChildViewModelFragment;
 import com.covrsecurity.io.ui.viewmodel.addconnection.AddConnectionViewModel;
 import com.covrsecurity.io.ui.viewmodel.addconnection.AddConnectionViewModelFactory;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
+import com.covrsecurity.io.utils.ConstantsUtils;
 
 import javax.inject.Inject;
-
-import timber.log.Timber;
-
-import static com.covrsecurity.io.sdk.utils.QrCodeRequestResource.qrCodeStringValue;
-import static com.covrsecurity.io.utils.ConstantsUtils.CAMERA_PERMISSION;
-import static com.covrsecurity.io.utils.ConstantsUtils.CAMERA_REQUEST_CODE;
-import static com.covrsecurity.io.utils.ConstantsUtils.SCAN_QR_REQUEST_CODE;
 
 public class AddConnectionFragment extends BaseChildViewModelFragment<FragmentAddConnectionBinding, AddConnectionViewModel> {
 
@@ -141,7 +129,7 @@ public class AddConnectionFragment extends BaseChildViewModelFragment<FragmentAd
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
+        if (requestCode == ConstantsUtils.SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
             final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
             viewModel.addConnection(qrCode);
         } else {
@@ -151,7 +139,7 @@ public class AddConnectionFragment extends BaseChildViewModelFragment<FragmentAd
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == CAMERA_REQUEST_CODE) {
+        if (requestCode == ConstantsUtils.CAMERA_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 sendScanIntent();
             } else {
@@ -184,13 +172,13 @@ public class AddConnectionFragment extends BaseChildViewModelFragment<FragmentAd
         if (this.getParentFragment() instanceof StandingByFragment) {
             ((AuthorizedActivity) getActivity()).setShouldAddConnectionShown(true);
         }
-        ActivityCompat.requestPermissions(getActivity(), CAMERA_PERMISSION, CAMERA_REQUEST_CODE);
+        ActivityCompat.requestPermissions(getActivity(), ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
     }
 
     private void sendScanIntent() {
         final ScanQrCodeDialog scanQrCodeDialog = new ScanQrCodeDialog();
         scanQrCodeDialog.show(getFragmentManager(), ScanQrCodeDialog.QR_CODE_TAG);
-        scanQrCodeDialog.setTargetFragment(this, SCAN_QR_REQUEST_CODE);
+        scanQrCodeDialog.setTargetFragment(this, ConstantsUtils.SCAN_QR_REQUEST_CODE);
         mScanQrCodeDialog = scanQrCodeDialog;
     }
 }
