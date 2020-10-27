@@ -154,6 +154,7 @@ public abstract class BaseActivity<Binding extends ViewDataBinding, VM extends B
         } catch (Throwable t) {
             Timber.e(t);
         }
+
         super.onStop();
     }
 

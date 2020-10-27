@@ -43,12 +43,8 @@
 
     </LinearLayout>
 
-
-
-
-
     <ImageButton
-        android:layout_marginRight="@dimen/code_displayer_right_margin"
+        android:layout_marginRight="5dp"
         android:id="@+id/erased_button"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"

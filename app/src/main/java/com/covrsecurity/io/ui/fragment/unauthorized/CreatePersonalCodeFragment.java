@@ -1,10 +1,14 @@
 package com.covrsecurity.io.ui.fragment.unauthorized;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,12 +30,17 @@ import com.covrsecurity.io.utils.ConstantsUtils;
 import com.covrsecurity.io.utils.DialogUtils;
 import com.covrsecurity.io.utils.FingerprintUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
+import com.covrsecurity.io.utils.KeyboardUtils;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
 import timber.log.Timber;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
+import static com.covrsecurity.io.utils.KeyboardUtils.showKeyboard;
 
 /**
  * Created by elena on 4/28/16.
@@ -156,6 +165,11 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         mBinding.infoPager.setAdapter(new InfoPagerAdapter(getChildFragmentManager()));
+//        mBinding.etShowKeyboard.setVisibility(View.GONE);
+//        EditText etShowKeyboard = view.findViewById(R.id.etShowKeyboard);
+//        KeyboardUtils.showKeyboard(getActivity(), etShowKeyboard);
+//        KeyboardUtils.showKeyboard(getActivity(), mBinding.etShowKeyboard);
+        showSoftwareKeyboard(true);
         return view;
     }
 
@@ -177,7 +191,7 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                 enableNextButton(true);
             } else {
                 mBinding.personCodeLL.clearText();
-                mBinding.digitalKeyboard.shake();
+//                mBinding.digitalKeyboard.shake();
             }
         }
     }
@@ -256,6 +270,28 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
 
     private void useWeakPin() {
         goToVerifyPage();
+    }
+
+    protected void showSoftwareKeyboard(boolean showKeyboard) {
+//        final Activity activity = getActivity();
+////        if (getActivity() instanceof UnauthorizedActivity) {
+////            final InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+////            inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), showKeyboard ? InputMethodManager.SHOW_FORCED : InputMethodManager.HIDE_NOT_ALWAYS);
+////        }
+//        View focusedView = getView().getRootView();
+//        final InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+//
+//        if (focusedView != null) {
+////            inputManager.hideSoftInputFromWindow(focusedView.getWindowToken(),
+////                    InputMethodManager.HIDE_NOT_ALWAYS);
+//            inputManager.hideSoftInputFromWindow(focusedView.getWindowToken(), showKeyboard ? InputMethodManager.SHOW_FORCED : InputMethodManager.HIDE_NOT_ALWAYS);
+//
+//        }
+        InputMethodManager inputMethodManager =  (InputMethodManager)getActivity().getSystemService(INPUT_METHOD_SERVICE);
+        mBinding.etShowKeyboard.requestFocus();
+//        inputMethodManager.toggleSoftInputFromWindow(mBinding.etShowKeyboard.getApplicationWindowToken(),showKeyboard ? InputMethodManager.SHOW_FORCED : InputMethodManager.HIDE_NOT_ALWAYS, 0);
+        inputMethodManager.hideSoftInputFromWindow(mBinding.etShowKeyboard.getApplicationWindowToken(), showKeyboard ? InputMethodManager.SHOW_FORCED : InputMethodManager.HIDE_NOT_ALWAYS);
+
     }
 
     public enum CreateCodeIntention {

@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/tool_bar"
     android:layout_alignParentTop="true"
-    android:background="@color/soft_green"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize">
 
@@ -28,7 +27,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/WhiteToolbarStyle"
-            android:text="@string/back" />
+            android:text="@string/back"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <TextView

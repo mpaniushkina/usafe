@@ -1,6 +1,8 @@
 package com.covrsecurity.io.ui.activity;
 
+import android.app.Activity;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.provider.Telephony;
@@ -8,6 +10,8 @@ import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -240,6 +244,22 @@ public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, Una
             return R.string.cancel_setup_dialog_title;
         } else {
             return R.string.cancel_recovery_dialog_title;
+        }
+    }
+
+    public void showSoftwareKeyboard(boolean showKeyboard) {
+//        final UnauthorizedActivity activity = getActivity();
+//        if (getActivity() instanceof UnauthorizedActivity) {
+//            final InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+//            inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), showKeyboard ? InputMethodManager.SHOW_FORCED : InputMethodManager.HIDE_NOT_ALWAYS);
+//        }
+        View focusedView = this.getCurrentFocus();
+        final InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        if (this.hasWindowFocus()) {
+//            inputManager.hideSoftInputFromWindow(focusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            inputManager.hideSoftInputFromWindow(focusedView.getWindowToken(), showKeyboard ? InputMethodManager.SHOW_FORCED : InputMethodManager.HIDE_NOT_ALWAYS);
+
         }
     }
 }

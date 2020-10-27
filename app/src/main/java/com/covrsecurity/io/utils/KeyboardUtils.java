@@ -26,4 +26,17 @@ public final class KeyboardUtils {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(v, InputMethodManager.SHOW_FORCED);
     }
+
+    //    public static void showKeyboard1(@Nullable EditText editText, @Nullable Context context) {
+//        if (editText == null || context == null) {
+//            return;
+//        }
+//        if (!editText.isFocused()) {
+//            editText.requestFocus(View.FOCUS_RIGHT);
+//        }
+//        InputMethodManager inputManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+//        if (inputManager != null) {
+//            inputManager.showSoftInput(editText, InputMethodManager.SHOW_FORCED);
+//        }
+//    }
 }

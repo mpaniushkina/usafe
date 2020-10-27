@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/TextAppearance.AppCompat.Headline"
+            android:fontFamily="@font/avenir_next_rounded_std_reg"
             android:textColor="@color/white"
             android:gravity="center"
             android:textSize="@dimen/text_header_small"
@@ -60,7 +61,6 @@
             <Button
                 android:id="@+id/button_create_id"
                 style="@style/GreenButton"
-                android:fontFamily="@font/helvetica_neue_normal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/six_dp"
@@ -84,7 +84,6 @@
             <Button
                 android:id="@+id/button_recover_id"
                 style="@style/GreenButton"
-                android:fontFamily="@font/helvetica_neue_normal"
                 android:backgroundTint="@color/light_grey_iam"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

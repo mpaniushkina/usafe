@@ -1,15 +1,22 @@
 package com.covrsecurity.io.ui.fragment.unauthorized;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.databinding.FragmentEnterPersonalCodeBinding;
+import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.component.PersonalCodeLayout;
 import com.covrsecurity.io.ui.interfaces.IKeyboardListener;
 import com.covrsecurity.io.ui.viewmodel.createpersonalcode.CreatePersonalCodeViewModel;
+import com.covrsecurity.io.utils.KeyboardUtils;
+
+import static com.covrsecurity.io.utils.KeyboardUtils.showKeyboard;
 
 /**
  * Created by elena on 4/28/16.
@@ -30,6 +37,8 @@ public abstract class EnterPersonalCodeFragment extends
             mBinding.infoPager.setVisibility(View.VISIBLE);
         }
         mBinding.personCodeLL.setLenghtCodeChecker(this);
+        KeyboardUtils.showKeyboard(getActivity(), mBinding.etShowKeyboard);
+
         return view;
     }
 
@@ -41,7 +50,8 @@ public abstract class EnterPersonalCodeFragment extends
     @Override
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
-        mBinding.digitalKeyboard.setKeyboardListener(this);
+        KeyboardUtils.showKeyboard(getActivity(), mBinding.etShowKeyboard);
+//        mBinding.digitalKeyboard.setKeyboardListener(this);
     }
 
     @Override
