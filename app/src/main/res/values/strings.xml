@@ -79,6 +79,9 @@
     <string name="status_sent_sms">Processing SMS</string>
     <string name="status_fail_to_sent_sms">SMS failed to send</string>
     <string name="status_delivered_to_inbox">SMS sent to your messaging inbox</string>
+    <string name="qr_code_title">Scan QR Code \nto begin this process</string>
+    <string name="qr_code_description1">We will ask for permission to use your \ncamera for this process to work</string>
+    <string name="qr_code_description2">To begin registration please scan the \nQR code that has been presented to you.\nTap the "QR Scan" button below to start</string>
 
     <!-- phone number -->
     <string name="phone_number_done">Done</string>
@@ -393,6 +396,7 @@
     <string name="locked_screen_main_text">All data, history and connections has been securely deleted. There is absolutely NO possibility these can be retrieved again.\n\nYou have to start from the beginning by performing a new set-up of Covr and adding all connections all over again.</string>
 
     <!--Add connection QR-->
+    <string name="qr_scan_button">QR Scan</string>
     <string name="add_connection_qr_button">Scan QR Code</string>
     <string name="add_connection_qr_subtitle">QR Code</string>
     <string name="add_connection_qr_info">To complete the connection you have to scan QR code that has been presented to you. Tap "Scan QR Code" button below.</string>

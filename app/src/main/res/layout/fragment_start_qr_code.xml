@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="scanClickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_setup"
+        custom:context="com.covrsecurity.io.ui.activity.UnauthorizedActivity">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="@dimen/topbar_logo_width"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/setting_item_margin_top"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/iamlogo3x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/screenTitle"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/lockscreen_info_msg_wrapper_height"
+            android:fontFamily="@font/avenir"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/logo"
+            android:paddingStart="@dimen/code_displayer_right_margin"
+            android:paddingEnd="@dimen/code_displayer_right_margin"
+            android:text="@string/qr_code_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_header_small" />
+
+        <TextView
+            android:id="@+id/description1"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/avenir"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/setting_item_margin_top"
+            android:text="@string/qr_code_description1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/greeting_text_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/screenTitle" />
+
+        <TextView
+            android:id="@+id/description2"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:fontFamily="@font/avenir"
+            android:gravity="center"
+            android:paddingStart="@dimen/code_displayer_right_margin"
+            android:paddingEnd="@dimen/code_displayer_right_margin"
+            android:text="@string/qr_code_description2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/greeting_text_small"
+            app:layout_constraintTop_toBottomOf="@+id/description1"/>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineFullScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            custom:layout_constraintGuide_percent="0.6" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/button_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:paddingStart="42dp"
+            android:paddingEnd="42dp"
+            android:layout_marginBottom="@dimen/about_fragment_view_pager_height"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/button_scan_code"
+                style="@style/GreenButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/six_dp"
+                android:elevation="0dp"
+                android:minWidth="@dimen/setup_button_min_size"
+                android:minHeight="@dimen/setup_button_min_size"
+                android:text="@string/qr_scan_button"
+                app:elevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                android:onClick="@{scanClickListener::onClick}"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

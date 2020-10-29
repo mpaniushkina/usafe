@@ -21,4 +21,12 @@
         app:frameThickness="2dp"
         app:maskColor="#77000000" />
 
+    <ImageView
+        android:id="@+id/doneQrScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_fingerprint_success"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
 </FrameLayout>

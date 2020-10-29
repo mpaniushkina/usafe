@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.fragment.app.DialogFragment;
 
@@ -41,15 +43,20 @@ public class ScanQrCodeDialog extends DialogFragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.dialog_scan_qr, container, false);
         final CodeScannerView scannerView = root.findViewById(R.id.scanner_view);
+        ImageView doneQrScan = root.findViewById(R.id.doneQrScan);
         mCodeScanner = new CodeScanner(getActivity(), scannerView);
         mCodeScanner.setDecodeCallback(result -> scannerView.post(() -> {
             final String text = result.getText();
             Timber.d(text);
             final Intent data = new Intent();
             data.putExtra(QR_CODE_EXTRA, text);
+            doneQrScan.setVisibility(View.VISIBLE);
             getTargetFragment().onActivityResult(ConstantsUtils.SCAN_QR_REQUEST_CODE, Activity.RESULT_OK, data);
-            dismiss();
+            final Handler handler = new Handler();
+            final Runnable r = () -> dismiss();
+            handler.postDelayed(r, 1500);
         }));
+
         return root;
     }
 
