@@ -163,6 +163,11 @@ public class AddPartnershipFragment extends BaseChildFragment<FragmentAddPartner
         }
     }
 
+    @Override
+    public void onBackspaceButtonClick() {
+
+    }
+
     private void addDigit(char value) {
         if (mCode.length() < MAX_CODE_LENGTH) {
             mCode.append(value);

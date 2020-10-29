@@ -135,6 +135,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
         return vmFactory;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -420,6 +421,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void consumeAppUnlockTime(AppUnlockTimeEntity response) {
         if (response.getUnlockedTime() - System.currentTimeMillis() > ConstantsUtils.MILLISECONDS_IN_SECOND) {
             showFailedLoginDialog(response.getAttemptsLeft(), response.getUnlockedTime());
@@ -541,6 +543,11 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
         } else {
             showToast(R.string.touch_been_intercepted_alert);
         }
+    }
+
+    @Override
+    public void onBackspaceButtonClick() {
+        mBinding.personCodeLL.eraseNumber();
     }
 
     @Override

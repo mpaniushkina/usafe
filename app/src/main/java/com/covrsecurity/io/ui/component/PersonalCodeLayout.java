@@ -52,12 +52,6 @@ public class PersonalCodeLayout extends RelativeLayout implements View.OnClickLi
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         personalCodeLL = (RelativeLayout) inflater.inflate(R.layout.personl_code_displayer, this, true);
-        personalCodeLL.findViewById(R.id.erased_button).setOnClickListener(this);
-
-//        eraseLayout = (ConstraintLayout) inflater.inflate(R.layout.keyboard_digital, this, true);
-//        eraseLayout.findViewById(R.id.erasedButton).setOnClickListener(this);
-
-
         Arrays.fill(mEnteredText, Character.MIN_VALUE);
     }
 
@@ -80,7 +74,6 @@ public class PersonalCodeLayout extends RelativeLayout implements View.OnClickLi
         if (view != null) {
             view.setSelected(false);
         }
-
     }
 
     public void numberErased(int highlightedItem) {
@@ -98,11 +91,14 @@ public class PersonalCodeLayout extends RelativeLayout implements View.OnClickLi
     private TextView findItem(int highlightedItem) {
         int highlightedResourceId = getResources().getIdentifier("code_entered_" + highlightedItem, "id", getContext().getApplicationContext().getPackageName());
         return (TextView) personalCodeLL.findViewById(highlightedResourceId);
-//        return (TextView) eraseLayout.findViewById(highlightedResourceId);
     }
 
     @Override
     public void onClick(View v) {
+        eraseNumber();
+    }
+
+    public void eraseNumber() {
         int length = getNonEmptyLength(mEnteredText);
         if (length > 0) {
             numberErased();
@@ -118,7 +114,7 @@ public class PersonalCodeLayout extends RelativeLayout implements View.OnClickLi
         return getNonEmptyLength(mEnteredText) == CODE_LENGTH;
     }
 
-    private boolean isCodeLengthValid(int length) {
+    public boolean isCodeLengthValid(int length) {
         boolean valid = length == CODE_LENGTH && mPrevLength != length;
         mPrevLength = length;
         return valid;

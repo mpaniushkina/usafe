@@ -1,16 +1,10 @@
 package com.covrsecurity.io.ui.fragment.unauthorized;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
-import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,21 +26,13 @@ import com.covrsecurity.io.utils.ConstantsUtils;
 import com.covrsecurity.io.utils.DialogUtils;
 import com.covrsecurity.io.utils.FingerprintUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
-import com.covrsecurity.io.utils.KeyboardUtils;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 import javax.inject.Inject;
 
 import timber.log.Timber;
 
-import static android.content.Context.INPUT_METHOD_SERVICE;
-import static com.covrsecurity.io.utils.KeyboardUtils.showKeyboard;
-
-/**
- * Created by elena on 4/28/16.
- */
 public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
 
     private static final String CREATE_CODE_INTENTION_EXTRA = "CREATE_CODE_INTENTION_EXTRA";
@@ -109,12 +95,14 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                 this::showProgress,
                 response -> {
                     hideProgress();
-                    if (FingerprintUtils.getInstance(getActivity()).canUseFingerprintScanner(getActivity())) {
-                        Fragment fragment = UseFingerprintAuthFragment.newInstance(mEnteredText, registration);
-                        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
-                    } else {
-                        replaceFragment(DoneSetupFragment.newInstance(registration), null, true, FragmentAnimationSet.SLIDE_LEFT);
-                    }
+                    ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
+                    replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+//                    if (FingerprintUtils.getInstance(getActivity()).canUseFingerprintScanner(getActivity())) {
+//                        Fragment fragment = UseFingerprintAuthFragment.newInstance(mEnteredText, registration);
+//                        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+//                    } else {
+//                        replaceFragment(DoneSetupFragment.newInstance(registration), null, true, FragmentAnimationSet.SLIDE_LEFT);
+//                    }
                 },
                 throwable -> {
                     hideProgress();
@@ -190,7 +178,17 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
             viewModel.assessPinCodeStrength(mEnteredText);
         } else if (mBinding.infoPager.getCurrentItem() == InfoPagerAdapter.VERIFY_PAGE) {
             if (Arrays.equals(mBinding.personCodeLL.getEnteredText(), mEnteredText)) {
-                enableNextButton(true);
+//                enableNextButton(true);
+                final boolean isRegister = mCreateCodeIntention == CreateCodeIntention.REGISTER;
+                if (mBinding.infoPager.getCurrentItem() == InfoPagerAdapter.ENTER_PAGE) {
+                    goToVerifyPage();
+                } else if (isRegister && Arrays.equals(mBinding.personCodeLL.getEnteredText(), mEnteredText)) {
+//            viewModel.register(mBinding.personCodeLL.getEnteredText(), true);
+                    ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
+                    replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+                } else if (!isRegister) {
+                    viewModel.setUpPassword(mEnteredText, true);
+                }
             } else {
                 mBinding.personCodeLL.clearText();
 //                mBinding.digitalKeyboard.shake();
@@ -272,6 +270,11 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
 
     private void useWeakPin() {
         goToVerifyPage();
+    }
+
+    @Override
+    public void onBackspaceButtonClick() {
+        mBinding.personCodeLL.eraseNumber();
     }
 
     public enum CreateCodeIntention {

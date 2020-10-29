@@ -8,7 +8,6 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Vibrator;
-import androidx.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -18,6 +17,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
@@ -138,7 +139,7 @@ public class DigitalKeyboard extends LinearLayout implements View.OnClickListene
         mBtnNine.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
         mBtnZero.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
 
-        erasedButton.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
+//        erasedButton.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
 
         if (isVibrationAllowedBySettings() && canVibrate) {
             mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
@@ -205,6 +206,9 @@ public class DigitalKeyboard extends LinearLayout implements View.OnClickListene
                     playSound();
                     vibrate();
                     mKeyboardListener.onKeyboardButtonClick(mClickNotInterceded, ((TextView) v).getText().charAt(0));
+                    break;
+                case R.id.erasedButton:
+                    mKeyboardListener.onBackspaceButtonClick();
                     break;
             }
         }

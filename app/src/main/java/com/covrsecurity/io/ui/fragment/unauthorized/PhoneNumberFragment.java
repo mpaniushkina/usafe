@@ -135,6 +135,11 @@ public class PhoneNumberFragment extends BaseUnauthorizedFragment<FragmentPhoneN
     }
 
     @Override
+    public void onBackspaceButtonClick() {
+
+    }
+
+    @Override
     public boolean usesBottomButtons() {
         return true;
     }

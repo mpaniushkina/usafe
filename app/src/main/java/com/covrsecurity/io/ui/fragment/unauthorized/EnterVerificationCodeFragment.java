@@ -197,6 +197,10 @@ public class EnterVerificationCodeFragment extends BaseUnauthorizedFragment<Frag
         }
     }
 
+    @Override
+    public void onBackspaceButtonClick() {
+    }
+
     private void addDigit(char value) {
         enterVerificationModel.addDigit(value);
         if (enterVerificationModel.getDigitsNumber() == MAX_CODE_LENGTH) {

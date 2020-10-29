@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.databinding.FragmentStartQrCodeBinding;
@@ -82,7 +83,7 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
         if (requestCode == ConstantsUtils.SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
             final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
             ActivityUtils.scheduleOnMainThread(
-                    () -> moveToScanFaceBiometricsFragment(qrCode),
+                    () -> moveToPinCodeFragment(qrCode),
                     ConstantsUtils.FOUR_HUNDRED_MILLISECONDS
             );
         } else {
@@ -135,8 +136,13 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
         startActivityForResult(appSettingsIntent, ConstantsUtils.CAMERA_REQUEST_CODE);
     }
 
-    private void moveToScanFaceBiometricsFragment(String qrCode) {
-        final ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(qrCode);
+//    private void moveToScanFaceBiometricsFragment(String qrCode) {
+//        final ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(qrCode);
+//        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+//    }
+
+    private void moveToPinCodeFragment(String qrCode) {
+        final Fragment fragment = CreatePersonalCodeFragment.newInstance(CreatePersonalCodeFragment.CreateCodeIntention.REGISTER);
         replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
     }
 

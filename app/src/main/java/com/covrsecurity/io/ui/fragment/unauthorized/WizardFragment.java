@@ -1,6 +1,5 @@
 package com.covrsecurity.io.ui.fragment.unauthorized;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,7 +65,6 @@ public class WizardFragment extends BaseUnauthorizedFragment<FragmentWizardScree
                 pager.setCurrentItem(current + 1);
             }
             if (current == items.length - 1) {
-//                Fragment f = CreatePersonalCodeFragment.newInstance(CreatePersonalCodeFragment.CreateCodeIntention.REGISTER);
                 Fragment f = ScanQrCodeFragment.newInstance();
                 replaceFragment(f, f.getArguments(), true, FragmentAnimationSet.FADE_IN);
             }

@@ -42,21 +42,4 @@
             android:clickable="true" />
 
     </LinearLayout>
-
-    <ImageButton
-        android:layout_marginRight="5dp"
-        android:id="@+id/erased_button"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/ic_backspace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="visible"/>
-
-<!--    <include-->
-<!--        android:id="@+id/backspaceButton"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        layout="@layout/backspace_layout"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content" />-->
 </RelativeLayout>

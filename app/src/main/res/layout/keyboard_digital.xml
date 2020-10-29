@@ -169,16 +169,4 @@
         app:layout_constraintStart_toEndOf="@+id/keyboard_btn_zero"
         app:layout_constraintTop_toBottomOf="@+id/keyboard_btn_nine"
         android:visibility="visible"/>
-
-    <include
-        android:id="@+id/backspaceButton"
-        layout="@layout/backspace_layout"
-        android:layout_alignParentBottom="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/keyboard_btn_zero"
-        app:layout_constraintTop_toBottomOf="@+id/keyboard_btn_nine"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>

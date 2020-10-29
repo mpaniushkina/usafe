@@ -321,6 +321,11 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
         }
     }
 
+    @Override
+    public void onBackspaceButtonClick() {
+        mBinding.personCodeLL.eraseNumber();
+    }
+
     @SuppressLint("NewApi")
     @Override
     public void codeLengthOK() {
