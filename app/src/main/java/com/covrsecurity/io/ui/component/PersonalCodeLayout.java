@@ -4,8 +4,11 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.covrsecurity.io.R;
 
@@ -22,6 +25,9 @@ public class PersonalCodeLayout extends RelativeLayout implements View.OnClickLi
     private char[] mEnteredText = new char[CODE_LENGTH];
     private LenghtCodeChecker lenghtCodeChecker;
     private int mPrevLength;
+
+    private ImageView eraseBtn;
+    private ConstraintLayout eraseLayout;
 
     public PersonalCodeLayout(Context context) {
         super(context);
@@ -47,6 +53,11 @@ public class PersonalCodeLayout extends RelativeLayout implements View.OnClickLi
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         personalCodeLL = (RelativeLayout) inflater.inflate(R.layout.personl_code_displayer, this, true);
         personalCodeLL.findViewById(R.id.erased_button).setOnClickListener(this);
+
+//        eraseLayout = (ConstraintLayout) inflater.inflate(R.layout.keyboard_digital, this, true);
+//        eraseLayout.findViewById(R.id.erasedButton).setOnClickListener(this);
+
+
         Arrays.fill(mEnteredText, Character.MIN_VALUE);
     }
 
@@ -87,6 +98,7 @@ public class PersonalCodeLayout extends RelativeLayout implements View.OnClickLi
     private TextView findItem(int highlightedItem) {
         int highlightedResourceId = getResources().getIdentifier("code_entered_" + highlightedItem, "id", getContext().getApplicationContext().getPackageName());
         return (TextView) personalCodeLL.findViewById(highlightedResourceId);
+//        return (TextView) eraseLayout.findViewById(highlightedResourceId);
     }
 
     @Override

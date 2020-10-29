@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="81dp"
+    android:background="@color/dark_bg">
 
     <TextView
         android:id="@+id/keyboard_btn_one"
@@ -153,4 +154,31 @@
         app:layout_constraintTop_toBottomOf="@+id/keyboard_btn_eight"
         tools:ignore="HardcodedText" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:layout_marginRight="5dp"
+        android:id="@+id/erasedButton"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:scaleY="0.8"
+        android:scaleX="0.8"
+        android:background="@drawable/ic_backspace_svgrepo_com"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/keyboard_btn_zero"
+        app:layout_constraintTop_toBottomOf="@+id/keyboard_btn_nine"
+        android:visibility="visible"/>
+
+    <include
+        android:id="@+id/backspaceButton"
+        layout="@layout/backspace_layout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/keyboard_btn_zero"
+        app:layout_constraintTop_toBottomOf="@+id/keyboard_btn_nine"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

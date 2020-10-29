@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tool_bar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:layout_marginRight="5dp"
+        android:id="@+id/erasedButton"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:scaleY="0.8"
+        android:scaleX="0.8"
+        android:background="@drawable/ic_backspace_svgrepo_com"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

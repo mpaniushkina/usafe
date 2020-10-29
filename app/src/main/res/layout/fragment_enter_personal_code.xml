@@ -37,29 +37,20 @@
             android:text="@string/enter_personal_code" />
 
         <com.covrsecurity.io.ui.component.PersonalCodeLayout
-            android:layout_alignParentBottom="true"
+            android:layout_above="@+id/digitalKeyboard"
+            android:paddingBottom="@dimen/fiveteen_dp"
             android:id="@+id/personCodeLL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/etShowKeyboard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.covrsecurity.io.ui.component.DigitalKeyboard
             android:layout_alignParentBottom="true"
-            android:visibility="visible"
-            android:inputType="number"
-            android:text="1234"/>
-
-<!--        <com.covrsecurity.io.ui.component.DigitalKeyboard-->
-<!--            android:padding="@dimen/twenty_dp"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            custom:canVibrate="true"-->
-<!--            custom:canSound="true"-->
-<!--            android:id="@+id/digitalKeyboard"-->
-<!--            android:layout_centerInParent="true"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"/>-->
+            custom:canVibrate="false"
+            custom:canSound="false"
+            android:id="@+id/digitalKeyboard"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 </layout>

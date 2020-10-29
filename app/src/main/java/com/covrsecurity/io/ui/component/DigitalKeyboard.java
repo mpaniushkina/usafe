@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,7 +26,7 @@ import com.covrsecurity.io.ui.interfaces.IKeyboardListener;
 public class DigitalKeyboard extends LinearLayout implements View.OnClickListener {
 
     @ColorInt
-    private final int softGreenColor;
+    private final int whiteColor;
 
     private TextView mBtnOne;
     private TextView mBtnTwo;
@@ -38,6 +39,8 @@ public class DigitalKeyboard extends LinearLayout implements View.OnClickListene
     private TextView mBtnNine;
     private TextView mBtnZero;
 
+    public ImageView erasedButton;
+
     private static final long VIBRATION_LENGTH = 60;
 
     private IKeyboardListener mKeyboardListener;
@@ -49,13 +52,13 @@ public class DigitalKeyboard extends LinearLayout implements View.OnClickListene
 
     public DigitalKeyboard(Context context) {
         super(context);
-        softGreenColor = getResources().getColor(R.color.soft_green);
+        whiteColor = getResources().getColor(R.color.white);
         initView(context, false, false);
     }
 
     public DigitalKeyboard(Context context, AttributeSet attrs) {
         super(context, attrs);
-        softGreenColor = getResources().getColor(R.color.soft_green);
+        whiteColor = getResources().getColor(R.color.white);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.DigitalKeyboardAttr, 0, 0);
         try {
             initView(context,
@@ -68,7 +71,7 @@ public class DigitalKeyboard extends LinearLayout implements View.OnClickListene
 
     public DigitalKeyboard(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        softGreenColor = getResources().getColor(R.color.soft_green);
+        whiteColor = getResources().getColor(R.color.white);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.DigitalKeyboardAttr, 0, 0);
         try {
             initView(context,
@@ -109,6 +112,8 @@ public class DigitalKeyboard extends LinearLayout implements View.OnClickListene
         mBtnNine = item.findViewById(R.id.keyboard_btn_nine);
         mBtnZero = item.findViewById(R.id.keyboard_btn_zero);
 
+        erasedButton = item.findViewById(R.id.erasedButton);
+
         mBtnOne.setOnClickListener(this);
         mBtnTwo.setOnClickListener(this);
         mBtnThree.setOnClickListener(this);
@@ -120,6 +125,8 @@ public class DigitalKeyboard extends LinearLayout implements View.OnClickListene
         mBtnNine.setOnClickListener(this);
         mBtnZero.setOnClickListener(this);
 
+        erasedButton.setOnClickListener(this);
+
         mBtnOne.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
         mBtnTwo.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
         mBtnThree.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
@@ -130,6 +137,8 @@ public class DigitalKeyboard extends LinearLayout implements View.OnClickListene
         mBtnEight.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
         mBtnNine.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
         mBtnZero.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
+
+        erasedButton.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
 
         if (isVibrationAllowedBySettings() && canVibrate) {
             mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
@@ -168,7 +177,7 @@ public class DigitalKeyboard extends LinearLayout implements View.OnClickListene
         }
         if (event.getAction() == MotionEvent.ACTION_UP) {
             textView.setBackground(getResources().getDrawable(R.drawable.keyboard_digital_state_enabled));
-            textView.setTextColor(softGreenColor);
+            textView.setTextColor(whiteColor);
             textView.performClick();
             return true;
         }

@@ -8,7 +8,7 @@ android {
     repositories {
         maven { url "https://dl.bintray.com/terrakok/terramaven" }
 //        maven { url "http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/" }
-//        maven { url 'https://zendesk.artifactoryonline.com/zendesk/repo' }
+        maven { url 'https://zendesk.artifactoryonline.com/zendesk/repo' }
         maven { url "https://zendesk.jfrog.io/zendesk/repo"}
         maven { url "http://repo.pageturner-reader.org" }
         maven { url "https://jitpack.io" }

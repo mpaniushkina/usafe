@@ -46,6 +46,7 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.activity.AuthorizedActivity"
             android:alwaysRetainTaskState="true"

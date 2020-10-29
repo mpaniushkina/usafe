@@ -138,7 +138,9 @@
     <string name="enter_code_title">Choose your code wisely</string>
     <string name="read_more">Read more\u00A0></string>
     <string name="here">here.\u00A0></string>
-    <string name="verify_code_header">Confirm your Covr Code</string>
+<!--    <string name="verify_code_header">Confirm your Covr Code</string>-->
+    <string name="verify_code_header">Confirm pin</string>
+    <string name="verify_code_title">Plaese confirm code</string>
     <string name="verify_code_subheader">Please confirm your Covr Code by entering it again here. Read more\u00A0></string>
     <string name="backup_and_enter">Back up and enter a new code.</string>
 

@@ -6,6 +6,8 @@
     <color name="green_persian">#17a790</color> <!-- 1 -->
     <color name="dark_green">#007A56</color> <!-- 2 -->
     <color name="dark_blue">#2e3c4d</color> <!-- 2 -->
+    <color name="blue">#2e3a4b</color> <!-- 2 -->
+    <color name="dark_bg">#212934</color>
     <color name="light_tealish_1">#71B5A4</color> <!-- 3 -->
     <color name="light_tealish_2">#ECFBF5</color> <!-- 4 -->
     <color name="light_tealish_3">#EEFAF5</color> <!-- 5 -->

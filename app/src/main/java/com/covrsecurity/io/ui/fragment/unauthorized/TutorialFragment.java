@@ -11,6 +11,7 @@ import com.covrsecurity.io.databinding.FragmentTutorialBinding;
 import com.covrsecurity.io.manager.Analytics;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
+import com.covrsecurity.io.utils.KeyboardUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -28,6 +29,7 @@ public class TutorialFragment extends BaseUnauthorizedFragment<FragmentTutorialB
     @Override
     public void onViewCreated(@NotNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+//        KeyboardUtils.hideKeyboard(getActivity());
         mBinding.buttonCreateId.setOnClickListener((View buttonSetup) -> {
             checkForRootWithCallback((boolean isRooted) -> {
                 if (!isRooted) {

@@ -37,8 +37,6 @@ public abstract class EnterPersonalCodeFragment extends
             mBinding.infoPager.setVisibility(View.VISIBLE);
         }
         mBinding.personCodeLL.setLenghtCodeChecker(this);
-        KeyboardUtils.showKeyboard(getActivity(), mBinding.etShowKeyboard);
-
         return view;
     }
 
@@ -50,8 +48,7 @@ public abstract class EnterPersonalCodeFragment extends
     @Override
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
-        KeyboardUtils.showKeyboard(getActivity(), mBinding.etShowKeyboard);
-//        mBinding.digitalKeyboard.setKeyboardListener(this);
+        mBinding.digitalKeyboard.setKeyboardListener(this);
     }
 
     @Override

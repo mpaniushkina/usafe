@@ -46,17 +46,19 @@ public class InfoItemFragment extends Fragment {
         TextView enterNewCcode = rootView.findViewById(R.id.enter_new_code);
         TextView titleNewCode = rootView.findViewById(R.id.tutorTitle);
         TextView tutorText = rootView.findViewById(R.id.tutor_text);
+        enterNewCcode.setVisibility(View.GONE);
+        tutorText.setText(R.string.enter_code_subheader);
         if (currentItem == InfoPagerAdapter.ENTER_PAGE) {
             label.setText(R.string.enter_code_header);
             titleNewCode.setText(R.string.enter_code_title);
 //            subheaderTextId = R.string.enter_code_subheader;
-            tutorText.setText(R.string.enter_code_subheader);
-            enterNewCcode.setVisibility(View.GONE);
+//            tutorText.setText(R.string.enter_code_subheader);
+//            enterNewCcode.setVisibility(View.GONE);
         } else {
             label.setText(R.string.verify_code_header);
+            titleNewCode.setText(R.string.verify_code_title);
 //            subheaderTextId = R.string.verify_code_subheader;
-            tutorText.setText(R.string.verify_code_subheader);
-            enterNewCcode.setVisibility(View.VISIBLE);
+//            enterNewCcode.setVisibility(View.VISIBLE);
         }
 
         enterNewCcode.setOnClickListener(v -> ((CreatePersonalCodeFragment) getParentFragment()).goToEnterPage());
@@ -85,13 +87,5 @@ public class InfoItemFragment extends Fragment {
 //                        spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 //        text.setText(spannableString);
         return rootView;
-    }
-
-    protected void showSoftwareKeyboard(boolean showKeyboard) {
-        final Activity activity = getActivity();
-        if (getActivity() instanceof UnauthorizedActivity) {
-            final InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), showKeyboard ? InputMethodManager.SHOW_FORCED : InputMethodManager.HIDE_NOT_ALWAYS);
-        }
     }
 }

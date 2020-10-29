@@ -1,5 +1,6 @@
 package com.covrsecurity.io.ui.fragment.unauthorized;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,7 +8,6 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.covrsecurity.io.BuildConfig;
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.databinding.FragmentWizardScreensBinding;
 import com.covrsecurity.io.ui.adapter.WizardPagerAdapter;
