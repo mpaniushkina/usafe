@@ -246,20 +246,4 @@ public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, Una
             return R.string.cancel_recovery_dialog_title;
         }
     }
-
-    public void showSoftwareKeyboard(boolean showKeyboard) {
-//        final UnauthorizedActivity activity = getActivity();
-//        if (getActivity() instanceof UnauthorizedActivity) {
-//            final InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-//            inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), showKeyboard ? InputMethodManager.SHOW_FORCED : InputMethodManager.HIDE_NOT_ALWAYS);
-//        }
-        View focusedView = this.getCurrentFocus();
-        final InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        if (this.hasWindowFocus()) {
-//            inputManager.hideSoftInputFromWindow(focusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-            inputManager.hideSoftInputFromWindow(focusedView.getWindowToken(), showKeyboard ? InputMethodManager.SHOW_FORCED : InputMethodManager.HIDE_NOT_ALWAYS);
-
-        }
-    }
 }

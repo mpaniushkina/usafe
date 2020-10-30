@@ -7,7 +7,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 
 import com.covrsecurity.io.R;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.domain.entity.MerchantEntity;
 import com.covrsecurity.io.domain.entity.StatusEntity;
 import com.covrsecurity.io.domain.entity.TransactionEntity;
@@ -41,7 +41,7 @@ public class EmailUtils {
         }
         String status = StatusUtils.getStatusText(context, transaction);
         String description = "Description: " + (TextUtils.isEmpty(historyMessage) ?
-                CovrApp.getInstance().getString(R.string.history_details_no_description) : historyMessage);
+                IamApp.getInstance().getString(R.string.history_details_no_description) : historyMessage);
 
         String createdAt = "";
         if (transaction.getCreated() == 0) {

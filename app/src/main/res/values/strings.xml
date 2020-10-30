@@ -143,7 +143,7 @@
     <string name="here">here.\u00A0></string>
 <!--    <string name="verify_code_header">Confirm your Covr Code</string>-->
     <string name="verify_code_header">Confirm pin</string>
-    <string name="verify_code_title">Plaese confirm code</string>
+    <string name="verify_code_title">Please confirm code</string>
     <string name="verify_code_subheader">Please confirm your Covr Code by entering it again here. Read more\u00A0></string>
     <string name="backup_and_enter">Back up and enter a new code.</string>
 
@@ -445,7 +445,8 @@
     <string name="arrow">arrow</string>
 
     <!-- Biometrics -->
-    <string name="capture">Capture</string>
+<!--    <string name="capture">Capture</string>-->
+    <string name="capture">Face scan</string>
     <string name="recapture">Recapture</string>
     <string name="сamera_permission_not_granted">Camera permission not granted</string>
     <string name="open_settings_to_grant_permission_to_take_biometrics">Open settings to grant permission to take biometrics</string>
@@ -456,5 +457,9 @@
     <string name="position_your_face_inside_the_oval">Position your face\ninside the oval.</string>
     <string name="capture_document_back_side">Back Side</string>
     <string name="button_iam_ready">iAM ready</string>
+    <string name="biometric_title">Scan your face \nto begin this process</string>
+    <string name="biometric_description1">We will ask for permission to use your \ncamera for this process to work</string>
+    <string name="biometric_description2">To begin registration please scan the \nQR code that has been presented to you.\nTap the "QR Scan" button below to start</string>
+
 
 </resources>

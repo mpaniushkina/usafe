@@ -2,7 +2,7 @@ package com.covrsecurity.io.inject.module;
 
 import android.content.Context;
 
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.manager.AppUnLockedSharedStateHandler;
 
 import javax.inject.Singleton;
@@ -15,7 +15,7 @@ abstract public class ApplicationModule {
 
     @Provides
     @Singleton
-    public static Context context(CovrApp app) {
+    public static Context context(IamApp app) {
         return app.getApplicationContext();
     }
 

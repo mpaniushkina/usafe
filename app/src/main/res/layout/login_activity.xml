@@ -20,10 +20,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <View android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@color/covr_green"
-            android:id="@+id/sb_login"/>
+<!--        <View android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:background="@color/covr_green"-->
+<!--            android:id="@+id/sb_login"/>-->
 
         <FrameLayout
             android:id="@+id/frameLayoutFragmentContainer"

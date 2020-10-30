@@ -13,7 +13,7 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 
 import com.covrsecurity.io.R;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.databinding.FragmentCovrVaultMainBinding;
 import com.covrsecurity.io.greendao.model.database.CovrVaultDbModel;
 import com.covrsecurity.io.greendao.model.database.CovrVaultDbModelDao;
@@ -118,7 +118,7 @@ public class CovrVaultMainFragment extends CovrVaultBaseLoadingFragment<Fragment
     @Override
     protected List<CovrVaultItemModel> doLoad() {
         WhereCondition.StringCondition condition = new WhereCondition.StringCondition("1 GROUP BY " + CovrVaultDbModelDao.Properties.MType.columnName);
-        List<CovrVaultDbModel> models = CovrApp.getInstance().getDatabaseOperationsWrapper().queryListWithCondition(condition);
+        List<CovrVaultDbModel> models = IamApp.getInstance().getDatabaseOperationsWrapper().queryListWithCondition(condition);
         List<CovrVaultItemModel> adapterModels = new ArrayList<>(models.size());
         for (CovrVaultDbModel model : models) {
             adapterModels.add(RecordTypeAdapterConverter.convert(model.getMType()));

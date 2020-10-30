@@ -2,13 +2,13 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque">
 
-    <item android:drawable="@color/soft_green" />
+    <item android:drawable="@drawable/bg_front" />
 
     <item android:bottom="@dimen/twenty_four_dp">
 
         <bitmap
             android:gravity="center"
-            android:src="@drawable/covr_splah_logo" />
+            android:src="@drawable/iamlogo3x" />
 
     </item>
 

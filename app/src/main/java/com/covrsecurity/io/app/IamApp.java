@@ -40,12 +40,12 @@ import zendesk.core.Identity;
 import zendesk.core.Zendesk;
 import zendesk.support.Support;
 
-public class CovrApp extends DaggerApplication implements
+public class IamApp extends DaggerApplication implements
         UnsafeLifecycleCallbacks.OnApplicationMinimizedListener {
 
-    private static CovrApp instance = null;
+    private static IamApp instance = null;
 
-    public static CovrApp getInstance() {
+    public static IamApp getInstance() {
         return instance;
     }
 

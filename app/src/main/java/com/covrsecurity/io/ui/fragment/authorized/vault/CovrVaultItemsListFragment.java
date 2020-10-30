@@ -11,7 +11,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.covrsecurity.io.R;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.databinding.FragmentCovrVaultItemsListBinding;
 import com.covrsecurity.io.greendao.model.database.CovrVaultDbModel;
 import com.covrsecurity.io.greendao.model.database.RecordType;
@@ -120,7 +120,7 @@ public class CovrVaultItemsListFragment extends CovrVaultBaseLoadingFragment<Fra
     @Override
     @WorkerThread
     protected List<CovrVaultItemsListModel> doLoad() {
-        List<CovrVaultDbModel> models = CovrApp.getInstance().getDatabaseOperationsWrapper().queryList(mRecordType);
+        List<CovrVaultDbModel> models = IamApp.getInstance().getDatabaseOperationsWrapper().queryList(mRecordType);
         List<CovrVaultItemsListModel> adapterModels = new ArrayList<>(models.size());
         for (CovrVaultDbModel model : models) {
             if (RecordType.NOTE.equals(mRecordType)) {

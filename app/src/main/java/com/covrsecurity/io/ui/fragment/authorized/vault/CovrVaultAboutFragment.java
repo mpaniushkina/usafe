@@ -1,7 +1,7 @@
 package com.covrsecurity.io.ui.fragment.authorized.vault;
 
 import com.covrsecurity.io.R;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.databinding.FragmentCovrVaultAboutBinding;
 import com.covrsecurity.io.greendao.model.database.CovrVaultDbModel;
 import com.covrsecurity.io.utils.DatabaseOperationsWrapper;
@@ -58,6 +58,6 @@ public class CovrVaultAboutFragment extends CovrVaultBaseChildFragment<FragmentC
     }
 
     private void checkIfListEmpty() {
-        CovrApp.getInstance().getDatabaseOperationsWrapper().queryAllRecordsAsync(this, true);
+        IamApp.getInstance().getDatabaseOperationsWrapper().queryAllRecordsAsync(this, true);
     }
 }

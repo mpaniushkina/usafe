@@ -6,7 +6,7 @@ import androidx.loader.content.Loader;
 import android.view.View;
 
 import com.covrsecurity.io.R;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.databinding.FragmentCovrVaultViewNoteBinding;
 import com.covrsecurity.io.greendao.model.database.RecordType;
 import com.covrsecurity.io.model.databinding.CovrVaultEditNoteModel;
@@ -75,7 +75,7 @@ public class CovrVaultViewNoteFragment extends CovrVaultBaseViewFragment<Fragmen
 
     @Override
     protected CovrVaultEditNoteModel doLoad() {
-        return CovrApp.getInstance().getDatabaseOperationsWrapper().queryUnique(mRecordId, CovrVaultEditNoteModel.class);
+        return IamApp.getInstance().getDatabaseOperationsWrapper().queryUnique(mRecordId, CovrVaultEditNoteModel.class);
     }
 
     @Override

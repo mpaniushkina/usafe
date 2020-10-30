@@ -5,7 +5,7 @@ import androidx.annotation.WorkerThread;
 import android.util.Log;
 
 import com.covrsecurity.io.app.AppAdapter;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.event.DatabaseOperationCompletedEvent;
 import com.covrsecurity.io.greendao.model.database.CovrVaultDbModel;
 import com.covrsecurity.io.greendao.model.database.CovrVaultDbModelDao;
@@ -40,7 +40,7 @@ public class DatabaseOperationsWrapper {
 
     public DatabaseOperationsWrapper(Context context) {
         mContext = context;
-        mCovrVaultDao = CovrApp.getInstance().getDaoSession().getCovrVaultDbModelDao();
+        mCovrVaultDao = IamApp.getInstance().getDaoSession().getCovrVaultDbModelDao();
         mExecutorService = Executors.newSingleThreadExecutor();
     }
 

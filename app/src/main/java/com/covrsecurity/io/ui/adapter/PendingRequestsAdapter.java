@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.app.GlideApp;
 import com.covrsecurity.io.domain.entity.TemplateEntity;
 import com.covrsecurity.io.domain.entity.TransactionEntity;
@@ -108,7 +108,7 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
         this.mEmptyView = null;
         this.mLogoView = null;
         this.mItemManager = new ItemsManager();
-        maxImageHeight = (int) CovrApp.getInstance().getResources().getDimension(R.dimen.max_image_height);
+        maxImageHeight = (int) IamApp.getInstance().getResources().getDimension(R.dimen.max_image_height);
         validateEmptyViewVisibility();
         notifyRequestsCountChange();
     }

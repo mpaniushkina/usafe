@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.covrsecurity.io.app.AppAdapter;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.greendao.model.database.CovrVaultDbModel;
 import com.covrsecurity.io.model.EncryptedEnvelope;
 import com.google.gson.Gson;
@@ -78,7 +78,7 @@ public class DefaultEncryptHelper {
     private static final String TRANSFORMATION_RSA = "RSA/ECB/PKCS1Padding";
     private static final String CIPHER_PROVIDER = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? "AndroidKeyStoreBCWorkaround" : "AndroidOpenSSL";
     private static final String COVR_KEY_STORE_NAME = "keystore";
-    private static final String ENCRYPTED_DATA_FILE_PATH = CovrApp.getInstance().getFilesDir().getAbsolutePath() + File.separator + COVR_KEY_STORE_NAME;
+    private static final String ENCRYPTED_DATA_FILE_PATH = IamApp.getInstance().getFilesDir().getAbsolutePath() + File.separator + COVR_KEY_STORE_NAME;
     private static final String KEYSTORE_CIPHER = "KEYSTORE_CIPHER";
 
     private KeyStore keyStore;

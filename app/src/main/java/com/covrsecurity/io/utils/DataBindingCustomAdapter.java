@@ -23,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.covrsecurity.io.R;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.model.RegistrationPush;
 
 /**
@@ -35,7 +35,7 @@ public class DataBindingCustomAdapter {
 
     public static int getDigitAnimationLength() {
         if (mDigitAnimationLength == null) {
-            mDigitAnimationLength = CovrApp.getInstance().getResources().getInteger(R.integer.digit_fade_time);
+            mDigitAnimationLength = IamApp.getInstance().getResources().getInteger(R.integer.digit_fade_time);
         }
         return mDigitAnimationLength;
     }
@@ -58,7 +58,7 @@ public class DataBindingCustomAdapter {
     @BindingAdapter("message")
     public static void setMessageStatus(TextView textView, RegistrationPush message) {
         if (message != null) {
-            textView.setText(CovrApp.getInstance().getString(R.string.verification_sms_status, message.getStatusMessage()));
+            textView.setText(IamApp.getInstance().getString(R.string.verification_sms_status, message.getStatusMessage()));
             boolean successfulStatus = message.isSuccessfulStatus();
             textView.setTextColor(successfulStatus ? textView.getTextColors().getDefaultColor() : Color.RED);
         }
@@ -68,7 +68,7 @@ public class DataBindingCustomAdapter {
     @BindingAdapter("enabled")
     public static void setRetryButtonEnabled(TextView textView, boolean enabled) {
         textView.setClickable(enabled);
-        textView.setTextColor(ContextCompat.getColor(CovrApp.getInstance(),
+        textView.setTextColor(ContextCompat.getColor(IamApp.getInstance(),
                 enabled ? R.color.clickable_text : R.color.grey));
     }
 

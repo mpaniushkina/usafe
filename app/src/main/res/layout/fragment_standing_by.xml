@@ -23,7 +23,7 @@
         android:id="@+id/blurredView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundMain"
+        android:background="@drawable/bg_main"
         android:paddingBottom="0dp"
         android:paddingLeft="0dp"
         android:paddingRight="0dp">
@@ -44,7 +44,8 @@
                     android:layout_margin="@dimen/twenty_dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
-                    android:src="@drawable/menu_green" />
+                    android:src="@drawable/menu_green"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/menu_badge"
@@ -68,7 +69,7 @@
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside"
                 android:src="@drawable/menu_green"
-                android:visibility="invisible" />
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/logo"
@@ -76,9 +77,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:adjustViewBounds="true"
+                android:layout_marginTop="@dimen/setting_item_margin_top"
                 android:paddingBottom="@dimen/view_padding_ultra_small"
                 android:scaleType="centerInside"
-                android:src="@drawable/logo_large_green" />
+                android:src="@drawable/iamlogo3x" />
 
             <ImageView
                 android:id="@+id/expand_favorite"
@@ -220,9 +222,9 @@
 
         <!--</LinearLayout>-->
 
-        <include
-            android:id="@+id/bottom_button"
-            layout="@layout/bottom_button" />
+<!--        <include-->
+<!--            android:id="@+id/bottom_button"-->
+<!--            layout="@layout/bottom_button" />-->
 
         <LinearLayout
             android:id="@+id/sliding_up_panel"

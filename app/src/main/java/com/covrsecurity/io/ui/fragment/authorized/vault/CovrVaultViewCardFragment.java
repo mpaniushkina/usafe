@@ -17,7 +17,7 @@ import androidx.loader.content.Loader;
 import android.view.View;
 
 import com.covrsecurity.io.R;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.databinding.FragmentCovrVaultViewCardBinding;
 import com.covrsecurity.io.greendao.model.database.RecordType;
 import com.covrsecurity.io.model.databinding.CovrVaultViewCardModel;
@@ -105,7 +105,7 @@ public class CovrVaultViewCardFragment extends CovrVaultBaseViewFragment<Fragmen
 
     @Override
     protected PaymentCardEditModel doLoad() {
-        return CovrApp.getInstance().getDatabaseOperationsWrapper().queryUnique(mRecordId, PaymentCardEditModel.class);
+        return IamApp.getInstance().getDatabaseOperationsWrapper().queryUnique(mRecordId, PaymentCardEditModel.class);
     }
 
     @Override

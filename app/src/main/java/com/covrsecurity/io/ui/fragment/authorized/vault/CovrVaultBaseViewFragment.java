@@ -9,7 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.CallSuper;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.greendao.model.database.RecordType;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
 
@@ -77,10 +77,10 @@ public abstract class CovrVaultBaseViewFragment<ContentBinding extends ViewDataB
     }
 
     protected void setFavoriteAction(boolean favorite) {
-        CovrApp.getInstance().getDatabaseOperationsWrapper().setFavoriteAsync(mRecordId, favorite);
+        IamApp.getInstance().getDatabaseOperationsWrapper().setFavoriteAsync(mRecordId, favorite);
     }
 
     protected void deleteRecordAndClose() {
-        CovrApp.getInstance().getDatabaseOperationsWrapper().deleteAsync(mRecordId, result -> onBackPressed(), true);
+        IamApp.getInstance().getDatabaseOperationsWrapper().deleteAsync(mRecordId, result -> onBackPressed(), true);
     }
 }

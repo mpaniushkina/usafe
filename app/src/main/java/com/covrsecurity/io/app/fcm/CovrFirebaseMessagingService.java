@@ -1,7 +1,7 @@
 package com.covrsecurity.io.app.fcm;
 
 import com.covrsecurity.io.app.AppAdapter;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.manager.Analytics;
 import com.covrsecurity.io.model.Fields;
 import com.covrsecurity.io.model.Push;
@@ -38,7 +38,7 @@ public class CovrFirebaseMessagingService extends FirebaseMessagingService {
         ShortcutBadger.applyCount(this, push.getBadge() +
                 AppAdapter.settings().getHistoryBadge());
         if (AppAdapter.settings().getPushNotificationsEnable()) {
-            if (!CovrApp.getInstance().isAppInForeground()) {
+            if (!IamApp.getInstance().isAppInForeground()) {
                 NotificationUtils.vibrateDefault(this);
                 NotificationUtils.playNotificationSoundDefault(this);
                 NotificationUtils.buildNotification(this, push);

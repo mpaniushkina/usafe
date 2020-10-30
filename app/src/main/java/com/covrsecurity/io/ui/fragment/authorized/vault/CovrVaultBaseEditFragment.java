@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.covrsecurity.io.R;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.model.databinding.CovrVaultBaseModel;
 import com.covrsecurity.io.model.databinding.ToolbarModel;
 import com.covrsecurity.io.ui.activity.AuthorizedActivity;
@@ -139,7 +139,7 @@ public abstract class CovrVaultBaseEditFragment<ContentBinding extends ViewDataB
         if (empty) {
             mAlertDialog = DialogUtils.showOkDialog(getActivity(), getString(R.string.covr_vault_payment_card_edit_save_dialog_title), getString(getAlertDialogMessage()), true);
         } else {
-            CovrApp.getInstance().getDatabaseOperationsWrapper().insertOrReplaceAsync(mBaseEditModel, mDbRecordId, new DatabaseOperationsWrapper.Result<Void>() {
+            IamApp.getInstance().getDatabaseOperationsWrapper().insertOrReplaceAsync(mBaseEditModel, mDbRecordId, new DatabaseOperationsWrapper.Result<Void>() {
                 @Override
                 public void onSuccess(Void result) {
                     sendMessage();

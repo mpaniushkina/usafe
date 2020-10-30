@@ -22,7 +22,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.common.ZipUtils;
 import com.covrsecurity.io.data.utils.EntityMapper;
 import com.covrsecurity.io.databinding.FragmentLockscreenBinding;
@@ -52,7 +52,7 @@ import com.covrsecurity.io.ui.viewmodel.lockscreent.LockScreenViewModelFactory;
 import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.ConnectivityUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
-import com.covrsecurity.io.utils.CovrTools;
+import com.covrsecurity.io.utils.IamTools;
 import com.covrsecurity.io.utils.DialogUtils;
 import com.covrsecurity.io.utils.FingerprintUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
@@ -170,7 +170,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
                     mBinding.personCodeLL.clearText();
                     if (throwable instanceof NoUserDataFoundException) {
                         AppAdapter.settings().dropAll();
-                        CovrApp.getInstance().clearApplicationData();
+                        IamApp.getInstance().clearApplicationData();
                         ((AuthorizedActivity) getActivity()).hideLockScreen();
                         replaceFragment(LockedScreenFragment.newIInstance(), null,
                                 false, FragmentAnimationSet.FADE_IN_NO_EXIT);
@@ -518,7 +518,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
                 getString(R.string.migration_not_possible_title),
                 getString(R.string.migration_not_possible_message),
                 getString(R.string.ok),
-                (dialog, which) -> CovrTools.reRegistration(getActivity()), false);
+                (dialog, which) -> IamTools.reRegistration(getActivity()), false);
     }
 
     @Override

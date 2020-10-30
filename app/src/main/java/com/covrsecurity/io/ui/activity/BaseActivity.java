@@ -23,7 +23,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.event.NoInternetEvent;
 import com.covrsecurity.io.event.SessionConflictEvent;
 import com.covrsecurity.io.ui.dialog.ProgressDialogFragment;
@@ -32,7 +32,7 @@ import com.covrsecurity.io.ui.interfaces.IFragmentListener;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.baseactivity.BaseActivityViewModel;
 import com.covrsecurity.io.utils.ActivityUtils;
-import com.covrsecurity.io.utils.CovrTools;
+import com.covrsecurity.io.utils.IamTools;
 import com.covrsecurity.io.utils.DeviceIntegrityHelper;
 import com.covrsecurity.io.utils.DialogUtils;
 import com.covrsecurity.io.utils.ErrorMsgHelper;
@@ -131,13 +131,13 @@ public abstract class BaseActivity<Binding extends ViewDataBinding, VM extends B
     @Override
     protected void onStart() {
         super.onStart();
-        CovrApp covrApp = CovrApp.getInstance();
+        IamApp iamApp = IamApp.getInstance();
 
-        if (covrApp.isForceUpgrade()) {
+        if (iamApp.isForceUpgrade()) {
             forceUpdate();
-        } else if (covrApp.isAppBlocked()) {
+        } else if (iamApp.isAppBlocked()) {
             blockCurrentApp();
-        } else if (covrApp.isApplicationWasMinimized() || !covrApp.isInitialVersionCheckDone()) {
+        } else if (iamApp.isApplicationWasMinimized() || !iamApp.isInitialVersionCheckDone()) {
             checkAppVersion();
             if (this instanceof AuthorizedActivity) {
                 DeviceIntegrityHelper.checkAndWarnForMaliciousApps(this);
@@ -298,7 +298,7 @@ public abstract class BaseActivity<Binding extends ViewDataBinding, VM extends B
     private void showSessionConflictErrorDialog() {
         hideProgress();
         errMsgHelper.showSessionConflictErrorDialog(this,
-                (dialog, which) -> CovrTools.openUnautorizedActivity(BaseActivity.this));
+                (dialog, which) -> IamTools.openUnautorizedActivity(BaseActivity.this));
     }
 
     public void showErrDlg(Throwable t, DialogInterface.OnClickListener listener) {
@@ -321,7 +321,7 @@ public abstract class BaseActivity<Binding extends ViewDataBinding, VM extends B
     @Subscribe(sticky = false, threadMode = ThreadMode.MAIN)
     public void onSessionConflictReceived(SessionConflictEvent event) {  // todo #1
 //        AppAdapter.settings().dropAuthCookie();
-        CovrApp.getInstance().clearApplicationData();
+        IamApp.getInstance().clearApplicationData();
         AppAdapter.settings().dropAll();
         stopStandingByUpdates();
         showSessionConflictErrorDialog();
@@ -338,14 +338,14 @@ public abstract class BaseActivity<Binding extends ViewDataBinding, VM extends B
     }
 
     private void blockCurrentApp() {
-        CovrApp.getInstance().setAppIsBlocked();
+        IamApp.getInstance().setAppIsBlocked();
         DialogUtils.showOkDialog(this,
                 getString(R.string.version_mismatched_dialog_message),
                 false, (dialog, which) -> finish());
     }
 
     private void forceUpdate() {
-        CovrApp.getInstance().setForceUpgrade();
+        IamApp.getInstance().setForceUpgrade();
         DialogUtils.showOkDialog(this,
                 getString(R.string.force_update_dialog_update_message),
                 false, (dialog, which) -> {
@@ -362,6 +362,6 @@ public abstract class BaseActivity<Binding extends ViewDataBinding, VM extends B
     }
 
     private void setAppVersionCheckDone() {
-        CovrApp.getInstance().setInitialVersionCheckDone();
+        IamApp.getInstance().setInitialVersionCheckDone();
     }
 }

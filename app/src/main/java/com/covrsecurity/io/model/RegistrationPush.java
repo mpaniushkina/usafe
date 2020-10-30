@@ -1,7 +1,7 @@
 package com.covrsecurity.io.model;
 
 import com.covrsecurity.io.R;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +41,7 @@ public class RegistrationPush {
     public String getStatusMessage() {
         Integer statusMessageStringResId = STATUS_MESSAGES.get(status);
         if (statusMessageStringResId != null) {
-            return CovrApp.getInstance().getString(statusMessageStringResId);
+            return IamApp.getInstance().getString(statusMessageStringResId);
         } else {
             return status;
         }

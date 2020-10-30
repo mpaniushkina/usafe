@@ -1,6 +1,6 @@
 package com.covrsecurity.io.inject.component;
 
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.inject.module.ActivityModule;
 import com.covrsecurity.io.inject.module.ApplicationModule;
 import com.covrsecurity.io.inject.module.AuthorizedFragmentModule;
@@ -25,9 +25,9 @@ import dagger.android.support.AndroidSupportInjectionModule;
         AuthorizedFragmentModule.class,
         ServiceModule.class})
 @Singleton
-public interface AppComponent extends AndroidInjector<CovrApp> {
+public interface AppComponent extends AndroidInjector<IamApp> {
 
     @Component.Builder
-    abstract class Builder extends AndroidInjector.Builder<CovrApp> {
+    abstract class Builder extends AndroidInjector.Builder<IamApp> {
     }
 }

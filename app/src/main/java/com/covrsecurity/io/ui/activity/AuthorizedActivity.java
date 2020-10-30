@@ -22,7 +22,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.app.fcm.RegistrationIntentService;
 import com.covrsecurity.io.databinding.ActivityAuthorizedBinding;
 import com.covrsecurity.io.event.GetMessagesEvent;
@@ -202,7 +202,7 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
         //TODO: REMOVE FOLLOWING LINE IN CASE CUSTOMER WANTS TO REMEMBER LAST SCREEN WE'VE BEEN ON.
         //TODO: see https://softteco.atlassian.net/browse/UA-48
         if (!mShouldFragmentBeRetained) {
-            if (!isThirdPartyInAppActivityOpened || CovrApp.getInstance().isApplicationWasMinimized()) {
+            if (!isThirdPartyInAppActivityOpened || IamApp.getInstance().isApplicationWasMinimized()) {
                 replaceWithStandingByFragment();
             } else {
                 setThirdPartyInAppActivityOpened(false);
@@ -210,7 +210,7 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
         } else {
             mShouldFragmentBeRetained = false;
         }
-        CovrApp.getInstance().setApplicationWasMinimized(false);
+        IamApp.getInstance().setApplicationWasMinimized(false);
     }
 
     @Override
@@ -398,7 +398,7 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
         if (hideLockScreen) {
             hideLockScreen();
         } else {
-            if (!mIsEnteredAfterRegistration && (!isThirdPartyInAppActivityOpened || CovrApp.getInstance().isApplicationWasMinimized())) {
+            if (!mIsEnteredAfterRegistration && (!isThirdPartyInAppActivityOpened || IamApp.getInstance().isApplicationWasMinimized())) {
                 openLockScreen();
             } else {
                 mIsEnteredAfterRegistration = false;
@@ -555,7 +555,7 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
     }
 
     public void registerWithNotificationHubs() {
-        CovrApp.getInstance().isNotificationHubInitialized = true;
+        IamApp.getInstance().isNotificationHubInitialized = true;
         if (PlayServicesUtils.checkPlayServicesAndShowErrorDialog(this)) {
             // Start IntentService to register this application with FCM.
             Intent intent = new Intent(this, RegistrationIntentService.class);

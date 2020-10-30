@@ -12,7 +12,7 @@ import com.covrsecurity.io.ui.activity.AuthorizedActivity;
 import com.covrsecurity.io.ui.activity.BaseActivity;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 
-public class CovrTools {
+public class IamTools {
 
     public static void reRegistration(Activity activity) {
         Intent intent = new Intent(activity, UnauthorizedActivity.class);

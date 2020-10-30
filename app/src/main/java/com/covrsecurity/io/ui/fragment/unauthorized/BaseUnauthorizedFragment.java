@@ -11,7 +11,7 @@ import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.fragment.BaseFragment;
 import com.covrsecurity.io.ui.fragment.interfaces.IUnregisteredFragment;
 import com.covrsecurity.io.utils.ActivityUtils;
-import com.covrsecurity.io.utils.CovrTools;
+import com.covrsecurity.io.utils.IamTools;
 
 import timber.log.Timber;
 
@@ -97,7 +97,7 @@ public abstract class BaseUnauthorizedFragment<T extends ViewDataBinding> extend
     }
 
     protected void startAuthorizedActivity(final boolean isAfterRegistration) {
-        CovrTools.startAuthorizedActivity(getActivity(), isAfterRegistration);
+        IamTools.startAuthorizedActivity(getActivity(), isAfterRegistration);
     }
 
     @Override

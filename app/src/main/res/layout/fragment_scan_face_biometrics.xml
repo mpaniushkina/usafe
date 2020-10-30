@@ -5,39 +5,105 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_setup">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="@dimen/topbar_logo_width"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/setting_item_margin_top"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/iamlogo3x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/descriptionSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/logo">
+
+            <TextView
+                android:id="@+id/biometricTitle"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lockscreen_info_msg_wrapper_height"
+                android:fontFamily="@font/avenir"
+                android:gravity="center"
+                android:paddingStart="@dimen/code_displayer_right_margin"
+                android:paddingEnd="@dimen/code_displayer_right_margin"
+                android:text="@string/biometric_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_header_small" />
+
+            <TextView
+                android:id="@+id/biometricText"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/setting_item_margin_top"
+                android:text="@string/biometric_description1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/greeting_text_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/biometricTitle" />
+
+            <TextView
+                android:id="@+id/biometricText2"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/twenty_dp"
+                android:fontFamily="@font/avenir"
+                android:gravity="center"
+                android:paddingStart="@dimen/code_displayer_right_margin"
+                android:paddingEnd="@dimen/code_displayer_right_margin"
+                android:text="@string/biometric_description2"
+                android:textColor="@color/white"
+                android:textSize="@dimen/greeting_text_small"
+                app:layout_constraintTop_toBottomOf="@+id/biometricText"/>
+
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/camera_guideline"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".70" />
+            app:layout_constraintGuide_percent=".65" />
 
-        <com.otaliastudios.cameraview.CameraView
-            android:id="@+id/camera_preview"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            app:cameraAudio="off"
-            app:cameraFacing="front"
-            app:cameraPictureFormat="jpeg"
-            app:cameraPictureSizeMaxHeight="1280"
-            app:cameraPictureSizeMaxWidth="960"
-            app:cameraPictureSizeMinHeight="1280"
-            app:cameraPictureSizeMinWidth="960"
-            app:layout_constraintBottom_toBottomOf="@+id/camera_guideline"
-            app:layout_constraintDimensionRatio="960:1280"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone">
+<!--        <com.otaliastudios.cameraview.CameraView-->
+<!--            android:id="@+id/camera_preview"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            app:cameraAudio="off"-->
+<!--            app:cameraFacing="front"-->
+<!--            app:cameraPictureFormat="jpeg"-->
+<!--            app:cameraPictureSizeMaxHeight="1280"-->
+<!--            app:cameraPictureSizeMaxWidth="960"-->
+<!--            app:cameraPictureSizeMinHeight="1280"-->
+<!--            app:cameraPictureSizeMinWidth="960"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/camera_guideline"-->
+<!--            app:layout_constraintDimensionRatio="960:1280"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:visibility="gone">-->
 
-            <com.covrsecurity.io.ui.view.FaceFocusView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+<!--            <com.covrsecurity.io.ui.view.FaceFocusView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent" />-->
 
-        </com.otaliastudios.cameraview.CameraView>
+<!--        </com.otaliastudios.cameraview.CameraView>-->
 
         <ImageView
             android:id="@+id/capture_image"
@@ -53,53 +119,54 @@
             tools:background="@color/tealish"
             tools:visibility="gone" />
 
-        <View
-            android:id="@+id/bottom_guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/camera_guideline" />
-
-<!--        <TextView-->
-<!--            android:id="@+id/camera_hint"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginBottom="6dp"-->
-<!--            android:gravity="center"-->
-<!--            android:includeFontPadding="false"-->
-<!--            android:paddingHorizontal="24dp"-->
-<!--            android:text="@string/position_your_face_inside_the_oval"-->
-<!--            android:textColor="@color/covr_green"-->
-<!--            android:textSize="@dimen/text_header_small"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/bottom_guideline" />-->
-
         <Button
             android:id="@+id/capture"
             style="@style/GreenButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginBottom="170dp"
             android:text="@string/capture"
+            android:elevation="0dp"
+            android:minWidth="@dimen/setup_button_min_size"
+            android:minHeight="@dimen/setup_button_min_size"
+            app:elevation="0dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bottom_guideline" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-        <ImageView
-            android:id="@+id/camera_success"
+<!--        <ImageView-->
+<!--            android:id="@+id/camera_success"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:minWidth="48dp"-->
+<!--            android:minHeight="48dp"-->
+<!--            android:visibility="gone"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/bottom_guideline"-->
+<!--            tools:srcCompat="@drawable/selected"-->
+<!--            tools:visibility="gone" />-->
+
+        <Button
+            android:id="@+id/next"
+            style="@style/GreenButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"
+            android:layout_marginBottom="5dp"
+            android:text="@string/tutorial_next_arrow"
+            android:elevation="0dp"
+            android:minWidth="@dimen/setup_button_min_size"
+            android:minHeight="@dimen/setup_button_min_size"
+            app:elevation="0dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bottom_guideline"
-            tools:srcCompat="@drawable/selected"
-            tools:visibility="visible" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,14 +5,14 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.covrsecurity.io.BuildConfig;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.google.gson.Gson;
 
 import timber.log.Timber;
 
 public class LogUtil {
 
-    private static final String APP_TAG = "[" + CovrApp.class.getName() + "]";
+    private static final String APP_TAG = "[" + IamApp.class.getName() + "]";
     private static final boolean useGlobalLogs = false;
     private static final Gson GSON = new Gson();
 

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
-import com.covrsecurity.io.app.CovrApp;
+import com.covrsecurity.io.app.IamApp;
 import com.covrsecurity.io.app.GlideApp;
 import com.covrsecurity.io.domain.entity.StatusEntity;
 import com.covrsecurity.io.domain.entity.TransactionEntity;
@@ -122,7 +122,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             holder.mDate.setTextColor(pendingRequest.getStatus() == StatusEntity.EXPIRED
                     ? AppAdapter.resources().getColor(R.color.red)
                     : AppAdapter.resources().getColor(R.color.text_color_gray));
-            holder.mDate.setText(getString(R.string.history_status_text, StatusUtils.getStatusText(CovrApp.getInstance(), pendingRequest), date));
+            holder.mDate.setText(getString(R.string.history_status_text, StatusUtils.getStatusText(IamApp.getInstance(), pendingRequest), date));
             //holder.mNewElementIndicator.setVisibility(pendingRequest. ? View.VISIBLE : View.INVISIBLE);
             GlideApp.with(AppAdapter.context())
                     .load(pendingRequest.getCompany().getLogo())

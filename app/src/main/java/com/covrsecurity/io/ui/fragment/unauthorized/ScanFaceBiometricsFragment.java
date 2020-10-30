@@ -40,6 +40,7 @@ import com.covrsecurity.io.utils.DialogUtils;
 import com.covrsecurity.io.utils.FileUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
 import com.covrsecurity.io.domain.entity.request.RegisterRecoveryRequestEntity;
+import com.covrsecurity.io.utils.IamTools;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,7 +61,9 @@ import co.hyperverge.hypersnapsdk.objects.HVFaceConfig;
 import co.hyperverge.hypersnapsdk.objects.HyperSnapParams;
 import timber.log.Timber;
 
-public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<FragmentScanFaceBiometricsBinding, ScanFaceBiometricsViewModel> {
+public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<FragmentScanFaceBiometricsBinding, ScanFaceBiometricsViewModel>
+//, BaseUnauthorizedFragment<FragmentScanFaceBiometricsBinding>
+{
 
 //    @Deprecated
     public static final String CAPTURED_IMAGE_JPEG = "CAPTURED_IMAGE_JPEG.jpeg";
@@ -221,9 +224,6 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
         mEnteredText = arguments.getCharArray(COVR_CODE_EXTRA);
         mTransaction = (TransactionEntity) arguments.getSerializable(TRANSACTION_EXTRA);
         mAccept = arguments.getBoolean(ACCEPT_EXTRA);
-        if (getContext() != null) {
-            HyperSnapSDK.init(getContext(), HYPER_SNAP_APP_ID, HYPER_SNAP_APP_KEY, HyperSnapParams.Region.India);
-        }
     }
 
     @Override
@@ -234,6 +234,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
         } else {
             requestPermissions(ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
         }
+        mBinding.next.setVisibility(View.GONE);
         mBinding.capture.setOnClickListener(view1 -> {
             if ((getContext() != null || getActivity() != null) && ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
                 mBinding.capture.setEnabled(true);
@@ -249,7 +250,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                     documentCaptureHyperSnap();
                     mBinding.capture.setText(R.string.capture);
                     mBinding.captureImage.setImageDrawable(null);
-                    mBinding.cameraPreview.setVisibility(View.GONE);
+//                    mBinding.cameraPreview.setVisibility(View.GONE);
                     mBinding.captureImage.setVisibility(View.GONE);
                     enableNextButton(false);
                 }
@@ -340,8 +341,8 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
     }
 
     private void bindToLifecycle() {
-        mBinding.cameraPreview.setLifecycleOwner(this);
-        mBinding.cameraPreview.clearCameraListeners();
+//        mBinding.cameraPreview.setLifecycleOwner(this);
+//        mBinding.cameraPreview.clearCameraListeners();
         if (file != null) {
             AuthorizedActivity.hideLockScreen = true;
             if (sharedViewModel != null) {
@@ -370,6 +371,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                 try {
                     FileUtils.rotateImage(file);
 
+                    mBinding.descriptionSection.setVisibility(View.GONE);
                     mBinding.capture.setEnabled(true);
                     mBinding.captureImage.setImageDrawable(null);
                     mBinding.captureImage.setImageBitmap(BitmapFactory.decodeFile(file.getAbsolutePath()));
@@ -379,6 +381,8 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                     if (mScanReason != ScanIntention.RECOVERY) {
                         mScanReason = ScanIntention.REGISTRATION;
                     }
+                    mBinding.next.setVisibility(View.VISIBLE);
+                    mBinding.next.setOnClickListener(view -> nextClick());
                     enableNextButton(true);
                 } catch (IOException e) {
                     Timber.w(e);
@@ -433,19 +437,47 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                 Timber.e(e);
             }
         } else if (ScanIntention.REGISTRATION == mScanReason) {
-            try {
-                viewModel.register(mEnteredText, true, FileUtils.readAllBytes(getImageFile(selfie)), FileUtils.readAllBytes(getImageFile(documentFrontSide)));
-            } catch (IOException e) {
-                Timber.e(e);
-            }
+//            try {
+//                viewModel.register(mEnteredText, true, FileUtils.readAllBytes(getImageFile(selfie)), FileUtils.readAllBytes(getImageFile(documentFrontSide)));
+//            } catch (IOException e) {
+//                Timber.e(e);
+//            }
         } else if (ScanIntention.SCAN_DOCUMENT_FRONT_SIDE == mScanReason) {
             documentCaptureHyperSnap();
             mBinding.capture.setText(R.string.capture);
             mBinding.captureImage.setImageDrawable(null);
-            mBinding.cameraPreview.setVisibility(View.GONE);
+//            mBinding.cameraPreview.setVisibility(View.GONE);
             mBinding.captureImage.setVisibility(View.GONE);
             enableNextButton(false);
         }
+    }
+
+    private void nextClick() {
+        if (ScanIntention.RECOVERY == mScanReason) {
+            try {
+                viewModel.recover(recoveryId, FileUtils.readAllBytes(getImageFile(selfie)));
+            } catch (IOException e) {
+                Timber.e(e);
+            }
+        } else if (ScanIntention.REGISTRATION == mScanReason) {
+//            try {
+//                viewModel.register(mEnteredText, true, FileUtils.readAllBytes(getImageFile(selfie)), FileUtils.readAllBytes(getImageFile(documentFrontSide)));
+//            } catch (IOException e) {
+//                Timber.e(e);
+//            }
+            startAuthorizedActivity(true);
+        } else if (ScanIntention.SCAN_DOCUMENT_FRONT_SIDE == mScanReason) {
+            documentCaptureHyperSnap();
+            mBinding.capture.setText(R.string.capture);
+            mBinding.captureImage.setImageDrawable(null);
+//            mBinding.cameraPreview.setVisibility(View.GONE);
+            mBinding.captureImage.setVisibility(View.GONE);
+            enableNextButton(false);
+        }
+    }
+
+    protected void startAuthorizedActivity(final boolean isAfterRegistration) {
+        IamTools.startAuthorizedActivity(getActivity(), isAfterRegistration);
     }
 
     @Override
