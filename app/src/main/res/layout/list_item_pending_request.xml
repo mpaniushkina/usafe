@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:orientation="vertical"
     android:paddingTop="@dimen/view_padding_small">
 
@@ -19,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/background_pending_item">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_pending_logo"
@@ -46,6 +46,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:paddingTop="@dimen/fiveteen_dp"
+                    android:paddingBottom="@dimen/fiveteen_dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -53,19 +55,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:textColor="@color/text_green"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_big"
-                        tools:text="Google" />
+                        tools:text="Identity Created: Welcom Christian" />
 
                     <TextView
                         android:id="@+id/tv_pending_action"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:textColor="@color/text_green"
+                        android:maxLines="2"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="@dimen/ten_dp"
                         android:textSize="@dimen/text_small"
                         android:visibility="visible"
-                        tools:text="Login" />
+                        tools:text="IKEA has been sent you an authentication request" />
                 </LinearLayout>
 
                 <FrameLayout

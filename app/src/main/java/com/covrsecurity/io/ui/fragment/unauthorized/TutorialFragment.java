@@ -2,6 +2,7 @@ package com.covrsecurity.io.ui.fragment.unauthorized;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -11,7 +12,6 @@ import com.covrsecurity.io.databinding.FragmentTutorialBinding;
 import com.covrsecurity.io.manager.Analytics;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
-import com.covrsecurity.io.utils.KeyboardUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -43,9 +43,11 @@ public class TutorialFragment extends BaseUnauthorizedFragment<FragmentTutorialB
         mBinding.buttonRecoverId.setOnClickListener(view1 -> {
             checkForRootWithCallback((boolean isRooted) -> {
                 if (!isRooted) {
-                    ((UnauthorizedActivity) getActivity()).setAllowShowingBottomButtons(true);
-                    Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_RECOVERY_START);
-                    replaceFragment(RecoveryQrCodeFragment.newInstance(), null, true, FragmentAnimationSet.SLIDE_UP);
+                    Toast.makeText(getActivity(), "Not implemented yet", Toast.LENGTH_SHORT).show();
+                    //TODO uncommented when UI will be added, the flow is left as is
+//                    ((UnauthorizedActivity) getActivity()).setAllowShowingBottomButtons(true);
+//                    Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_RECOVERY_START);
+//                    replaceFragment(RecoveryQrCodeFragment.newInstance(), null, true, FragmentAnimationSet.SLIDE_UP);
                 }
             });
         });

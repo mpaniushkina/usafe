@@ -1,88 +1,104 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    tools:background="@color/grey">
 
     <TextView
         android:id="@+id/texDescription1"
+        style="@style/TextAppearance.AppCompat.Headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.AppCompat.Headline"
-        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/bottom_button_height"
         android:fontFamily="@font/avenir"
         android:gravity="center"
+        android:textColor="@color/white"
         android:textSize="@dimen/text_header_small"
-        android:layout_marginTop="@dimen/bottom_button_height"
-        android:paddingStart="@dimen/code_displayer_right_margin"
-        android:paddingEnd="@dimen/code_displayer_right_margin"
-        android:text="Take control of your own data, with iAM you decide" />
+        tools:text="Take control of your own data, with iAM you decide" />
 
     <LinearLayout
         android:id="@+id/termsOfUse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/texDescription1"
-        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/bottom_button_height"
         android:gravity="center_horizontal"
-        android:layout_marginTop="@dimen/setting_item_margin_top">
+        android:orientation="horizontal"
+        android:layout_below="@+id/texDescription1"
+        android:visibility="gone">
 
-    <TextView
-        android:id="@+id/texDescription2_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextAppearance.AppCompat.Medium"
-        android:fontFamily="@font/avenir"
-        android:textColor="@color/white"
-        android:textSize="@dimen/greeting_text_small"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/texDescription2_2"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Terms of Use"/>
+        <TextView
+            android:id="@+id/texDescription2_1"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/avenir"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_header_small"
+            app:layout_constraintEnd_toStartOf="@+id/texDescription2_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Terms of Use" />
 
-    <TextView
-        android:id="@+id/texDescription2_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/white"
-        android:fontFamily="@font/avenir"
-        android:textSize="@dimen/greeting_text_small"
-        app:layout_constraintStart_toEndOf="@+id/texDescription2_1"
-        app:layout_constraintEnd_toStartOf="@+id/texDescription2_3"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text=" / "/>
+        <TextView
+            android:id="@+id/texDescription2_2"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/avenir"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_header_small"
+            app:layout_constraintEnd_toStartOf="@+id/texDescription2_3"
+            app:layout_constraintStart_toEndOf="@+id/texDescription2_1"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text=" and " />
 
-    <TextView
-        android:id="@+id/texDescription2_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/white"
-        android:fontFamily="@font/avenir"
-        android:textSize="@dimen/greeting_text_small"
-        app:layout_constraintStart_toEndOf="@+id/texDescription2_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Pravacy Policy"/>
+        <TextView
+            android:id="@+id/texDescription2_3"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/avenir"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_header_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/texDescription2_2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Privacy Policy" />
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/texDescription2"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/termsOfUse"
+        android:layout_marginTop="@dimen/bottom_button_height"
+        android:paddingStart="@dimen/code_displayer_right_margin"
+        android:paddingEnd="@dimen/code_displayer_right_margin"
+        android:fontFamily="@font/avenir"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/greeting_text_small"
+        tools:text="Take control of your own data, with iAM you decide" />
 
     <TextView
         android:id="@+id/texDescription3"
+        style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/white"
+        android:layout_below="@+id/texDescription2"
+        android:layout_marginTop="@dimen/twenty_dp"
         android:fontFamily="@font/avenir"
         android:gravity="center"
-        android:textSize="@dimen/greeting_text_small"
-        android:layout_marginTop="@dimen/twenty_dp"
         android:paddingStart="@dimen/code_displayer_right_margin"
         android:paddingEnd="@dimen/code_displayer_right_margin"
-        android:layout_below="@+id/termsOfUse"
-        android:text="Take control of your own data, with iAM you decide"/>
+        android:textColor="@color/white"
+        android:textSize="@dimen/greeting_text_small"
+        tools:text="Take control of your own data, with iAM you decide" />
 
 
 </RelativeLayout>

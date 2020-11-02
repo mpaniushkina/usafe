@@ -20,7 +20,7 @@ public class WizardPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         WizardItem item = items[position];
-        return WizardItemFragment.newInstance(item.mDescription1, item.mDescription2_1, item.mDescription2_2, item.mDescription2_3, item.mDescription3, layout);
+        return WizardItemFragment.newInstance(item.mDescription1, item.mDescription2, item.mDescription3, layout, item.label);
     }
 
     @Override
@@ -30,17 +30,15 @@ public class WizardPagerAdapter extends FragmentStatePagerAdapter {
 
     public static class WizardItem {
         public int mDescription1;
-        public int mDescription2_1;
-        public int mDescription2_2;
-        public int mDescription2_3;
+        public int mDescription2;
         public int mDescription3;
+        public int label;
 
-        public WizardItem(int mDescription1, int mDescription2_1, int mDescription2_2, int mDescription2_3, int mDescription3) {
+        public WizardItem(int mDescription1, int mDescription2, int mDescription3, int label) {
             this.mDescription1 = mDescription1;
-            this.mDescription2_1 = mDescription2_1;
-            this.mDescription2_2 = mDescription2_2;
-            this.mDescription2_3 = mDescription2_3;
+            this.mDescription2 = mDescription2;
             this.mDescription3 = mDescription3;
+            this.label = label;
         }
     }
 }

@@ -19,12 +19,32 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/setting_item_margin_top"
             android:adjustViewBounds="true"
-            android:scaleType="centerInside"
             android:src="@drawable/iamlogo3x"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_back_button"
+            android:layout_marginTop="@dimen/setting_item_margin_top"
+            android:layout_marginStart="@dimen/setting_item_margin_top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/logo"/>
+
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_x_button"
+            android:layout_marginEnd="@dimen/setting_item_margin_top"
+            android:layout_marginTop="@dimen/setting_item_margin_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/logo"/>
 
         <RelativeLayout
             android:id="@+id/pager_wrapper"

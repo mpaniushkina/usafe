@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/title"
-            fontPath="@string/cfg_font_roboto_regular"
+            fontPath="@string/cfg_font_avenir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/failed_attempts_login_to_covr_failed"
@@ -43,7 +43,7 @@
 
         <TextView
             android:id="@+id/attempt_number"
-            fontPath="@string/cfg_font_roboto_regular"
+            fontPath="@string/cfg_font_avenir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"

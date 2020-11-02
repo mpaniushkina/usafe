@@ -39,6 +39,7 @@
                     android:id="@+id/wv_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/transparent"
                     android:layout_alignWithParentIfMissing="true"
                     android:layout_below="@id/tool_bar"
                     android:paddingTop="@dimen/view_padding"

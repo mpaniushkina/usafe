@@ -36,7 +36,8 @@
             <FrameLayout
                 android:id="@+id/menu"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -61,26 +62,41 @@
 
             </FrameLayout>
 
-            <ImageView
-                android:id="@+id/menuImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/twenty_dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/menu_green"
-                android:visibility="gone" />
+<!--            <ImageView-->
+<!--                android:id="@+id/menuImage"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="@dimen/twenty_dp"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:scaleType="centerInside"-->
+<!--                android:src="@drawable/menu_green"-->
+<!--                android:visibility="gone" />-->
 
             <ImageView
                 android:id="@+id/logo"
                 android:layout_width="@dimen/topbar_logo_width"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:adjustViewBounds="true"
                 android:layout_marginTop="@dimen/setting_item_margin_top"
-                android:paddingBottom="@dimen/view_padding_ultra_small"
-                android:scaleType="centerInside"
                 android:src="@drawable/iamlogo3x" />
+
+            <ImageView
+                android:id="@+id/menuImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/usericon3x"
+                android:layout_marginStart="@dimen/setting_item_margin_top"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:id="@+id/settingsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/settings3x"
+                android:layout_marginEnd="@dimen/setting_item_margin_top"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"/>
 
             <ImageView
                 android:id="@+id/expand_favorite"
@@ -252,6 +268,15 @@
                 android:background="@color/backgroundMain" />
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/scanQr"
+            android:background="@drawable/qrbuttonmain3x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="@dimen/thirty_dp"/>
 
     </RelativeLayout>
 

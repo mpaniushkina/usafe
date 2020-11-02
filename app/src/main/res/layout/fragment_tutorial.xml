@@ -91,7 +91,7 @@
                 android:elevation="0dp"
                 android:minWidth="@dimen/setup_button_min_size"
                 android:minHeight="@dimen/setup_button_min_size"
-                android:text="@string/recover_covr"
+                android:text="@string/recover_iam"
                 app:elevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

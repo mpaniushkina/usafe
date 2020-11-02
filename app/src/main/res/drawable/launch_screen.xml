@@ -4,7 +4,7 @@
 
     <item android:drawable="@drawable/bg_front" />
 
-    <item android:bottom="@dimen/twenty_four_dp">
+    <item android:bottom="@dimen/lockscreen_timers_layout_height">
 
         <bitmap
             android:gravity="center"

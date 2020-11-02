@@ -27,6 +27,7 @@ import com.covrsecurity.io.manager.Analytics;
 import com.covrsecurity.io.model.BiometricsVerification;
 import com.covrsecurity.io.model.error.BioMetricDataProvideCancel;
 import com.covrsecurity.io.ui.activity.AuthorizedActivity;
+import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.fragment.authorized.SettingsFragment;
 import com.covrsecurity.io.ui.viewmodel.base.BaseState;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
@@ -47,6 +48,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -61,9 +63,7 @@ import co.hyperverge.hypersnapsdk.objects.HVFaceConfig;
 import co.hyperverge.hypersnapsdk.objects.HyperSnapParams;
 import timber.log.Timber;
 
-public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<FragmentScanFaceBiometricsBinding, ScanFaceBiometricsViewModel>
-//, BaseUnauthorizedFragment<FragmentScanFaceBiometricsBinding>
-{
+public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<FragmentScanFaceBiometricsBinding, ScanFaceBiometricsViewModel> {
 
 //    @Deprecated
     public static final String CAPTURED_IMAGE_JPEG = "CAPTURED_IMAGE_JPEG.jpeg";
@@ -258,6 +258,8 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                 requestPermissions(ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
             }
         });
+        mBinding.closeButton.setOnClickListener(close -> onBackButton());
+        mBinding.backButton.setOnClickListener(view1 -> ((UnauthorizedActivity) Objects.requireNonNull(getActivity())).goBack());
     }
 
     private void captureHyperSnap() {

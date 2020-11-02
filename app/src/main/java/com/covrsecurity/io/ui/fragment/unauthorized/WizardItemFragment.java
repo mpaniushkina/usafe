@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -16,25 +17,23 @@ import com.covrsecurity.io.utils.FragmentAnimationSet;
 
 public class WizardItemFragment extends BaseFragment {
     private static final String DESCRIPTION1 = "description1";
-    private static final String DESCRIPTION2_1 = "description2_1";
-    private static final String DESCRIPTION2_2 = "description2_2";
-    private static final String DESCRIPTION2_3 = "description2_3";
+    private static final String DESCRIPTION2 = "description2";
     private static final String DESCRIPTION3 = "description3";
+    private static final String LABEL = "label";
     private static final String LAYOUT = "layout";
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static WizardItemFragment newInstance(int description1, int description2_1, int description2_2, int description2_3,  int description3, int layoutRes) {
+    public static WizardItemFragment newInstance(int description1, int description2, int description3, int layoutRes, int label) {
         WizardItemFragment fragment = new WizardItemFragment();
         Bundle args = new Bundle();
         args.putInt(DESCRIPTION1, description1);
-        args.putInt(DESCRIPTION2_1, description2_1);
-        args.putInt(DESCRIPTION2_2, description2_2);
-        args.putInt(DESCRIPTION2_3, description2_3);
+        args.putInt(DESCRIPTION2, description2);
         args.putInt(DESCRIPTION3, description3);
         args.putInt(LAYOUT, layoutRes);
+        args.putInt(LABEL, label);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,18 +49,23 @@ public class WizardItemFragment extends BaseFragment {
         View rootView = inflater.inflate(args.getInt(LAYOUT), container, false);
         TextView description1 = (TextView) rootView.findViewById(R.id.texDescription1);
         description1.setText(getString(args.getInt(DESCRIPTION1)));
+        TextView description2 = (TextView) rootView.findViewById(R.id.texDescription2);
+        description2.setText(getString(args.getInt(DESCRIPTION2)));
+        LinearLayout termsOfUse = (LinearLayout) rootView.findViewById(R.id.termsOfUse);
         TextView description2_1 = (TextView) rootView.findViewById(R.id.texDescription2_1);
-        description2_1.setText(getString(args.getInt(DESCRIPTION2_1)));
+        description2_1.setText(getString(R.string.tut4_desc2_1));
         TextView description2_2 = (TextView) rootView.findViewById(R.id.texDescription2_2);
-        description2_2.setText(getString(args.getInt(DESCRIPTION2_2)));
+        description2_2.setText(getString(R.string.tut4_desc2_2));
         TextView description2_3 = (TextView) rootView.findViewById(R.id.texDescription2_3);
-        description2_3.setText(getString(args.getInt(DESCRIPTION2_3)));
+        description2_3.setText(getString(R.string.tut4_desc2_3));
         TextView description3 = (TextView) rootView.findViewById(R.id.texDescription3);
         description3.setText(getString(args.getInt(DESCRIPTION3)));
-        if (!description2_3.getText().equals("") && description2_3.getText().length() > 1) {
+        int labelTextId = args.getInt(LABEL);
+        if (labelTextId != 0) {
+            description1.setVisibility(View.GONE);
+            termsOfUse.setVisibility(View.VISIBLE);
             description2_1.setOnClickListener(view -> {
-                String termsOfUseURL = (BuildConfig.DEBUG) ?
-                        getString(R.string.cfg_about_terms_of_use_dev) :
+                String termsOfUseURL = (BuildConfig.DEBUG) ? getString(R.string.cfg_about_terms_of_use_dev) :
                         getString(R.string.cfg_about_terms_of_use);
                 Fragment f = PrivacyPolicyFragment.newInstance(termsOfUseURL, getString(R.string.about_terms_conditions), true);
                 replaceFragment(f, f.getArguments(), true, FragmentAnimationSet.FADE_IN);
@@ -72,6 +76,9 @@ public class WizardItemFragment extends BaseFragment {
                 Fragment f = PrivacyPolicyFragment.newInstance(privacyPolicyURL, getString(R.string.about_privacy_policy), true);
                 replaceFragment(f, f.getArguments(), true, FragmentAnimationSet.FADE_IN);
             });
+        } else {
+            description1.setVisibility(View.VISIBLE);
+            termsOfUse.setVisibility(View.GONE);
         }
         return rootView;
     }

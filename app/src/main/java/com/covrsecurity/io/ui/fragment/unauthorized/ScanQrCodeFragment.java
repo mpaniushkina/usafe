@@ -24,6 +24,8 @@ import com.covrsecurity.io.utils.ConstantsUtils;
 import com.covrsecurity.io.utils.DialogUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
 
+import java.util.Objects;
+
 public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQrCodeBinding> {
 
     public static ScanQrCodeFragment newInstance() {
@@ -55,6 +57,8 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
                 sendScanIntent();
             }
         });
+        mBinding.closeButton.setOnClickListener(view1 -> onBackButton());
+        mBinding.backButton.setOnClickListener(view1 -> ((UnauthorizedActivity) Objects.requireNonNull(getActivity())).goBack());
     }
 
     @Override

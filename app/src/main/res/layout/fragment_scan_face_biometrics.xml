@@ -21,6 +21,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_back_button"
+            android:layout_marginTop="@dimen/setting_item_margin_top"
+            android:layout_marginStart="@dimen/setting_item_margin_top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/logo"/>
+
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_x_button"
+            android:layout_marginEnd="@dimen/setting_item_margin_top"
+            android:layout_marginTop="@dimen/setting_item_margin_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/logo"/>
+
         <LinearLayout
             android:id="@+id/descriptionSection"
             android:layout_width="match_parent"
@@ -43,6 +65,20 @@
                 android:textSize="@dimen/text_header_small" />
 
             <TextView
+                android:id="@+id/biometricSubTitle"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/setting_item_margin_top"
+                android:fontFamily="@font/avenir"
+                android:gravity="center"
+                android:paddingStart="@dimen/code_displayer_right_margin"
+                android:paddingEnd="@dimen/code_displayer_right_margin"
+                android:text="@string/biometric_subtitle"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_header_small" />
+
+            <TextView
                 android:id="@+id/biometricText"
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
@@ -50,11 +86,13 @@
                 android:fontFamily="@font/avenir"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/setting_item_margin_top"
+                android:paddingStart="@dimen/view_padding_normal"
+                android:paddingEnd="@dimen/view_padding_normal"
                 android:text="@string/biometric_description1"
                 android:textColor="@color/white"
                 android:textSize="@dimen/greeting_text_small"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/biometricTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/biometricSubTitle" />
 
             <TextView
                 android:id="@+id/biometricText2"

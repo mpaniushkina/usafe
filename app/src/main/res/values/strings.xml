@@ -39,29 +39,30 @@
     <string name="tut5_label">Get started</string>
     <string name="tut5_text">Pair and connect to our Partners</string>
 
-    <string name="tut1_desc1">Example content we will \nwrite new text for this \nbut it should be 3 rows</string>
-    <string name="tut1_desc2">Terms of Use / Privacy Policy</string>
-    <string name="tut1_desc3">By continuing the setup I accept the \nTerms of Use and Privacy Policy</string>
-    <string name="tut2_desc1">Take control of your \nown data, with iAM \nyou decide.</string>
-    <string name="tut2_desc2">Keep track on what data is shared \nwith whom and when</string>
-    <string name="tut2_desc3">Use your ID to log in and then \neasily revoke the access</string>
-    <string name="tut3_desc1">You will now be guided \nthrough the app set-up \nso you can start using iAM</string>
-    <string name="tut3_desc2">Terms of Use / Privacy Policy</string>
-    <string name="tut3_desc3">By continuing the setup I accept the \nTerms of Use and Privacy Policy</string>
-    <string name="tut4_desc1">You will now be guided \nthrough the app set-up \nso you can start using iAM</string>
+    <string name="tut1_desc1">Prove who you are \nwith iAM digital \nidentity.</string>
+    <string name="tut1_desc2">Use iAM to identify yourself as you would any other ID documentation.</string>
+    <string name="tut1_desc3">No passwords are needed. Get safe and quick access to services with QR code login.</string>
+    <string name="tut2_desc1">Stay secure and be in \ncontrol of your personal \ninformation.</string>
+    <string name="tut2_desc2">With iAM, you always know what information you share, when, and with whom.</string>
+    <string name="tut2_desc3">iAM safeguards your identity with ultra-strong encryption.</string>
+    <string name="tut3_desc1">Create your first ID and begin \nusing iAM by following a few \nsimple steps.</string>
+    <string name="tut3_desc2">Let\'s get started.</string>
+    <string name="tut3_desc3"></string>
+    <string name="tut4_desc1">Terms of Use and Privacy Policy.</string>
     <string name="tut4_desc2_1">Terms of Use </string>
-    <string name="tut4_desc2_2">&#160; / &#160; </string>
+    <string name="tut4_desc2_2">&#160; and &#160; </string>
     <string name="tut4_desc2_3">Privacy Policy</string>
     <string name="tut4_desc3">By continuing the setup I accept the \nTerms of Use and Privacy Policy</string>
     <string name="description_empty"> </string>
 
-    <string name="button_setup_iam">Create new ID</string>
+    <string name="button_setup_iam">Create your ID</string>
     <string name="tutorial_back_arrow">Previous</string>
     <string name="tutorial_next_arrow">Next</string>
+    <string name="tutorial_start_arrow">Start</string>
     <string name="tutorial_fragment_delete">Delete</string>
 
     <!-- Recovery-->
-    <string name="recover_covr">Recover ID</string>
+    <string name="recover_iam">Restore your ID</string>
     <string name="please_scan_the_qr_code_from_the_recovery">Please scan the QR Code from the recovery</string>
     <string name="open_settings_to_grant_permission_to_take_qr">Open settings to grant permission to scan qr code</string>
     <string name="set_up_recovery">Set up recovery</string>
@@ -79,9 +80,9 @@
     <string name="status_sent_sms">Processing SMS</string>
     <string name="status_fail_to_sent_sms">SMS failed to send</string>
     <string name="status_delivered_to_inbox">SMS sent to your messaging inbox</string>
-    <string name="qr_code_title">Scan QR Code \nto begin this process</string>
-    <string name="qr_code_description1">We will ask for permission to use your \ncamera for this process to work</string>
-    <string name="qr_code_description2">To begin registration please scan the \nQR code that has been presented to you.\nTap the "QR Scan" button below to start</string>
+    <string name="qr_code_title">Scan QR code to begin \nsetting up your ID.</string>
+    <string name="qr_code_description1">The app will ask you for permission to use the camera to scan the QR code.</string>
+    <string name="qr_code_description2">Tap the "QR Scan" button below to begin the registration process.</string>
 
     <!-- phone number -->
     <string name="phone_number_done">Done</string>
@@ -134,17 +135,15 @@
     <string name="about_cover_update_status_ok">Covr is up to date</string>
 
     <!-- enter personal code -->
-<!--    <string name="enter_code_header">Choose your Covr Code</string>-->
-    <string name="enter_code_header">Select pin</string>
-<!--    <string name="enter_code_subheader">Create your personal 6-digit Covr Code. Read more\u00A0></string>-->
-    <string name="enter_code_subheader">From now on you will use this code to verify and deny requests. You will not be able to recover this code if you forget it</string>
-    <string name="enter_code_title">Choose your code wisely</string>
+    <string name="enter_code_header">Select PIN</string>
+    <string name="enter_code_title">Choose your personal PIN code</string>
+    <string name="enter_code_subheader">Enter 6 digits. Be sure to remember it - you can\'t retrieve the PIN code if you forget it.</string>
     <string name="read_more">Read more\u00A0></string>
     <string name="here">here.\u00A0></string>
-<!--    <string name="verify_code_header">Confirm your Covr Code</string>-->
-    <string name="verify_code_header">Confirm pin</string>
-    <string name="verify_code_title">Please confirm code</string>
-    <string name="verify_code_subheader">Please confirm your Covr Code by entering it again here. Read more\u00A0></string>
+    <string name="verify_code_header">Confirm PIN</string>
+    <string name="verify_code_title">Enter the PIN code again</string>
+    <string name="verify_code_subheader">From here on, you will use this PIN code to unlock the app and authorize access.</string>
+    <!--    <string name="verify_code_subheader">Please confirm your Covr Code by entering it again here. Read more\u00A0></string>-->
     <string name="backup_and_enter">Back up and enter a new code.</string>
 
     <!-- fingerprint fragment -->
@@ -419,8 +418,8 @@
     <string name="pincode_message_common_pattern">You have chosen a common and weak Covr Code. This is not recommended, consider creating a stronger Covr Code.</string>
     <string name="pincode_message_repeated_digits">You have chosen a Covr Code with many repeated digits. This is not recommended, consider creating a stronger Covr Code.</string>
     <string name="pincode_message_date">You have chosen a date as your Covr Code. This is not recommended, consider creating a stronger Covr Code.</string>
-    <string name="pincode_dialog_title_weak">Weak Covr Code</string>
-    <string name="pincode_dialog_ok_button">Use weak Covr Code</string>
+    <string name="pincode_dialog_title_weak">Weak iAM Code</string>
+    <string name="pincode_dialog_ok_button">Use weak iAM Code</string>
     <string name="pincode_dialog_cancel_button">Create New</string>
 
     <!--Play Protect-->
@@ -456,10 +455,11 @@
     <string name="recovery_start_from_the_beginning">You should start the recovery from the beginning</string>
     <string name="position_your_face_inside_the_oval">Position your face\ninside the oval.</string>
     <string name="capture_document_back_side">Back Side</string>
-    <string name="button_iam_ready">iAM ready</string>
-    <string name="biometric_title">Scan your face \nto begin this process</string>
-    <string name="biometric_description1">We will ask for permission to use your \ncamera for this process to work</string>
-    <string name="biometric_description2">To begin registration please scan the \nQR code that has been presented to you.\nTap the "QR Scan" button below to start</string>
+    <string name="button_iam_ready">Accept</string>
+    <string name="biometric_title">Facial scan</string>
+    <string name="biometric_subtitle">Scan your face to continue \nthe registration.</string>
+    <string name="biometric_description1">Scanning your face verifies your identity and ensures that only you have access to the information.</string>
+    <string name="biometric_description2">Tap the "Face Scan" button below to continue the registration process.</string>
 
 
 </resources>

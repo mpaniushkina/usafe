@@ -28,6 +28,7 @@ import com.covrsecurity.io.utils.FingerprintUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -160,6 +161,8 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         mBinding.infoPager.setAdapter(new InfoPagerAdapter(getChildFragmentManager()));
+        mBinding.closeButton.setOnClickListener(view1 -> onBackButton());
+        mBinding.backButton.setOnClickListener(view1 -> ((UnauthorizedActivity) Objects.requireNonNull(getActivity())).goBack());
         return view;
     }
 

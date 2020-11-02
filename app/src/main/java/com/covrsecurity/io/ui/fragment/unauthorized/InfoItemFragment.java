@@ -47,16 +47,17 @@ public class InfoItemFragment extends Fragment {
         TextView titleNewCode = rootView.findViewById(R.id.tutorTitle);
         TextView tutorText = rootView.findViewById(R.id.tutor_text);
         enterNewCcode.setVisibility(View.GONE);
-        tutorText.setText(R.string.enter_code_subheader);
         if (currentItem == InfoPagerAdapter.ENTER_PAGE) {
             label.setText(R.string.enter_code_header);
             titleNewCode.setText(R.string.enter_code_title);
+            tutorText.setText(R.string.enter_code_subheader);
 //            subheaderTextId = R.string.enter_code_subheader;
 //            tutorText.setText(R.string.enter_code_subheader);
 //            enterNewCcode.setVisibility(View.GONE);
         } else {
             label.setText(R.string.verify_code_header);
             titleNewCode.setText(R.string.verify_code_title);
+            tutorText.setText(R.string.verify_code_subheader);
 //            subheaderTextId = R.string.verify_code_subheader;
 //            enterNewCcode.setVisibility(View.VISIBLE);
         }

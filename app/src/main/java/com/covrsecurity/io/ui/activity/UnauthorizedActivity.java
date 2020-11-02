@@ -90,7 +90,9 @@ public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, Una
         if (getIntent().getBooleanExtra(ConstantsUtils.INTENT_KEY_FOR_TUTORIAL_FRAGMENT, false)) {
             replaceFragment(TutorialFragment.newInstance(), null, false);
         } else {
-            replaceFragment(SplashFragment.newInstance(), null, false);
+//            replaceFragment(SplashFragment.newInstance(), null, false);
+            replaceFragment(TutorialFragment.newInstance(), null, false);
+
         }
         mBinding.setCancelSetupClickListener(v1 -> showCancelSetupDialog());
     }
