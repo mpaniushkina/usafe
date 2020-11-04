@@ -76,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/termsOfUse"
-        android:layout_marginTop="@dimen/bottom_button_height"
+        android:layout_marginTop="@dimen/setting_item_margin_top"
         android:paddingStart="@dimen/code_displayer_right_margin"
         android:paddingEnd="@dimen/code_displayer_right_margin"
         android:fontFamily="@font/avenir"

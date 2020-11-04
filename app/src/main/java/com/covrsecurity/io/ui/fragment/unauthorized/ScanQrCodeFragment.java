@@ -44,7 +44,7 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
 
     @Override
     public boolean isRegistration() {
-        return false;
+        return true;
     }
 
     @Override
@@ -55,6 +55,8 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
                 requestCameraPermissions();
             } else {
                 sendScanIntent();
+                //TO test on simulator
+//                moveToPinCodeFragment("");
             }
         });
         mBinding.closeButton.setOnClickListener(view1 -> onBackButton());

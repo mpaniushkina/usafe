@@ -57,7 +57,7 @@ public class PersonalCodeLayout extends RelativeLayout implements View.OnClickLi
 
     public void numberEntered(char enteredNumber) {
         int length = getNonEmptyLength(mEnteredText);
-        if (length < CODE_LENGTH) {
+        if (length <= CODE_LENGTH) {
             mEnteredText[length] = enteredNumber;
             TextView view = findItem();
             if (view != null) {

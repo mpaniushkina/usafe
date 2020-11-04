@@ -4,6 +4,8 @@ import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,6 +17,7 @@ import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -45,6 +48,7 @@ import com.covrsecurity.io.ui.adapter.PendingRequestsAdapter;
 import com.covrsecurity.io.ui.component.AnimationEndListner;
 import com.covrsecurity.io.ui.component.SlideLeftItemAnimator;
 import com.covrsecurity.io.ui.component.SmoothLinearLayoutManager;
+import com.covrsecurity.io.ui.dialog.ScanQrCodeDialog;
 import com.covrsecurity.io.ui.fragment.BaseFragment;
 import com.covrsecurity.io.ui.fragment.BaseViewModelFragment;
 import com.covrsecurity.io.ui.fragment.authorized.vault.CovrVaultAboutQuickBar;
@@ -293,6 +297,15 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == ConstantsUtils.SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
+            final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         setAdapter(AppAdapter.getPendingConsumerRequests());
@@ -356,6 +369,19 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         mBinding.menu.setOnClickListener(v -> ((AuthorizedActivity) getActivity()).openDrawer());
         hideButtonAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.add_button_hide);
         showButtonAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.add_button_show);
+        mBinding.scanQr.setOnClickListener(view -> {
+            if (!isCameraPermissionsGranted()) {
+                requestCameraPermissions();
+            } else {
+                scanQrCode();
+            }
+        });
+    }
+
+    private void scanQrCode() {
+        final ScanQrCodeDialog scanQrCodeDialog = new ScanQrCodeDialog();
+        scanQrCodeDialog.show(getFragmentManager(), ScanQrCodeDialog.QR_CODE_TAG);
+        scanQrCodeDialog.setTargetFragment(this, ConstantsUtils.SCAN_QR_REQUEST_CODE);
     }
 
     private void getQrCodeConnection() {
@@ -376,9 +402,21 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                         showChildFragment(fragment, fragment.getArguments())
                 );
             }
+//            else {
+//                scanQrCode();
+//            }
         } else {
             showToast(R.string.camera_permission_declined);
         }
+    }
+
+    private boolean isCameraPermissionsGranted() {
+        return ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestCameraPermissions() {
+        ActivityCompat.requestPermissions(getActivity(), ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
     }
 
     @Override

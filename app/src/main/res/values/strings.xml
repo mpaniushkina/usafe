@@ -1,5 +1,4 @@
 <resources>
-<!--    <string name="app_name">Covr</string>-->
     <string name="app_name">iAM</string>
     <string name="action_settings">Settings</string>
     <string name="yes">Yes</string>
@@ -51,8 +50,8 @@
     <string name="tut4_desc1">Terms of Use and Privacy Policy.</string>
     <string name="tut4_desc2_1">Terms of Use </string>
     <string name="tut4_desc2_2">&#160; and &#160; </string>
-    <string name="tut4_desc2_3">Privacy Policy</string>
-    <string name="tut4_desc3">By continuing the setup I accept the \nTerms of Use and Privacy Policy</string>
+    <string name="tut4_desc2_3">Privacy Policy.</string>
+    <string name="tut4_desc3">By continuing the setup I accept the \nTerms of Use and Privacy Policy.</string>
     <string name="description_empty"> </string>
 
     <string name="button_setup_iam">Create your ID</string>
@@ -99,11 +98,11 @@
     <string name="error_sending_sms">SMS could not be delivered.</string>
 
     <!-- info enter code -->
-    <string name="info_enter_code_header">You are about to choose your Covr Code.</string>
+    <string name="info_enter_code_header">You are about to choose your iAM Code.</string>
     <string name="info_enter_code_text">From now on you will use this code to verify and deny requests. You will not be able to recover this code if you forget it. Read more\u00A0></string>
-    <string name="info_enter_change_code_text">You will need to enter your current Covr Code before you can change it. Read more\u00A0></string>
+    <string name="info_enter_change_code_text">You will need to enter your current iAM Code before you can change it. Read more\u00A0></string>
 
-    <!-- verification coide -->
+    <!-- verification code -->
     <string name="verification_try_again">try again</string>
     <string name="verification_header">Enter 4-digit verification code</string>
     <string name="verification_explanation">An SMS has been sent to your messaging inbox. This can take up to a minute. If you do not receive an SMS, press \"try again\". Read more\u00A0></string>
@@ -143,7 +142,6 @@
     <string name="verify_code_header">Confirm PIN</string>
     <string name="verify_code_title">Enter the PIN code again</string>
     <string name="verify_code_subheader">From here on, you will use this PIN code to unlock the app and authorize access.</string>
-    <!--    <string name="verify_code_subheader">Please confirm your Covr Code by entering it again here. Read more\u00A0></string>-->
     <string name="backup_and_enter">Back up and enter a new code.</string>
 
     <!-- fingerprint fragment -->
@@ -242,7 +240,7 @@
     <string name="company_status_inactive">INACTIVE</string>
 
     <!-- Lock screen -->
-    <string name="lock_screen_enter_personal_code">Please enter your Covr Code.</string>
+    <string name="lock_screen_enter_personal_code">Please enter your iAM Code.</string>
     <string name="lock_screen_you_have_one_pending_request">You have 1 pending request.</string>
     <string name="lock_screen_you_have_x_pending_requests">You have %d pending requests.</string>
     <string name="lock_screen_pin_timeout">Pin timeout</string>
@@ -334,7 +332,7 @@
     <string name="covr_vault_payment_card_edit_cvv_number_label">CVV Number</string>
     <string name="covr_vault_payment_card_edit_cvv_number_edit_hint"><i>Enter CVV number…</i></string>
     <string name="covr_vault_payment_card_edit_toolbar_button_new">New</string>
-    <string name="covr_vault_payment_card_edit_toolbar_button_edit">@string/phone_number_edit</string>
+<!--    <string name="covr_vault_payment_card_edit_toolbar_button_edit">@string/phone_number_edit</string>-->
     <string name="covr_vault_payment_card_edit_toolbar_button_save">Save</string>
     <string name="covr_vault_payment_card_edit_save_dialog_title">Enter description!</string>
     <string name="covr_vault_payment_card_edit_save_dialog_message">A description is needed to save the card in your Secure Storage.</string>
@@ -379,19 +377,19 @@
     <string name="asset_statements" translatable="false">[{\n  \"relation\": [\"delegate_permission/common.handle_all_urls\"],\n  \"target\": {\n    \"namespace\": \"web\",\n    \"site\": \"https://secure.covrsecurity.io\",\n  }\n}]</string>
 
     <!--failed attempts dialog-->
-    <string name="failed_attempts_login_to_covr_failed">Login to Covr failed!</string>
+    <string name="failed_attempts_login_to_covr_failed">Login to iAM failed!</string>
     <string name="failed_attempts_change_pin">Change pin failed!</string>
     <string name="failed_attempts_you_have_only">You have only</string>
     <string name="failed_attempts_attempts_left_test">attempts left!</string>
-    <string name="failed_attempts_warning_text_5_2">Note! If these attempts fails your Covr app will be permanently locked. All data, history and connections will be securely deleted. There is absolutely NO possibility this can be un-done or retrieved later.\nYou have to start from the beginning by performing a new set-up of Covr and adding all connections all over again</string>
-    <string name="failed_attempts_warning_text_last">Final note! If this attempt fails your Covr app will be permanently locked. All data, history and connections will be securely deleted. There is absolutely NO possibility this can be un-done or retrieved later.\nYou have to start from the beginning by performing a new set-up of Covr and adding all connections all over again</string>
+    <string name="failed_attempts_warning_text_5_2">Note! If these attempts fails your iAM app will be permanently locked. All data, history and connections will be securely deleted. There is absolutely NO possibility this can be un-done or retrieved later.\nYou have to start from the beginning by performing a new set-up of iAM and adding all connections all over again</string>
+    <string name="failed_attempts_warning_text_last">Final note! If this attempt fails your iAM app will be permanently locked. All data, history and connections will be securely deleted. There is absolutely NO possibility this can be un-done or retrieved later.\nYou have to start from the beginning by performing a new set-up of iAM and adding all connections all over again</string>
     <string name="failed_attempts_warning_text_highlighted_chunk_1">Note!</string>
     <string name="failed_attempts_warning_text_highlighted_chunk_2">Final note!</string>
     <string name="failed_attempts_warning_text_highlighted_chunk_3">NO</string>
     <string name="failed_attempts_please_proceed_carefully">Please proceed carefully!</string>
     <string name="failed_attempts_try_again_in">Try again in %s</string>
 
-    <string name="locked_screen_header_text">Your Covr app has been permanently locked.</string>
+    <string name="locked_screen_header_text">Your iAM app has been permanently locked.</string>
     <string name="locked_screen_main_text">All data, history and connections has been securely deleted. There is absolutely NO possibility these can be retrieved again.\n\nYou have to start from the beginning by performing a new set-up of Covr and adding all connections all over again.</string>
 
     <!--Add connection QR-->
@@ -411,22 +409,22 @@
     <string name="touch_been_intercepted_alert">Your touch been intercepted! Please, check overlay apps and disable them.</string>
 
     <!--Forced update-->
-    <string name="force_update_dialog_update_message">You are running an old version of Covr. To continue, you must first update to the latest version.</string>
-    <string name="version_mismatched_dialog_message">Version not supported. Please delete and reinstall the Covr app.</string>
+    <string name="force_update_dialog_update_message">You are running an old version of iAM. To continue, you must first update to the latest version.</string>
+    <string name="version_mismatched_dialog_message">Version not supported. Please delete and reinstall the iAM app.</string>
 
     <!--Pin handling-->
-    <string name="pincode_message_common_pattern">You have chosen a common and weak Covr Code. This is not recommended, consider creating a stronger Covr Code.</string>
-    <string name="pincode_message_repeated_digits">You have chosen a Covr Code with many repeated digits. This is not recommended, consider creating a stronger Covr Code.</string>
-    <string name="pincode_message_date">You have chosen a date as your Covr Code. This is not recommended, consider creating a stronger Covr Code.</string>
+    <string name="pincode_message_common_pattern">You have chosen a common and weak iAM Code. This is not recommended, consider creating a stronger iAM Code.</string>
+    <string name="pincode_message_repeated_digits">You have chosen a iAM Code with many repeated digits. This is not recommended, consider creating a stronger iAM Code.</string>
+    <string name="pincode_message_date">You have chosen a date as your iAM Code. This is not recommended, consider creating a stronger iAM Code.</string>
     <string name="pincode_dialog_title_weak">Weak iAM Code</string>
     <string name="pincode_dialog_ok_button">Use weak iAM Code</string>
     <string name="pincode_dialog_cancel_button">Create New</string>
 
     <!--Play Protect-->
     <string name="play_protect_warning_message_singular_intro">A potentially harmful app has been detected:</string>
-    <string name="play_protect_warning_message_singular_ending">It should be uninstalled for safe usage of the Covr application.</string>
+    <string name="play_protect_warning_message_singular_ending">It should be uninstalled for safe usage of the iAM application.</string>
     <string name="play_protect_warning_message_plural_intro">Potentially harmful apps have been detected:</string>
-    <string name="play_protect_warning_message_plural_ending">These should be uninstalled for safe usage of the Covr application.</string>
+    <string name="play_protect_warning_message_plural_ending">These should be uninstalled for safe usage of the iAM application.</string>
     <string name="play_protect_warning_dialog_title">Security warning</string>
     <string name="play_protect_how_app_info">Show app info</string>
 
@@ -444,7 +442,6 @@
     <string name="arrow">arrow</string>
 
     <!-- Biometrics -->
-<!--    <string name="capture">Capture</string>-->
     <string name="capture">Face scan</string>
     <string name="recapture">Recapture</string>
     <string name="сamera_permission_not_granted">Camera permission not granted</string>

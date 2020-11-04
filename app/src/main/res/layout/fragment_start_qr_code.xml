@@ -55,7 +55,7 @@
             style="@style/TextAppearance.AppCompat.Headline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/lockscreen_info_msg_wrapper_height"
+            android:layout_marginTop="@dimen/lockscreen_timers_layout_height"
             android:fontFamily="@font/avenir"
             android:gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/logo"
@@ -111,7 +111,7 @@
             android:layout_centerHorizontal="true"
             android:paddingStart="42dp"
             android:paddingEnd="42dp"
-            android:layout_marginBottom="@dimen/about_fragment_view_pager_height"
+            android:layout_marginBottom="180dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <Button

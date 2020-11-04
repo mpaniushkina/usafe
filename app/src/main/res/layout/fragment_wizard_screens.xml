@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            custom:layout_constraintGuide_percent="0.6" />
+            custom:layout_constraintGuide_percent="0.65" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_wrapper"
@@ -100,7 +100,7 @@
             android:id="@+id/indicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="150dp"
             android:padding="10dp"
             app:fillColor="@color/button_green_bg"

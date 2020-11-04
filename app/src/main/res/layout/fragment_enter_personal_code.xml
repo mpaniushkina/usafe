@@ -41,8 +41,8 @@
         <com.covrsecurity.io.ui.component.NonSwipableViewPager
             android:visibility="visible"
             android:padding="@dimen/personal_code_pager_margin"
-            android:paddingTop="@dimen/personal_code_pager_margin_vertical"
-            android:paddingBottom="@dimen/personal_code_pager_margin_vertical"
+            android:paddingTop="@dimen/ten_dp"
+            android:paddingBottom="@dimen/personal_code_pager_margin"
             android:layout_above="@+id/info_message"
             android:id="@+id/info_pager"
             android:layout_width="wrap_content"

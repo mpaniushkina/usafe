@@ -1,5 +1,7 @@
 package com.covrsecurity.io.utils;
 
+import androidx.fragment.app.FragmentTransaction;
+
 import com.covrsecurity.io.R;
 
 // To keep fragment transition bundles together

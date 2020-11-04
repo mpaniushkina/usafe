@@ -93,7 +93,7 @@ public abstract class CovrVaultBaseEditFragment<ContentBinding extends ViewDataB
             mToolbarModel = new ToolbarModel.Builder()
                     .setLeftButtonText(R.string.cancel)
                     .setLeftButtonClick(v -> cancel())
-                    .setTitleText(mDbRecordId == -1 ? R.string.covr_vault_payment_card_edit_toolbar_button_new : R.string.covr_vault_payment_card_edit_toolbar_button_edit)
+//                    .setTitleText(mDbRecordId == -1 ? R.string.covr_vault_payment_card_edit_toolbar_button_new : R.string.covr_vault_payment_card_edit_toolbar_button_edit)
                     .setRightButtonText(R.string.covr_vault_payment_card_edit_toolbar_button_save)
                     .setRightButtonClick(v -> save())
                     .create();

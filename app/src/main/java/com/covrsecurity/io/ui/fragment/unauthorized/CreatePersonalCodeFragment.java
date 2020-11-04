@@ -162,7 +162,13 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         mBinding.infoPager.setAdapter(new InfoPagerAdapter(getChildFragmentManager()));
         mBinding.closeButton.setOnClickListener(view1 -> onBackButton());
-        mBinding.backButton.setOnClickListener(view1 -> ((UnauthorizedActivity) Objects.requireNonNull(getActivity())).goBack());
+        mBinding.backButton.setOnClickListener(view1 -> {
+                    if (mBinding.infoPager.getCurrentItem() == InfoPagerAdapter.VERIFY_PAGE) {
+                        goToEnterPage();
+                    } else {
+                        ((UnauthorizedActivity) Objects.requireNonNull(getActivity())).goBack();
+                    }
+                });
         return view;
     }
 
@@ -181,7 +187,6 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
             viewModel.assessPinCodeStrength(mEnteredText);
         } else if (mBinding.infoPager.getCurrentItem() == InfoPagerAdapter.VERIFY_PAGE) {
             if (Arrays.equals(mBinding.personCodeLL.getEnteredText(), mEnteredText)) {
-//                enableNextButton(true);
                 final boolean isRegister = mCreateCodeIntention == CreateCodeIntention.REGISTER;
                 if (mBinding.infoPager.getCurrentItem() == InfoPagerAdapter.ENTER_PAGE) {
                     goToVerifyPage();
@@ -194,7 +199,6 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                 }
             } else {
                 mBinding.personCodeLL.clearText();
-//                mBinding.digitalKeyboard.shake();
             }
         }
     }
