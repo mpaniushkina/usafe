@@ -33,17 +33,17 @@ public abstract class BaseScanFaceBiometricsFragment<Binding extends ViewDataBin
         if (unauthorizedActivity == null) {
             return;
         }
-        if (!usesBottomButtons()) {
-            unauthorizedActivity.hideButtons();
-        } else {
-            ActivityUtils.scheduleOnMainThread(() -> {
-                unauthorizedActivity.makeButtonsInvisible();
-                ActivityUtils.scheduleOnMainThread(
-                        unauthorizedActivity::showButtons,
-                        ULTRA_SHORT_DELAY
-                );
-            }, getResources().getInteger(R.integer.fragment_transition_animation_time_medium) - QUARTER_OF_SECOND_DELAY);
-        }
+//        if (!usesBottomButtons()) {
+//            unauthorizedActivity.hideButtons();
+//        } else {
+//            ActivityUtils.scheduleOnMainThread(() -> {
+//                unauthorizedActivity.makeButtonsInvisible();
+//                ActivityUtils.scheduleOnMainThread(
+//                        unauthorizedActivity::showButtons,
+//                        ULTRA_SHORT_DELAY
+//                );
+//            }, getResources().getInteger(R.integer.fragment_transition_animation_time_medium) - QUARTER_OF_SECOND_DELAY);
+//        }
     }
 
     @Override

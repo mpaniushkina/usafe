@@ -5,12 +5,14 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.Telephony;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -36,8 +38,15 @@ import com.covrsecurity.io.ui.viewmodel.unauthorizedactivity.UnauthorizedActivit
 import com.covrsecurity.io.ui.viewmodel.unauthorizedactivity.UnauthorizedActivityViewModelFactory;
 import com.covrsecurity.io.utils.ConstantsUtils;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javax.inject.Inject;
 
+import co.hyperverge.hypersnapsdk.activities.HVFaceActivity;
+import co.hyperverge.hypersnapsdk.listeners.FaceCaptureCompletionHandler;
+import co.hyperverge.hypersnapsdk.objects.HVError;
+import co.hyperverge.hypersnapsdk.objects.HVFaceConfig;
 import timber.log.Timber;
 
 public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, UnauthorizedActivityViewModel> {

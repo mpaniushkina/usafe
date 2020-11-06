@@ -199,7 +199,7 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
 
-    implementation('co.hyperverge:hypersnapsdk:3.1.3@aar', {
+    implementation('co.hyperverge:hypersnapsdk:3.2.1@aar', {
         transitive=true
         exclude group: 'com.android.support', module: 'appcompat'
         exclude group: 'com.google.android.gms'

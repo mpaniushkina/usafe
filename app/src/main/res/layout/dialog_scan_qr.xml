@@ -25,7 +25,7 @@
         android:id="@+id/doneQrScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/verifiedicon"
+        android:background="@drawable/ic_verifiedicon"
         android:layout_gravity="center"
         android:visibility="gone"/>
 

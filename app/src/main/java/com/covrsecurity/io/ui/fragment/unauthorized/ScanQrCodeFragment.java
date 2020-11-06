@@ -142,11 +142,6 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
         startActivityForResult(appSettingsIntent, ConstantsUtils.CAMERA_REQUEST_CODE);
     }
 
-//    private void moveToScanFaceBiometricsFragment(String qrCode) {
-//        final ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(qrCode);
-//        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
-//    }
-
     private void moveToPinCodeFragment(String qrCode) {
         final Fragment fragment = CreatePersonalCodeFragment.newInstance(CreatePersonalCodeFragment.CreateCodeIntention.REGISTER);
         replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);

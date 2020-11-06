@@ -2,6 +2,7 @@ package com.covrsecurity.io.ui.fragment.unauthorized;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -198,7 +199,9 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                     viewModel.setUpPassword(mEnteredText, true);
                 }
             } else {
-                mBinding.personCodeLL.clearText();
+                final Handler handler = new Handler();
+                final Runnable r = () -> mBinding.personCodeLL.clearText();
+                handler.postDelayed(r, 500);
             }
         }
     }

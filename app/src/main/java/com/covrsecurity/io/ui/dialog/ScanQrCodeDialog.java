@@ -22,7 +22,6 @@ import timber.log.Timber;
 public class ScanQrCodeDialog extends DialogFragment {
 
     public static final String QR_CODE_TAG = "QR_CODE_TAG";
-
     private static final String QR_CODE_EXTRA = "QR_CODE_EXTRA";
 
     public static String parseQrCodeResult(Intent data) {

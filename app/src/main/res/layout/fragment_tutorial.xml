@@ -28,13 +28,12 @@
 
         <ImageView
             android:id="@+id/iAMlogo"
-            android:layout_width="@dimen/topbar_logo_width"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
             android:src="@drawable/iamlogo3x"
-            android:paddingBottom="20dp"
             app:layout_constraintBottom_toTopOf="@+id/guidelineScreen"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

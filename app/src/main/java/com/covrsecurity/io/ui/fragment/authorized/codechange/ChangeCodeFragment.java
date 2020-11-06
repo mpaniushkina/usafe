@@ -352,7 +352,7 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                             viewModel.changePinCode(getActivity(), mOldPin, mNewPin, true);
                         } else {
                             mBinding.personCodeLL.clearText();
-                            mBinding.digitalKeyboard.shake();
+//                            mBinding.digitalKeyboard.shake();
                         }
                         break;
                 }

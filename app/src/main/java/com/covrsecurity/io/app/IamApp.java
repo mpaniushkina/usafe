@@ -27,6 +27,8 @@ import java.io.File;
 
 import javax.inject.Inject;
 
+import co.hyperverge.hypersnapsdk.HyperSnapSDK;
+import co.hyperverge.hypersnapsdk.objects.HyperSnapParams;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.DaggerApplication;
@@ -48,6 +50,9 @@ public class IamApp extends DaggerApplication implements
     public static IamApp getInstance() {
         return instance;
     }
+
+    private static final String HYPER_SNAP_APP_ID = "9a6cc4";
+    private static final String HYPER_SNAP_APP_KEY = "15df1efdb58328becfac";
 
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
@@ -101,6 +106,8 @@ public class IamApp extends DaggerApplication implements
         }
 
         initZendesk();
+
+        HyperSnapSDK.init(getApplicationContext(), HYPER_SNAP_APP_ID, HYPER_SNAP_APP_KEY, HyperSnapParams.Region.India);
     }
 
     @Deprecated // TODO !!!

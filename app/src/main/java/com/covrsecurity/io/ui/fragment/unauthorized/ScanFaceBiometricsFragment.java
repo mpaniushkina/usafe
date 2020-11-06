@@ -8,8 +8,10 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +30,7 @@ import com.covrsecurity.io.model.BiometricsVerification;
 import com.covrsecurity.io.model.error.BioMetricDataProvideCancel;
 import com.covrsecurity.io.ui.activity.AuthorizedActivity;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
+import com.covrsecurity.io.ui.fragment.TestFragment;
 import com.covrsecurity.io.ui.fragment.authorized.SettingsFragment;
 import com.covrsecurity.io.ui.viewmodel.base.BaseState;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
@@ -63,7 +66,10 @@ import co.hyperverge.hypersnapsdk.objects.HVFaceConfig;
 import co.hyperverge.hypersnapsdk.objects.HyperSnapParams;
 import timber.log.Timber;
 
-public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<FragmentScanFaceBiometricsBinding, ScanFaceBiometricsViewModel> {
+public class ScanFaceBiometricsFragment extends
+//        BaseUnauthorizedFragment<FragmentScanFaceBiometricsBinding>
+        BaseScanFaceBiometricsFragment<FragmentScanFaceBiometricsBinding, ScanFaceBiometricsViewModel>
+{
 
 //    @Deprecated
     public static final String CAPTURED_IMAGE_JPEG = "CAPTURED_IMAGE_JPEG.jpeg";
@@ -83,6 +89,8 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
     private String documentFrontSide = null;
     private File file = null;
     private com.covrsecurity.io.domain.entity.request.RegisterRecoveryRequestEntity registerRecovery;
+
+    private FaceCaptureCompletionHandler myCaptureCompletionListener;
 
     public ScanFaceBiometricsFragment() {}
 
@@ -250,7 +258,6 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                     documentCaptureHyperSnap();
                     mBinding.capture.setText(R.string.capture);
                     mBinding.captureImage.setImageDrawable(null);
-//                    mBinding.cameraPreview.setVisibility(View.GONE);
                     mBinding.captureImage.setVisibility(View.GONE);
                     enableNextButton(false);
                 }
@@ -263,12 +270,11 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
     }
 
     private void captureHyperSnap() {
-        FaceCaptureCompletionHandler myCaptureCompletionListener = new FaceCaptureCompletionHandler() {
+         myCaptureCompletionListener = new FaceCaptureCompletionHandler() {
             @Override
             public void onResult(HVError error, JSONObject result, JSONObject headers) {
                 if (error != null && getActivity() != null) { /*Handle error*/
                     Toast.makeText(getActivity(), error.getErrorMessage(), Toast.LENGTH_SHORT).show();
-                    mBinding.capture.setEnabled(true);
                 } else {
                     try {
                         selfie = (String) result.get("imageUri");
@@ -429,30 +435,30 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
         }
     }
 
-    @Override
-    protected void onNextButtonClick() {
-        super.onNextButtonClick();
-        if (ScanIntention.RECOVERY == mScanReason) {
-            try {
-                viewModel.recover(recoveryId, FileUtils.readAllBytes(getImageFile(selfie)));
-            } catch (IOException e) {
-                Timber.e(e);
-            }
-        } else if (ScanIntention.REGISTRATION == mScanReason) {
+//    @Override
+//    protected void onNextButtonClick() {
+//        super.onNextButtonClick();
+//        if (ScanIntention.RECOVERY == mScanReason) {
 //            try {
-//                viewModel.register(mEnteredText, true, FileUtils.readAllBytes(getImageFile(selfie)), FileUtils.readAllBytes(getImageFile(documentFrontSide)));
+//                viewModel.recover(recoveryId, FileUtils.readAllBytes(getImageFile(selfie)));
 //            } catch (IOException e) {
 //                Timber.e(e);
 //            }
-        } else if (ScanIntention.SCAN_DOCUMENT_FRONT_SIDE == mScanReason) {
-            documentCaptureHyperSnap();
-            mBinding.capture.setText(R.string.capture);
-            mBinding.captureImage.setImageDrawable(null);
-//            mBinding.cameraPreview.setVisibility(View.GONE);
-            mBinding.captureImage.setVisibility(View.GONE);
-            enableNextButton(false);
-        }
-    }
+//        } else if (ScanIntention.REGISTRATION == mScanReason) {
+////            try {
+////                viewModel.register(mEnteredText, true, FileUtils.readAllBytes(getImageFile(selfie)), FileUtils.readAllBytes(getImageFile(documentFrontSide)));
+////            } catch (IOException e) {
+////                Timber.e(e);
+////            }
+//        } else if (ScanIntention.SCAN_DOCUMENT_FRONT_SIDE == mScanReason) {
+//            documentCaptureHyperSnap();
+//            mBinding.capture.setText(R.string.capture);
+//            mBinding.captureImage.setImageDrawable(null);
+////            mBinding.cameraPreview.setVisibility(View.GONE);
+//            mBinding.captureImage.setVisibility(View.GONE);
+//            enableNextButton(false);
+//        }
+//    }
 
     private void nextClick() {
         if (ScanIntention.RECOVERY == mScanReason) {
@@ -472,7 +478,6 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
             documentCaptureHyperSnap();
             mBinding.capture.setText(R.string.capture);
             mBinding.captureImage.setImageDrawable(null);
-//            mBinding.cameraPreview.setVisibility(View.GONE);
             mBinding.captureImage.setVisibility(View.GONE);
             enableNextButton(false);
         }
