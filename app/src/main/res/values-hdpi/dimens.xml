@@ -16,11 +16,12 @@
     <!-- Keyboard -->
     <dimen name="keyboard_text_size">18sp</dimen>
     <dimen name="keyboard_text_margin">10dp</dimen>
-    <dimen name="keyboard_button_size">48dp</dimen>
+    <dimen name="keyboard_button_size">40dp</dimen>
+    <dimen name="keyboard_button_width">90dp</dimen>
     <dimen name="keyboard_button_radius">18dp</dimen>
 
     <!-- Fonts -->
-    <dimen name="text_regular">15sp</dimen>
+    <dimen name="text_regular">13sp</dimen>
     <dimen name="text_regular_dp">15dp</dimen>
     <dimen name="text_big">18sp</dimen>
     <dimen name="text_small">14sp</dimen>
@@ -29,7 +30,7 @@
     <dimen name="text_header">24sp</dimen>
     <dimen name="text_header_dp">24dp</dimen>
     <dimen name="text_toolbar_header">20sp</dimen>
-    <dimen name="text_header_small">22sp</dimen>
+    <dimen name="text_header_small">17sp</dimen>
     <dimen name="text_header_large">27sp</dimen>
     <dimen name="text_header_personal_code_info">24sp</dimen>
     <dimen name="greeting_text_small">12sp</dimen>
@@ -40,11 +41,11 @@
     <dimen name="text_button_add_partner">15sp</dimen>
     <dimen name="text_request_button">16sp</dimen>
 
-
     <!-- Enter personal code -->
     <dimen name="personal_code_pager_margin">16dp</dimen>
     <dimen name="personal_code_pager_margin_vertical">10dp</dimen>
     <dimen name="personal_code_info_margin_top">18dp</dimen>
+    <dimen name="personal_code_header_margin">100dp</dimen>
 
     <!-- weight for sliding up child fragments (add partnership and change personal code) -->
     <integer name="fragment_sliding_up_transparency_weight">1</integer>
@@ -58,4 +59,5 @@
     <dimen name="covr_vault_main_pager_adapter_text_size">12sp</dimen>
     <dimen name="covr_vault_main_pager_adapter_text_margin">6dp</dimen>
     <dimen name="covr_vault_main_pager_adapter_items_margin">9dp</dimen>
+    <dimen name="wizard_header">35dp</dimen>
 </resources>

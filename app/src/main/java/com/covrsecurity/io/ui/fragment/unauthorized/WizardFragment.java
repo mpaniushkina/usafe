@@ -49,11 +49,14 @@ public class WizardFragment extends BaseUnauthorizedFragment<FragmentWizardScree
             public void onPageSelected(int position) {
                 if (position == items.length - 1) {
                     next.setText(R.string.button_iam_ready);
+                    mBinding.skip.setVisibility(View.GONE);
                 } else {
                     if (position == items.length - 2) {
                         next.setText(R.string.tutorial_start_arrow);
+                        mBinding.skip.setVisibility(View.VISIBLE);
                     } else {
                         next.setText(R.string.tutorial_next_arrow);
+                        mBinding.skip.setVisibility(View.VISIBLE);
                     }
                 }
             }
@@ -80,10 +83,11 @@ public class WizardFragment extends BaseUnauthorizedFragment<FragmentWizardScree
                 pager.setCurrentItem(current + 1);
             }
             if (current == items.length - 1) {
-                Fragment f = ScanQrCodeFragment.newInstance();
+                Fragment f = CreatePersonalCodeFragment.newInstance(CreatePersonalCodeFragment.CreateCodeIntention.REGISTER);
                 replaceFragment(f, f.getArguments(), true, FragmentAnimationSet.FADE_IN);
             }
         });
+        mBinding.skip.setOnClickListener(view1 -> pager.setCurrentItem(items.length - 1));
     }
 
     @Override

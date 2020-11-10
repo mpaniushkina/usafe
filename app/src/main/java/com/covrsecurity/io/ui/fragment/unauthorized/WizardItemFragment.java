@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.covrsecurity.io.BuildConfig;
@@ -51,11 +52,9 @@ public class WizardItemFragment extends BaseFragment {
         description1.setText(getString(args.getInt(DESCRIPTION1)));
         TextView description2 = (TextView) rootView.findViewById(R.id.texDescription2);
         description2.setText(getString(args.getInt(DESCRIPTION2)));
-        LinearLayout termsOfUse = (LinearLayout) rootView.findViewById(R.id.termsOfUse);
+        ConstraintLayout termsOfUse = (ConstraintLayout) rootView.findViewById(R.id.termsOfUse);
         TextView description2_1 = (TextView) rootView.findViewById(R.id.texDescription2_1);
         description2_1.setText(getString(R.string.tut4_desc2_1));
-        TextView description2_2 = (TextView) rootView.findViewById(R.id.texDescription2_2);
-        description2_2.setText(getString(R.string.tut4_desc2_2));
         TextView description2_3 = (TextView) rootView.findViewById(R.id.texDescription2_3);
         description2_3.setText(getString(R.string.tut4_desc2_3));
         TextView description3 = (TextView) rootView.findViewById(R.id.texDescription3);

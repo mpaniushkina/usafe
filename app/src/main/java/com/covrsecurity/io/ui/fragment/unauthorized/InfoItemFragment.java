@@ -41,7 +41,6 @@ public class InfoItemFragment extends Fragment {
         Bundle args = getArguments();
         int currentItem = args.getInt(CURRENT_ITEM);
         View rootView = inflater.inflate(R.layout.item_info_personal_code, container, false);
-//        int subheaderTextId;
         TextView label = rootView.findViewById(R.id.tutor_label);
         TextView enterNewCcode = rootView.findViewById(R.id.enter_new_code);
         TextView titleNewCode = rootView.findViewById(R.id.tutorTitle);
@@ -51,15 +50,10 @@ public class InfoItemFragment extends Fragment {
             label.setText(R.string.enter_code_header);
             titleNewCode.setText(R.string.enter_code_title);
             tutorText.setText(R.string.enter_code_subheader);
-//            subheaderTextId = R.string.enter_code_subheader;
-//            tutorText.setText(R.string.enter_code_subheader);
-//            enterNewCcode.setVisibility(View.GONE);
         } else {
             label.setText(R.string.verify_code_header);
             titleNewCode.setText(R.string.verify_code_title);
             tutorText.setText(R.string.verify_code_subheader);
-//            subheaderTextId = R.string.verify_code_subheader;
-//            enterNewCcode.setVisibility(View.VISIBLE);
         }
 
         enterNewCcode.setOnClickListener(v -> ((CreatePersonalCodeFragment) getParentFragment()).goToEnterPage());

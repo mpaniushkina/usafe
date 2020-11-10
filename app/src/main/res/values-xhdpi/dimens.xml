@@ -17,12 +17,14 @@
     <dimen name="keyboard_text_size">22sp</dimen>
     <dimen name="keyboard_text_margin">10dp</dimen>
     <dimen name="keyboard_button_size">50dp</dimen>
+    <dimen name="keyboard_button_width">100dp</dimen>
     <dimen name="keyboard_button_radius">22dp</dimen>
 
     <!-- Enter personal code -->
     <dimen name="personal_code_pager_margin">20dp</dimen>
     <dimen name="personal_code_pager_margin_vertical">16dp</dimen>
     <dimen name="personal_code_info_margin_top">30dp</dimen>
+    <dimen name="personal_code_header_margin">130dp</dimen>
 
     <!-- Fonts -->
     <dimen name="text_regular">16sp</dimen>
@@ -57,4 +59,5 @@
     <dimen name="covr_vault_main_pager_adapter_text_size">13sp</dimen>
     <dimen name="covr_vault_main_pager_adapter_text_margin">8dp</dimen>
     <dimen name="covr_vault_main_pager_adapter_items_margin">10dp</dimen>
+    <dimen name="wizard_header">70dp</dimen>
 </resources>

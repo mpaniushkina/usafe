@@ -7,6 +7,7 @@
     <string name="cfg_font_roboto_italic">fonts/Roboto-Italic.ttf</string>
     <string name="cfg_font_roboto_light_italic">fonts/Roboto-LightItalic.ttf</string>
     <string name="cfg_font_avenir">fonts/Avenir.ttf</string>
+    <string name="cfg_font_poppins_regular">fonts/Poppins-Regular.ttf</string>
     <string name="cfg_support_email_address">service@covrsecurity.com</string>
     <string name="cfg_support_email_topic" />
     <string name="cfg_support_read_more_file">file:///android_asset/support_read.html"</string>

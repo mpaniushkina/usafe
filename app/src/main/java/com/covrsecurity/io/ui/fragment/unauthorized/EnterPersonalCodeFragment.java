@@ -30,9 +30,6 @@ public abstract class EnterPersonalCodeFragment extends
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        if (infoMessageIsDisplayed()) {
-            mBinding.infoMessage.setVisibility(View.VISIBLE);
-        }
         if (infoPagerIsDisplayed()) {
             mBinding.infoPager.setVisibility(View.VISIBLE);
         }

@@ -139,8 +139,6 @@ public class DigitalKeyboard extends LinearLayout implements View.OnClickListene
         mBtnNine.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
         mBtnZero.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
 
-//        erasedButton.setOnTouchListener((v, event) -> getTouchListener((TextView) v, event));
-
         if (isVibrationAllowedBySettings() && canVibrate) {
             mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
             if (!mVibrator.hasVibrator()) {

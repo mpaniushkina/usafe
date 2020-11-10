@@ -62,16 +62,6 @@
 
             </FrameLayout>
 
-<!--            <ImageView-->
-<!--                android:id="@+id/menuImage"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="@dimen/twenty_dp"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:scaleType="centerInside"-->
-<!--                android:src="@drawable/menu_green"-->
-<!--                android:visibility="gone" />-->
-
             <ImageView
                 android:id="@+id/logo"
                 android:layout_width="@dimen/topbar_logo_width"
@@ -187,61 +177,6 @@
             android:theme="@style/RecyclerViewEdgeColor"
             android:visibility="visible" />
 
-        <!--<LinearLayout-->
-        <!--android:id="@+id/bottom_button"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/bottom_button_height"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:background="@color/add_partnership_button_bg"-->
-        <!--android:orientation="vertical"-->
-        <!--android:paddingLeft="@dimen/twenty_dp"-->
-        <!--android:paddingRight="@dimen/twenty_dp">-->
-
-        <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/border_line_thin_thickness"-->
-        <!--android:background="@color/soft_green" />-->
-
-        <!--<FrameLayout-->
-        <!--android:id="@+id/right_bottom_button"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-
-        <!--<LinearLayout-->
-        <!--android:id="@+id/add_partnership_plus"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_gravity="center">-->
-
-        <!--<ImageView-->
-        <!--android:layout_width="@dimen/standing_by_fragment_plus_side_length"-->
-        <!--android:layout_height="@dimen/standing_by_fragment_plus_side_length"-->
-        <!--android:layout_gravity="center_vertical"-->
-        <!--android:layout_marginLeft="@dimen/ten_dp"-->
-        <!--android:layout_marginRight="@dimen/ten_dp"-->
-        <!--android:gravity="center_vertical"-->
-        <!--android:src="@drawable/plus"-->
-        <!--android:id="@+id/imageView" />-->
-
-        <!--<TextView-->
-        <!--android:id="@+id/add_partnership"-->
-        <!--style="@style/WhiteBottomButton"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:paddingEnd="@dimen/view_padding"-->
-        <!--android:paddingRight="@dimen/view_padding"-->
-        <!--android:text="@string/add_partnership" />-->
-
-        <!--</LinearLayout>-->
-
-        <!--</FrameLayout>-->
-
-        <!--</LinearLayout>-->
-
-<!--        <include-->
-<!--            android:id="@+id/bottom_button"-->
-<!--            layout="@layout/bottom_button" />-->
-
         <LinearLayout
             android:id="@+id/sliding_up_panel"
             android:layout_width="match_parent"
@@ -269,14 +204,34 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/scanQr"
-            android:background="@drawable/qrbuttonmain3x"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="@dimen/thirty_dp"/>
+            android:layout_marginBottom="@dimen/thirty_dp">
+
+        <ImageView
+            android:id="@+id/scanQrBg"
+            android:background="@drawable/ic_qricon_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:id="@+id/scanQr"
+            android:background="@drawable/ic_qricon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </RelativeLayout>
 

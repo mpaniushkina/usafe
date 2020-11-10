@@ -36,8 +36,6 @@ import timber.log.Timber;
 
 public class TutorialFragment extends BaseUnauthorizedFragment<FragmentTutorialBinding> {
 
-    Context mContext;
-
     public static Fragment newInstance() {
         return new TutorialFragment();
     }

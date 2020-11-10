@@ -8,10 +8,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,7 +28,6 @@ import com.covrsecurity.io.model.BiometricsVerification;
 import com.covrsecurity.io.model.error.BioMetricDataProvideCancel;
 import com.covrsecurity.io.ui.activity.AuthorizedActivity;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
-import com.covrsecurity.io.ui.fragment.TestFragment;
 import com.covrsecurity.io.ui.fragment.authorized.SettingsFragment;
 import com.covrsecurity.io.ui.viewmodel.base.BaseState;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
@@ -66,10 +63,7 @@ import co.hyperverge.hypersnapsdk.objects.HVFaceConfig;
 import co.hyperverge.hypersnapsdk.objects.HyperSnapParams;
 import timber.log.Timber;
 
-public class ScanFaceBiometricsFragment extends
-//        BaseUnauthorizedFragment<FragmentScanFaceBiometricsBinding>
-        BaseScanFaceBiometricsFragment<FragmentScanFaceBiometricsBinding, ScanFaceBiometricsViewModel>
-{
+public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<FragmentScanFaceBiometricsBinding, ScanFaceBiometricsViewModel> {
 
 //    @Deprecated
     public static final String CAPTURED_IMAGE_JPEG = "CAPTURED_IMAGE_JPEG.jpeg";

@@ -73,6 +73,7 @@
     <dimen name="thirty_dp">30dp</dimen>
     <dimen name="forty_dp">40dp</dimen>
     <dimen name="forty_eight_dp">48dp</dimen>
+    <dimen name="seventy_dp">70dp</dimen>
 
     <!-- **************** BELOW are values defined for different densities in other files ********** -->
 
@@ -109,6 +110,7 @@
     <dimen name="keyboard_text_size">20sp</dimen>
     <dimen name="keyboard_text_margin">10dp</dimen>
     <dimen name="keyboard_button_size">50dp</dimen>
+    <dimen name="keyboard_button_width">100dp</dimen>
     <dimen name="keyboard_button_radius">22dp</dimen>
 
     <!-- Enter personal code -->
@@ -120,6 +122,7 @@
     <dimen name="enter_verification_view_header_top_padding">0dp</dimen>
     <dimen name="enter_verification_view_number_container_bottom_padding">2dp</dimen>
     <dimen name="enter_verification_view_number_container_top_padding">0dp</dimen>
+    <dimen name="personal_code_header_margin">130dp</dimen>
 
     <!-- Recovery-->
     <dimen name="recovery_title_margin_top">124dp</dimen>
@@ -133,6 +136,7 @@
     <dimen name="tutor_title_text_size">28sp</dimen>
     <dimen name="tutor_img_max_height">1000dp</dimen>
     <dimen name="tutor_text_text_size">14sp</dimen>
+    <dimen name="wizard_header">70dp</dimen>
 
     <!-- Secure Storage -->
     <dimen name="covr_vault_view_main_image">64dp</dimen>

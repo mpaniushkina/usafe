@@ -90,7 +90,7 @@ public class IamApp extends DaggerApplication implements
         ViewPump.init(ViewPump.builder()
                 .addInterceptor(new CalligraphyInterceptor(
                         new CalligraphyConfig.Builder()
-                                .setDefaultFontPath(getString(R.string.cfg_font_avenir))
+                                .setDefaultFontPath(getString(R.string.cfg_font_poppins_regular))
                                 .setFontAttrId(R.attr.fontPath)
                                 .build()))
                 .build());

@@ -40,22 +40,11 @@
 
         <com.covrsecurity.io.ui.component.NonSwipableViewPager
             android:visibility="visible"
-            android:padding="@dimen/personal_code_pager_margin"
-            android:paddingTop="@dimen/ten_dp"
-            android:paddingBottom="@dimen/personal_code_pager_margin"
-            android:layout_above="@+id/info_message"
+            android:paddingTop="@dimen/fiveteen_dp"
+            android:layout_above="@+id/personCodeLL"
             android:id="@+id/info_pager"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
-
-        <TextView
-            android:visibility="gone"
-            style="@style/InfoTextStyle"
-            android:layout_above="@+id/personCodeLL"
-            android:padding="@dimen/ten_dp"
-            android:layout_centerInParent="true"
-            android:id="@+id/info_message"
-            android:text="@string/enter_personal_code" />
 
         <com.covrsecurity.io.ui.component.PersonalCodeLayout
             android:layout_above="@+id/digitalKeyboard"
@@ -72,6 +61,5 @@
             android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
     </RelativeLayout>
 </layout>

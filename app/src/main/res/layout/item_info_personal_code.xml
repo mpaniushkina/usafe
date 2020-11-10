@@ -10,39 +10,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/twenty_dp"
-        android:layout_marginBottom="@dimen/ten_dp"
+        android:layout_marginTop="@dimen/fiveteen_dp"
         android:gravity="center"
         android:textColor="@color/white"
-        android:fontFamily="@font/avenir"
+        android:fontFamily="@font/poppins_regular"
         android:textSize="@dimen/text_header_small"
-        tools:text="2" />
+        tools:text="Select pin" />
 
     <TextView
         android:id="@+id/tutorTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="@dimen/ten_dp"
+        android:layout_marginTop="@dimen/personal_code_header_margin"
         android:gravity="center"
         android:textColor="@color/white"
-        android:fontFamily="@font/avenir"
+        android:fontFamily="@font/poppins_regular"
         android:textSize="@dimen/text_header_small"
-        tools:text="3" />
+        tools:text="Header" />
 
     <TextView
         android:id="@+id/tutor_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_below="@+id/tutorTitle"
-        android:layout_marginBottom="@dimen/personal_code_info_margin_bottom"
         android:layout_weight="1"
+        android:paddingStart="@dimen/ten_dp"
+        android:paddingEnd="@dimen/ten_dp"
         android:gravity="center_horizontal|center_vertical"
         android:textColor="@color/white"
-        android:fontFamily="@font/avenir"
+        android:fontFamily="@font/poppins_regular"
         android:textSize="@dimen/text_small"
-        tools:text="1" />
+        tools:text="Description" />
 
     <TextView
         android:id="@+id/enter_new_code"

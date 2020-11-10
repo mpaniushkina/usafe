@@ -52,7 +52,9 @@ import com.covrsecurity.io.ui.dialog.ScanQrCodeDialog;
 import com.covrsecurity.io.ui.fragment.BaseFragment;
 import com.covrsecurity.io.ui.fragment.BaseViewModelFragment;
 import com.covrsecurity.io.ui.fragment.authorized.vault.CovrVaultAboutQuickBar;
+import com.covrsecurity.io.ui.fragment.unauthorized.CreatePersonalCodeFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.ScanFaceBiometricsFragment;
+import com.covrsecurity.io.ui.fragment.unauthorized.ScanQrCodeFragment;
 import com.covrsecurity.io.ui.interfaces.IChildFragmentListener;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.biometricsshared.BiometricsSharedViewModel;
@@ -371,7 +373,8 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         showButtonAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.add_button_show);
         mBinding.scanQr.setOnClickListener(view -> {
             if (!isCameraPermissionsGranted()) {
-                requestCameraPermissions();
+                Fragment f = ScanQrCodeFragment.newInstance();
+                replaceFragment(f, f.getArguments(), true, FragmentAnimationSet.FADE_IN);
             } else {
                 scanQrCode();
             }

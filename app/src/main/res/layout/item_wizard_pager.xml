@@ -11,14 +11,14 @@
         style="@style/TextAppearance.AppCompat.Headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/bottom_button_height"
-        android:fontFamily="@font/avenir"
+        android:layout_marginTop="@dimen/wizard_header"
+        android:fontFamily="@font/poppins_medium"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="@dimen/text_header_small"
         tools:text="Take control of your own data, with iAM you decide" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/termsOfUse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,41 +34,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/avenir"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/white"
             android:textSize="@dimen/text_header_small"
-            app:layout_constraintEnd_toStartOf="@+id/texDescription2_2"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Terms of Use" />
-
-        <TextView
-            android:id="@+id/texDescription2_2"
-            style="@style/TextAppearance.AppCompat.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/avenir"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_header_small"
-            app:layout_constraintEnd_toStartOf="@+id/texDescription2_3"
-            app:layout_constraintStart_toEndOf="@+id/texDescription2_1"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text=" and " />
+            tools:text="Terms of Use and" />
 
         <TextView
             android:id="@+id/texDescription2_3"
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/avenir"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/white"
             android:textSize="@dimen/text_header_small"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/texDescription2_2"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texDescription2_1"
             tools:text="Privacy Policy" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/texDescription2"
@@ -79,7 +66,7 @@
         android:layout_marginTop="@dimen/setting_item_margin_top"
         android:paddingStart="@dimen/code_displayer_right_margin"
         android:paddingEnd="@dimen/code_displayer_right_margin"
-        android:fontFamily="@font/avenir"
+        android:fontFamily="@font/poppins_regular"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="@dimen/greeting_text_small"
@@ -92,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/texDescription2"
         android:layout_marginTop="@dimen/twenty_dp"
-        android:fontFamily="@font/avenir"
+        android:fontFamily="@font/poppins_regular"
         android:gravity="center"
         android:paddingStart="@dimen/code_displayer_right_margin"
         android:paddingEnd="@dimen/code_displayer_right_margin"

@@ -54,7 +54,7 @@ ext.global = [
         versionCodeNumber       : 479,
         versionName             : param_version_name + "." + 479,
         androidMinSdkVersion    : 20,
-        androidTargetSdkVersion : 30,
+        androidTargetSdkVersion : 29,
         androidBuildToolsVersion: '28.0.3',
         javacCompatibility      : 1.8,
 

@@ -112,5 +112,18 @@
             app:pageColor="@color/backgroundMain"
             app:radius="@dimen/six_dp" />
 
+        <TextView
+            android:id="@+id/skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/twenty_dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/text_toolbar_header"
+            android:text="Skip"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

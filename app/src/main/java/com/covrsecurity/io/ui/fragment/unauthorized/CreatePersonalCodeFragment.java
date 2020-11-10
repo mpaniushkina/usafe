@@ -193,8 +193,9 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                     goToVerifyPage();
                 } else if (isRegister && Arrays.equals(mBinding.personCodeLL.getEnteredText(), mEnteredText)) {
 //            viewModel.register(mBinding.personCodeLL.getEnteredText(), true);
-                    ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
-                    replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+                    startAuthorizedActivity(true);
+//                    ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
+//                    replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
                 } else if (!isRegister) {
                     viewModel.setUpPassword(mEnteredText, true);
                 }

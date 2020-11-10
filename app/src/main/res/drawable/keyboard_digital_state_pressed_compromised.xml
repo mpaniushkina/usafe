@@ -8,5 +8,5 @@
 <!--        android:height="@dimen/keyboard_button_size" />-->
     <solid android:color="@color/setting_red" />
     <corners android:radius="3dp" />
-    <size android:width="100dp" android:height="@dimen/keyboard_button_size" />
+    <size android:width="@dimen/keyboard_button_width" android:height="@dimen/keyboard_button_size" />
 </shape>

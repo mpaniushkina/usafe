@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.databinding.FragmentStartQrCodeBinding;
+import com.covrsecurity.io.ui.activity.AuthorizedActivity;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.dialog.ScanQrCodeDialog;
 import com.covrsecurity.io.utils.ActivityUtils;
@@ -55,12 +56,10 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
                 requestCameraPermissions();
             } else {
                 sendScanIntent();
-                //TO test on simulator
-//                moveToPinCodeFragment("");
             }
         });
-        mBinding.closeButton.setOnClickListener(view1 -> onBackButton());
-        mBinding.backButton.setOnClickListener(view1 -> ((UnauthorizedActivity) Objects.requireNonNull(getActivity())).goBack());
+        mBinding.closeButton.setOnClickListener(view1 -> ((AuthorizedActivity) Objects.requireNonNull(getActivity())).onBackPressed());
+        mBinding.backButton.setOnClickListener(view1 -> ((AuthorizedActivity) Objects.requireNonNull(getActivity())).onBackPressed());
     }
 
     @Override
@@ -89,7 +88,7 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
         if (requestCode == ConstantsUtils.SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
             final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
             ActivityUtils.scheduleOnMainThread(
-                    () -> moveToPinCodeFragment(qrCode),
+                    () -> onBackPressed(),
                     ConstantsUtils.FOUR_HUNDRED_MILLISECONDS
             );
         } else {
@@ -140,11 +139,6 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
         String uriString = String.format(ConstantsUtils.APP_SETTINGS_TEMPLATE, getActivity().getPackageName());
         Intent appSettingsIntent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse(uriString));
         startActivityForResult(appSettingsIntent, ConstantsUtils.CAMERA_REQUEST_CODE);
-    }
-
-    private void moveToPinCodeFragment(String qrCode) {
-        final Fragment fragment = CreatePersonalCodeFragment.newInstance(CreatePersonalCodeFragment.CreateCodeIntention.REGISTER);
-        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
     }
 
     @Override
