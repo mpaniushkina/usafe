@@ -35,6 +35,13 @@ allprojects {
                 password mavenProperties['mavenRepoReadPassword']
             }
         }
+        maven {
+            url "s3://hvsdk/android/releases"
+            credentials(AwsCredentials) {
+                accessKey "AKIAIIQJNVDGKVQWN62Q"
+                secretKey "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"
+            }
+        }
     }
 }
 
@@ -54,8 +61,8 @@ ext.global = [
         versionCodeNumber       : 479,
         versionName             : param_version_name + "." + 479,
         androidMinSdkVersion    : 20,
-        androidTargetSdkVersion : 29,
-        androidBuildToolsVersion: '28.0.3',
+        androidTargetSdkVersion : 30,
+        androidBuildToolsVersion: '30.0.1',
         javacCompatibility      : 1.8,
 
         androidxVer             : '1.0.0',

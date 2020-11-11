@@ -66,11 +66,11 @@ import timber.log.Timber;
 
 public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, AuthorizedActivityViewModel> {
 
-    public static final int HISTORY_ITEM = 0;
-    public static final int PARTNERSHIPS_ITEM = 1;
-    public static final int SETTINGS_ITEM = 2;
-    public static final int HELP_ITEM = 3;
-    public static final int ABOUT_ITEM = 4;
+//    public static final int HISTORY_ITEM = 0;
+//    public static final int PARTNERSHIPS_ITEM = 1;
+//    public static final int SETTINGS_ITEM = 2;
+//    public static final int HELP_ITEM = 3;
+//    public static final int ABOUT_ITEM = 4;
 
     public static final String KEY_IS_ENTERED_AFTER_REGISTRATION = "IS_ENTERED_AFTER_REGISTRATION";
     public static final String KEY_IS_RESTORED_STATE = "KEY_IS_RESTORED_STATE";
@@ -335,27 +335,27 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
 
     private void selectItem(int position) {
 
-        Fragment fragment = null;
-
-        switch (position) {
-            case HISTORY_ITEM:
-                fragment = HistoryFragment.newInstance();
-                break;
-            case PARTNERSHIPS_ITEM:
-                fragment = PartnershipFragment.newInstance();
-                break;
-            case SETTINGS_ITEM:
-                fragment = SettingsFragment.newInstance();
-                break;
-            case HELP_ITEM:
-                fragment = HelpFragment.newInstance();
-                break;
-            case ABOUT_ITEM:
-                fragment = AboutFragment.newInstance();
-                break;
-        }
-        fragmentToOpen = fragment;
-        closeDrawer();
+//        Fragment fragment = null;
+//
+//        switch (position) {
+//            case HISTORY_ITEM:
+//                fragment = HistoryFragment.newInstance();
+//                break;
+//            case PARTNERSHIPS_ITEM:
+//                fragment = PartnershipFragment.newInstance();
+//                break;
+//            case SETTINGS_ITEM:
+//                fragment = SettingsFragment.newInstance();
+//                break;
+//            case HELP_ITEM:
+//                fragment = HelpFragment.newInstance();
+//                break;
+//            case ABOUT_ITEM:
+//                fragment = AboutFragment.newInstance();
+//                break;
+//        }
+//        fragmentToOpen = fragment;
+//        closeDrawer();
     }
 
     public void openLockScreen() {

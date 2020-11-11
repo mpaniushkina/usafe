@@ -16,44 +16,26 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:src="@drawable/chevron_left_white"
+            android:src="@drawable/ic_icon_arrow_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="centerInside"
             android:adjustViewBounds="true"
+            android:layout_marginStart="@dimen/setting_item_margin_top"
             android:padding="@dimen/ten_dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/WhiteToolbarStyle"
-            android:text="@string/back"
-            android:visibility="gone"/>
     </LinearLayout>
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         style="@style/WhiteTitleStyle"
+        android:fontFamily="@font/poppins_bold"
         android:maxLines="1"
         android:layout_centerVertical="true"
         android:ellipsize="end"
-        android:layout_toLeftOf="@id/tool_right_button"
         android:layout_centerHorizontal="true"
         android:padding="@dimen/ten_dp"
         android:paddingLeft="@dimen/fiveteen_dp"
-        android:paddingRight="@dimen/fiveteen_dp"/>
-
-    <ImageView
-        android:visibility="gone"
-        android:id="@+id/tool_right_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerInside"
-        android:adjustViewBounds="true"
-        android:padding="@dimen/ten_dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"/>
-
+        android:paddingRight="@dimen/fiveteen_dp" />
 </RelativeLayout>

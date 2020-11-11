@@ -14,24 +14,29 @@ android {
         maven { url "https://jitpack.io" }
         maven { url 'https://maven.fabric.io/public' }
 
-        maven {
-            url "s3://hvsdk/android/releases"
-            credentials(AwsCredentials) {
-                accessKey "AKIAIIQJNVDGKVQWN62Q"
-                secretKey "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"
-            }
-        }
+//        maven {
+//            url "s3://hvsdk/android/releases"
+//            credentials(AwsCredentials) {
+//                accessKey "AKIAIIQJNVDGKVQWN62Q"
+//                secretKey "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"
+//            }
+//        }
 
     }
 
+//    compileOptions {
+//        sourceCompatibility global.javacCompatibility
+//        targetCompatibility global.javacCompatibility
+//    }
+
     compileOptions {
-        sourceCompatibility global.javacCompatibility
-        targetCompatibility global.javacCompatibility
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     defaultConfig {
         applicationId "${APPLICATION_ID}"
-        minSdkVersion 21
+        minSdkVersion 20
         targetSdkVersion global.androidTargetSdkVersion
         versionCode global.versionCodeNumber
         versionName global.versionNameString
@@ -127,6 +132,7 @@ dependencies {
     implementation "com.google.android.material:material:$global.androidxVer"
     implementation "androidx.annotation:annotation:$global.androidxVer"
     implementation "androidx.work:work-runtime:$global.work_version"
+    implementation 'androidx.appcompat:appcompat:1.2.0'
 
     // dagger
     implementation "com.google.dagger:dagger:$global.daggerVer"

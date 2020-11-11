@@ -53,6 +53,7 @@ import com.covrsecurity.io.ui.fragment.BaseFragment;
 import com.covrsecurity.io.ui.fragment.BaseViewModelFragment;
 import com.covrsecurity.io.ui.fragment.authorized.vault.CovrVaultAboutQuickBar;
 import com.covrsecurity.io.ui.fragment.unauthorized.CreatePersonalCodeFragment;
+import com.covrsecurity.io.ui.fragment.unauthorized.PrivacyPolicyFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.ScanFaceBiometricsFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.ScanQrCodeFragment;
 import com.covrsecurity.io.ui.interfaces.IChildFragmentListener;
@@ -77,6 +78,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -206,7 +208,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                 null,
                 response -> {
                     AppAdapter.bus().postSticky(new HistoryBadgeEvent(response.getCount()));
-                    setMenuBadgeCount(response.getCount());
+//                    setMenuBadgeCount(response.getCount());
                 },
                 throwable -> {
                     Timber.d("Error running getHistoryBadgeCount() request");
@@ -364,11 +366,10 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                 super.onScrollStateChanged(recyclerView, newState);
             }
         });
-        //mBinding.pendindRequestsRecyclerView.setItemAnimator(new SlideLeftAnimator());
         mBinding.pendindRequestsRecyclerView.setItemAnimator(new SlideLeftItemAnimator());
 //        mBinding.bottomButton.addPartnership.setOnClickListener(v -> getQrCodeConnection());
 //        mBinding.bottomButton.addPartnershipPlus.setOnClickListener(v -> getQrCodeConnection());
-        mBinding.menu.setOnClickListener(v -> ((AuthorizedActivity) getActivity()).openDrawer());
+//        mBinding.menu.setOnClickListener(v -> ((AuthorizedActivity) getActivity()).openDrawer());
         hideButtonAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.add_button_hide);
         showButtonAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.add_button_show);
         mBinding.scanQr.setOnClickListener(view -> {
@@ -378,6 +379,14 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
             } else {
                 scanQrCode();
             }
+        });
+        mBinding.myAccount.setOnClickListener(view -> {
+            Fragment f = MyAccountFragment.newInstance();
+            replaceFragment(f, null, true);
+        });
+        mBinding.settings.setOnClickListener(view -> {
+            Fragment f = SettingsFragment.newInstance();
+            replaceFragment(f, null, true);
         });
     }
 
@@ -405,9 +414,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                         showChildFragment(fragment, fragment.getArguments())
                 );
             }
-//            else {
-//                scanQrCode();
-//            }
         } else {
             showToast(R.string.camera_permission_declined);
         }
@@ -524,8 +530,8 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     @Override
     public void onPendingRequestTimedOut() {
         if (isVisible()) {
-            final int menuBadgeCount = incrementMenuBadgeCount();
-            AppAdapter.bus().postSticky(new HistoryBadgeEvent(menuBadgeCount));
+//            final int menuBadgeCount = incrementMenuBadgeCount();
+//            AppAdapter.bus().postSticky(new HistoryBadgeEvent(menuBadgeCount));
         }
     }
 
@@ -638,33 +644,33 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
 //            mGetHistoryBadgeCountRequest.send();
     }
 
-    public void setMenuBadgeCount(int count) {
-        if (count > 0) {
-            mBinding.menuBadge.setVisibility(View.VISIBLE);
-            mBinding.menuBadge.setText(String.valueOf(count));
-        } else {
-            mBinding.menuBadge.setVisibility(View.INVISIBLE);
-            mBinding.menuBadge.setText("");
-        }
-    }
-
-    private int incrementMenuBadgeCount() {
-        int menuBadgeCount = getMenuBadgeCount();
-        mBinding.menuBadge.setText(String.valueOf(++menuBadgeCount));
-        mBinding.menuBadge.setVisibility(View.VISIBLE);
-        return menuBadgeCount;
-    }
-
-    private int getMenuBadgeCount() {
-        String text = mBinding.menuBadge.getText().toString();
-        int count;
-        if (TextUtils.isEmpty(text) || !TextUtils.isDigitsOnly(text)) {
-            count = 0;
-        } else {
-            count = Integer.parseInt(text);
-        }
-        return count;
-    }
+//    public void setMenuBadgeCount(int count) {
+//        if (count > 0) {
+//            mBinding.menuBadge.setVisibility(View.VISIBLE);
+//            mBinding.menuBadge.setText(String.valueOf(count));
+//        } else {
+//            mBinding.menuBadge.setVisibility(View.INVISIBLE);
+//            mBinding.menuBadge.setText("");
+//        }
+//    }
+//
+//    private int incrementMenuBadgeCount() {
+//        int menuBadgeCount = getMenuBadgeCount();
+//        mBinding.menuBadge.setText(String.valueOf(++menuBadgeCount));
+//        mBinding.menuBadge.setVisibility(View.VISIBLE);
+//        return menuBadgeCount;
+//    }
+//
+//    private int getMenuBadgeCount() {
+//        String text = mBinding.menuBadge.getText().toString();
+//        int count;
+//        if (TextUtils.isEmpty(text) || !TextUtils.isDigitsOnly(text)) {
+//            count = 0;
+//        } else {
+//            count = Integer.parseInt(text);
+//        }
+//        return count;
+//    }
 
     private void openFirstRequest() {
         mPartnershipAdapter.openTopItem();

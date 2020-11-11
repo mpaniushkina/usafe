@@ -53,6 +53,11 @@ public class UseFingerprintAuthFragment extends BaseUnauthorizedFragment<Fragmen
         return fragment;
     }
 
+    public static UseFingerprintAuthFragment newInstance() {
+        UseFingerprintAuthFragment fragment = new UseFingerprintAuthFragment();
+        return fragment;
+    }
+
     private char[] mCovrCode;
     private boolean mIsRegistration = true;
     private FingerprintAuthenticationDialogFragment mDialogScanning;
@@ -134,7 +139,7 @@ public class UseFingerprintAuthFragment extends BaseUnauthorizedFragment<Fragmen
         if (mDisposable != null) {
             mDisposable.dispose();
         }
-        Arrays.fill(mCovrCode, (char) 0);
+//        Arrays.fill(mCovrCode, (char) 0);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

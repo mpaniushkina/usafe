@@ -172,6 +172,7 @@
 
     <!-- settings -->
     <string name="settings">Settings</string>
+    <string name="my_account">My Account</string>
     <string name="settings_cancel">Cancel</string>
     <string name="settings_change_personal_code">Change Covr Code</string>
     <string name="settings_use_fingerprint">Use fingerprint</string>
@@ -458,5 +459,19 @@
     <string name="biometric_description1">Scanning your face verifies your identity and ensures that only you have access to the information.</string>
     <string name="biometric_description2">Tap the "Face Scan" button below to continue the registration process.</string>
 
+    <string-array name="setting_names">
+        <item>About</item>
+        <item>Use Finger Print</item>
+        <item>Push Notifications</item>
+        <item>In-App Notifications</item>
+    </string-array>
+
+    <string-array name="my_account_names">
+        <item>Connected Services</item>
+        <item>History</item>
+        <item>Change PIN Code</item>
+        <item>Recovery</item>
+        <item>Help</item>
+    </string-array>
 
 </resources>

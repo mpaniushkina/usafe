@@ -31,10 +31,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/off_tealish_2"
+        android:background="@color/blue"
         android:orientation="vertical">
 
-        <include layout="@layout/tool_bar"/>
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/toolbar_back_arrow"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginBottom="@dimen/view_padding_small" />
 
         <ScrollView
             android:layout_width="match_parent"

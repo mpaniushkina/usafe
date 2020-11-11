@@ -51,6 +51,9 @@ public class TutorialFragment extends BaseUnauthorizedFragment<FragmentTutorialB
         mBinding.buttonCreateId.setOnClickListener((View buttonSetup) -> {
 //            checkForRootWithCallback((boolean isRooted) -> {
 //                if (!isRooted) {
+
+//            ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance();
+//            replaceFragment(fragment, fragment.getArguments(), true);
                     ((UnauthorizedActivity) getActivity()).setAllowShowingBottomButtons(false);
                     Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_SETUP_START);
                     replaceFragment(WizardFragment.newInstance(), null, true);

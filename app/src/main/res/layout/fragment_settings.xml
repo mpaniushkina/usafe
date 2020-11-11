@@ -113,18 +113,31 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main">
 
         <include
             android:id="@+id/tool_bar"
-            layout="@layout/tool_bar" />
+            layout="@layout/toolbar_back_arrow"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginBottom="@dimen/view_padding_small" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/settingsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tool_bar"
+            android:layout_marginTop="@dimen/personal_code_header_margin">
+        </androidx.recyclerview.widget.RecyclerView>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/tool_bar"
             android:background="@color/off_tealish_2"
-            android:scrollbars="none">
+            android:scrollbars="none"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -562,32 +575,6 @@
             </LinearLayout>
         </ScrollView>
 
-
-        <LinearLayout
-            android:id="@+id/settings_sliding_up_panel"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <View
-                android:id="@+id/child_fragment_top_shadow"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="@integer/fragment_sliding_up_transparency_weight"
-                android:background="@color/transparent_gray"
-                android:visibility="invisible" />
-
-            <FrameLayout
-                android:id="@+id/setting_child_framgnet_container"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="@integer/fragment_sliding_up_content_weight"
-                android:background="@color/white" />
-        </LinearLayout>
     </RelativeLayout>
 
 </layout>

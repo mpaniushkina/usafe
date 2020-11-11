@@ -45,15 +45,15 @@ public class DrawerAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = super.getView(position, convertView, parent);
-        if(position == AuthorizedActivity.HISTORY_ITEM) {
-            TextView badge = (TextView) v.findViewById(R.id.badge);
-            badge.setText(getItemsCountString(mRequestsCount));
-            badge.setVisibility(mRequestsCount > 0 ? View.VISIBLE : View.GONE);
-        } else if (position == AuthorizedActivity.PARTNERSHIPS_ITEM) {
-            TextView badge = (TextView) v.findViewById(R.id.badge);
-            badge.setText(getItemsCountString(mPartnershipCount));
-            badge.setVisibility(mPartnershipCount > 0 ? View.VISIBLE : View.GONE);
-        }
+//        if(position == AuthorizedActivity.HISTORY_ITEM) {
+//            TextView badge = (TextView) v.findViewById(R.id.badge);
+//            badge.setText(getItemsCountString(mRequestsCount));
+//            badge.setVisibility(mRequestsCount > 0 ? View.VISIBLE : View.GONE);
+//        } else if (position == AuthorizedActivity.PARTNERSHIPS_ITEM) {
+//            TextView badge = (TextView) v.findViewById(R.id.badge);
+//            badge.setText(getItemsCountString(mPartnershipCount));
+//            badge.setVisibility(mPartnershipCount > 0 ? View.VISIBLE : View.GONE);
+//        }
         return v;
     }
 }

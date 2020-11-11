@@ -240,7 +240,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
         mBinding.capture.setOnClickListener(view1 -> {
             if ((getContext() != null || getActivity() != null) && ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
                 mBinding.capture.setEnabled(true);
-                HyperSnapSDK.init(getContext(), HYPER_SNAP_APP_ID, HYPER_SNAP_APP_KEY, HyperSnapParams.Region.India);
+//                HyperSnapSDK.init(getContext(), HYPER_SNAP_APP_ID, HYPER_SNAP_APP_KEY, HyperSnapParams.Region.India);
                 if ((mScanReason == ScanIntention.VERIFICATION
                         || (mScanReason == ScanIntention.REGISTRATION && mBinding.capture.getText().equals(getString(R.string.capture)))
                         || mScanReason == ScanIntention.POST_RECOVERY_FROM_SETTINGS
@@ -267,47 +267,61 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
          myCaptureCompletionListener = new FaceCaptureCompletionHandler() {
             @Override
             public void onResult(HVError error, JSONObject result, JSONObject headers) {
-                if (error != null && getActivity() != null) { /*Handle error*/
-                    Toast.makeText(getActivity(), error.getErrorMessage(), Toast.LENGTH_SHORT).show();
-                } else {
-                    try {
-                        selfie = (String) result.get("imageUri");
-                        file = new File(selfie);
-                        if (!selfie.equals("")) {
-                            if (mScanReason == ScanIntention.POST_RECOVERY_FROM_SETTINGS) {
-                                documentCaptureHyperSnap();
-                            } else {
-                                bindToLifecycle();
-                                if (mScanReason != ScanIntention.RECOVERY && mScanReason != ScanIntention.VERIFICATION) {
-                                    mScanReason = ScanIntention.SCAN_DOCUMENT_FRONT_SIDE;
-                                }
-                            }
-                        } else {
-                            AuthorizedActivity.hideLockScreen = true;
-                            onBackPressed();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                if(error != null) {
+                    /*Handle error*/
+                }
+                else {
+                    /*Handle result*/
                 }
             }
         };
-        int selfieId = 1111;
+
         HVFaceConfig hvFaceConfig = new HVFaceConfig();
-        hvFaceConfig.setShouldEnablePadding(true);
-        JSONObject livenessHeader = new JSONObject();
-        JSONObject livenessParams = new JSONObject();
-        try {
-            livenessHeader.put("transactionId", selfieId /*Unique ID for customer - for billing*/);
-            livenessParams.put("enableDashboard", "yes");//This facilitates access to QC dashboard and debugging during POC }catch (JSONException e) { }
-            hvFaceConfig.setLivenessAPIHeaders(livenessHeader);
-            hvFaceConfig.setLivenessAPIParameters(livenessParams);
-            if (getActivity() != null) {
-                HVFaceActivity.start(getActivity(), hvFaceConfig, myCaptureCompletionListener);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        HVFaceActivity.start(getContext(), hvFaceConfig, myCaptureCompletionListener);
+//         myCaptureCompletionListener = new FaceCaptureCompletionHandler() {
+//            @Override
+//            public void onResult(HVError error, JSONObject result, JSONObject headers) {
+//                if (error != null && getActivity() != null) { /*Handle error*/
+//                    Toast.makeText(getActivity(), error.getErrorMessage(), Toast.LENGTH_SHORT).show();
+//                } else {
+//                    try {
+//                        selfie = (String) result.get("imageUri");
+//                        file = new File(selfie);
+//                        if (!selfie.equals("")) {
+//                            if (mScanReason == ScanIntention.POST_RECOVERY_FROM_SETTINGS) {
+//                                documentCaptureHyperSnap();
+//                            } else {
+//                                bindToLifecycle();
+//                                if (mScanReason != ScanIntention.RECOVERY && mScanReason != ScanIntention.VERIFICATION) {
+//                                    mScanReason = ScanIntention.SCAN_DOCUMENT_FRONT_SIDE;
+//                                }
+//                            }
+//                        } else {
+//                            AuthorizedActivity.hideLockScreen = true;
+//                            onBackPressed();
+//                        }
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        };
+//        int selfieId = 1111;
+//        HVFaceConfig hvFaceConfig = new HVFaceConfig();
+//        hvFaceConfig.setShouldEnablePadding(true);
+//        JSONObject livenessHeader = new JSONObject();
+//        JSONObject livenessParams = new JSONObject();
+//        try {
+//            livenessHeader.put("transactionId", selfieId /*Unique ID for customer - for billing*/);
+//            livenessParams.put("enableDashboard", "yes");//This facilitates access to QC dashboard and debugging during POC }catch (JSONException e) { }
+//            hvFaceConfig.setLivenessAPIHeaders(livenessHeader);
+//            hvFaceConfig.setLivenessAPIParameters(livenessParams);
+//            if (getActivity() != null) {
+//                HVFaceActivity.start(getActivity(), hvFaceConfig, myCaptureCompletionListener);
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void documentCaptureHyperSnap() {
