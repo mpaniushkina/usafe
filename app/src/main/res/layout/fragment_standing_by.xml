@@ -42,7 +42,7 @@
                 android:id="@+id/myAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_user"
+                android:background="@drawable/ic_user_large"
                 android:layout_marginStart="@dimen/setting_item_margin_top"
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"/>

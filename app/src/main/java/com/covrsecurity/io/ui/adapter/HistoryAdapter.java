@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,85 +52,81 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     @Override
     public void onBindViewHolder(HistoryViewHolder holder, int position) {
         final CheckingPendingRequest pendingRequest = getItem(position);
-        if (pendingRequest != null) {
-
-            holder.mItem.setOnClickListener(v -> {
-                if (isSelectionState) {
-                    pendingRequest.changeState();
-                    boolean checked = pendingRequest.isChecked();
-//                    if (!checked) {
-//                        mShouldSelectAll = false;
+//        if (pendingRequest != null) {
+//
+//            holder.mItem.setOnClickListener(v -> {
+//                if (isSelectionState) {
+//                    pendingRequest.changeState();
+//                    boolean checked = pendingRequest.isChecked();
+////                    if (!checked) {
+////                        mShouldSelectAll = false;
+////                    }
+//                    if (checked) {
+//                        holder.mItem.setBackgroundColor(AppAdapter.resources().getColor(R.color.faded_tealish));
+//                    } else {
+//                        holder.mItem.setBackground(AppAdapter.resources().getDrawable(R.drawable.about_clickable_bg));
 //                    }
-                    if (checked) {
-                        holder.mCheckView.setBackground(AppAdapter.resources().getDrawable(R.drawable.history_item_selected));
-                        holder.mItem.setBackgroundColor(AppAdapter.resources().getColor(R.color.faded_tealish));
-                    } else {
-                        holder.mCheckView.setBackground(AppAdapter.resources().getDrawable(R.drawable.history_item_unselected));
-                        holder.mItem.setBackground(AppAdapter.resources().getDrawable(R.drawable.about_clickable_bg));
-                    }
-                    if (mHistoryClickListener != null) {
-                        mHistoryClickListener.onAllItemsSelected(isAllSelectedNaive());
-                    }
-                } else {
-                    if (mHistoryClickListener != null) {
-                        mHistoryClickListener.onHistoryClick(pendingRequest);
-                    }
-                }
-            });
+//                    if (mHistoryClickListener != null) {
+//                        mHistoryClickListener.onAllItemsSelected(isAllSelectedNaive());
+//                    }
+//                } else {
+//                    if (mHistoryClickListener != null) {
+//                        mHistoryClickListener.onHistoryClick(pendingRequest);
+//                    }
+//                }
+//            });
+//
+//            if (pendingRequest.isChecked()) {
+//                holder.mItem.setBackgroundColor(AppAdapter.resources().getColor(R.color.faded_tealish));
+//            } else {
+//                holder.mItem.setBackground(AppAdapter.resources().getDrawable(R.drawable.about_clickable_bg));
+//            }
+//
+//            holder.mDate.setText(pendingRequest.getRequest().getTitle());
+//
+//            long lastTimeHistoryViewed = AppAdapter.settings().getLastTimeHistoryViewed();
+//
+//            holder.mNewElementIndicator.setVisibility(
+//                    (pendingRequest.getValidTo() > lastTimeHistoryViewed &&
+//                            !pendingRequest.isViewed() &&
+//                            pendingRequest.getStatus() == StatusEntity.EXPIRED)
+//                            ? View.VISIBLE : View.INVISIBLE);
+//
+//            holder.mPartnerTitle.setText(pendingRequest.getCompany().getName());
+//            String date;
+//
+//            if (pendingRequest.getUpdatedAt() != 0) {
+//                date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getUpdatedAt(),
+//                        ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
+//            } else {
+//                date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getCreated(),
+//                        ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
+//            }
+//            if (pendingRequest.getStatus() == StatusEntity.EXPIRED) {
+//                if (pendingRequest.getValidTo() != 0) {
+//                    date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getValidTo(),
+//                            ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
+//                }
+//            }
+//            holder.mTime.setTextColor(pendingRequest.getStatus() == StatusEntity.EXPIRED
+//                    ? AppAdapter.resources().getColor(R.color.red)
+//                    : AppAdapter.resources().getColor(R.color.text_color_gray));
+//            holder.mTime.setText(getString(R.string.history_status_text, StatusUtils.getStatusText(IamApp.getInstance(), pendingRequest), date));
+//            //holder.mNewElementIndicator.setVisibility(pendingRequest. ? View.VISIBLE : View.INVISIBLE);
+//            GlideApp.with(AppAdapter.context())
+//                    .load(pendingRequest.getCompany().getLogo())
+//                    .centerCrop()
+//                    .error(R.drawable.about_logo);
+//        }
 
-            if (isSelectionState) {
-                holder.mCheckView.setVisibility(View.VISIBLE);
-                holder.mArrowView.setVisibility(View.INVISIBLE);
-            } else {
-                holder.mCheckView.setVisibility(View.INVISIBLE);
-                holder.mArrowView.setVisibility(View.VISIBLE);
+        holder.mItem.setOnClickListener(v -> {
+            if (mHistoryClickListener != null) {
+                mHistoryClickListener.onHistoryItemsClick(pendingRequest);
             }
-
-            if (pendingRequest.isChecked()) {
-                holder.mCheckView.setBackground(AppAdapter.resources().getDrawable(R.drawable.history_item_selected));
-                holder.mItem.setBackgroundColor(AppAdapter.resources().getColor(R.color.faded_tealish));
-            } else {
-                holder.mCheckView.setBackground(AppAdapter.resources().getDrawable(R.drawable.history_item_unselected));
-                holder.mItem.setBackground(AppAdapter.resources().getDrawable(R.drawable.about_clickable_bg));
-            }
-
-            holder.mAction.setText(pendingRequest.getRequest().getTitle());
-
-            long lastTimeHistoryViewed = AppAdapter.settings().getLastTimeHistoryViewed();
-
-            holder.mNewElementIndicator.setVisibility(
-                    (pendingRequest.getValidTo() > lastTimeHistoryViewed &&
-                            !pendingRequest.isViewed() &&
-                            pendingRequest.getStatus() == StatusEntity.EXPIRED)
-                            ? View.VISIBLE : View.INVISIBLE);
-
-            holder.mPartnerTitle.setText(pendingRequest.getCompany().getName());
-            String date;
-
-            if (pendingRequest.getUpdatedAt() != 0) {
-                date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getUpdatedAt(),
-                        ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
-            } else {
-                date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getCreated(),
-                        ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
-            }
-            if (pendingRequest.getStatus() == StatusEntity.EXPIRED) {
-                if (pendingRequest.getValidTo() != 0) {
-                    date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getValidTo(),
-                            ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
-                }
-            }
-            holder.mDate.setTextColor(pendingRequest.getStatus() == StatusEntity.EXPIRED
-                    ? AppAdapter.resources().getColor(R.color.red)
-                    : AppAdapter.resources().getColor(R.color.text_color_gray));
-            holder.mDate.setText(getString(R.string.history_status_text, StatusUtils.getStatusText(IamApp.getInstance(), pendingRequest), date));
-            //holder.mNewElementIndicator.setVisibility(pendingRequest. ? View.VISIBLE : View.INVISIBLE);
-            GlideApp.with(AppAdapter.context())
-                    .load(pendingRequest.getCompany().getLogo())
-                    .centerCrop()
-                    .error(R.drawable.about_logo)
-                    .into(holder.mPartnerLogo);
-        }
+        });
+        holder.mPartnerTitle.setText("Authentication to X");
+        holder.mDate.setText("20/11/22");
+        holder.mTime.setText("21:43");
     }
 
     @Deprecated
@@ -167,8 +164,22 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         notifyDataSetChanged();
     }
 
+//    public List<TransactionEntity> getAll() {
+//        List<TransactionEntity> itemsList = new ArrayList<>();
+//        itemsList.add()
+//        return itemsList;
+//        return toPendingRequests(mPendingRequests);
+//    }
+
     public List<TransactionEntity> getAll() {
-        return toPendingRequests(mPendingRequests);
+        List<TransactionEntity> itemsList = new ArrayList<>();
+        TransactionEntity entity = new TransactionEntity("id", null, "companyClientId", "templateId", null, 100600, 100500, null, "createdByIp", "verifiedByIp", 100500, 100500, "acceptHistoryMessage", "rejectHistoryMessage", "expiredHistoryMessage", "historyMessage", null, false, null, null);
+        itemsList.add(entity);
+        itemsList.add(entity);
+        itemsList.add(entity);
+        itemsList.add(entity);
+        itemsList.add(entity);
+        return itemsList;
     }
 
     public List<CheckingPendingRequest> getAllChecking() {
@@ -265,26 +276,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     }
 
     public static class HistoryViewHolder extends RecyclerView.ViewHolder {
-
-        private ImageView mPartnerLogo;
         private TextView mPartnerTitle;
-        private TextView mAction;
         private TextView mDate;
+        private TextView mTime;
         private View mItem;
         private View mNewElementIndicator;
-        private View mCheckView;
-        private ImageView mArrowView;
+//        private ImageView mArrowView;
 
         public HistoryViewHolder(View view) {
             super(view);
             mItem = view.findViewById(R.id.rl_history_item);
             mNewElementIndicator = view.findViewById(R.id.history_new_element_indicator);
-            mPartnerLogo = view.findViewById(R.id.iv_history_logo);
             mPartnerTitle = view.findViewById(R.id.tv_history_title);
-            mAction = view.findViewById(R.id.tv_history_action);
             mDate = view.findViewById(R.id.tv_history_date);
-            mCheckView = view.findViewById(R.id.history_check_box);
-            mArrowView = view.findViewById(R.id.v_history_right_arrow);
+            mTime = view.findViewById(R.id.tv_history_time);
+//            mArrowView = view.findViewById(R.id.v_history_right_arrow);
         }
     }
 
@@ -324,6 +330,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         void onHistoryClick(TransactionEntity pendingTransaction);
 
         void onAllItemsSelected(boolean allSelected);
+
+        void onHistoryItemsClick(TransactionEntity pendingTransaction);
     }
 
 }

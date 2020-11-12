@@ -29,9 +29,6 @@ import java.net.ConnectException;
 
 import javax.inject.Inject;
 
-/**
- * Created by alex on 12.5.16.
- */
 public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDetailsBinding, HistoryDetailsViewModel> {
 
     private static final String KEY_TRANSACTION_ID = "KEY_TRANSACTION_ID";
@@ -93,7 +90,7 @@ public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDeta
                     if (throwable != null && ConnectException.class.equals(throwable.getClass())) {
                         showNoInternetDialog();
                     } else if (throwable != null) {
-                        DialogUtils.showOkDialog(getActivity(), throwable.getMessage(), false, (dialog, which) -> onBackPressed());
+//                        DialogUtils.showOkDialog(getActivity(), throwable.getMessage(), false, (dialog, which) -> onBackPressed());
                     }
                 }
         ));
@@ -115,8 +112,8 @@ public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDeta
             GlideApp.with(this)
                     .load(pendingTransaction.getCompany().getLogo())
                     .centerCrop()
-                    .error(R.drawable.about_logo)
-                    .into(mBinding.ivHistoryDetailsLogo);
+                    .error(R.drawable.about_logo);
+//                    .into(mBinding.ivHistoryDetailsLogo);
 
             mBinding.setHistoryFullName(pendingTransaction.getCompany().getName());
             mBinding.setHistoryIncomingRequest(AppAdapter.resources().getString(
@@ -130,15 +127,15 @@ public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDeta
             String time = DateTimeUtils.getFormattedTime(new DateTime(pendingTransaction.getCreated()));
             mBinding.setHistoryTime(time);
             mBinding.setHistoryVerificationType(pendingTransaction.getRequest().getTitle());
-            mBinding.shareLayout.shareButton.setOnClickListener(v -> {
-                String subject = AppAdapter.resources().getString(R.string.history_details_sharing_subject, pendingTransaction.getCompany().getName(), status);
-                String body = EmailUtils.formatForEmail(getActivity(), pendingTransaction);
-                EmailUtils.sendEmail(subject, body, getActivity());
-            });
+//            mBinding.shareLayout.shareButton.setOnClickListener(v -> {
+//                String subject = AppAdapter.resources().getString(R.string.history_details_sharing_subject, pendingTransaction.getCompany().getName(), status);
+//                String body = EmailUtils.formatForEmail(getActivity(), pendingTransaction);
+//                EmailUtils.sendEmail(subject, body, getActivity());
+//            });
         }
     }
 
     private void showProgressLayout(boolean show) {
-        mBinding.progressLayout.container.setVisibility(show ? View.VISIBLE : View.GONE);
+//        mBinding.progressLayout.container.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 }

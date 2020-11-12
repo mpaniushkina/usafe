@@ -283,6 +283,8 @@
     <string name="history_details_incoming_request_from">incoming request from</string>
     <string name="history_details_verified_from">verified from</string>
     <string name="history_details_not_available">N/A</string>
+    <string name="approve_btn">Approve</string>
+    <string name="decline_btn">Decline</string>
 
     <!-- add partnership -->
     <string name="add_partnership_title">Add new connection</string>

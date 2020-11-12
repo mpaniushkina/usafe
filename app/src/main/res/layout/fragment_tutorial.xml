@@ -65,7 +65,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/six_dp"
-                android:elevation="0dp"
                 android:minWidth="@dimen/setup_button_min_size"
                 android:minHeight="@dimen/setup_button_min_size"
                 android:text="@string/button_setup_iam"
