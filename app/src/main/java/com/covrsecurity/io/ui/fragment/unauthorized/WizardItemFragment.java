@@ -1,6 +1,9 @@
 package com.covrsecurity.io.ui.fragment.unauthorized;
 
 import android.os.Bundle;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,16 +55,19 @@ public class WizardItemFragment extends BaseFragment {
         description1.setText(getString(args.getInt(DESCRIPTION1)));
         TextView description2 = (TextView) rootView.findViewById(R.id.texDescription2);
         description2.setText(getString(args.getInt(DESCRIPTION2)));
-        ConstraintLayout termsOfUse = (ConstraintLayout) rootView.findViewById(R.id.termsOfUse);
+        LinearLayout termsOfUse = (LinearLayout) rootView.findViewById(R.id.termsOfUse);
         TextView description2_1 = (TextView) rootView.findViewById(R.id.texDescription2_1);
-        description2_1.setText(getString(R.string.tut4_desc2_1));
+        SpannableString termsOfUseLink = new SpannableString(getString(R.string.tut4_desc2_1));
+        termsOfUseLink.setSpan(new UnderlineSpan(), 0, getString(R.string.tut4_desc2_1).length() - 2, 0);
+        description2_1.setText(termsOfUseLink);
         TextView description2_3 = (TextView) rootView.findViewById(R.id.texDescription2_3);
-        description2_3.setText(getString(R.string.tut4_desc2_3));
+        SpannableString privacyLink = new SpannableString(getString(R.string.tut4_desc2_3));
+        privacyLink.setSpan(new UnderlineSpan(), 0, getString(R.string.tut4_desc2_3).length(), 0);
+        description2_3.setText(privacyLink);
         TextView description3 = (TextView) rootView.findViewById(R.id.texDescription3);
         description3.setText(getString(args.getInt(DESCRIPTION3)));
         int labelTextId = args.getInt(LABEL);
         if (labelTextId != 0) {
-            description1.setVisibility(View.GONE);
             termsOfUse.setVisibility(View.VISIBLE);
             description2_1.setOnClickListener(view -> {
                 String termsOfUseURL = (BuildConfig.DEBUG) ? getString(R.string.cfg_about_terms_of_use_dev) :

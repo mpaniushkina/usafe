@@ -13,6 +13,7 @@ import com.covrsecurity.io.R;
 import com.covrsecurity.io.databinding.FragmentMyAccountBinding;
 import com.covrsecurity.io.ui.adapter.SettingsAdapter;
 import com.covrsecurity.io.ui.fragment.BaseFragment;
+import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment;
 import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeInfoFragment;
 
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +72,7 @@ public class MyAccountFragment extends BaseFragment<FragmentMyAccountBinding> im
                 fragment = HistoryFragment.newInstance();
                 break;
             case CHANGE_PIN_CODE_ITEM:
-                fragment = ChangeCodeInfoFragment.newInstance();
+                fragment = ChangeCodeFragment.newInstance(false);
                 break;
             case RECOVERY_ITEM:
                 fragment = HelpFragment.newInstance();
@@ -80,6 +81,6 @@ public class MyAccountFragment extends BaseFragment<FragmentMyAccountBinding> im
                 fragment = HelpFragment.newInstance();
                 break;
         }
-        replaceFragment(fragment, null, true);
+        replaceFragment(fragment, fragment.getArguments() != null ? fragment.getArguments() : null, true);
     }
 }

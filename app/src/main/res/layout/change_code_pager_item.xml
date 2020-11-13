@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-            android:id="@+id/change_code_header"
-            android:text="@string/settings_change_password_enter_current"
-            style="@style/ChangeCodeHeaderStyle"/>
+        android:id="@+id/change_code_header"
+        style="@style/ChangeCodeHeaderStyle"
+        android:layout_marginTop="@dimen/personal_code_header_margin"
+        android:text="@string/settings_change_password_enter_current" />
 
     <TextView
-            android:id="@+id/change_code_attempts"
-            android:visibility="gone"
-            android:text="@string/settings_change_password_attempts"
-            style="@style/ChangeCodeTextStyle"
-            android:textSize="@dimen/text_small"
-            android:layout_marginTop="@dimen/view_padding_small"
-            android:textColor="@color/setting_red"/>
+        android:id="@+id/change_code_attempts"
+        style="@style/ChangeCodeTextStyle"
+        android:layout_marginTop="@dimen/view_padding_small"
+        android:text="@string/settings_change_password_attempts"
+        android:textColor="@color/setting_red"
+        android:textSize="@dimen/text_small"
+        android:visibility="gone" />
 
 </LinearLayout>

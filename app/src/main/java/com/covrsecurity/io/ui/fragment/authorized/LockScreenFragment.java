@@ -458,7 +458,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
     public void initializeTimerTask() {
         timerTaskRefresh = new TimerTask() {
             public void run() {
-                handler.post(() -> mBinding.blurringView.invalidate());
+//                handler.post(() -> mBinding.blurringView.invalidate());
             }
         };
     }
@@ -532,7 +532,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
             mBinding.infoMessage.setVisibility(View.VISIBLE);
         }
         mBinding.personCodeLL.setLenghtCodeChecker(this);
-        mBinding.blurringView.setBlurredView(getActivity().findViewById(R.id.empty_view));
+//        mBinding.blurringView.setBlurredView(getActivity().findViewById(R.id.empty_view));
         return view;
     }
 

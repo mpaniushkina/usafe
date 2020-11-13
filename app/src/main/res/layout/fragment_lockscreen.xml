@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,16 +14,16 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lockscreen_bg"
+        android:background="@drawable/bg_main"
         android:orientation="vertical">
 
-        <com.covrsecurity.io.ui.component.BlurringView
-            android:id="@+id/blurring_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            custom:blurRadius="25"
-            custom:downsampleFactor="8"/>
+<!--        <com.covrsecurity.io.ui.component.BlurringView-->
+<!--            android:id="@+id/blurring_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="center"-->
+<!--            custom:blurRadius="25"-->
+<!--            custom:downsampleFactor="8" />-->
 
         <TextView
             android:id="@+id/addPushButton"
@@ -42,73 +42,64 @@
             android:layout_width="@dimen/topbar_logo_width"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/view_padding_small"
             android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/view_padding_small"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
-            android:src="@drawable/logo_large_green" />
+            android:src="@drawable/iamlogo3x" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/logo">
+            android:layout_below="@+id/logo"
+            android:layout_alignParentBottom="true">
 
-            <RelativeLayout
+            <com.covrsecurity.io.ui.component.TimersLayout
+                android:id="@+id/timers_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lockscreen_timers_layout_height"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="@dimen/view_padding"
+                android:visibility="visible">
+            </com.covrsecurity.io.ui.component.TimersLayout>
+
+            <LinearLayout
+                android:id="@+id/info_message_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lockscreen_info_msg_wrapper_height"
+                android:layout_above="@+id/personCodeLL"
+                android:layout_marginBottom="@dimen/view_padding_big"
+                android:gravity="center_horizontal|bottom"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/info_message"
+                    style="@style/InfoTextStyle"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/InfoTextStyle"
+                    android:text="@string/lock_screen_enter_personal_code"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <com.covrsecurity.io.ui.component.PersonalCodeLayout
+                android:id="@+id/personCodeLL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true">
+                android:layout_above="@+id/digitalKeyboard" />
 
-                <com.covrsecurity.io.ui.component.TimersLayout
-                    android:id="@+id/timers_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/lockscreen_timers_layout_height"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/view_padding"
-                    android:visibility="visible">
-                </com.covrsecurity.io.ui.component.TimersLayout>
-
-                <LinearLayout
-                    android:id="@+id/info_message_wrapper"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/lockscreen_info_msg_wrapper_height"
-                    android:layout_below="@+id/timers_layout"
-                    android:layout_marginBottom="@dimen/view_padding_big"
-                    android:gravity="center_horizontal|bottom"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <TextView
-                        android:id="@+id/info_message"
-                        style="@style/InfoTextStyle"
-                        android:text=""
-                        android:textColor="@color/soft_green"
-                        android:visibility="invisible" />
-
-                    <TextView
-                        style="@style/InfoTextStyle"
-                        android:text="@string/lock_screen_enter_personal_code"
-                        android:textColor="@color/soft_green" />
-                </LinearLayout>
-
-                <com.covrsecurity.io.ui.component.PersonalCodeLayout
-                    android:id="@+id/personCodeLL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/info_message_wrapper" />
-
-                <com.covrsecurity.io.ui.component.DigitalKeyboard
-                    android:id="@+id/digitalKeyboard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/personCodeLL"
-                    android:layout_centerHorizontal="true"
-                    android:paddingTop="@dimen/twenty_dp"
-                    android:paddingLeft="@dimen/twenty_dp"
-                    android:paddingRight="@dimen/twenty_dp"
-                    custom:canSound="true"
-                    custom:canVibrate="true" />
-            </RelativeLayout>
+            <com.covrsecurity.io.ui.component.DigitalKeyboard
+                android:id="@+id/digitalKeyboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:paddingTop="@dimen/twenty_dp"
+                custom:canSound="false"
+                custom:canVibrate="false" />
         </RelativeLayout>
     </RelativeLayout>
 </layout>

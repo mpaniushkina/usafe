@@ -18,7 +18,7 @@
         android:textSize="@dimen/text_header_small"
         tools:text="Take control of your own data, with iAM you decide" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/termsOfUse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,14 +33,13 @@
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_header_small"
+            android:textSize="@dimen/text_small"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/texDescription2_3"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Terms of Use and" />
+            tools:text="Terms of Use / " />
 
         <TextView
             android:id="@+id/texDescription2_3"
@@ -49,13 +48,13 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_header_small"
+            android:textSize="@dimen/text_small"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/texDescription2_1"
+            app:layout_constraintStart_toEndOf="@+id/texDescription2_1"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Privacy Policy" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/texDescription2"

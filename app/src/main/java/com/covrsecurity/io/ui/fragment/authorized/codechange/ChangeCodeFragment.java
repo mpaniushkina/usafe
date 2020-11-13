@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -258,7 +261,8 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                             mDialogScanning.show(getFragmentManager(), DIALOG_SCANNING_TAG);
                         }
                     } else {
-                        closeChildFragment();
+//                        closeChildFragment();
+                        onBackPressed();
                     }
                 },
                 throwable -> {
@@ -280,10 +284,18 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
     @Override
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
-        mBinding.setCancelClickListener(v -> closeChildFragment());
         mBinding.digitalKeyboard.setKeyboardListener(this);
         mBinding.personCodeLL.setLenghtCodeChecker(this);
         mBinding.infoPager.setAdapter(new ChangeCodeInfoPagerAdapter(getChildFragmentManager()));
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        TextView titleView = view.findViewById(R.id.title);
+        titleView.setText(R.string.change_pin_title);
+        LinearLayout backButton = view.findViewById(R.id.tool_left_button);
+        backButton.setOnClickListener((v) -> onBackPressed());
     }
 
     @SuppressLint("NewApi")
@@ -310,6 +322,13 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
         Arrays.fill(mOldPin, (char) 0);
         Arrays.fill(mNewPin, (char) 0);
         super.closeChildFragment();
+    }
+
+    @Override
+    protected void onBackPressed() {
+        Arrays.fill(mOldPin, (char) 0);
+        Arrays.fill(mNewPin, (char) 0);
+        super.onBackPressed();
     }
 
     @Override
@@ -352,7 +371,6 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                             viewModel.changePinCode(getActivity(), mOldPin, mNewPin, true);
                         } else {
                             mBinding.personCodeLL.clearText();
-//                            mBinding.digitalKeyboard.shake();
                         }
                         break;
                 }
@@ -383,7 +401,8 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                 mDialogFailed.setDismissListener(() -> {
                     isDialogFailedAdded = false;
                     AppAdapter.settings().setUseFingerprintAuth(false);
-                    closeChildFragment();
+//                    closeChildFragment();
+                    onBackPressed();
                 });
             }
             if (!mDialogFailed.isVisible() && !mDialogFailed.isAdded() && !isDialogFailedAdded) {
@@ -392,7 +411,8 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
             }
         } else if (error.getCause() == FingerprintRecognitionError.CANCEL) {
             AppAdapter.settings().setUseFingerprintAuth(false);
-            closeChildFragment();
+//            closeChildFragment();
+            onBackPressed();
         }
     }
 
@@ -414,7 +434,8 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                 .andThen(Completable.fromAction(() -> AppAdapter.settings().setKeyFingerprintAuthTooManyAttempts(false)))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::closeChildFragment, Timber::e);
+//                .subscribe(this::closeChildFragment, Timber::e);
+                .subscribe(this::onBackPressed, Timber::e);
     }
 
     private void showAlertDialog(WeekPinException.WeekPinType weekPinType) {
