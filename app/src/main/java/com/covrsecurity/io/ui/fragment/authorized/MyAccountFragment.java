@@ -81,6 +81,6 @@ public class MyAccountFragment extends BaseFragment<FragmentMyAccountBinding> im
                 fragment = HelpFragment.newInstance();
                 break;
         }
-        replaceFragment(fragment, fragment.getArguments() != null ? fragment.getArguments() : null, true);
+        replaceFragment(fragment, fragment.getArguments(), true);
     }
 }
