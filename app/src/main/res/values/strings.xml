@@ -175,6 +175,7 @@
     <string name="my_account">My Account</string>
     <string name="settings_cancel">Cancel</string>
     <string name="change_pin_title">Change pin</string>
+    <string name="connected_services_title">Connected services</string>
     <string name="settings_change_personal_code">Change Covr Code</string>
     <string name="settings_use_fingerprint">Use fingerprint</string>
     <string name="settings_notification">Notifications</string>

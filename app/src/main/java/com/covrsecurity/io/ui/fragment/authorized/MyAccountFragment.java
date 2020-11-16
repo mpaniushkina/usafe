@@ -14,7 +14,6 @@ import com.covrsecurity.io.databinding.FragmentMyAccountBinding;
 import com.covrsecurity.io.ui.adapter.SettingsAdapter;
 import com.covrsecurity.io.ui.fragment.BaseFragment;
 import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment;
-import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeInfoFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -66,7 +65,7 @@ public class MyAccountFragment extends BaseFragment<FragmentMyAccountBinding> im
         Fragment fragment = null;
         switch (position) {
             case CONNECTED_SERVICES_ITEM:
-                fragment = HelpFragment.newInstance();
+                fragment = ConnectedServicesFragment.newInstance();
                 break;
             case HISTORY_ITEM:
                 fragment = HistoryFragment.newInstance();

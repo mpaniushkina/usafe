@@ -46,6 +46,7 @@
     <dimen name="personal_code_pager_margin_vertical">10dp</dimen>
     <dimen name="personal_code_info_margin_top">18dp</dimen>
     <dimen name="personal_code_header_margin">100dp</dimen>
+    <dimen name="margin_header">100dp</dimen>
 
     <!-- weight for sliding up child fragments (add partnership and change personal code) -->
     <integer name="fragment_sliding_up_transparency_weight">1</integer>

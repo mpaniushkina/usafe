@@ -123,6 +123,7 @@
     <dimen name="enter_verification_view_number_container_bottom_padding">2dp</dimen>
     <dimen name="enter_verification_view_number_container_top_padding">0dp</dimen>
     <dimen name="personal_code_header_margin">130dp</dimen>
+    <dimen name="margin_header">120dp</dimen>
 
     <!-- Recovery-->
     <dimen name="recovery_title_margin_top">124dp</dimen>
