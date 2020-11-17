@@ -275,7 +275,7 @@
     <string name="history_unselect_all">Unselect all</string>
 
     <!-- history details -->
-    <string name="history_details_title">Details</string>
+    <string name="history_details_title">History details</string>
     <string name="history_details_sharing_subject">COVR: %1$s - %2$s</string>
     <string name="history_details_verification_type">verification type</string>
     <string name="history_details_description">description</string>
@@ -287,6 +287,9 @@
     <string name="history_details_not_available">N/A</string>
     <string name="approve_btn">Approve</string>
     <string name="decline_btn">Decline</string>
+
+    <!-- connected services -->
+    <string name="services_details_title">Connected services details</string>
 
     <!-- add partnership -->
     <string name="add_partnership_title">Add new connection</string>

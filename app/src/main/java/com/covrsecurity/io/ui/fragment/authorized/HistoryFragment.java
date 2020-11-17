@@ -83,7 +83,7 @@ public class HistoryFragment extends FromMenuFragment<FragmentHistoryBinding, Hi
         mAdapter.setViewed(pendingTransaction);
         mExpiredAdapter.setViewed(pendingTransaction);
         Fragment fragment = HistoryDetailsFragment.newInstance(pendingTransaction.getId(), pendingTransaction.getCompany().getCompanyId());
-        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+        replaceFragment(fragment, fragment.getArguments(), true);
     }
 
     @Override

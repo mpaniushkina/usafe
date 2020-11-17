@@ -32,6 +32,7 @@
             android:layout_below="@+id/tool_bar"
             android:layout_above="@+id/view"
             android:layout_marginTop="@dimen/margin_header"
+            android:layout_marginStart="@dimen/ten_dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
         <View
@@ -66,7 +67,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.5" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </RelativeLayout>
 

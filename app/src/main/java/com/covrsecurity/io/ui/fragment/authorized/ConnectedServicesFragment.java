@@ -64,9 +64,6 @@ public class ConnectedServicesFragment extends BaseFragment<FragmentConnectedSer
             if (current < items.length - 1) {
                 mBinding.infoPager.setCurrentItem(current + 1);
             }
-            if (current == items.length - 1) {
-
-            }
         });
 
     }

@@ -11,21 +11,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.covrsecurity.io.R;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class ConnectionsAdapter extends RecyclerView.Adapter<ConnectionsAdapter.ConnectionsViewHolder> {
 
     private List<String> mData;
     private LayoutInflater mInflater;
-//    private ItemClickListener mClickListener;
+    private ItemClickListener mClickListener;
 
     public ConnectionsAdapter(Context context, List<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
 
+    @NotNull
     @Override
-    public ConnectionsAdapter.ConnectionsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ConnectionsAdapter.ConnectionsViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_connections_rv, parent, false);
         return new ConnectionsAdapter.ConnectionsViewHolder(view);
     }
@@ -41,29 +44,28 @@ public class ConnectionsAdapter extends RecyclerView.Adapter<ConnectionsAdapter.
         return mData.size();
     }
 
-    public class ConnectionsViewHolder extends RecyclerView.ViewHolder // implements View.OnClickListener
-    {
+    public class ConnectionsViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener {
         TextView connectionName;
 
         ConnectionsViewHolder(View itemView) {
             super(itemView);
             connectionName = itemView.findViewById(R.id.connectionName);
-//            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
-//        @Override
-//        public void onClick(View view) {
-//            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-//        }
+        @Override
+        public void onClick(View view) {
+            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+        }
     }
 
     public String getItem(int id) {
         return mData.get(id);
     }
 
-//    public void setClickListener(ConnectionsAdapter.ItemClickListener itemClickListener) {
-//        this.mClickListener = itemClickListener;
-//    }
+    public void setClickListener(ConnectionsAdapter.ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
 
     public interface ItemClickListener {
         void onItemClick(View view, int position);

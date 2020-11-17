@@ -5,19 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.ui.adapter.ConnectionsAdapter;
 import com.covrsecurity.io.ui.fragment.BaseFragment;
+import com.covrsecurity.io.utils.FragmentAnimationSet;
 
 import java.util.ArrayList;
 
-public class ConnectionsItemFragment extends BaseFragment {
+public class ConnectionsItemFragment extends BaseFragment implements ConnectionsAdapter.ItemClickListener {
 
     private static final String DESCRIPTION = "description";
     private static final String LAYOUT = "layout";
@@ -70,26 +69,13 @@ public class ConnectionsItemFragment extends BaseFragment {
         items.add("Description");
         adapter = new ConnectionsAdapter(getContext(), items);
         rvConnections.setAdapter(adapter);
+        adapter.setClickListener(this);
         return rootView;
     }
-//
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//
-//        RecyclerView rvConnections = view.findViewById(R.id.rvConnections);
-//        rvConnections.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-//        ArrayList<String> items = new ArrayList<>();
-//        items.add("Description");
-//        items.add("Description");
-//        items.add("Description");
-//        items.add("Description");
-//        items.add("Description");
-//        items.add("Description");
-//        items.add("Description");
-//        items.add("Description");
-//        items.add("Description");
-//        adapter = new ConnectionsAdapter(getContext(), items);
-//        rvConnections.setAdapter(adapter);
-//    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Fragment fragment = ConnectedServicesDetailsFragment.newInstance(String.valueOf(position), description);
+        replaceFragment(fragment, fragment.getArguments(), true);
+    }
 }
