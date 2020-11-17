@@ -1,8 +1,6 @@
 package com.covrsecurity.io.ui.activity;
 
-import android.app.Activity;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,9 +9,6 @@ import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,22 +26,14 @@ import com.covrsecurity.io.ui.dialog.YesNoDialog;
 import com.covrsecurity.io.ui.fragment.interfaces.IUnregisteredFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.BaseUnauthorizedFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.ScanFaceBiometricsFragment;
-import com.covrsecurity.io.ui.fragment.unauthorized.SplashFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.TutorialFragment;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.unauthorizedactivity.UnauthorizedActivityViewModel;
 import com.covrsecurity.io.ui.viewmodel.unauthorizedactivity.UnauthorizedActivityViewModelFactory;
 import com.covrsecurity.io.utils.ConstantsUtils;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import javax.inject.Inject;
 
-import co.hyperverge.hypersnapsdk.activities.HVFaceActivity;
-import co.hyperverge.hypersnapsdk.listeners.FaceCaptureCompletionHandler;
-import co.hyperverge.hypersnapsdk.objects.HVError;
-import co.hyperverge.hypersnapsdk.objects.HVFaceConfig;
 import timber.log.Timber;
 
 public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, UnauthorizedActivityViewModel> {
@@ -99,11 +86,16 @@ public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, Una
         if (getIntent().getBooleanExtra(ConstantsUtils.INTENT_KEY_FOR_TUTORIAL_FRAGMENT, false)) {
             replaceFragment(TutorialFragment.newInstance(), null, false);
         } else {
-//            replaceFragment(SplashFragment.newInstance(), null, false);
             replaceFragment(TutorialFragment.newInstance(), null, false);
 
         }
         mBinding.setCancelSetupClickListener(v1 -> showCancelSetupDialog());
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme_NoActionBar);
+        super.onCreate(savedInstanceState);
     }
 
     @Override
