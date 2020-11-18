@@ -53,8 +53,6 @@ public class ConnectionsItemFragment extends BaseFragment implements Connections
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle args = getArguments();
         View rootView = inflater.inflate(args.getInt(LAYOUT), container, false);
-//        TextView description1 = (TextView) rootView.findViewById(R.id.texDescription1);
-//        description1.setText(getString(args.getInt(DESCRIPTION1)));
         RecyclerView rvConnections = rootView.findViewById(R.id.rvConnections);
         rvConnections.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         ArrayList<String> items = new ArrayList<>();

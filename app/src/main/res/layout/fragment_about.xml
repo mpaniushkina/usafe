@@ -61,7 +61,7 @@
                         android:layout_centerInParent="true"
                         android:layout_margin="@dimen/about_sections_padding_left_rigth"
                         android:scaleType="centerInside"
-                        android:src="@drawable/about_logo"/>
+                        android:src="@drawable/iamlogo3x"/>
 
                     <LinearLayout
                         style="@style/AboutTextContainerStyle"
@@ -93,7 +93,7 @@
                     style="@style/AboutSectionStyle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/about_fragment_view_pager_height"
-                    android:background="@color/backgroundMain">
+                    android:background="@color/blue">
 
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/pager"
@@ -122,16 +122,14 @@
                         android:layout_height="match_parent"
                         android:layout_alignBottom="@id/pager"
                         android:layout_alignParentLeft="true"
-                        android:layout_alignTop="@id/pager"
-                        android:background="@drawable/gradient_left"/>
+                        android:layout_alignTop="@id/pager"/>
 
                     <View
                         android:layout_width="@dimen/slide_button_width"
                         android:layout_height="match_parent"
                         android:layout_alignBottom="@id/pager"
                         android:layout_alignParentRight="true"
-                        android:layout_alignTop="@id/pager"
-                        android:background="@drawable/gradient_right"/>
+                        android:layout_alignTop="@id/pager" />
 
                     <ImageView
                         android:id="@+id/chevron_left"
@@ -144,7 +142,7 @@
                         android:paddingLeft="@dimen/view_padding_small"
                         android:paddingRight="@dimen/view_padding_big"
                         android:paddingTop="@dimen/view_padding_big"
-                        android:src="@drawable/chevron_left_tutorial"/>
+                        android:src="@drawable/ic_arrow_left"/>
 
                     <ImageView
                         android:id="@+id/chevron_right"
@@ -154,10 +152,11 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:paddingBottom="@dimen/view_padding_big"
-                        android:paddingLeft="@dimen/view_padding_big"
-                        android:paddingRight="@dimen/view_padding_small"
+                        android:paddingLeft="@dimen/view_padding_small"
+                        android:paddingRight="@dimen/view_padding_big"
                         android:paddingTop="@dimen/view_padding_big"
-                        android:src="@drawable/chevron_right_tutorial"/>
+                        android:rotation="180"
+                        android:src="@drawable/ic_arrow_left"/>
 
                     <View
                         style="@style/AboutLineSeparatorStyle"

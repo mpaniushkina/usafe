@@ -97,8 +97,9 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                 this::showProgress,
                 response -> {
                     hideProgress();
-                    ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
-                    replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+                    startAuthorizedActivity(true);
+//                    ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
+//                    replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
 //                    if (FingerprintUtils.getInstance(getActivity()).canUseFingerprintScanner(getActivity())) {
 //                        Fragment fragment = UseFingerprintAuthFragment.newInstance(mEnteredText, registration);
 //                        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);

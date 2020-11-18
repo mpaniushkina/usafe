@@ -196,7 +196,7 @@
     <style name="AboutMainTextStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/text_color_black</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/text_toolbar_header</item>
     </style>
 

@@ -313,8 +313,8 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     public void onResume() {
         super.onResume();
         setAdapter(AppAdapter.getPendingConsumerRequests());
-        mBinding.slidingUpPanel.setVisibility(View.GONE);
-        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
+//        mBinding.slidingUpPanel.setVisibility(View.GONE);
+//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
         ActivityUtils.setLastFragmentName(this.getClass().getName());
         ActivityUtils.scheduleOnMainThread(() -> {
             openFirstRequest();
@@ -354,7 +354,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
         Animation progress = AnimationUtils.loadAnimation(getActivity(), R.anim.progress_anim);
-        mBinding.progress.startAnimation(progress);
+//        mBinding.progress.startAnimation(progress);
         mBinding.pendindRequestsRecyclerView.setLayoutManager(new SmoothLinearLayoutManager(getActivity()));
         mBinding.pendindRequestsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -494,7 +494,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         } else {
             mPartnershipAdapter.setData(pendingTransactionsList);
         }
-        mPartnershipAdapter.setEmptyView(mBinding.emptyView);
+//        mPartnershipAdapter.setEmptyView(mBinding.emptyView);
         mPartnershipAdapter.setLogoView(mBinding.logo);
         if (mBinding.pendindRequestsRecyclerView.getAdapter() == null) {
             mBinding.pendindRequestsRecyclerView.setAdapter(mPartnershipAdapter);
@@ -541,19 +541,19 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     }
 
     public void showChildFragment(Fragment fragment, Bundle args) {
-        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
+//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
         replaceChildFragment(fragment, args, true, 0, 0, 0, 0);
         Animation bottomUp = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_up);
-        bottomUp.setAnimationListener(new AnimationEndListner() {
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.appear);
-                mBinding.childFragmentTopShadow.startAnimation(fadeOut);
-                mBinding.childFragmentTopShadow.setVisibility(View.VISIBLE);
-            }
-        });
-        mBinding.slidingUpPanel.startAnimation(bottomUp);
-        mBinding.slidingUpPanel.setVisibility(View.VISIBLE);
+//        bottomUp.setAnimationListener(new AnimationEndListner() {
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//                Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.appear);
+//                mBinding.childFragmentTopShadow.startAnimation(fadeOut);
+//                mBinding.childFragmentTopShadow.setVisibility(View.VISIBLE);
+//            }
+//        });
+//        mBinding.slidingUpPanel.startAnimation(bottomUp);
+//        mBinding.slidingUpPanel.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -563,35 +563,35 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
             @Override
             public void onAnimationEnd(Animation animation) {
                 Animation bottomUp = AnimationUtils.loadAnimation(getActivity(), R.anim.up_bottom);
-                mBinding.slidingUpPanel.startAnimation(bottomUp);
-                mBinding.slidingUpPanel.setVisibility(View.GONE);
-                ActivityUtils.scheduleOnMainThread(() -> {
-                    FragmentManager childFragmentManager = getChildFragmentManager();
-                    for (int i = 0; i < childFragmentManager.getBackStackEntryCount(); i++) {
-                        final BaseFragment baseFragment = (BaseFragment) childFragmentManager
-                                .findFragmentById(getFragmentContainerId());
-                        if (baseFragment != null) {
-                            baseFragment.onKeyboardBackPressed();
-                        }
-                        childFragmentManager.popBackStack();
-                    }
-                    childFragmentManager.executePendingTransactions();
-                }, ConstantsUtils.HALF_SECOND);
+//                mBinding.slidingUpPanel.startAnimation(bottomUp);
+//                mBinding.slidingUpPanel.setVisibility(View.GONE);
+//                ActivityUtils.scheduleOnMainThread(() -> {
+//                    FragmentManager childFragmentManager = getChildFragmentManager();
+//                    for (int i = 0; i < childFragmentManager.getBackStackEntryCount(); i++) {
+//                        final BaseFragment baseFragment = (BaseFragment) childFragmentManager
+//                                .findFragmentById(getFragmentContainerId());
+//                        if (baseFragment != null) {
+//                            baseFragment.onKeyboardBackPressed();
+//                        }
+//                        childFragmentManager.popBackStack();
+//                    }
+//                    childFragmentManager.executePendingTransactions();
+//                }, ConstantsUtils.HALF_SECOND);
             }
         });
-        mBinding.childFragmentTopShadow.startAnimation(fadeOut);
-        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
+//        mBinding.childFragmentTopShadow.startAnimation(fadeOut);
+//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
         ActivityUtils.setLastFragmentName(this.getClass().getName());
     }
 
     public void closeSlidingUpPanel() {
-        mBinding.slidingUpPanel.setVisibility(View.GONE);
-        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
+//        mBinding.slidingUpPanel.setVisibility(View.GONE);
+//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
     }
 
-    protected int getFragmentContainerId() {
-        return R.id.child_fragment_container;
-    }
+//    protected int getFragmentContainerId() {
+//        return R.id.child_fragment_container;
+//    }
 
     @Override
     public void replaceChildFragment(Fragment fragment, Bundle bundle, boolean addToBackStack,
@@ -619,9 +619,9 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
             ft.setCustomAnimations(enterAnimationId, exitAnimationId, popEnterAnimationId, popExitAnimationId);
         }
         if (add) {
-            ft.add(getFragmentContainerId(), f, fragmentName);
+//            ft.add(getFragmentContainerId(), f, fragmentName);
         } else {
-            ft.replace(getFragmentContainerId(), f, fragmentName);
+//            ft.replace(getFragmentContainerId(), f, fragmentName);
         }
         try {
             ft.commitAllowingStateLoss();

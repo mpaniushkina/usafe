@@ -2,10 +2,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque">
 
-    <item android:drawable="@drawable/bg_front" android:top="20dp"/>
+    <item android:drawable="@color/white"/>
 
-    <item android:bottom="@dimen/lockscreen_timers_layout_height">
+    <item android:drawable="@drawable/bg_front" android:bottom="25dp"/>
 
+    <item android:bottom="95dp">
     <bitmap
             android:gravity="center"
             android:src="@drawable/iamlogo3x" />

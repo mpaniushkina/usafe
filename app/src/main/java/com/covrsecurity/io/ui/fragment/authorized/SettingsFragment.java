@@ -26,10 +26,15 @@ import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.databinding.FragmentSettingsBinding;
 import com.covrsecurity.io.manager.Analytics;
 import com.covrsecurity.io.manager.SettingsManager;
+import com.covrsecurity.io.model.error.FingerprintRecognitionError;
 import com.covrsecurity.io.ui.adapter.SettingsAdapter;
+import com.covrsecurity.io.ui.dialog.FingerprintAuthenticationDialogFragment;
+import com.covrsecurity.io.ui.dialog.FingerprintAuthenticationFailedDialogFragment;
 import com.covrsecurity.io.ui.fragment.BaseParentFragment;
+import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment;
 import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeInfoFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.UseFingerprintAuthFragment;
+import com.covrsecurity.io.ui.interfaces.IFingerprintAuthCallBack;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.biometricsshared.BiometricsSharedViewModel;
 import com.covrsecurity.io.ui.viewmodel.biometricsshared.BiometricsSharedViewModelFactory;
@@ -39,6 +44,7 @@ import com.covrsecurity.io.ui.viewmodel.settings.SettingsViewModelFactory;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.crypto.Cipher;
 import javax.inject.Inject;
 
 import timber.log.Timber;
@@ -395,6 +401,7 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
                 break;
             case USE_FINGERPRINT_ITEM:
                 fragment = UseFingerprintAuthFragment.newInstance();
+//                fragment = ChangeCodeFragment.newInstance();
                 break;
             case PUSH_NOTIFICATIONS_ITEM:
                 fragment = HelpFragment.newInstance();

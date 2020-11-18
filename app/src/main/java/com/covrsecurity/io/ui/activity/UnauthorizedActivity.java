@@ -26,6 +26,7 @@ import com.covrsecurity.io.ui.dialog.YesNoDialog;
 import com.covrsecurity.io.ui.fragment.interfaces.IUnregisteredFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.BaseUnauthorizedFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.ScanFaceBiometricsFragment;
+import com.covrsecurity.io.ui.fragment.unauthorized.SplashFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.TutorialFragment;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.unauthorizedactivity.UnauthorizedActivityViewModel;
@@ -87,7 +88,6 @@ public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, Una
             replaceFragment(TutorialFragment.newInstance(), null, false);
         } else {
             replaceFragment(TutorialFragment.newInstance(), null, false);
-
         }
         mBinding.setCancelSetupClickListener(v1 -> showCancelSetupDialog());
     }

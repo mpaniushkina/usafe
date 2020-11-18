@@ -18,13 +18,32 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_marginBottom="@dimen/view_padding_small" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/itemLogo"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/background_square_item"
+            android:layout_below="@+id/tool_bar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_green_line">
+
+            <TextView
+                android:id="@+id/connectionName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="LOGO"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <RelativeLayout
             android:id="@+id/historyDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_below="@+id/itemLogo"
             android:layout_marginStart="@dimen/twenty_dp"
             android:layout_marginEnd="@dimen/twenty_dp"
+            android:layout_marginTop="@dimen/twenty_dp"
             android:background="@drawable/background_pending_item">
 
             <TextView
@@ -46,10 +65,11 @@
                 android:textSize="@dimen/text_small"
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins_regular"
-                android:layout_below="@+id/historyDetailsHeader"
+                android:layout_below="@+id/serviceDetailsHeader"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginBottom="@dimen/twenty_dp"
                 android:layout_marginStart="@dimen/twenty_dp"
+                android:text="Date: yyyy-mm-dd"
                 android:lines="5"/>
         </RelativeLayout>
 

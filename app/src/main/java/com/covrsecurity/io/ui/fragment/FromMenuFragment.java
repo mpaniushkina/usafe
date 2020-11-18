@@ -36,7 +36,7 @@ public abstract class FromMenuFragment<Binding extends ViewDataBinding, VM exten
 
     protected void onLeftToolbarButtonClicked() {
         if (showDrawerOnBack()) {
-            ((AuthorizedActivity) getActivity()).openDrawer();
+//            ((AuthorizedActivity) getActivity()).openDrawer();
         }
         getActivity().onBackPressed();
     }

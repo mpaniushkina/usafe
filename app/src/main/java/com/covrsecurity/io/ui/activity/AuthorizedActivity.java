@@ -153,8 +153,8 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
     @Override
     protected void initViews() {
         super.initViews();
-        mBinding.drwerList.setAdapter(new DrawerAdapter(this));
-        mBinding.drwerList.setOnItemClickListener(new DrawerItemClickListener());
+//        mBinding.drwerList.setAdapter(new DrawerAdapter(this));
+//        mBinding.drwerList.setOnItemClickListener(new DrawerItemClickListener());
         mBinding.drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -196,7 +196,7 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
         super.onStart();
         //this need for reinitialize views after restore activity from background,
         // blur at LockScreen doesn't work without it after restore activity from background.
-        closeDrawer();
+//        closeDrawer();
         SoundUtils.initSoundPool(this, SOUNDS_TO_LOAD, () -> Timber.d("Sound pool is initialized"));
         checkAndOpenLockscreen();
         //TODO: REMOVE FOLLOWING LINE IN CASE CUSTOMER WANTS TO REMEMBER LAST SCREEN WE'VE BEEN ON.
@@ -274,7 +274,7 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
                 childFragmentManager.popBackStack();
             }
             childFragmentManager.executePendingTransactions();
-            standingByFragment.closeSlidingUpPanel();
+//            standingByFragment.closeSlidingUpPanel();
         }
     }
 
@@ -288,7 +288,7 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
                     for (int i = 0; i < childFragmentManager.getBackStackEntryCount(); i++) {
                         childFragmentManager.popBackStack();
                     }
-                    standingByFragment.closeSlidingUpPanel();
+//                    standingByFragment.closeSlidingUpPanel();
                 }
             });
         } else {
@@ -313,14 +313,14 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
             }
         }
     }
-
-    public void closeDrawer() {
-        mBinding.drawerLayout.closeDrawer(mBinding.leftDrawer);
-    }
-
-    public void openDrawer() {
-        mBinding.drawerLayout.openDrawer(mBinding.leftDrawer);
-    }
+//
+//    public void closeDrawer() {
+//        mBinding.drawerLayout.closeDrawer(mBinding.leftDrawer);
+//    }
+//
+//    public void openDrawer() {
+//        mBinding.drawerLayout.openDrawer(mBinding.leftDrawer);
+//    }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -366,24 +366,24 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
         // don't use animation for showing lock screen - open it right away so that underlying screen wouldn't be visible
 //        Animation bottomUp = AnimationUtils.loadAnimation(this, R.anim.lockscreen_up);
 //        mBinding.activitySlidingUpPanel.startAnimation(bottomUp);
-        mBinding.activitySlidingUpPanel.setVisibility(View.VISIBLE);
+//        mBinding.activitySlidingUpPanel.setVisibility(View.VISIBLE);
         mIsLockScreenShown = true;
     }
 
     public void hideLockScreen() {
         mBinding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         Animation bottomUp = AnimationUtils.loadAnimation(this, R.anim.lockscreen_fade_away);
-        bottomUp.setAnimationListener(new AnimationEndListner() {
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                mBinding.activitySlidingUpPanel.setVisibility(View.GONE);
-                Fragment fragment = getSupportFragmentManager().findFragmentByTag(LockScreenFragment.class.getName());
-                if (fragment != null) {
-                    getSupportFragmentManager().beginTransaction().remove(fragment).commit();
-                }
-            }
-        });
-        mBinding.activitySlidingUpPanel.startAnimation(bottomUp);
+//        bottomUp.setAnimationListener(new AnimationEndListner() {
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//                mBinding.activitySlidingUpPanel.setVisibility(View.GONE);
+//                Fragment fragment = getSupportFragmentManager().findFragmentByTag(LockScreenFragment.class.getName());
+//                if (fragment != null) {
+//                    getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+//                }
+//            }
+//        });
+//        mBinding.activitySlidingUpPanel.startAnimation(bottomUp);
         mIsLockScreenShown = false;
     }
 
@@ -431,10 +431,10 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
                     AppAdapter.getConsumerRequests().size() + event.getBadgeCount());
 //            }
             AppAdapter.updateIconLauncherBadge();
-            ListAdapter adapter = mBinding.drwerList.getAdapter();
-            if (adapter != null) {
-                ((DrawerAdapter) adapter).setRequestsCount(event.getBadgeCount());
-            }
+//            ListAdapter adapter = mBinding.drwerList.getAdapter();
+//            if (adapter != null) {
+//                ((DrawerAdapter) adapter).setRequestsCount(event.getBadgeCount());
+//            }
         }
     }
 
@@ -465,10 +465,10 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
         if (event != null) {
             AppAdapter.bus().removeStickyEvent(event);
             Timber.d("Changing partnership badge count");
-            ListAdapter adapter = mBinding.drwerList.getAdapter();
-            if (adapter != null) {
-                ((DrawerAdapter) adapter).setPartnershipCount(event.getPartnershipBadgeCount());
-            }
+//            ListAdapter adapter = mBinding.drwerList.getAdapter();
+//            if (adapter != null) {
+//                ((DrawerAdapter) adapter).setPartnershipCount(event.getPartnershipBadgeCount());
+//            }
         }
     }
 

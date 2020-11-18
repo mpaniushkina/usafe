@@ -1,5 +1,6 @@
 package com.covrsecurity.io.ui.fragment.unauthorized;
 
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;

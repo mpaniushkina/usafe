@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:text="@string/fingerprint_dialog_description"
         android:textAppearance="@android:style/TextAppearance.Material.Subhead"
-        android:textColor="?android:attr/textColorSecondary"
+        android:textColor="@color/white"
         tools:targetApi="lollipop" />
 
     <ImageView

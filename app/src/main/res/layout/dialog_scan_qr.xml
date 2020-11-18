@@ -22,6 +22,14 @@
         app:maskColor="@color/transparent" />
 
     <ImageView
+        android:id="@+id/iamLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/iamlogo3x"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/thirty_dp"/>
+
+    <ImageView
         android:id="@+id/doneQrScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
