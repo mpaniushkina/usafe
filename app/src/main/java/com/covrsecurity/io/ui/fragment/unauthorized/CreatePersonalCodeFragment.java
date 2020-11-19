@@ -132,12 +132,15 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                 response -> {
                     hideProgress();
                     Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_CODE_CREATE);
-                    if (FingerprintUtils.getInstance(getActivity()).canUseFingerprintScanner(getActivity())) {
-                        Fragment fragment = UseFingerprintAuthFragment.newInstance(mEnteredText, registration);
-                        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
-                    } else {
-                        replaceFragment(DoneSetupFragment.newInstance(registration), null, true, FragmentAnimationSet.SLIDE_LEFT);
-                    }
+                    startAuthorizedActivity(true);
+//                    replaceFragment(DoneSetupFragment.newInstance(registration), null, true);
+
+//                    if (FingerprintUtils.getInstance(getActivity()).canUseFingerprintScanner(getActivity())) {
+//                        Fragment fragment = UseFingerprintAuthFragment.newInstance(mEnteredText, registration);
+//                        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+//                    } else {
+//                        replaceFragment(DoneSetupFragment.newInstance(registration), null, true, FragmentAnimationSet.SLIDE_LEFT);
+//                    }
                 },
                 throwable -> {
                     hideProgress();
@@ -195,8 +198,8 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                 if (mBinding.infoPager.getCurrentItem() == InfoPagerAdapter.ENTER_PAGE) {
                     goToVerifyPage();
                 } else if (isRegister && Arrays.equals(mBinding.personCodeLL.getEnteredText(), mEnteredText)) {
-//            viewModel.register(mBinding.personCodeLL.getEnteredText(), true);
-                    startAuthorizedActivity(true);
+                     viewModel.register(mBinding.personCodeLL.getEnteredText(), true);
+//                    startAuthorizedActivity(true);
 //                    ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
 //                    replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
                 } else if (!isRegister) {
@@ -236,9 +239,9 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
         if (mBinding.infoPager.getCurrentItem() == InfoPagerAdapter.ENTER_PAGE) {
             goToVerifyPage();
         } else if (isRegister && Arrays.equals(mBinding.personCodeLL.getEnteredText(), mEnteredText)) {
-//            viewModel.register(mBinding.personCodeLL.getEnteredText(), true);
-            ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
-            replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+            viewModel.register(mBinding.personCodeLL.getEnteredText(), true);
+//            ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
+//            replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
         } else if (!isRegister) {
             // todo Analytics.logEvent
             viewModel.setUpPassword(mEnteredText, true);

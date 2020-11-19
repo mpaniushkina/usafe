@@ -291,7 +291,7 @@
     <string name="decline_btn">Decline</string>
 
     <!-- connected services -->
-    <string name="services_details_title">Services details</string>
+    <string name="services_details_title">Service details</string>
 
     <!-- add partnership -->
     <string name="add_partnership_title">Add new connection</string>

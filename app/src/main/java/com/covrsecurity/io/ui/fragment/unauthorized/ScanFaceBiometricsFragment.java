@@ -476,12 +476,11 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                 Timber.e(e);
             }
         } else if (ScanIntention.REGISTRATION == mScanReason) {
-//            try {
-//                viewModel.register(mEnteredText, true, FileUtils.readAllBytes(getImageFile(selfie)), FileUtils.readAllBytes(getImageFile(documentFrontSide)));
-//            } catch (IOException e) {
-//                Timber.e(e);
-//            }
-            startAuthorizedActivity(true);
+            try {
+                viewModel.register(mEnteredText, true, FileUtils.readAllBytes(getImageFile(selfie)), FileUtils.readAllBytes(getImageFile(documentFrontSide)));
+            } catch (IOException e) {
+                Timber.e(e);
+            }
         } else if (ScanIntention.SCAN_DOCUMENT_FRONT_SIDE == mScanReason) {
             documentCaptureHyperSnap();
             mBinding.capture.setText(R.string.capture);
