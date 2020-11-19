@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="enteredCode"
             type="java.lang.String" />
-
     </data>
 
     <RelativeLayout
-
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_main">
+
+        <RelativeLayout
+            android:id="@+id/buttonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/setting_item_margin_top">
 
         <ImageView
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_back_button"
-            android:layout_marginTop="@dimen/setting_item_margin_top"
             android:layout_marginStart="@dimen/setting_item_margin_top"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"/>
@@ -34,15 +35,27 @@
             android:layout_height="wrap_content"
             android:background="@drawable/ic_x_button"
             android:layout_marginEnd="@dimen/setting_item_margin_top"
-            android:layout_marginTop="@dimen/setting_item_margin_top"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"/>
+
+        <TextView
+            android:id="@+id/pinCodeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingTop="@dimen/two_dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/text_header_small"
+            android:text="@string/enter_code_header"/>
+        </RelativeLayout>
 
         <com.covrsecurity.io.ui.component.NonSwipableViewPager
             android:visibility="visible"
             android:paddingTop="@dimen/fiveteen_dp"
             android:layout_above="@+id/personCodeLL"
             android:id="@+id/info_pager"
+            android:layout_below="@+id/buttonLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
 

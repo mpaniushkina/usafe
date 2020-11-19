@@ -62,13 +62,14 @@
 
             <TextView
                 android:id="@+id/historyDetailsHeader"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_small"
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins_medium"
                 android:layout_marginStart="@dimen/twenty_dp"
                 android:layout_marginTop="@dimen/twenty_dp"
+                android:layout_toStartOf="@+id/statusIcon"
                 android:lines="2"
                 tools:text="Authentication at n\Testsite.com"/>
 
@@ -86,6 +87,7 @@
                 android:lines="5"/>
 
             <ImageView
+                android:id="@+id/statusIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -96,37 +98,42 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/transactionButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/historyDetails"
             android:layout_alignStart="@+id/historyDetails"
-            android:layout_alignEnd="@+id/historyDetails">
+            android:layout_alignEnd="@+id/historyDetails"
+            android:layout_marginTop="@dimen/twenty_dp">
 
             <Button
                 android:id="@+id/btnApprove"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/GreenButton"
-                android:background="@drawable/ic_btn_approve"
-                android:layout_marginTop="@dimen/twenty_dp"
+                android:background="@drawable/button_green"
+                android:padding="@dimen/ten_dp"
                 android:layout_marginStart="@dimen/twenty_dp"
-                android:layout_alignParentStart="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.4"
                 android:text="@string/approve_btn"/>
 
             <Button
                 android:id="@+id/btnDecline"
                 style="@style/GreenButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/twenty_dp"
                 android:layout_marginEnd="@dimen/twenty_dp"
-                android:background="@drawable/ic_btn_deny"
-                android:layout_alignParentEnd="true"
+                android:padding="@dimen/ten_dp"
+                android:background="@drawable/button_red"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.4"
                 android:text="@string/decline_btn"/>
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

@@ -171,6 +171,8 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                         ((UnauthorizedActivity) Objects.requireNonNull(getActivity())).goBack();
                     }
                 });
+        mBinding.pinCodeTitle.setText(mBinding.infoPager.getCurrentItem() == InfoPagerAdapter.ENTER_PAGE ?
+                R.string.enter_code_header : R.string.verify_code_header);
         return view;
     }
 
@@ -228,11 +230,6 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
         return true;
     }
 
-    public void showReadMoreFragment(String url) {
-        Fragment f = ReadMorePhoneFragment.newInstance(url);
-        replaceFragment(f, f.getArguments(), true, FragmentAnimationSet.FADE_IN);
-    }
-
     @Override
     protected void onNextButtonClick() {
         final boolean isRegister = mCreateCodeIntention == CreateCodeIntention.REGISTER;
@@ -250,11 +247,13 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
 
     private void goToVerifyPage() {
         changeItem(InfoPagerAdapter.VERIFY_PAGE);
+        mBinding.pinCodeTitle.setText(R.string.verify_code_header);
     }
 
     public void goToEnterPage() {
         Arrays.fill(mEnteredText, Character.MIN_VALUE);
         changeItem(InfoPagerAdapter.ENTER_PAGE);
+        mBinding.pinCodeTitle.setText(R.string.enter_code_header);
     }
 
     private void changeItem(int itemToSet) {

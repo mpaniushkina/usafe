@@ -6,18 +6,6 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tutor_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/fiveteen_dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:fontFamily="@font/poppins_regular"
-        android:textSize="@dimen/text_header_small"
-        tools:text="Select pin" />
-
-    <TextView
         android:id="@+id/tutorTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,7 +34,6 @@
         style="@style/InfoTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tutor_text"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/ten_dp"
         android:gravity="center_horizontal"
