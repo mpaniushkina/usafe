@@ -4,99 +4,57 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/bottom_button"
-            android:orientation="vertical">
-
-            <include layout="@layout/tool_bar"/>
-
-            <RelativeLayout
+            <include
+                android:id="@+id/tool_bar"
+                layout="@layout/toolbar_back_arrow"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:id="@+id/partnership_no_merchants"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/white"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="@dimen/bottom_button_height">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/tut5_start_green" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/view_padding_big"
-                        android:gravity="center"
-                        android:text="@string/partnership_no_partner_header"
-                        android:textColor="@color/setting_header_black"
-                        android:textSize="@dimen/text_header_no_partner" />
-
-                    <!--<TextView-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginTop="@dimen/view_padding_big"-->
-                        <!--android:gravity="center"-->
-                        <!--android:onClick="@{addPartnerClickListener::onClick}"-->
-                        <!--android:padding="@dimen/five_dp"-->
-                        <!--android:text="@string/plus_add_partnership"-->
-                        <!--android:textColor="@color/clickable_text"-->
-                        <!--android:textSize="@dimen/text_button_add_partner" />-->
-
-                </LinearLayout>
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginBottom="@dimen/view_padding_small" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="@dimen/four_dp"
                     android:id="@+id/partnership_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_below="@+id/tool_bar"
                     android:scrollbars="vertical"
                     android:visibility="visible"
-                    android:overScrollMode="never"/>
+                    android:overScrollMode="never"
+                    android:layout_marginTop="@dimen/margin_header"
+                    android:layout_marginStart="@dimen/ten_dp"/>
 
-            </RelativeLayout>
+<!--        <include-->
+<!--            android:id="@+id/bottom_button"-->
+<!--            layout="@layout/bottom_button" />-->
 
-        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:id="@+id/sliding_up_panel"-->
+<!--            android:orientation="vertical"-->
+<!--            android:visibility="gone"-->
+<!--            android:focusable="true"-->
+<!--            android:clickable="true"-->
+<!--            android:focusableInTouchMode="true"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
 
-        <include
-            android:id="@+id/bottom_button"
-            layout="@layout/bottom_button" />
+<!--            <View-->
+<!--                android:id="@+id/child_fragment_top_shadow"-->
+<!--                android:visibility="invisible"-->
+<!--                android:layout_weight="@integer/fragment_sliding_up_transparency_weight"-->
+<!--                android:background="@color/transparent_gray"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"/>-->
 
-        <LinearLayout
-            android:id="@+id/sliding_up_panel"
-            android:orientation="vertical"
-            android:visibility="gone"
-            android:focusable="true"
-            android:clickable="true"
-            android:focusableInTouchMode="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<!--            <FrameLayout-->
+<!--                android:id="@+id/partnerships_child_fragment_container"-->
+<!--                android:background="@color/blue"-->
+<!--                android:layout_weight="@integer/fragment_sliding_up_content_weight"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"/>-->
 
-            <View
-                android:id="@+id/child_fragment_top_shadow"
-                android:visibility="invisible"
-                android:layout_weight="@integer/fragment_sliding_up_transparency_weight"
-                android:background="@color/transparent_gray"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"/>
-
-            <FrameLayout
-                android:id="@+id/partnerships_child_fragment_container"
-                android:background="@color/backgroundMain"
-                android:layout_weight="@integer/fragment_sliding_up_content_weight"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"/>
-
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
         <RelativeLayout
             android:id="@+id/rlMerchantProgress"
@@ -115,7 +73,6 @@
                 app:cpv_color="#FFFFFF"
                 app:cpv_indeterminate="true"
                 app:cpv_thickness="@dimen/circular_progress_view_thickness"/>
-
         </RelativeLayout>
 
     </RelativeLayout>

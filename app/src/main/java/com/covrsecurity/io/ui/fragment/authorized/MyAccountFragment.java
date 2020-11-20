@@ -65,7 +65,7 @@ public class MyAccountFragment extends BaseFragment<FragmentMyAccountBinding> im
         Fragment fragment = null;
         switch (position) {
             case CONNECTED_SERVICES_ITEM:
-                fragment = ConnectedServicesFragment.newInstance();
+                fragment = PartnershipFragment.newInstance();
                 break;
             case HISTORY_ITEM:
                 fragment = HistoryFragment.newInstance();
@@ -76,9 +76,9 @@ public class MyAccountFragment extends BaseFragment<FragmentMyAccountBinding> im
             case RECOVERY_ITEM:
                 fragment = HelpFragment.newInstance();
                 break;
-            case HELP_ITEM:
-                fragment = HelpFragment.newInstance();
-                break;
+//            case HELP_ITEM:
+//                fragment = HelpFragment.newInstance();
+//                break;
         }
         replaceFragment(fragment, fragment.getArguments(), true);
     }

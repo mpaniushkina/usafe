@@ -243,6 +243,7 @@
     <string name="partnership_added">added</string>
     <string name="company_status_active">ACTIVE</string>
     <string name="company_status_inactive">INACTIVE</string>
+    <string name="delete_btn">Delete</string>
 
     <!-- Lock screen -->
     <string name="lock_screen_enter_personal_code">Please enter your iAM Code.</string>
@@ -469,10 +470,11 @@
     <string name="biometric_description2">Tap the "Face Scan" button below to continue the registration process.</string>
 
     <string-array name="setting_names">
-        <item>About</item>
-        <item>Use Finger Print</item>
+        <item>About iAM</item>
+        <item>Fingerprint for iAM</item>
         <item>Push Notifications</item>
         <item>In-App Notifications</item>
+        <item>Language</item>
     </string-array>
 
     <string-array name="my_account_names">
@@ -480,7 +482,7 @@
         <item>History</item>
         <item>Change PIN Code</item>
         <item>Recovery</item>
-        <item>Help</item>
+<!--        <item>Help</item>-->
     </string-array>
 
 </resources>

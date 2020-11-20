@@ -133,8 +133,6 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                     hideProgress();
                     Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_CODE_CREATE);
                     startAuthorizedActivity(true);
-//                    replaceFragment(DoneSetupFragment.newInstance(registration), null, true);
-
 //                    if (FingerprintUtils.getInstance(getActivity()).canUseFingerprintScanner(getActivity())) {
 //                        Fragment fragment = UseFingerprintAuthFragment.newInstance(mEnteredText, registration);
 //                        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
@@ -199,7 +197,6 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                     goToVerifyPage();
                 } else if (isRegister && Arrays.equals(mBinding.personCodeLL.getEnteredText(), mEnteredText)) {
                      viewModel.register(mBinding.personCodeLL.getEnteredText(), true);
-//                    startAuthorizedActivity(true);
 //                    ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
 //                    replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
                 } else if (!isRegister) {

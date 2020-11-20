@@ -562,25 +562,4 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
             startService(intent);
         }
     }
-
-//    public void hideButtons() {
-//        mBinding.bottomButtonsLayout.setVisibility(View.GONE);
-//    }
-//
-//    // this is used for smooth fragment transition
-//    public void makeButtonsInvisible() {
-//        mBinding.bottomButtonsLayout.setVisibility(View.INVISIBLE);
-//    }
-//
-//    public void showButtons() {
-//        mBinding.bottomButtonsLayout.setVisibility(View.VISIBLE);
-//    }
-//
-//    public View getLeftButton() {
-//        return mBinding.leftBottomButton;
-//    }
-//
-//    public View getRightButton() {
-//        return mBinding.rightBottomButton;
-//    }
 }

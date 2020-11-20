@@ -56,12 +56,12 @@ public class PartnershipDetailsFragment extends FromMenuFragment<FragmentPartner
 
     @Override
     protected int getTitleId() {
-        return R.string.partnership_info;
+        return R.string.services_details_title;
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_partnership_details;
+        return R.layout.fragment_connections_services_details;
     }
 
     @NonNull
@@ -97,9 +97,9 @@ public class PartnershipDetailsFragment extends FromMenuFragment<FragmentPartner
                     }
                 }
         ));
-        if (!mPartnership.getCompany().isViewed()) {
-            viewModel.markConnectionAsViewed(mPartnership.getCompany().getCompanyId());
-        }
+//        if (!mPartnership.getCompany().isViewed()) {
+//            viewModel.markConnectionAsViewed(mPartnership.getCompany().getCompanyId());
+//        }
     }
 
     @Override
@@ -107,28 +107,28 @@ public class PartnershipDetailsFragment extends FromMenuFragment<FragmentPartner
         super.initBinding(inflater);
         getPartnership();
         if (mPartnership != null) {
-            mBinding.setGoToPartnerSiteClickListener(v -> startBrowser(mPartnership.getCompany().getWebsiteUrl()));
-            mBinding.setPartnerCreationDate(mPartnership.getCreatedDate() == 0
-                    ? getString(R.string.history_details_not_available) : DateTimeUtils.getFormattedTime(new DateTime(mPartnership.getCreatedDate())));
-            String partnerName = mPartnership.getCompany().getFullName();
-            if (TextUtils.isEmpty(partnerName)) {
-                partnerName = mPartnership.getCompany().getName();
-            }
-            mBinding.setPartnerFullName(partnerName);
-            boolean isActive = mPartnership.getCompany().isActive();
-            mBinding.setPartnerStatus(isActive ? getString(R.string.company_status_active) :
-                    getString(R.string.company_status_inactive));
-            mBinding.setPartnerUrlName(mPartnership.getCompany().getWebsiteName());
-            GlideApp.with(AppAdapter.context())
-                    .load(mPartnership.getCompany().getLogo())
-                    .centerCrop()
-                    .error(R.drawable.about_logo)
-                    .into(mBinding.ivPartnershipDetailsLogo);
-            mBinding.shareLayout.shareButton.setOnClickListener(v -> {
-                String subject = getString(R.string.history_details_sharing_subject, mPartnership.getCompany().getName(), mPartnership.getStatus());
-                String body = EmailUtils.formatForEmail(mPartnership);
-                EmailUtils.sendEmail(subject, body, getActivity());
-            });
+//            mBinding.setGoToPartnerSiteClickListener(v -> startBrowser(mPartnership.getCompany().getWebsiteUrl()));
+//            mBinding.setPartnerCreationDate(mPartnership.getCreatedDate() == 0
+//                    ? getString(R.string.history_details_not_available) : DateTimeUtils.getFormattedTime(new DateTime(mPartnership.getCreatedDate())));
+//            String partnerName = mPartnership.getCompany().getFullName();
+//            if (TextUtils.isEmpty(partnerName)) {
+//                partnerName = mPartnership.getCompany().getName();
+//            }
+//            mBinding.setPartnerFullName(partnerName);
+//            boolean isActive = mPartnership.getCompany().isActive();
+//            mBinding.setPartnerStatus(isActive ? getString(R.string.company_status_active) :
+//                    getString(R.string.company_status_inactive));
+//            mBinding.setPartnerUrlName(mPartnership.getCompany().getWebsiteName());
+//            GlideApp.with(AppAdapter.context())
+//                    .load(mPartnership.getCompany().getLogo())
+//                    .centerCrop()
+//                    .error(R.drawable.about_logo)
+//                    .into(mBinding.ivPartnershipDetailsLogo);
+//            mBinding.shareLayout.shareButton.setOnClickListener(v -> {
+//                String subject = getString(R.string.history_details_sharing_subject, mPartnership.getCompany().getName(), mPartnership.getStatus());
+//                String body = EmailUtils.formatForEmail(mPartnership);
+//                EmailUtils.sendEmail(subject, body, getActivity());
+//            });
         }
     }
 

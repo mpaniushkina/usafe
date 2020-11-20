@@ -12,12 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.databinding.FragmentPartnershipBinding;
 import com.covrsecurity.io.domain.entity.MerchantEntity;
+import com.covrsecurity.io.domain.entity.StatusEntity;
 import com.covrsecurity.io.ui.adapter.PartnershipAdapter;
 import com.covrsecurity.io.ui.component.AnimationEndListner;
 import com.covrsecurity.io.ui.component.IPartnershipClickListener;
@@ -33,6 +35,7 @@ import com.covrsecurity.io.model.Fields;
 import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -67,7 +70,7 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
 
     @Override
     protected int getTitleId() {
-        return R.string.partnership;
+        return R.string.connected_services_title;
     }
 
     @NonNull
@@ -167,12 +170,10 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
         mBinding.rlMerchantProgress.setVisibility(View.VISIBLE);
-        mBinding.partnershipRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mBinding.bottomButton.addPartnership.setOnClickListener(v -> getQrCodeConnection());
-        mBinding.bottomButton.addPartnershipPlus.setOnClickListener(v -> getQrCodeConnection());
+        mBinding.partnershipRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+//        mBinding.bottomButton.addPartnership.setOnClickListener(v -> getQrCodeConnection());
+//        mBinding.bottomButton.addPartnershipPlus.setOnClickListener(v -> getQrCodeConnection());
         setAdapter(AppAdapter.getPartnerships());
-        mBinding.partnershipRecyclerView.setVisibility(View.VISIBLE);
-        mBinding.partnershipNoMerchants.setVisibility(View.GONE);
     }
 
     private void updateListContent() {
@@ -187,6 +188,14 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
     }
 
     private void setAdapter(final List<MerchantEntity> partnershipList) {
+        //TODO delete hardcoded data
+        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
+        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
+        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
+        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
+        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
+        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
+        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
         if (mPartnershipAdapter == null) {
             mPartnershipAdapter = new PartnershipAdapter(partnershipList, this);
         } else {
@@ -201,17 +210,16 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
     public void onPartnershipClicked(MerchantEntity partnership) {
         Timber.d("partnership clicked. id = " + partnership.getId());
         Fragment fragment = PartnershipDetailsFragment.newInstance(partnership);
-        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+        replaceFragment(fragment, fragment.getArguments(), true);
     }
 
     private void showEmpty(boolean show) {
-        mBinding.partnershipNoMerchants.setVisibility(show ? View.VISIBLE : View.GONE);
-        mBinding.partnershipRecyclerView.setVisibility(show ? View.GONE : View.VISIBLE);
+        mBinding.partnershipRecyclerView.setVisibility(show ? View.VISIBLE : View.VISIBLE);
     }
 
     @Override
     protected int getFragmentContainerId() {
-        return R.id.partnerships_child_fragment_container;
+        return 0;
     }
 
     @Override
@@ -224,20 +232,20 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
         if (activity == null) {
             return;
         }
-        Animation fadeOut = AnimationUtils.loadAnimation(activity, R.anim.disappear);
-        fadeOut.setAnimationListener(new AnimationEndListner() {
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                Animation bottomUp = AnimationUtils.loadAnimation(activity, R.anim.up_bottom);
-                mBinding.slidingUpPanel.startAnimation(bottomUp);
-                mBinding.slidingUpPanel.setVisibility(View.GONE);
-                ActivityUtils.scheduleOnMainThread(() -> {
-                    getChildFragmentManager().popBackStack();
-                }, ConstantsUtils.HALF_SECOND);
-            }
-        });
-        mBinding.childFragmentTopShadow.startAnimation(fadeOut);
-        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
+//        Animation fadeOut = AnimationUtils.loadAnimation(activity, R.anim.disappear);
+//        fadeOut.setAnimationListener(new AnimationEndListner() {
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//                Animation bottomUp = AnimationUtils.loadAnimation(activity, R.anim.up_bottom);
+////                mBinding.slidingUpPanel.startAnimation(bottomUp);
+////                mBinding.slidingUpPanel.setVisibility(View.GONE);
+//                ActivityUtils.scheduleOnMainThread(() -> {
+//                    getChildFragmentManager().popBackStack();
+//                }, ConstantsUtils.HALF_SECOND);
+//            }
+//        });
+//        mBinding.childFragmentTopShadow.startAnimation(fadeOut);
+//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
     }
 
     private void getQrCodeConnection() {
@@ -250,22 +258,22 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
         showChildFragment(fragment, fragment.getArguments());
     }
     public void showChildFragment(Fragment fragment, Bundle args) {
-        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
+//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
         replaceChildFragment(fragment, args, false, R.animator.right_slide_in,
                 R.animator.left_slide_in,
                 R.animator.fade_in,
                 R.animator.left_slide_in);
-        Animation bottomUp = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_up);
-        bottomUp.setAnimationListener(new AnimationEndListner() {
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.appear);
-                mBinding.childFragmentTopShadow.startAnimation(fadeOut);
-                mBinding.childFragmentTopShadow.setVisibility(View.VISIBLE);
-            }
-        });
-        mBinding.slidingUpPanel.startAnimation(bottomUp);
-        mBinding.slidingUpPanel.setVisibility(View.VISIBLE);
+//        Animation bottomUp = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_up);
+//        bottomUp.setAnimationListener(new AnimationEndListner() {
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//                Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.appear);
+////                mBinding.childFragmentTopShadow.startAnimation(fadeOut);
+////                mBinding.childFragmentTopShadow.setVisibility(View.VISIBLE);
+//            }
+//        });
+//        mBinding.slidingUpPanel.startAnimation(bottomUp);
+//        mBinding.slidingUpPanel.setVisibility(View.VISIBLE);
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -370,7 +371,9 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                         if (Arrays.equals(mNewPin, enteredText)) {
                             viewModel.changePinCode(getActivity(), mOldPin, mNewPin, true);
                         } else {
-                            mBinding.personCodeLL.clearText();
+                            final Handler handler = new Handler();
+                            final Runnable r = () -> mBinding.personCodeLL.clearText();
+                            handler.postDelayed(r, 500);
                         }
                         break;
                 }
@@ -401,7 +404,6 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                 mDialogFailed.setDismissListener(() -> {
                     isDialogFailedAdded = false;
                     AppAdapter.settings().setUseFingerprintAuth(false);
-//                    closeChildFragment();
                     onBackPressed();
                 });
             }
@@ -411,7 +413,6 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
             }
         } else if (error.getCause() == FingerprintRecognitionError.CANCEL) {
             AppAdapter.settings().setUseFingerprintAuth(false);
-//            closeChildFragment();
             onBackPressed();
         }
     }
