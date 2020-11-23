@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/toolbar_back_arrow"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginBottom="@dimen/view_padding_small" />
+
+        <TextView
+            android:id="@+id/fingerprintInfo"
+            style="@style/WhiteToolbarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tool_bar"
+            android:layout_marginStart="@dimen/forty_dp"
+            android:layout_marginTop="@dimen/margin_green_line"
+            android:gravity="left"
+            android:paddingTop="@dimen/twenty_dp"
+            android:text="Enable fingerprint for"
+            android:textSize="@dimen/text_regular" />
+
+        <RelativeLayout
+            android:id="@+id/fingerprintUnlocking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fingerprintInfo"
+            android:layout_marginStart="@dimen/twenty_dp"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:layout_marginEnd="@dimen/twenty_dp"
+            android:background="@drawable/background_pending_item"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/ten_dp"
+            android:paddingBottom="@dimen/ten_dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/fingerprint_unlocking_app"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_small" />
+
+            <ImageView
+                android:id="@+id/fingerprintUnlockState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/thirty_dp"
+                android:layout_marginEnd="@dimen/twenty_dp"
+                android:src="@drawable/item_declined"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fingerprintAuthTransaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fingerprintUnlocking"
+            android:layout_marginStart="@dimen/twenty_dp"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:layout_marginEnd="@dimen/twenty_dp"
+            android:background="@drawable/background_pending_item"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/ten_dp"
+            android:paddingBottom="@dimen/ten_dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/fingerprint_authorizing_transactions"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_small" />
+
+            <ImageView
+                android:id="@+id/fingerprintAuthState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/thirty_dp"
+                android:layout_marginEnd="@dimen/twenty_dp"
+                android:src="@drawable/item_declined" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

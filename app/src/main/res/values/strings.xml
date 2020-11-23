@@ -126,14 +126,16 @@
     <string name="help_how_to_add_partnership_text">@string/help_tos_placeholder</string>
 
     <!-- about -->
-    <string name="about">About</string>
-    <string name="about_version">Version %1$s (%2$s)</string>
+    <string name="about">About iAM</string>
+    <string name="about_version">Version: %1$s (%2$s)</string>
     <string name="about_copyright">Copyright \u00A9 %d, Covr Security.\nAll rights  reserved.</string>
     <string name="about_privacy_policy">Privacy Policy</string>
     <string name="about_terms_of_use">Terms of Use</string>
     <string name="about_terms_conditions">Terms &amp; Conditions</string>
     <string name="about_covr_id">Covr ID:</string>
     <string name="about_cover_update_status_ok">Covr is up to date</string>
+    <string name="about_info">The iAM app is used for identification \nand authorization at web sites \nand in mobile apps.</string>
+    <string name="about_date">Date Added: yyyy-mm-dd (%1$s)</string>
 
     <!-- enter personal code -->
     <string name="enter_code_header">Select PIN</string>
@@ -147,24 +149,27 @@
     <string name="backup_and_enter">Back up and enter a new code.</string>
 
     <!-- fingerprint fragment -->
+    <string name="fingerprint_title">Fingerprint for iAM</string>
+    <string name="fingerprint_authorizing_transactions">Authorizing Transactions</string>
+    <string name="fingerprint_unlocking_app">Unlocking the iAM App</string>
     <string name="fingerprint_auth_ready_title">Use fingerprint?</string>
     <string name="fingerprint_auth_available_title">Fingerprint is available…</string>
-    <string name="fingerprint_auth_ready_description"><![CDATA[You have set up fingerprint for your device, do you want to use that for your Covr Code? You can turn this On or Off later in Covr settings. %s]]></string>
-    <string name="fingerprint_auth_available_description"><![CDATA[…on your device but it is not configured yet. Finish the Covr set-up and then go to device Settings and enable fingerprint. You can then turn fingerprint On in Covr settings. \n\nFingerprint can be used instead of the Covr Code you just created in previous steps. %s]]></string>
+    <string name="fingerprint_auth_ready_description"><![CDATA[You have set up fingerprint for your device, do you want to use that for your PIN Code? You can turn this On or Off later in Covr settings. %s]]></string>
+    <string name="fingerprint_auth_available_description"><![CDATA[…on your device but it is not configured yet. Finish the iAM set-up and then go to device Settings and enable fingerprint. You can then turn fingerprint On in Covr settings. \n\nFingerprint can be used instead of the Covr Code you just created in previous steps. %s]]></string>
 
     <!-- fingerprint dialog -->
     <string name="fingerprint_dialog_title">Fingerprint for \"%s\"</string>
-    <string name="fingerprint_dialog_description">Use fingerprint to unlock COVR</string>
-    <string name="fingerprint_dialog_description_encrypt_with_finger">Use fingerprint to protect your COVR code</string>
+    <string name="fingerprint_dialog_description">Use fingerprint to unlock the app</string>
+    <string name="fingerprint_dialog_description_encrypt_with_finger">Use fingerprint to protect your PIN Code</string>
     <string name="fingerprint_dialog_hint">Touch sensor</string>
     <string name="fingerprint_dialog_fingerprint_not_recognized">Fingerprint not recognized. Try again</string>
     <string name="fingerprint_dialog_fingerprint_success">Fingerprint recognized</string>
     <string name="fingerprint_dialog_failed_title">Fingerprint scanner did not recognize your fingerprint!</string>
     <string name="fingerprint_something_wrong_happened_title">Something wrong happened!</string>
-    <string name="fingerprint_dialog_failed_description">You need to enter your Covr Code to get access to Covr app.</string>
+    <string name="fingerprint_dialog_failed_description">You need to enter your PIN Code to get access to iAM App.</string>
     <string name="fingerprint_dialog_failed_could_not_decrypt_description">Could not decrypt your data with fingerprint</string>
     <string name="fingerprint_dialog_failed_description_encrypt_with_finger">You need to set the fingerprint manually in the settings later</string>
-    <string name="fingerprint_dialog_failed_note">Note: Fingerprint scanner will be unavailable for use with Covr until after next successful login.</string>
+    <string name="fingerprint_dialog_failed_note">Note: Fingerprint scanner will be unavailable for use with iAM until after next successful login.</string>
 
     <!-- done -->
     <string name="done_header">Congratulations, you are almost Covr-ed!</string>
@@ -468,6 +473,7 @@
     <string name="biometric_subtitle">Scan your face to continue \nthe registration.</string>
     <string name="biometric_description1">Scanning your face verifies your identity and ensures that only you have access to the information.</string>
     <string name="biometric_description2">Tap the "Face Scan" button below to continue the registration process.</string>
+
 
     <string-array name="setting_names">
         <item>About iAM</item>

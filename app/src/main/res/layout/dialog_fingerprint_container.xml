@@ -7,7 +7,8 @@
     android:paddingBottom="8dp"
     android:paddingEnd="24dp"
     android:paddingStart="24dp"
-    android:paddingTop="16dp">
+    android:paddingTop="16dp"
+    android:background="@color/blue">
 
     <TextView
         android:id="@+id/fingerprint_title"
@@ -40,7 +41,7 @@
         android:layout_toEndOf="@+id/fingerprint_icon"
         android:gravity="center_vertical"
         android:text="@string/fingerprint_dialog_hint"
-        android:textColor="@color/grey"
+        android:textColor="@color/white"
         tools:targetApi="lollipop" />
 
     <Button

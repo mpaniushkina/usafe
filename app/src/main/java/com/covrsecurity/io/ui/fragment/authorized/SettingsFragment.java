@@ -73,6 +73,7 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
     public static final int USE_FINGERPRINT_ITEM = 1;
     public static final int PUSH_NOTIFICATIONS_ITEM = 2;
     public static final int IN_APP_PUSH_NOTIFICATIONS_ITEM = 3;
+    public static final int LANGUAGE_ITEM = 4;
 
     @Override
     protected int getLayoutId() {
@@ -298,10 +299,10 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
         mBinding.settingsVibrateSwitch.setEnabled(notificationsEnabled);
     }
 
-    private void setUseFingerprint() {
-        boolean fingerprintAuthUses = AppAdapter.settings().getFingerprintAuthUses();
-        mBinding.setUseFingerprint(fingerprintAuthUses && mReadyToUseFingerprintScanner);
-    }
+//    private void setUseFingerprint() {
+//        boolean fingerprintAuthUses = AppAdapter.settings().getFingerprintAuthUses();
+//        mBinding.setUseFingerprint(fingerprintAuthUses && mReadyToUseFingerprintScanner);
+//    }
 
     @SuppressLint("NewApi")
     @Override
@@ -400,8 +401,7 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
                 fragment = AboutFragment.newInstance();
                 break;
             case USE_FINGERPRINT_ITEM:
-                fragment = UseFingerprintAuthFragment.newInstance();
-//                fragment = ChangeCodeFragment.newInstance();
+                fragment = FingerprintFragment.newInstance();
                 break;
             case PUSH_NOTIFICATIONS_ITEM:
                 fragment = HelpFragment.newInstance();
@@ -409,7 +409,10 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
             case IN_APP_PUSH_NOTIFICATIONS_ITEM:
                 fragment = HelpFragment.newInstance();
                 break;
+            case LANGUAGE_ITEM:
+                fragment = HelpFragment.newInstance();
+                break;
         }
-        replaceFragment(fragment, null, true);
+        replaceFragment(fragment, fragment.getArguments(), true);
     }
 }

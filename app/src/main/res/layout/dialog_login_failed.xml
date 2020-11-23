@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/six_dp"
             android:text="@string/failed_attempts_you_have_only"
-            android:textColor="@color/text_color_black"
+            android:textColor="@color/white"
             android:textSize="@dimen/text_regular" />
 
         <TextView
@@ -59,7 +59,7 @@
             android:id="@+id/attempt_footer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_color_black"
+            android:textColor="@color/white"
             android:textSize="@dimen/text_regular"
             bind:pluralText="@{R.plurals.failed_attempts_attempts_left}"
             bind:quantity="@{dialogModel.attemptsLeft}"
@@ -75,7 +75,7 @@
             android:paddingEnd="@dimen/sixteen_dp"
             android:paddingStart="@dimen/sixteen_dp"
             android:text="@{dialogModel.warningTextSpannable}"
-            android:textColor="@color/text_color_black"
+            android:textColor="@color/white"
             android:textSize="@dimen/text_ultra_small"
             tools:ignore="MissingPrefix"
             tools:text="@string/failed_attempts_warning_text_5_2" />
@@ -91,7 +91,7 @@
             android:textSize="@dimen/text_regular"
             bind:textColorBind="@{dialogModel.warningFooterColor}"
             bind:textColorDefault="@{R.color.text_color_black}"
-            tools:textColor="@color/text_color_black" />
+            tools:textColor="@color/white" />
 
         <View style="@style/covr_vault_divider" />
 

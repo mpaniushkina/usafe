@@ -29,7 +29,7 @@
     <dimen name="text_ultra_small">12sp</dimen>
     <dimen name="text_header">24sp</dimen>
     <dimen name="text_header_dp">24dp</dimen>
-    <dimen name="text_toolbar_header">20sp</dimen>
+    <dimen name="text_toolbar_header">18sp</dimen>
     <dimen name="text_header_small">17sp</dimen>
     <dimen name="text_header_large">27sp</dimen>
     <dimen name="text_header_personal_code_info">24sp</dimen>

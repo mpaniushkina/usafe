@@ -1,37 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <variable
             name="touClickListener"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
 
         <variable
             name="ppClickListener"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
 
         <variable
             name="version"
-            type="java.lang.String"/>
+            type="java.lang.String" />
 
 
         <variable
             name="title"
-            type="java.lang.String"/>
-
-        <variable
-            name="copyright"
-            type="java.lang.String"/>
+            type="java.lang.String" />
 
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue"
+        android:background="@drawable/bg_main"
         android:orientation="vertical">
 
         <include
@@ -41,201 +35,90 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_marginBottom="@dimen/view_padding_small" />
 
-        <ScrollView
+        <TextView
+            android:id="@+id/aboutInfo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/personal_code_header_margin"
+            android:padding="@dimen/twenty_dp"
+            android:layout_below="@+id/tool_bar"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/text_regular"
+            android:gravity="center"
+            android:text="@string/about_info"/>
 
+        <LinearLayout
+            android:id="@+id/aboutDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/aboutInfo"
+            android:layout_marginStart="@dimen/twenty_dp"
+            android:layout_marginEnd="@dimen/twenty_dp"
+            android:background="@drawable/background_pending_item"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/iamlogo"
+                android:layout_marginTop="@dimen/thirty_dp"
+                android:layout_marginStart="@dimen/twenty_dp"/>
+
+            <TextView
+                android:id="@+id/aboutVersion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/thirty_dp"
+                android:text="@{version}"/>
 
-                <LinearLayout
-                    style="@style/AboutSectionStyle">
+            <TextView
+                android:id="@+id/aboutDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_marginBottom="@dimen/forty_eight_dp"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:text="@string/about_date"/>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_margin="@dimen/about_sections_padding_left_rigth"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/iamlogo3x"/>
+        </LinearLayout>
 
-                    <LinearLayout
-                        style="@style/AboutTextContainerStyle"
-                        android:paddingTop="0dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
+        <RelativeLayout
+            style="@style/AboutSectionStyle"
+            android:layout_marginStart="@dimen/twenty_dp"
+            android:layout_below="@+id/aboutDetails"
+            android:layout_alignEnd="@+id/aboutDetails"
+            android:orientation="horizontal">
 
-                        <TextView
-                            style="@style/AboutMainTextStyle"
-                            android:text="@{version}"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/about_cover_update_status_ok"
-                            android:textColor="@color/text_color_gray"
-                            android:textSize="@dimen/text_small"/>
-
-                    </LinearLayout>
-
-                    <View
-                        style="@style/AboutLineSeparatorStyle"
-                        android:layout_alignParentBottom="true"/>
-
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:id="@+id/pager_wrapper"
-                    style="@style/AboutSectionStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/about_fragment_view_pager_height"
-                    android:background="@color/blue">
-
-                    <androidx.viewpager.widget.ViewPager
-                        android:id="@+id/pager"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_above="@+id/help_indicator"
-                        android:layout_marginBottom="@dimen/ten_dp"
-                        android:layout_marginTop="0dp"
-                        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-                    </androidx.viewpager.widget.ViewPager>
-
-                    <com.viewpagerindicator.CirclePageIndicator
-                        android:id="@id/help_indicator"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="@dimen/ten_dp"
-                        android:padding="2dp"
-                        app:fillColor="@color/soft_green"
-                        app:pageColor="@color/backgroundMain"
-                        app:radius="@dimen/circle_page_indicator_radius"
-                        app:strokeColor="@color/faded_tealish" />
-
-                    <View
-                        android:layout_width="@dimen/slide_button_width"
-                        android:layout_height="match_parent"
-                        android:layout_alignBottom="@id/pager"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignTop="@id/pager"/>
-
-                    <View
-                        android:layout_width="@dimen/slide_button_width"
-                        android:layout_height="match_parent"
-                        android:layout_alignBottom="@id/pager"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignTop="@id/pager" />
-
-                    <ImageView
-                        android:id="@+id/chevron_left"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@id/pager"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingBottom="@dimen/view_padding_big"
-                        android:paddingLeft="@dimen/view_padding_small"
-                        android:paddingRight="@dimen/view_padding_big"
-                        android:paddingTop="@dimen/view_padding_big"
-                        android:src="@drawable/ic_arrow_left"/>
-
-                    <ImageView
-                        android:id="@+id/chevron_right"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@id/pager"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:paddingBottom="@dimen/view_padding_big"
-                        android:paddingLeft="@dimen/view_padding_small"
-                        android:paddingRight="@dimen/view_padding_big"
-                        android:paddingTop="@dimen/view_padding_big"
-                        android:rotation="180"
-                        android:src="@drawable/ic_arrow_left"/>
-
-                    <View
-                        style="@style/AboutLineSeparatorStyle"
-                        android:layout_alignParentBottom="true"/>
-
-                    <View
-                        style="@style/AboutLineSeparatorStyle"
-                        android:layout_alignParentTop="true"/>
-                </RelativeLayout>
-
-                <LinearLayout
-                    style="@style/AboutSectionStyle"
-                    android:layout_marginBottom="0dp"
-                    android:gravity="center_vertical"
-                    android:padding="0dp">
-
-                    <View style="@style/AboutLineSeparatorStyle"/>
-
-                    <RelativeLayout
-                        style="@style/AboutTextContainerStyle"
-                        android:background="@drawable/about_clickable_bg"
-                        android:onClick="@{touClickListener::onClick}"
-                        android:clickable="true">
-
-                        <TextView
-                            style="@style/AboutMainTextStyle"
-                            android:layout_alignParentLeft="true"
-                            android:layout_centerVertical="true"
-                            android:text="@string/about_terms_of_use"/>
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_gray_arrow_right"/>
-                    </RelativeLayout>
-
-
-                    <View
-                        style="@style/AboutLineSeparatorStyle"
-                        android:layout_marginLeft="@dimen/fiveteen_dp"/>
-
-                    <RelativeLayout
-                        style="@style/AboutTextContainerStyle"
-                        android:background="@drawable/about_clickable_bg"
-                        android:onClick="@{ppClickListener::onClick}"
-                        android:clickable="true">
-
-                        <TextView
-                            style="@style/AboutMainTextStyle"
-                            android:text="@string/about_privacy_policy"/>
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_gray_arrow_right"/>
-                    </RelativeLayout>
-
-                    <View style="@style/AboutLineSeparatorStyle"/>
-
-                </LinearLayout>
+            <RelativeLayout
+                style="@style/AboutTextContainerStyle"
+                android:clickable="true"
+                android:layout_alignParentStart="true"
+                android:onClick="@{touClickListener::onClick}">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="@dimen/about_sections_padding_top_bottom"
-                    android:text="@{copyright}"
-                    android:textColor="@color/text_color_gray"
-                    android:textSize="@dimen/text_ultra_small"
-                    tools:text="@string/about_copyright" />
+                    style="@style/AboutMainTextStyle"
+                    android:layout_centerVertical="true"
+                    android:text="@string/about_terms_of_use" />
+            </RelativeLayout>
 
-            </LinearLayout>
+            <RelativeLayout
+                style="@style/AboutTextContainerStyle"
+                android:clickable="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="@{ppClickListener::onClick}">
 
-        </ScrollView>
-
-    </LinearLayout>
-
+                <TextView
+                    style="@style/AboutMainTextStyle"
+                    android:text="@string/about_privacy_policy" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
 </layout>
