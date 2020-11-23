@@ -150,6 +150,7 @@
 
     <!-- fingerprint fragment -->
     <string name="fingerprint_title">Fingerprint for iAM</string>
+    <string name="fingerprint_info">Enable fingerprint for</string>
     <string name="fingerprint_authorizing_transactions">Authorizing Transactions</string>
     <string name="fingerprint_unlocking_app">Unlocking the iAM App</string>
     <string name="fingerprint_auth_ready_title">Use fingerprint?</string>
@@ -473,7 +474,6 @@
     <string name="biometric_subtitle">Scan your face to continue \nthe registration.</string>
     <string name="biometric_description1">Scanning your face verifies your identity and ensures that only you have access to the information.</string>
     <string name="biometric_description2">Tap the "Face Scan" button below to continue the registration process.</string>
-
 
     <string-array name="setting_names">
         <item>About iAM</item>

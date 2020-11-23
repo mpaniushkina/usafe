@@ -27,7 +27,7 @@
             android:layout_marginTop="@dimen/margin_green_line"
             android:gravity="left"
             android:paddingTop="@dimen/twenty_dp"
-            android:text="Enable fingerprint for"
+            android:text="@string/fingerprint_info"
             android:textSize="@dimen/text_regular" />
 
         <RelativeLayout

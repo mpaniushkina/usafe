@@ -407,7 +407,7 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
                 fragment = HelpFragment.newInstance();
                 break;
             case IN_APP_PUSH_NOTIFICATIONS_ITEM:
-                fragment = HelpFragment.newInstance();
+                fragment = InAppNotificationsFragment.newInstance();
                 break;
             case LANGUAGE_ITEM:
                 fragment = HelpFragment.newInstance();
