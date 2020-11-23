@@ -210,7 +210,7 @@
     <string name="settings_inapp_request_response_sound">Request response sound</string>
     <string name="settings_push_notifications">Push Notifications</string>
     <string name="settings_fingerprint_tip">Fingerprint can be used instead of Covr Code. %s</string>
-    <string name="settings_push_tip">Although Covr will still work with notification options turned OFF, you may not be aware of incoming requests (unless the app is open on your screen).</string>
+    <string name="settings_push_tip">Although iAM will still work with notification options turned OFF, you may not be aware of incoming requests (unless the app is open on your screen).</string>
     <string name="settings_inapp_timeout_sound">Timed-out request sound</string>
     <string name="settings_google_data_collection">Google data collection</string>
     <string name="settings_data_collection">Data Collection</string>
