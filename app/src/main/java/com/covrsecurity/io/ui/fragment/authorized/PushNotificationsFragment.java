@@ -92,7 +92,6 @@ public class PushNotificationsFragment extends BaseFragment<FragmentPushNotifica
             intent.setData(Uri.parse("package:" + getActivity().getPackageName()));
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            //e.printStackTrace();
             //Open the generic Apps page:
             Intent intent = new Intent(android.provider.Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS);
             startActivity(intent);

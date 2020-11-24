@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -55,10 +56,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tool_bar"
-            android:layout_marginStart="@dimen/forty_dp"
             android:layout_marginTop="@dimen/margin_green_line"
-            android:gravity="left"
-            android:paddingTop="@dimen/twenty_dp"
+            android:gravity="center"
+            android:padding="@dimen/twenty_dp"
             android:text="@string/settings_inapp_notifications_help"
             android:textSize="@dimen/text_regular" />
 
@@ -66,11 +66,14 @@
             style="@style/AboutSectionStyle"
             android:gravity="center_vertical"
             android:layout_below="@+id/inAppInfo"
-            android:layout_marginTop="@dimen/twenty_dp"
-            android:paddingStart="@dimen/twenty_four_dp">
+            android:paddingStart="@dimen/twenty_four_dp"
+            android:paddingEnd="@dimen/twenty_four_dp">
 
             <RelativeLayout
                 style="@style/AboutTextSwitchContainerStyle"
+                android:background="@drawable/background_pending_item"
+                android:paddingTop="@dimen/fiveteen_dp"
+                android:paddingBottom="@dimen/fiveteen_dp"
                 android:onClick="@{inAppIncomingSoundEnabledClickListener::onClick}">
 
                 <TextView
@@ -80,12 +83,17 @@
                 <Switch
                     android:id="@+id/settings_inapp_req_sound"
                     style="@style/SettingsSwitchStyle"
+                    android:thumb="@drawable/switcher_bg"
+                    android:trackTint="@color/black"
                     android:checked="@{inappIncomingSoundEnabled}" />
             </RelativeLayout>
 
             <RelativeLayout
                 style="@style/AboutTextSwitchContainerStyle"
-                android:layout_marginTop="@dimen/five_dp"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:background="@drawable/background_pending_item"
+                android:paddingTop="@dimen/fiveteen_dp"
+                android:paddingBottom="@dimen/fiveteen_dp"
                 android:onClick="@{inAppIncomingVibrateEnabledClickListener::onClick}">
 
                 <TextView
@@ -95,12 +103,16 @@
                 <Switch
                     android:id="@+id/settings_inapp_req_vibration"
                     style="@style/SettingsSwitchStyle"
+                    android:trackTint="@color/black"
                     android:checked="@{inappIncomingVibrateEnabled}" />
             </RelativeLayout>
 
             <RelativeLayout
                 style="@style/AboutTextSwitchContainerStyle"
-                android:layout_marginTop="@dimen/five_dp"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:background="@drawable/background_pending_item"
+                android:paddingTop="@dimen/fiveteen_dp"
+                android:paddingBottom="@dimen/fiveteen_dp"
                 android:onClick="@{inAppResponseSoundEnabledClickListener::onClick}">
 
                 <TextView
@@ -110,12 +122,16 @@
                 <Switch
                     android:id="@+id/settings_inapp_req_response_sound"
                     style="@style/SettingsSwitchStyle"
+                    android:trackTint="@color/black"
                     android:checked="@{inappResponseSoundEnabled}" />
             </RelativeLayout>
 
             <RelativeLayout
                 style="@style/AboutTextSwitchContainerStyle"
-                android:layout_marginTop="@dimen/five_dp"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:background="@drawable/background_pending_item"
+                android:paddingTop="@dimen/fiveteen_dp"
+                android:paddingBottom="@dimen/fiveteen_dp"
                 android:onClick="@{inAppTimeoutSoundEnabledClickListener::onClick}">
 
                 <TextView
@@ -125,6 +141,7 @@
                 <Switch
                     android:id="@+id/settings_inapp_timeout_sound"
                     style="@style/SettingsSwitchStyle"
+                    android:trackTint="@color/black"
                     android:checked="@{inappTimeoutSoundEnabled}" />
             </RelativeLayout>
         </LinearLayout>

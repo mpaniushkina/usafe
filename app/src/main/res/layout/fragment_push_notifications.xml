@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
@@ -98,6 +99,7 @@
                 <Switch
                     android:id="@+id/settings_notification_switch"
                     style="@style/SettingsSwitchStyle"
+                    android:trackTint="@color/black"
                     android:checked="@{pushNotificationEnable}" />
 
             </RelativeLayout>
@@ -114,6 +116,7 @@
                 <Switch
                     android:id="@+id/settings_sound_switch"
                     style="@style/SettingsSwitchStyle"
+                    android:trackTint="@color/black"
                     android:checked="@{pushSoundEnable}" />
 
             </RelativeLayout>
@@ -130,7 +133,9 @@
                 <Switch
                     android:id="@+id/settings_vibrate_switch"
                     style="@style/SettingsSwitchStyle"
-                    android:checked="@{pushVibrateEnable}" />
+                    android:trackTint="@color/black"
+                    android:checked="@{pushVibrateEnable}"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>

@@ -184,7 +184,7 @@
     <string name="settings_cancel">Cancel</string>
     <string name="change_pin_title">Change pin</string>
     <string name="connected_services_title">Connected services</string>
-    <string name="settings_change_personal_code">Change Covr Code</string>
+    <string name="settings_change_personal_code">Change PIN Code</string>
     <string name="settings_use_fingerprint">Use fingerprint</string>
     <string name="settings_notification">Notifications</string>
     <string name="settings_sound">Sound</string>
@@ -193,36 +193,36 @@
     <string name="settings_vibrate_default">Default</string>
     <string name="settings_vibrate_long">Long</string>
     <string name="settings_keyboard_sound">Keyboard sound</string>
-    <string name="settings_change_password_info_header">You are about to change your Covr Code.</string>
-    <string name="settings_change_password_info_text">You will need to enter your current Covr Code before you can change it. Read more\u00A0></string>
+    <string name="settings_change_password_info_header">You are about to change your PIN Code.</string>
+    <string name="settings_change_password_info_text">You will need to enter your current PIN Code before you can change it. Read more\u00A0></string>
     <string name="settings_change_password_enter_current">Enter old pin code</string>
     <string name="settings_change_password_attempts">%1$d of 10 attempts remaining.</string>
     <string name="settings_change_password_enter_new">Enter new pin code</string>
     <string name="settings_change_password_reenter_new">Repeat new pin code</string>
     <string name="settings_change_password_error_dialog_title">You exceeded attempts count</string>
     <string name="settings_change_password_error_dialog_text">Please, try from the beginning</string>
-    <string name="settings_personal_code_input">Covr code input</string>
-    <string name="settings_personal_code_input_help">Choose if you want tactile and/or audio feedback when entering your Covr Code.</string>
+    <string name="settings_personal_code_input">PIN Code input</string>
+    <string name="settings_personal_code_input_help">Choose if you want tactile and/or audio feedback when entering your PIN Code.</string>
     <string name="settings_inapp_notifications">In-app Notifications</string>
-    <string name="settings_inapp_notifications_help">In-app notifications are used when you are in Covr application and you are receiving or responding to requests.</string>
+    <string name="settings_inapp_notifications_help">In-app notifications are used when you are in iAM application and you are receiving or responding to requests.</string>
     <string name="settings_inapp_incomin_request_sound">Incoming request sound</string>
     <string name="settings_inapp_incoming_request_vibration">Incoming request vibration</string>
     <string name="settings_inapp_request_response_sound">Request response sound</string>
     <string name="settings_push_notifications">Push Notifications</string>
-    <string name="settings_fingerprint_tip">Fingerprint can be used instead of Covr Code. %s</string>
+    <string name="settings_fingerprint_tip">Fingerprint can be used instead of PIN Code. %s</string>
     <string name="settings_push_tip">Although iAM will still work with notification options turned OFF, you may not be aware of incoming requests (unless the app is open on your screen).</string>
     <string name="settings_inapp_timeout_sound">Timed-out request sound</string>
     <string name="settings_google_data_collection">Google data collection</string>
     <string name="settings_data_collection">Data Collection</string>
     <string name="settings_data_collection_tip">Choose if you want to disable Google data collection.</string>
     <string name="settings_alert_title">Proceed With Caution!</string>
-    <string name="settings_alert_message">Although Covr will still work with notification options turned OFF, you may not be aware of incoming requests (unless the app is open on your screen).</string>
+    <string name="settings_alert_message">Although iAM will still work with notification options turned OFF, you may not be aware of incoming requests (unless the app is open on your screen).</string>
     <string name="badge_count_message">You have pending requests</string>
 
     <string name="settings_android_settings">Android Settings</string>
 
     <!-- Greeting fragment  -->
-    <string name="greeting_welcome_to_covr">Welcome to Covr!</string>
+    <string name="greeting_welcome_to_covr">Welcome to iAM!</string>
     <string name="greeting_welcome_text">You will now be guided through the app set-up so you can start using Covr.\n\n\nTerms of Use\n\nPrivacy Policy\n\n\nBy continuing the Set-up I accept the\nTerms of Use and Privacy Policy.</string>
     <string name="substring_read_more">Read more ></string>
     <string name="substring_by_continuing">By continuing</string>

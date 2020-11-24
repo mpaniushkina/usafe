@@ -26,6 +26,7 @@
     <dimen name="personal_code_info_margin_top">30dp</dimen>
     <dimen name="personal_code_header_margin">130dp</dimen>
     <dimen name="margin_header">130dp</dimen>
+    <dimen name="margin_green_line">140dp</dimen>
 
     <!-- Fonts -->
     <dimen name="text_regular">16sp</dimen>
