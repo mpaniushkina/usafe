@@ -21,6 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/tool_bar"
+            android:paddingTop="@dimen/twenty_dp"
+
             android:layout_marginTop="@dimen/personal_code_header_margin">
         </androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>

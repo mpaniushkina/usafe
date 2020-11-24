@@ -204,11 +204,13 @@
     <string name="settings_personal_code_input">PIN Code input</string>
     <string name="settings_personal_code_input_help">Choose if you want tactile and/or audio feedback when entering your PIN Code.</string>
     <string name="settings_inapp_notifications">In-app Notifications</string>
+    <string name="in_app_notifications_for">In-App Notifications for</string>
     <string name="settings_inapp_notifications_help">In-app notifications are used when you are in iAM application and you are receiving or responding to requests.</string>
     <string name="settings_inapp_incomin_request_sound">Incoming request sound</string>
     <string name="settings_inapp_incoming_request_vibration">Incoming request vibration</string>
     <string name="settings_inapp_request_response_sound">Request response sound</string>
     <string name="settings_push_notifications">Push Notifications</string>
+    <string name="push_notifications_for">Push Notifications for</string>
     <string name="settings_fingerprint_tip">Fingerprint can be used instead of PIN Code. %s</string>
     <string name="settings_push_tip">Although iAM will still work with notification options turned OFF, you may not be aware of incoming requests (unless the app is open on your screen).</string>
     <string name="settings_inapp_timeout_sound">Timed-out request sound</string>

@@ -200,10 +200,11 @@
     </style>
 
     <style name="SettingName">
+        <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/text_regular</item>
+        <item name="android:textColor">@color/white_alpfa_70</item>
+        <item name="android:textSize">@dimen/text_small</item>
         <item name="android:layout_alignParentLeft">true</item>
     </style>
 

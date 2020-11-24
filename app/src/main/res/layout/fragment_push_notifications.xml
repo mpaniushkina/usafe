@@ -51,26 +51,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tool_bar"
-            android:layout_marginStart="@dimen/forty_dp"
+            android:layout_marginStart="@dimen/thirty_dp"
+            android:layout_marginEnd="@dimen/thirty_dp"
             android:layout_marginTop="@dimen/margin_green_line"
-            android:gravity="left"
-            android:paddingTop="@dimen/twenty_dp"
+            android:gravity="center"
             android:text="@string/settings_push_tip"
-            android:textSize="@dimen/text_regular" />
+            android:textSize="@dimen/text_small" />
+
+        <TextView
+            android:id="@+id/pushText"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pushInfo"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:layout_marginStart="@dimen/fifty_dp"
+            android:textColor="@color/white"
+            android:textStyle=""
+            android:gravity="left"
+            android:text="@string/push_notifications_for"
+            android:textSize="@dimen/text_small"
+            android:paddingBottom="@dimen/ten_dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/pushText">
 
         <LinearLayout
             style="@style/AboutSectionStyle"
             android:gravity="center_vertical"
-            android:layout_below="@+id/pushInfo"
-            android:layout_marginTop="@dimen/twenty_dp"
-            android:layout_marginStart="@dimen/twenty_four_dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty_four_dp"
+            android:layout_marginEnd="@dimen/twenty_four_dp">
 
             <RelativeLayout
                 style="@style/AboutTextContainerStyle"
+                android:background="@drawable/background_pending_item"
+                android:paddingTop="@dimen/fiveteen_dp"
+                android:paddingBottom="@dimen/fiveteen_dp"
                 android:onClick="@{androidSettingsClickListener::onClick}">
 
                 <TextView
                     style="@style/SettingName"
+                    android:layout_marginStart="@dimen/ten_dp"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:text="@string/settings_android_settings" />
@@ -85,13 +110,17 @@
 
             <RelativeLayout
                 style="@style/AboutTextSwitchContainerStyle"
-                android:layout_marginTop="@dimen/five_dp"
+                android:layout_marginTop="@dimen/ten_dp"
                 android:clickable="true"
                 android:focusable="true"
+                android:background="@drawable/background_pending_item"
+                android:paddingTop="@dimen/fiveteen_dp"
+                android:paddingBottom="@dimen/fiveteen_dp"
                 android:onClick="@{pushNotificationEnableClickListener::onClick}">
 
                 <TextView
                     style="@style/SettingName"
+                    android:layout_marginStart="@dimen/ten_dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:text="@string/settings_notification" />
@@ -106,11 +135,15 @@
 
             <RelativeLayout
                 style="@style/AboutTextSwitchContainerStyle"
-                android:layout_marginTop="@dimen/five_dp"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:background="@drawable/background_pending_item"
+                android:paddingTop="@dimen/fiveteen_dp"
+                android:paddingBottom="@dimen/fiveteen_dp"
                 android:onClick="@{pushSoundEnableClickListener::onClick}">
 
                 <TextView
                     style="@style/SettingName"
+                    android:layout_marginStart="@dimen/ten_dp"
                     android:text="@string/settings_sound" />
 
                 <Switch
@@ -123,11 +156,15 @@
 
             <RelativeLayout
                 style="@style/AboutTextSwitchContainerStyle"
-                android:layout_marginTop="@dimen/five_dp"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:background="@drawable/background_pending_item"
+                android:paddingTop="@dimen/fiveteen_dp"
+                android:paddingBottom="@dimen/fiveteen_dp"
                 android:onClick="@{pushVibrateEnableClickListener::onClick}">
 
                 <TextView
                     style="@style/SettingName"
+                    android:layout_marginStart="@dimen/ten_dp"
                     android:text="@string/settings_vibrate" />
 
                 <Switch
@@ -138,5 +175,6 @@
                     tools:ignore="UseSwitchCompatOrMaterialXml" />
             </RelativeLayout>
         </LinearLayout>
+        </ScrollView>
     </RelativeLayout>
 </layout>

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="inAppIncomingSoundEnabledClickListener"
             type="android.view.View.OnClickListener" />
@@ -57,93 +58,116 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tool_bar"
             android:layout_marginTop="@dimen/margin_green_line"
+            android:layout_marginStart="@dimen/twenty_dp"
+            android:layout_marginEnd="@dimen/twenty_dp"
             android:gravity="center"
-            android:padding="@dimen/twenty_dp"
             android:text="@string/settings_inapp_notifications_help"
-            android:textSize="@dimen/text_regular" />
+            android:textSize="@dimen/text_small" />
 
-        <LinearLayout
-            style="@style/AboutSectionStyle"
-            android:gravity="center_vertical"
+        <TextView
+            android:id="@+id/inApp"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/inAppInfo"
-            android:paddingStart="@dimen/twenty_four_dp"
-            android:paddingEnd="@dimen/twenty_four_dp">
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:layout_marginStart="@dimen/forty_dp"
+            android:textColor="@color/white"
+            android:gravity="left"
+            android:text="@string/in_app_notifications_for"
+            android:textSize="@dimen/text_small" />
 
-            <RelativeLayout
-                style="@style/AboutTextSwitchContainerStyle"
-                android:background="@drawable/background_pending_item"
-                android:paddingTop="@dimen/fiveteen_dp"
-                android:paddingBottom="@dimen/fiveteen_dp"
-                android:onClick="@{inAppIncomingSoundEnabledClickListener::onClick}">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/inApp"
+            android:layout_marginTop="@dimen/ten_dp">
 
-                <TextView
-                    style="@style/SettingName"
-                    android:text="@string/settings_inapp_incomin_request_sound" />
+            <LinearLayout
+                style="@style/AboutSectionStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/twenty_four_dp"
+                android:paddingEnd="@dimen/twenty_four_dp">
 
-                <Switch
-                    android:id="@+id/settings_inapp_req_sound"
-                    style="@style/SettingsSwitchStyle"
-                    android:thumb="@drawable/switcher_bg"
-                    android:trackTint="@color/black"
-                    android:checked="@{inappIncomingSoundEnabled}" />
-            </RelativeLayout>
+                <RelativeLayout
+                    style="@style/AboutTextSwitchContainerStyle"
+                    android:background="@drawable/background_pending_item"
+                    android:onClick="@{inAppIncomingSoundEnabledClickListener::onClick}"
+                    android:paddingTop="@dimen/fiveteen_dp"
+                    android:paddingBottom="@dimen/fiveteen_dp">
 
-            <RelativeLayout
-                style="@style/AboutTextSwitchContainerStyle"
-                android:layout_marginTop="@dimen/ten_dp"
-                android:background="@drawable/background_pending_item"
-                android:paddingTop="@dimen/fiveteen_dp"
-                android:paddingBottom="@dimen/fiveteen_dp"
-                android:onClick="@{inAppIncomingVibrateEnabledClickListener::onClick}">
+                    <TextView
+                        style="@style/SettingName"
+                        android:text="@string/settings_inapp_incomin_request_sound" />
 
-                <TextView
-                    style="@style/SettingName"
-                    android:text="@string/settings_inapp_incoming_request_vibration" />
+                    <Switch
+                        android:id="@+id/settings_inapp_req_sound"
+                        style="@style/SettingsSwitchStyle"
+                        android:checked="@{inappIncomingSoundEnabled}"
+                        android:thumb="@drawable/switcher_bg"
+                        android:trackTint="@color/black" />
+                </RelativeLayout>
 
-                <Switch
-                    android:id="@+id/settings_inapp_req_vibration"
-                    style="@style/SettingsSwitchStyle"
-                    android:trackTint="@color/black"
-                    android:checked="@{inappIncomingVibrateEnabled}" />
-            </RelativeLayout>
+                <RelativeLayout
+                    style="@style/AboutTextSwitchContainerStyle"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:background="@drawable/background_pending_item"
+                    android:onClick="@{inAppIncomingVibrateEnabledClickListener::onClick}"
+                    android:paddingTop="@dimen/fiveteen_dp"
+                    android:paddingBottom="@dimen/fiveteen_dp">
 
-            <RelativeLayout
-                style="@style/AboutTextSwitchContainerStyle"
-                android:layout_marginTop="@dimen/ten_dp"
-                android:background="@drawable/background_pending_item"
-                android:paddingTop="@dimen/fiveteen_dp"
-                android:paddingBottom="@dimen/fiveteen_dp"
-                android:onClick="@{inAppResponseSoundEnabledClickListener::onClick}">
+                    <TextView
+                        style="@style/SettingName"
+                        android:text="@string/settings_inapp_incoming_request_vibration" />
 
-                <TextView
-                    style="@style/SettingName"
-                    android:text="@string/settings_inapp_request_response_sound" />
+                    <Switch
+                        android:id="@+id/settings_inapp_req_vibration"
+                        style="@style/SettingsSwitchStyle"
+                        android:checked="@{inappIncomingVibrateEnabled}"
+                        android:trackTint="@color/black" />
+                </RelativeLayout>
 
-                <Switch
-                    android:id="@+id/settings_inapp_req_response_sound"
-                    style="@style/SettingsSwitchStyle"
-                    android:trackTint="@color/black"
-                    android:checked="@{inappResponseSoundEnabled}" />
-            </RelativeLayout>
+                <RelativeLayout
+                    style="@style/AboutTextSwitchContainerStyle"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:background="@drawable/background_pending_item"
+                    android:onClick="@{inAppResponseSoundEnabledClickListener::onClick}"
+                    android:paddingTop="@dimen/fiveteen_dp"
+                    android:paddingBottom="@dimen/fiveteen_dp">
 
-            <RelativeLayout
-                style="@style/AboutTextSwitchContainerStyle"
-                android:layout_marginTop="@dimen/ten_dp"
-                android:background="@drawable/background_pending_item"
-                android:paddingTop="@dimen/fiveteen_dp"
-                android:paddingBottom="@dimen/fiveteen_dp"
-                android:onClick="@{inAppTimeoutSoundEnabledClickListener::onClick}">
+                    <TextView
+                        style="@style/SettingName"
+                        android:text="@string/settings_inapp_request_response_sound" />
 
-                <TextView
-                    style="@style/SettingName"
-                    android:text="@string/settings_inapp_timeout_sound" />
+                    <Switch
+                        android:id="@+id/settings_inapp_req_response_sound"
+                        style="@style/SettingsSwitchStyle"
+                        android:checked="@{inappResponseSoundEnabled}"
+                        android:trackTint="@color/black" />
+                </RelativeLayout>
 
-                <Switch
-                    android:id="@+id/settings_inapp_timeout_sound"
-                    style="@style/SettingsSwitchStyle"
-                    android:trackTint="@color/black"
-                    android:checked="@{inappTimeoutSoundEnabled}" />
-            </RelativeLayout>
-        </LinearLayout>
+                <RelativeLayout
+                    style="@style/AboutTextSwitchContainerStyle"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:background="@drawable/background_pending_item"
+                    android:onClick="@{inAppTimeoutSoundEnabledClickListener::onClick}"
+                    android:paddingTop="@dimen/fiveteen_dp"
+                    android:paddingBottom="@dimen/fiveteen_dp"
+                    android:layout_marginBottom="@dimen/ten_dp">
+
+                    <TextView
+                        style="@style/SettingName"
+                        android:text="@string/settings_inapp_timeout_sound" />
+
+                    <Switch
+                        android:id="@+id/settings_inapp_timeout_sound"
+                        style="@style/SettingsSwitchStyle"
+                        android:checked="@{inappTimeoutSoundEnabled}"
+                        android:trackTint="@color/black" />
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
     </RelativeLayout>
 </layout>

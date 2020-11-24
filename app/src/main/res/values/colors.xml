@@ -19,6 +19,7 @@
     <color name="off_tealish_1">#F7F9F9</color> <!-- 7 -->
     <color name="off_tealish_2">#EFF3F3</color> <!-- 8 -->
     <color name="white">#FFFFFF</color>  <!-- 9 -->
+    <color name="white_alpfa_70">#B3FFFFFF</color>
     <color name="white_semi_transparent">#BBFFFFFF</color>  <!-- 9 -->
     <color name="black">#1A1A1A</color> <!-- 10 -->
     <color name="dark_grey">#737373</color> <!-- 11 -->

@@ -127,7 +127,7 @@ public class SplashFragment extends BaseUnauthorizedViewModelFragment<FragmentSp
     private void performRegister() {
         FragmentActivity a = getActivity();
         if (a != null && !a.isFinishing() && a instanceof UnauthorizedActivity) {
-            replaceFragment(TutorialFragment.newInstance(), null, false, FragmentAnimationSet.SLIDE_LEFT);
+            replaceFragment(TutorialFragment.newInstance(), null, false);
         }
     }
 
