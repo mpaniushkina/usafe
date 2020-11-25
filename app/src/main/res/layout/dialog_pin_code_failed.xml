@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.covrsecurity.io.R" />
+
+        <variable
+            name="dialogModel"
+            type="com.covrsecurity.io.model.databinding.FailedLoginDialogModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/twenty_dp"
+        android:background="@color/dark_blue">
+
+        <TextView
+            android:id="@+id/title"
+            fontPath="@string/cfg_font_poppins_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/failed_attempts_pin"
+            android:textSize="@dimen/text_header_small"
+            bind:textColorBind="@{dialogModel.titleColor}"
+            bind:textColorDefault="@{R.color.covr_green}"
+            android:gravity="center"
+            tools:textColor="@color/covr_green" />
+
+        <TextView
+            android:id="@+id/attempt_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/six_dp"
+            android:text="@string/failed_attempts_you_have_only"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_regular" />
+
+        <TextView
+            android:id="@+id/attempt_number"
+            fontPath="@string/cfg_font_poppins_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="@{String.valueOf(dialogModel.attemptsLeft)}"
+            android:textSize="54sp"
+            bind:textColorBind="@{dialogModel.attemptNumberColor}"
+            bind:textColorDefault="@{R.color.covr_green}"
+            tools:ignore="MissingPrefix"
+            tools:text="2"
+            android:layout_gravity="center"
+            tools:textColor="@color/covr_green" />
+
+        <TextView
+            android:id="@+id/attempt_footer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_regular"
+            bind:pluralText="@{R.plurals.failed_attempts_attempts_left}"
+            bind:quantity="@{dialogModel.attemptsLeft}"
+            tools:text="@string/failed_attempts_attempts_left_test" />
+
+        <TextView
+            android:id="@+id/warning_text"
+            fontPath="@string/cfg_font_poppins_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingEnd="@dimen/sixteen_dp"
+            android:paddingStart="@dimen/sixteen_dp"
+            android:text="@{dialogModel.warningTextSpannable}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_ultra_small"
+            tools:ignore="MissingPrefix"
+            tools:text="@string/failed_attempts_warning_text_pin" />
+
+
+        <TextView
+            android:id="@+id/warning_text_footer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/fourteen_dp"
+            android:layout_marginTop="@dimen/five_dp"
+            android:text="@string/failed_attempts_please_proceed_carefully"
+            android:textSize="@dimen/text_regular"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/okText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="@{dialogModel.isTryAgainClickable}"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:paddingBottom="@dimen/twelve_dp"
+            android:paddingTop="@dimen/twelve_dp"
+            android:text="@{dialogModel.tryAgainText}"
+            android:textColor="@color/covr_green"
+            android:textSize="@dimen/text_toolbar_header"
+            tools:text="Ok" />
+
+    </LinearLayout>
+
+</layout>

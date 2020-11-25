@@ -12,6 +12,7 @@ import com.covrsecurity.io.common.utils.FileUtils;
 import com.covrsecurity.io.greendao.model.database.DaoSession;
 import com.covrsecurity.io.inject.component.DaggerAppComponent;
 import com.covrsecurity.io.manager.Analytics;
+import com.covrsecurity.io.model.Fields;
 import com.covrsecurity.io.sdk.CovrNewMainInterface;
 import com.covrsecurity.io.utils.DatabaseOperationsWrapper;
 import com.covrsecurity.io.utils.LogUtil;
@@ -20,7 +21,6 @@ import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.security.ProviderInstaller;
-import com.covrsecurity.io.model.Fields;
 import com.zendesk.logger.Logger;
 
 import java.io.File;

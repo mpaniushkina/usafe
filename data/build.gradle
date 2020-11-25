@@ -75,4 +75,13 @@ dependencies {
     androidTestImplementation('androidx.test.espresso:espresso-core:3.2.0') {
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
     }
+
+    implementation('co.hyperverge:hypersnapsdk:3.2.6@aar', {
+        transitive=true
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.google.android.gms'
+        exclude group: 'co.hyperverge', module: 'hypersnapsdk-instructions'
+        exclude group: 'co.hyperverge', module: 'hypersnapsdk-qrscanner'
+        exclude group: 'co.hyperverge', module: 'hypersnap-pdfconverter'
+    })
 }

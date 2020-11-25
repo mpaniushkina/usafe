@@ -36,6 +36,7 @@ import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.adapter.ChangeCodeInfoPagerAdapter;
 import com.covrsecurity.io.ui.component.PersonalCodeLayout;
 import com.covrsecurity.io.ui.dialog.FailedLoginDialogFragment;
+import com.covrsecurity.io.ui.dialog.FailedPinCodeDialogFragment;
 import com.covrsecurity.io.ui.dialog.FingerprintAuthenticationDialogFragment;
 import com.covrsecurity.io.ui.dialog.FingerprintAuthenticationFailedDialogFragment;
 import com.covrsecurity.io.ui.fragment.BaseChildFragment;
@@ -82,6 +83,7 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
     private static final String DIALOG_FAILED_TAG = "DIALOG_FAILED_TAG";
     private static final String DIALOG_FAILED_LOGIN_TAG = "DIALOG_FAILED_LOGIN_TAG";
     private static final String CHECK_CODE_ONLY_EXTRA = "CHECK_CODE_ONLY_EXTRA";
+    private static final String DIALOG_FAILED_PIN_TAG = "DIALOG_FAILED_PIN_TAG";
 
     public static Fragment newInstance(boolean checkCodeOnly) {
         ChangeCodeFragment fragment = new ChangeCodeFragment();
@@ -107,6 +109,7 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
     private FingerprintAuthenticationDialogFragment mDialogScanning;
     private FingerprintAuthenticationFailedDialogFragment mDialogFailed;
     private FailedLoginDialogFragment mFailedLoginDialog;
+    private FailedPinCodeDialogFragment mFailedPinCodeDialog;
     private boolean isDialogFailedAdded;
     private boolean checkCodeOnly;
 
@@ -200,6 +203,10 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                         ChangeCodeInfoPagerAdapter adapter = (ChangeCodeInfoPagerAdapter) mBinding.infoPager.getAdapter();
                         ChangeCodeInfoItem item = adapter.getItem(CURRENT_CODE_PAGE);
                         item.setRemainingAttempts(attemptsLeft);
+
+                        //TODO show dialog instead of red string when ui will be approved
+//                        mFailedPinCodeDialog = FailedPinCodeDialogFragment.getInstance(attemptsLeft,false, true);
+//                        mFailedPinCodeDialog.show(getFragmentManager(), DIALOG_FAILED_PIN_TAG);
                     } else if (throwable instanceof ChangePasswordLockException) {
 
                         ChangePasswordLockException changePasswordLockException = (ChangePasswordLockException) throwable;
@@ -217,6 +224,10 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                         ChangeCodeInfoPagerAdapter adapter = (ChangeCodeInfoPagerAdapter) mBinding.infoPager.getAdapter();
                         ChangeCodeInfoItem item = adapter.getItem(CURRENT_CODE_PAGE);
                         item.setRemainingAttempts(attemptsLeft);
+
+                        //TODO show dialog instead of red string when ui will be approved
+//                        mFailedPinCodeDialog = FailedPinCodeDialogFragment.getInstance(attemptsLeft,false, true);
+//                        mFailedPinCodeDialog.show(getFragmentManager(), DIALOG_FAILED_PIN_TAG);
 
                         if (LockType.NOT_LOCKED != lockType) {
                             if (lockType == LockType.LOCKED_NO_TIME_OUT) {
@@ -312,6 +323,9 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
         }
         if (mFailedLoginDialog != null) {
             mFailedLoginDialog.dismiss();
+        }
+        if (mFailedPinCodeDialog != null) {
+            mFailedPinCodeDialog.dismiss();
         }
         if (mDisposable != null) {
             mDisposable.dispose();
