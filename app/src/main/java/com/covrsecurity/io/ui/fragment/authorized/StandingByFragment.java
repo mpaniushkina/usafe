@@ -367,7 +367,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
             }
         });
         mBinding.pendindRequestsRecyclerView.setItemAnimator(new SlideLeftItemAnimator());
-//        mBinding.bottomButton.addPartnership.setOnClickListener(v -> getQrCodeConnection());
+//        mBinding.addConnectionTest.setOnClickListener(v -> getQrCodeConnection());
 //        mBinding.bottomButton.addPartnershipPlus.setOnClickListener(v -> getQrCodeConnection());
 //        mBinding.menu.setOnClickListener(v -> ((AuthorizedActivity) getActivity()).openDrawer());
         hideButtonAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.add_button_hide);

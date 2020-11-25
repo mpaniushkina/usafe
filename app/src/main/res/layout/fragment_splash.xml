@@ -11,7 +11,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/lockscreen_timers_layout_height"
+            android:layout_marginBottom="@dimen/seventy_dp"
             android:src="@drawable/iamlogo3x" />
 
     </LinearLayout>

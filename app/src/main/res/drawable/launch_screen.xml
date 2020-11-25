@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
-    android:opacity="opaque">
+<!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:opacity="opaque">-->
 
-    <item android:drawable="@color/white"/>
+<!--    <item android:drawable="@color/white"/>-->
 
-    <item android:drawable="@drawable/bg_front" android:bottom="25dp"/>
+<!--    <item android:drawable="@drawable/bg_front" android:bottom="25dp"/>-->
 
-    <item android:bottom="95dp">
-    <bitmap
-            android:gravity="center"
-            android:src="@drawable/iamlogo3x" />
+<!--    <item android:bottom="95dp">-->
+<!--    <bitmap-->
+<!--            android:gravity="center"-->
+<!--            android:src="@drawable/iamlogo3x" />-->
+<!--    </item>-->
+
+<!--</layer-list>-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
+
+    <item
+        android:paddingTop="?attr/actionBarSize"
+        android:drawable="@drawable/bg_front" />
+
+    <item android:bottom="@dimen/seventy_dp">
+        <bitmap
+            android:src="@drawable/iamlogo3x"
+            android:gravity="center" />
     </item>
 
 </layer-list>
