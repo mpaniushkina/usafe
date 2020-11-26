@@ -3,6 +3,7 @@ package com.covrsecurity.io.ui.fragment.unauthorized;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,29 +12,35 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.common.exception.WeekPinException;
 import com.covrsecurity.io.manager.Analytics;
+import com.covrsecurity.io.model.Fields;
 import com.covrsecurity.io.sdk.exception.RecoverIdentityWasNotCompleted;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.adapter.InfoPagerAdapter;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.createpersonalcode.CreatePersonalCodeViewModel;
 import com.covrsecurity.io.ui.viewmodel.createpersonalcode.CreatePersonalCodeViewModelFabric;
+import com.covrsecurity.io.ui.viewmodel.partnership.PartnershipViewModel;
+import com.covrsecurity.io.ui.viewmodel.partnership.PartnershipViewModelFactory;
 import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
 import com.covrsecurity.io.utils.DialogUtils;
-import com.covrsecurity.io.utils.FingerprintUtils;
-import com.covrsecurity.io.utils.FragmentAnimationSet;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.Objects;
 
 import javax.inject.Inject;
 
 import timber.log.Timber;
+
+import static com.covrsecurity.io.sdk.utils.QrCodeRequestResource.qrCodeStringValue;
 
 public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
 
@@ -49,6 +56,9 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
 
     @Inject
     CreatePersonalCodeViewModelFabric vmFactory;
+    @Inject
+    PartnershipViewModelFactory addConnectionVmFactory;
+    private PartnershipViewModel addConnectionViewModel;
 
     @Nullable
     AlertDialog mWeekPinTypeDialog;
@@ -75,6 +85,7 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        addConnectionViewModel = ViewModelProviders.of(getActivity(), addConnectionVmFactory).get(PartnershipViewModel.class);
         viewModel.assessPinCodeStrengthLiveData.observe(this, new BaseObserver<>(
                 null,
                 response -> ActivityUtils.scheduleOnMainThread(
@@ -132,7 +143,7 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                 response -> {
                     hideProgress();
                     Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_CODE_CREATE);
-                    startAuthorizedActivity(true);
+                    addConnectionViewModel.getQrCodeConnection(Fields.GET_QRCODE_COMPANY_USER_ID, Fields.GET_QRCODE_TRANSACTION_ID);
 //                    if (FingerprintUtils.getInstance(getActivity()).canUseFingerprintScanner(getActivity())) {
 //                        Fragment fragment = UseFingerprintAuthFragment.newInstance(mEnteredText, registration);
 //                        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
@@ -142,6 +153,41 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                 },
                 throwable -> {
                     hideProgress();
+                    Timber.e(throwable);
+                    showErrToast(throwable);
+                }
+        ));
+        addConnectionViewModel.qrCodeConnectionLiveData.observe(this, new BaseObserver<>(
+                this::showProgress,
+                response -> {
+
+                    hideProgress();
+                    String mQrCode;
+                    mQrCode = qrCodeStringValue;
+                    String decodedQrCode = qrCodeStringValue;
+                    try {
+                        decodedQrCode = URLDecoder.decode(mQrCode, "UTF-8");
+                    } catch (UnsupportedEncodingException e) {
+                        Log.e("utf8", "conversion", e);
+                    }
+                    addConnectionViewModel.addConnection(decodedQrCode);
+                },
+                throwable -> {
+                    hideProgress();
+                    Timber.e("" + throwable);
+                    Timber.e(throwable);
+                    showErrToast(throwable);
+                }
+        ));
+        addConnectionViewModel.addConnectionLiveData.observe(this, new BaseObserver<>(
+                this::showProgress,
+                response -> {
+                    hideProgress();
+                    startAuthorizedActivity(true);
+                },
+                throwable -> {
+                    hideProgress();
+                    Timber.e("" + throwable);
                     Timber.e(throwable);
                     showErrToast(throwable);
                 }
