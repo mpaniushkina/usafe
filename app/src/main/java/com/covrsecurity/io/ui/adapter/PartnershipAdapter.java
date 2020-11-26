@@ -1,5 +1,6 @@
 package com.covrsecurity.io.ui.adapter;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,11 +33,11 @@ public class PartnershipAdapter extends RecyclerView.Adapter<PartnershipAdapter.
 
     public class PartnershipViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView mPartnerTitle;
+        private ImageView mPartnerLogo;
 
         public PartnershipViewHolder(View view) {
             super(view);
-            mPartnerTitle = view.findViewById(R.id.connectionName);
+            mPartnerLogo = view.findViewById(R.id.connectionLogo);
             itemView.setOnClickListener(this);
         }
 
@@ -84,8 +85,11 @@ public class PartnershipAdapter extends RecyclerView.Adapter<PartnershipAdapter.
     @Override
     public void onBindViewHolder(PartnershipViewHolder holder, int position) {
         partnership = getItem(position);
-//            holder.mPartnerTitle.setText(partnership.getCompany().getName());
-            holder.mPartnerTitle.setText("LOGO");
+        GlideApp.with(AppAdapter.context())
+                .load(partnership.getCompany().getLogo())
+                .centerCrop()
+                .error(R.drawable.iamlogo2x)
+                .into(holder.mPartnerLogo);
     }
 
     @Override

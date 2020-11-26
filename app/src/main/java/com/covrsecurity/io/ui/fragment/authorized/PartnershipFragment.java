@@ -2,40 +2,29 @@ package com.covrsecurity.io.ui.fragment.authorized;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.databinding.FragmentPartnershipBinding;
 import com.covrsecurity.io.domain.entity.MerchantEntity;
-import com.covrsecurity.io.domain.entity.StatusEntity;
+import com.covrsecurity.io.model.Fields;
 import com.covrsecurity.io.ui.adapter.PartnershipAdapter;
-import com.covrsecurity.io.ui.component.AnimationEndListner;
 import com.covrsecurity.io.ui.component.IPartnershipClickListener;
 import com.covrsecurity.io.ui.fragment.BaseParentFragment;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.partnership.PartnershipViewModel;
 import com.covrsecurity.io.ui.viewmodel.partnership.PartnershipViewModelFactory;
-import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
-import com.covrsecurity.io.utils.FragmentAnimationSet;
-import com.covrsecurity.io.model.Fields;
 
-import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
-import java.net.URLDecoder;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -123,41 +112,41 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
                 }
         ));
 
-        viewModel.addConnectionLiveData.observe(this, new BaseObserver<>(
-                this::showProgress,
-                response -> {
-
-                    hideProgress();
-                    logo = response.getCompany().getLogo();
-                    fullName = response.getCompany().getFullName();
-                    showChildFragment();
-                },
-                throwable -> {
-                    hideProgress();
-                    Timber.e("" + throwable);
-                    Timber.e(throwable);
-                }
-        ));
-        viewModel.qrCodeConnectionLiveData.observe(this, new BaseObserver<>(
-                this::showProgress,
-                response -> {
-
-                    hideProgress();
-                    mQrCode = qrCodeStringValue;
-                    String decodedQrCode = null;
-                    try {
-                        decodedQrCode = URLDecoder.decode(mQrCode, "UTF-8");
-                    } catch (UnsupportedEncodingException e) {
-                        Log.e("utf8", "conversion", e);
-                    }
-                    viewModel.addConnection(decodedQrCode);
-                },
-                throwable -> {
-                    hideProgress();
-                    Timber.e("" + throwable);
-                    Timber.e(throwable);
-                }
-        ));
+//        viewModel.addConnectionLiveData.observe(this, new BaseObserver<>(
+//                this::showProgress,
+//                response -> {
+//
+//                    hideProgress();
+//                    logo = response.getCompany().getLogo();
+//                    fullName = response.getCompany().getFullName();
+//                    showChildFragment();
+//                },
+//                throwable -> {
+//                    hideProgress();
+//                    Timber.e("" + throwable);
+//                    Timber.e(throwable);
+//                }
+//        ));
+//        viewModel.qrCodeConnectionLiveData.observe(this, new BaseObserver<>(
+//                this::showProgress,
+//                response -> {
+//
+//                    hideProgress();
+//                    mQrCode = qrCodeStringValue;
+//                    String decodedQrCode = null;
+//                    try {
+//                        decodedQrCode = URLDecoder.decode(mQrCode, "UTF-8");
+//                    } catch (UnsupportedEncodingException e) {
+//                        Log.e("utf8", "conversion", e);
+//                    }
+//                    viewModel.addConnection(decodedQrCode);
+//                },
+//                throwable -> {
+//                    hideProgress();
+//                    Timber.e("" + throwable);
+//                    Timber.e(throwable);
+//                }
+//        ));
     }
 
     @Override
@@ -188,14 +177,6 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
     }
 
     private void setAdapter(final List<MerchantEntity> partnershipList) {
-        //TODO delete hardcoded data
-        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
-        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
-        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
-        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
-        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
-        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
-        partnershipList.add(new MerchantEntity("id", "UserName", 100500, null, StatusEntity.ACTIVE));
         if (mPartnershipAdapter == null) {
             mPartnershipAdapter = new PartnershipAdapter(partnershipList, this);
         } else {

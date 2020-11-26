@@ -4,7 +4,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 
 import androidx.annotation.NonNull;
@@ -15,29 +14,23 @@ import androidx.lifecycle.ViewModelProvider;
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.app.GlideApp;
-import com.covrsecurity.io.databinding.FragmentPartnershipDetailsBinding;
+import com.covrsecurity.io.databinding.FragmentConnectionsServicesDetailsBinding;
 import com.covrsecurity.io.domain.entity.MerchantEntity;
 import com.covrsecurity.io.ui.fragment.FromMenuFragment;
-import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.partnershipdetaills.PartnershipDetailsViewModel;
 import com.covrsecurity.io.ui.viewmodel.partnershipdetaills.PartnershipDetailsViewModelFactory;
 import com.covrsecurity.io.utils.DateTimeUtils;
-import com.covrsecurity.io.utils.EmailUtils;
 
 import org.joda.time.DateTime;
-
-import java.net.ConnectException;
 
 import javax.inject.Inject;
 
 import timber.log.Timber;
 
-import static com.covrsecurity.io.utils.EmailUtils.formatForEmail;
-
 /**
  * Created by alex on 2.5.16.
  */
-public class PartnershipDetailsFragment extends FromMenuFragment<FragmentPartnershipDetailsBinding, PartnershipDetailsViewModel> {
+public class PartnershipDetailsFragment extends FromMenuFragment<FragmentConnectionsServicesDetailsBinding, PartnershipDetailsViewModel> {
 
     private static final String KEY_PARTNERSHIP_ITEM = "key_partnership_item";
 
@@ -84,19 +77,19 @@ public class PartnershipDetailsFragment extends FromMenuFragment<FragmentPartner
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel.markConnectionAsViewedLiveData.observe(this, new BaseObserver<>(
-                null,
-                response -> {
-                    Timber.d("merchant successfully marked as viewed");
-                    AppAdapter.markPartnershipAsViewed(mPartnership.getId());
-                },
-                throwable -> {
-                    Timber.d("error marking merchant as viewed");
-                    if (throwable != null && ConnectException.class.equals(throwable.getClass())) {
-                        showNoInternetDialog();
-                    }
-                }
-        ));
+//        viewModel.markConnectionAsViewedLiveData.observe(this, new BaseObserver<>(
+//                null,
+//                response -> {
+//                    Timber.d("merchant successfully marked as viewed");
+//                    AppAdapter.markPartnershipAsViewed(mPartnership.getId());
+//                },
+//                throwable -> {
+//                    Timber.d("error marking merchant as viewed");
+//                    if (throwable != null && ConnectException.class.equals(throwable.getClass())) {
+//                        showNoInternetDialog();
+//                    }
+//                }
+//        ));
 //        if (!mPartnership.getCompany().isViewed()) {
 //            viewModel.markConnectionAsViewed(mPartnership.getCompany().getCompanyId());
 //        }
@@ -107,28 +100,19 @@ public class PartnershipDetailsFragment extends FromMenuFragment<FragmentPartner
         super.initBinding(inflater);
         getPartnership();
         if (mPartnership != null) {
-//            mBinding.setGoToPartnerSiteClickListener(v -> startBrowser(mPartnership.getCompany().getWebsiteUrl()));
-//            mBinding.setPartnerCreationDate(mPartnership.getCreatedDate() == 0
-//                    ? getString(R.string.history_details_not_available) : DateTimeUtils.getFormattedTime(new DateTime(mPartnership.getCreatedDate())));
-//            String partnerName = mPartnership.getCompany().getFullName();
-//            if (TextUtils.isEmpty(partnerName)) {
-//                partnerName = mPartnership.getCompany().getName();
-//            }
-//            mBinding.setPartnerFullName(partnerName);
+            GlideApp.with(AppAdapter.context())
+                    .load(mPartnership.getCompany().getLogo())
+                    .centerCrop()
+                    .error(R.drawable.iamlogo2x)
+                    .into(mBinding.connectionLogo);
+            mBinding.companyName.setText(mPartnership.getCompany().getName());
+            mBinding.companyWebSite.setText(mPartnership.getCompany().getWebsiteUrl());
+            mBinding.companyWebSite.setOnClickListener(view -> startBrowser(mPartnership.getCompany().getWebsiteUrl()));
+            mBinding.companyDate.setText(mPartnership.getCreatedDate() == 0
+                    ? getString(R.string.history_details_not_available) : DateTimeUtils.getFormattedTime(new DateTime(mPartnership.getCreatedDate())));
 //            boolean isActive = mPartnership.getCompany().isActive();
 //            mBinding.setPartnerStatus(isActive ? getString(R.string.company_status_active) :
 //                    getString(R.string.company_status_inactive));
-//            mBinding.setPartnerUrlName(mPartnership.getCompany().getWebsiteName());
-//            GlideApp.with(AppAdapter.context())
-//                    .load(mPartnership.getCompany().getLogo())
-//                    .centerCrop()
-//                    .error(R.drawable.about_logo)
-//                    .into(mBinding.ivPartnershipDetailsLogo);
-//            mBinding.shareLayout.shareButton.setOnClickListener(v -> {
-//                String subject = getString(R.string.history_details_sharing_subject, mPartnership.getCompany().getName(), mPartnership.getStatus());
-//                String body = EmailUtils.formatForEmail(mPartnership);
-//                EmailUtils.sendEmail(subject, body, getActivity());
-//            });
         }
     }
 

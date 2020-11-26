@@ -27,17 +27,16 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_green_line">
 
-            <TextView
-                android:id="@+id/connectionName"
+            <ImageView
+                android:id="@+id/connectionLogo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="@color/white"
-                android:gravity="center"
-                android:text="LOGO"/>
+                android:gravity="center" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RelativeLayout
-            android:id="@+id/historyDetails"
+            android:id="@+id/companyDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/itemLogo"
@@ -47,7 +46,7 @@
             android:background="@drawable/background_pending_item">
 
             <TextView
-                android:id="@+id/serviceDetailsHeader"
+                android:id="@+id/companyName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_small"
@@ -55,31 +54,44 @@
                 android:fontFamily="@font/poppins_medium"
                 android:layout_marginStart="@dimen/twenty_dp"
                 android:layout_marginTop="@dimen/twenty_dp"
-                android:lines="2"
+                android:lines="1"
                 tools:text="Authentication at n\Testsite.com"/>
 
             <TextView
-                android:id="@+id/serviceDetailsMessage"
+                android:id="@+id/companyWebSite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/five_dp"
+                android:layout_below="@+id/companyName"
+                android:lines="1"
+                tools:text="Authentication at n\Testsite.com"/>
+
+            <TextView
+                android:id="@+id/companyDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_small"
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins_regular"
-                android:layout_below="@+id/serviceDetailsHeader"
+                android:layout_below="@+id/companyWebSite"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginBottom="@dimen/twenty_dp"
                 android:layout_marginStart="@dimen/twenty_dp"
-                android:text="Date: yyyy-mm-dd"
-                android:lines="5"/>
+                android:lines="5"
+                tools:text="Date: yyyy-mm-dd"/>
         </RelativeLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/transactionButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/historyDetails"
-            android:layout_alignStart="@+id/historyDetails"
-            android:layout_alignEnd="@+id/historyDetails"
+            android:layout_below="@+id/companyDetails"
+            android:layout_alignStart="@+id/companyDetails"
+            android:layout_alignEnd="@+id/companyDetails"
             android:layout_marginTop="@dimen/twenty_dp">
 
             <Button
