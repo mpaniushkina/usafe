@@ -213,20 +213,6 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
         if (activity == null) {
             return;
         }
-//        Animation fadeOut = AnimationUtils.loadAnimation(activity, R.anim.disappear);
-//        fadeOut.setAnimationListener(new AnimationEndListner() {
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//                Animation bottomUp = AnimationUtils.loadAnimation(activity, R.anim.up_bottom);
-////                mBinding.slidingUpPanel.startAnimation(bottomUp);
-////                mBinding.slidingUpPanel.setVisibility(View.GONE);
-//                ActivityUtils.scheduleOnMainThread(() -> {
-//                    getChildFragmentManager().popBackStack();
-//                }, ConstantsUtils.HALF_SECOND);
-//            }
-//        });
-//        mBinding.childFragmentTopShadow.startAnimation(fadeOut);
-//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
     }
 
     private void getQrCodeConnection() {
@@ -244,17 +230,6 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
                 R.animator.left_slide_in,
                 R.animator.fade_in,
                 R.animator.left_slide_in);
-//        Animation bottomUp = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_up);
-//        bottomUp.setAnimationListener(new AnimationEndListner() {
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//                Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.appear);
-////                mBinding.childFragmentTopShadow.startAnimation(fadeOut);
-////                mBinding.childFragmentTopShadow.setVisibility(View.VISIBLE);
-//            }
-//        });
-//        mBinding.slidingUpPanel.startAnimation(bottomUp);
-//        mBinding.slidingUpPanel.setVisibility(View.VISIBLE);
     }
 
     @Override
