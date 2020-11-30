@@ -39,6 +39,7 @@ import com.covrsecurity.io.event.GetMessagesEvent;
 import com.covrsecurity.io.event.HistoryBadgeEvent;
 import com.covrsecurity.io.event.NotificationHubConnectedEvent;
 import com.covrsecurity.io.manager.Analytics;
+import com.covrsecurity.io.model.QrCodeStringJson;
 import com.covrsecurity.io.model.deeplink.AuthorizationDeeplink;
 import com.covrsecurity.io.model.error.BioMetricDataProvideCancel;
 import com.covrsecurity.io.sdk.exception.BiometricVerificationAttemptsExhaustedException;
@@ -70,15 +71,18 @@ import com.covrsecurity.io.utils.ConstantsUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
 import com.covrsecurity.io.utils.LogUtil;
 import com.covrsecurity.io.model.Fields;
+import com.google.gson.Gson;
 import com.instacart.library.truetime.TrueTime;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -304,6 +308,12 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ConstantsUtils.SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
             final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
+            QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
+            String reference_id = qrCodeStringJson.getReference_id();
+            long expires_at = qrCodeStringJson.getExpires_at();
+            String type = qrCodeStringJson.getType();
+            String status = qrCodeStringJson.getStatus();
+
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
