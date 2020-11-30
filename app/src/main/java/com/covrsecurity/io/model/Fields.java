@@ -18,7 +18,7 @@ public final class Fields {
 
     public static final String COVR_SDK_ID = "userRegistrationSdk";
     public static final String COVR_SDK_SECRET = "secret";
-    //TODO old keys
+    //TODO old keys to be deleted
 //    public static final String COVR_SDK_QRCODE_ID = "2c52f297-d19b-474c-814a-f56590b4f32e";
 //    public static final String COVR_SDK_QRCODE_SECRET = "4dd8417e-e94b-4331-b215-2be44fbf634a";
 

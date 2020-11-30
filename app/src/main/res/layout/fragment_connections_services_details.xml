@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-    </data>
+    <data></data>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,97 +17,106 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_marginBottom="@dimen/view_padding_small" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/itemLogo"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:background="@drawable/background_square_item"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_below="@+id/tool_bar"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_green_line">
 
-            <ImageView
-                android:id="@+id/connectionLogo"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@color/white"
-                android:gravity="center" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:paddingBottom="@dimen/five_dp">
 
-        <RelativeLayout
-            android:id="@+id/companyDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/itemLogo"
-            android:layout_marginStart="@dimen/twenty_dp"
-            android:layout_marginEnd="@dimen/twenty_dp"
-            android:layout_marginTop="@dimen/twenty_dp"
-            android:background="@drawable/background_pending_item">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/itemLogo"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/background_square_item">
 
-            <TextView
-                android:id="@+id/companyName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_small"
-                android:textColor="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginStart="@dimen/twenty_dp"
-                android:layout_marginTop="@dimen/twenty_dp"
-                android:lines="1"
-                tools:text="Authentication at n\Testsite.com"/>
+                    <ImageView
+                        android:id="@+id/connectionLogo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textColor="@color/white" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/companyWebSite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_small"
-                android:textColor="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginStart="@dimen/twenty_dp"
-                android:layout_marginTop="@dimen/five_dp"
-                android:layout_below="@+id/companyName"
-                android:lines="1"
-                tools:text="Authentication at n\Testsite.com"/>
+                <RelativeLayout
+                    android:id="@+id/companyDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/itemLogo"
+                    android:layout_marginStart="@dimen/twenty_dp"
+                    android:layout_marginTop="@dimen/twenty_dp"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:background="@drawable/background_pending_item">
 
-            <TextView
-                android:id="@+id/companyDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_small"
-                android:textColor="@color/white"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_below="@+id/companyWebSite"
-                android:layout_marginTop="@dimen/ten_dp"
-                android:layout_marginBottom="@dimen/twenty_dp"
-                android:layout_marginStart="@dimen/twenty_dp"
-                android:lines="5"
-                tools:text="Date: yyyy-mm-dd"/>
-        </RelativeLayout>
+                    <TextView
+                        android:id="@+id/companyName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/twenty_dp"
+                        android:layout_marginTop="@dimen/twenty_dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:lines="1"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_small"
+                        tools:text="Authentication at n\Testsite.com" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/transactionButtons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/companyDetails"
-            android:layout_alignStart="@+id/companyDetails"
-            android:layout_alignEnd="@+id/companyDetails"
-            android:layout_marginTop="@dimen/twenty_dp">
+                    <TextView
+                        android:id="@+id/companyWebSite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/companyName"
+                        android:layout_marginStart="@dimen/twenty_dp"
+                        android:layout_marginTop="@dimen/five_dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:lines="1"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_small"
+                        tools:text="Authentication at n\Testsite.com" />
 
-            <Button
-                android:id="@+id/btnDelete"
-                style="@style/GreenButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/ten_dp"
-                android:background="@drawable/button_red"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintWidth_percent="0.4"
-                android:text="@string/delete_btn"/>
+                    <TextView
+                        android:id="@+id/companyDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/companyWebSite"
+                        android:layout_marginStart="@dimen/twenty_dp"
+                        android:layout_marginTop="@dimen/ten_dp"
+                        android:layout_marginBottom="@dimen/twenty_dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lines="5"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_small"
+                        tools:text="Date: yyyy-mm-dd" />
+                </RelativeLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/transactionButtons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/companyDetails"
+                    android:layout_alignStart="@+id/companyDetails"
+                    android:layout_alignEnd="@+id/companyDetails"
+                    android:layout_marginTop="@dimen/twenty_dp">
 
+                    <Button
+                        android:id="@+id/btnDelete"
+                        style="@style/GreenButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button_red"
+                        android:padding="@dimen/ten_dp"
+                        android:text="@string/delete_btn"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+        </ScrollView>
     </RelativeLayout>
-
 </layout>
