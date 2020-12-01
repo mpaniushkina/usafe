@@ -1,17 +1,13 @@
 package com.covrsecurity.io.model;
 
-import android.util.Log;
-
-import java.util.Date;
-
 public class QrCodeStringJson {
     private String reference_id;
-    private long expires_at;
+    private int expires_at;
     private String type;
     private String status;
     private String scopes;
 
-    public QrCodeStringJson(String reference_id, long expires_at, String type, String status, String scopes) {
+    public QrCodeStringJson(String reference_id, int expires_at, String type, String status, String scopes) {
         this.reference_id = reference_id;
         this.expires_at = expires_at;
         this.type = type;
@@ -23,7 +19,7 @@ public class QrCodeStringJson {
         return reference_id;
     }
 
-    public long getExpires_at() {
+    public int getExpires_at() {
         return expires_at;
     }
 

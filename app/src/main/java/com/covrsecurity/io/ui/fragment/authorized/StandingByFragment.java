@@ -310,7 +310,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
             final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
             QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
             String reference_id = qrCodeStringJson.getReference_id();
-            long expires_at = qrCodeStringJson.getExpires_at();
+            int expires_at = qrCodeStringJson.getExpires_at();
             String type = qrCodeStringJson.getType();
             String status = qrCodeStringJson.getStatus();
 
