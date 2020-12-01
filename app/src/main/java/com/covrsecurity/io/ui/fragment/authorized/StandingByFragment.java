@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -302,17 +303,33 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                     Timber.e(throwable);
                 }
         ));
+        addConnectionViewModel.qrCodeClaimLiveData.observe(this, new BaseObserver<>(
+                this::showProgress,
+                response -> {
+                    hideProgress();
+                    if (!response.isValid()) {
+                        Toast.makeText(getActivity(), "Qr Code isn't valid", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                throwable -> {
+                    hideProgress();
+                    Timber.e("" + throwable);
+                    Timber.e(throwable);
+                    showErrToast(throwable);
+                }
+        ));
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ConstantsUtils.SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
             final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
-            QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
-            String reference_id = qrCodeStringJson.getReference_id();
-            int expires_at = qrCodeStringJson.getExpires_at();
-            String type = qrCodeStringJson.getType();
-            String status = qrCodeStringJson.getStatus();
+//            QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
+//            String reference_id = qrCodeStringJson.getReference_id();
+//            int expires_at = qrCodeStringJson.getExpires_at();
+//            String type = qrCodeStringJson.getType();
+//            String status = qrCodeStringJson.getStatus();
+            addConnectionViewModel.verifyQrCodeClaim(qrCode);
 
         } else {
             super.onActivityResult(requestCode, resultCode, data);

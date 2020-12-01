@@ -9,6 +9,7 @@ import com.covrsecurity.io.domain.entity.request.GetTransactionsRequestEntity;
 import com.covrsecurity.io.domain.entity.request.MarkConnectionAsViewedRequestEntity;
 import com.covrsecurity.io.domain.entity.request.NotificationHubRegistrationRequestEntity;
 import com.covrsecurity.io.domain.entity.request.PostQrCodeRequestEntity;
+import com.covrsecurity.io.domain.entity.request.QrCodeClaimRequestEntity;
 import com.covrsecurity.io.domain.entity.request.RegisterRecoveryRequestEntity;
 import com.covrsecurity.io.domain.entity.request.TransactionConfirmationRequestEntity;
 import com.covrsecurity.io.domain.entity.request.ValidatePinCodeRequestEntity;
@@ -18,6 +19,7 @@ import com.covrsecurity.io.domain.entity.response.GetUnreadHistoryCountResponseE
 import com.covrsecurity.io.domain.entity.response.MarkConnectionAsViewedResponseEntity;
 import com.covrsecurity.io.domain.entity.response.MarkHistoryAsViewedResponseEntity;
 import com.covrsecurity.io.domain.entity.response.PostQrCodeResponseEntity;
+import com.covrsecurity.io.domain.entity.response.QrCodeClaimResponseEntity;
 import com.covrsecurity.io.domain.entity.response.TransactionsResponseEntity;
 
 import io.reactivex.Completable;
@@ -45,6 +47,8 @@ public interface RegisteredRepository {
     Single<TransactionEntity> getTransactionDetails(GetTransactionDetailsRequestEntity requestEntity);
 
     Single<TransactionEntity> postTransaction(TransactionConfirmationRequestEntity requestEntity);
+
+    Single<QrCodeClaimResponseEntity> verifyQrCodeClaim(QrCodeClaimRequestEntity requestEntity);
 
     Single<PostQrCodeResponseEntity> addConnection(PostQrCodeRequestEntity requestEntity);
 

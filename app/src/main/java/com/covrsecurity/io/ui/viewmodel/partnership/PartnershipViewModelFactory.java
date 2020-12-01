@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.covrsecurity.io.domain.usecase.registred.AddConnectionUseCase;
 import com.covrsecurity.io.domain.usecase.registred.GetConnectionsUseCase;
+import com.covrsecurity.io.domain.usecase.registred.QrCodeClaimUseCase;
 import com.covrsecurity.io.domain.usecase.unregistered.QrCodeConnectionUseCase;
 
 import javax.inject.Inject;
@@ -15,12 +16,14 @@ public class PartnershipViewModelFactory implements ViewModelProvider.Factory {
     private final GetConnectionsUseCase getConnectionsUseCase;
     private final AddConnectionUseCase addConnectionUseCase;
     private final QrCodeConnectionUseCase qrCodeConnectionUseCase;
+    private final QrCodeClaimUseCase qrCodeClaimUseCase;
 
     @Inject
-    public PartnershipViewModelFactory(GetConnectionsUseCase getConnectionsUseCase, AddConnectionUseCase addConnectionUseCase, QrCodeConnectionUseCase qrCodeConnectionUseCase) {
+    public PartnershipViewModelFactory(GetConnectionsUseCase getConnectionsUseCase, AddConnectionUseCase addConnectionUseCase, QrCodeConnectionUseCase qrCodeConnectionUseCase, QrCodeClaimUseCase qrCodeClaimUseCase) {
         this.getConnectionsUseCase = getConnectionsUseCase;
         this.addConnectionUseCase = addConnectionUseCase;
         this.qrCodeConnectionUseCase = qrCodeConnectionUseCase;
+        this.qrCodeClaimUseCase = qrCodeClaimUseCase;
     }
 
     @NonNull
@@ -30,7 +33,8 @@ public class PartnershipViewModelFactory implements ViewModelProvider.Factory {
             return (T) new PartnershipViewModel(
                     getConnectionsUseCase,
                     addConnectionUseCase,
-                    qrCodeConnectionUseCase
+                    qrCodeConnectionUseCase,
+                    qrCodeClaimUseCase
             );
         } else {
             throw new IllegalArgumentException("ViewModel Not Found");
