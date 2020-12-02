@@ -324,12 +324,13 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ConstantsUtils.SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
             final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
-//            QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
-//            String reference_id = qrCodeStringJson.getReference_id();
-//            int expires_at = qrCodeStringJson.getExpires_at();
-//            String type = qrCodeStringJson.getType();
-//            String status = qrCodeStringJson.getStatus();
-            addConnectionViewModel.verifyQrCodeClaim(qrCode);
+            QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
+            String reference_id = qrCodeStringJson.getReference_id();
+            int expires_at = qrCodeStringJson.getExpires_at();
+            String type = qrCodeStringJson.getType();
+            String status = qrCodeStringJson.getStatus();
+            String scopes = qrCodeStringJson.getScopes();
+            addConnectionViewModel.verifyQrCodeClaim(reference_id, expires_at, type, status, scopes);
 
         } else {
             super.onActivityResult(requestCode, resultCode, data);

@@ -31,6 +31,10 @@ public class QrCodeStringJson {
         return status;
     }
 
+    public String getScopes() {
+        return scopes;
+    }
+
     @Override
     public String toString() {
         return new StringBuilder().append("QrCodeStringJson{")

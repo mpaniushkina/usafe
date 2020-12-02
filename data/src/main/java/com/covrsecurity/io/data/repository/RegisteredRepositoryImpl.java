@@ -11,6 +11,7 @@ import com.covrsecurity.io.domain.entity.request.GetTransactionsRequestEntity;
 import com.covrsecurity.io.domain.entity.request.MarkConnectionAsViewedRequestEntity;
 import com.covrsecurity.io.domain.entity.request.NotificationHubRegistrationRequestEntity;
 import com.covrsecurity.io.domain.entity.request.PostQrCodeRequestEntity;
+import com.covrsecurity.io.domain.entity.request.QrCodeClaimRequestEntity;
 import com.covrsecurity.io.domain.entity.request.RegisterRecoveryRequestEntity;
 import com.covrsecurity.io.domain.entity.request.TransactionConfirmationRequestEntity;
 import com.covrsecurity.io.domain.entity.request.ValidatePinCodeRequestEntity;
@@ -20,6 +21,7 @@ import com.covrsecurity.io.domain.entity.response.GetUnreadHistoryCountResponseE
 import com.covrsecurity.io.domain.entity.response.MarkConnectionAsViewedResponseEntity;
 import com.covrsecurity.io.domain.entity.response.MarkHistoryAsViewedResponseEntity;
 import com.covrsecurity.io.domain.entity.response.PostQrCodeResponseEntity;
+import com.covrsecurity.io.domain.entity.response.QrCodeClaimResponseEntity;
 import com.covrsecurity.io.domain.entity.response.TransactionsResponseEntity;
 import com.covrsecurity.io.sdk.CovrNewMainInterface;
 import com.covrsecurity.io.sdk.request.ChangePinCodeRequest;
@@ -30,6 +32,7 @@ import com.covrsecurity.io.sdk.request.GetTransactionsRequest;
 import com.covrsecurity.io.sdk.request.MarkConnectionAsViewedRequest;
 import com.covrsecurity.io.sdk.request.NotificationHubRegistrationRequest;
 import com.covrsecurity.io.sdk.request.PostQrCodeRequest;
+import com.covrsecurity.io.sdk.request.QrCodeClaimRequest;
 import com.covrsecurity.io.sdk.request.RegisterRecoveryRequest;
 import com.covrsecurity.io.sdk.request.TransactionConfirmationRequest;
 import com.covrsecurity.io.sdk.request.ValidatePinCodeRequest;
@@ -191,6 +194,16 @@ public class RegisteredRepositoryImpl implements RegisteredRepository {
                 .map(entity -> new TransactionConfirmationRequest(getTransactionSdk(entity.getTransaction()), entity.isAccept(), entity.getBioMetricData()))
                 .flatMap(covrInterface::postTransaction)
                 .map(EntityMapper::getTransactionEntity);
+    }
+
+    @Override
+    public Single<QrCodeClaimResponseEntity> verifyQrCodeClaim(QrCodeClaimRequestEntity requestEntity) {
+        return Single.just(requestEntity)
+                .map(entity -> new QrCodeClaimRequest(entity.getReference_id(), entity.getExpires_at(), entity.getType(), entity.getStatus(), entity.getScopes()))
+                .flatMap(covrInterface::verifyQrCodeClaim)
+                .map(response -> new QrCodeClaimResponseEntity(
+                        response.isValid()
+                ));
     }
 
     @Override

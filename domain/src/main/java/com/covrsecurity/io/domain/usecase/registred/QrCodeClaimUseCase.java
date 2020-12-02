@@ -2,9 +2,7 @@ package com.covrsecurity.io.domain.usecase.registred;
 
 import androidx.annotation.Nullable;
 
-import com.covrsecurity.io.domain.entity.request.PostQrCodeRequestEntity;
 import com.covrsecurity.io.domain.entity.request.QrCodeClaimRequestEntity;
-import com.covrsecurity.io.domain.entity.response.PostQrCodeResponseEntity;
 import com.covrsecurity.io.domain.entity.response.QrCodeClaimResponseEntity;
 import com.covrsecurity.io.domain.executor.PostExecutionThread;
 import com.covrsecurity.io.domain.executor.ThreadExecutor;
