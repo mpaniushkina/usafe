@@ -82,7 +82,6 @@ public class PartnershipViewModel extends BaseViewModel {
 
     public void verifyQrCodeClaim(String reference_id, int expires_at, String type, String status, String scopes) {
         disposable = Single.just(new QrCodeClaimRequestEntity(reference_id, expires_at, type, status, scopes))
-//                .map(QrCodeClaimRequestEntity::new)
                 .flatMap(qrCodeClaimUseCase::execute)
                 .subscribe(
                         response -> qrCodeClaimLiveData.setValue(BaseState.getSuccessInstance(response)),

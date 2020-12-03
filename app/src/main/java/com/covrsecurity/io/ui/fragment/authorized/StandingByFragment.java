@@ -8,20 +8,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
@@ -51,11 +47,8 @@ import com.covrsecurity.io.ui.component.AnimationEndListner;
 import com.covrsecurity.io.ui.component.SlideLeftItemAnimator;
 import com.covrsecurity.io.ui.component.SmoothLinearLayoutManager;
 import com.covrsecurity.io.ui.dialog.ScanQrCodeDialog;
-import com.covrsecurity.io.ui.fragment.BaseFragment;
 import com.covrsecurity.io.ui.fragment.BaseViewModelFragment;
 import com.covrsecurity.io.ui.fragment.authorized.vault.CovrVaultAboutQuickBar;
-import com.covrsecurity.io.ui.fragment.unauthorized.CreatePersonalCodeFragment;
-import com.covrsecurity.io.ui.fragment.unauthorized.PrivacyPolicyFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.ScanFaceBiometricsFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.ScanQrCodeFragment;
 import com.covrsecurity.io.ui.interfaces.IChildFragmentListener;
@@ -77,13 +70,10 @@ import com.instacart.library.truetime.TrueTime;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -307,9 +297,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                 this::showProgress,
                 response -> {
                     hideProgress();
-                    if (!response.isValid()) {
-                        Toast.makeText(getActivity(), "Qr Code isn't valid", Toast.LENGTH_SHORT).show();
-                    }
                 },
                 throwable -> {
                     hideProgress();
@@ -325,13 +312,8 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         if (requestCode == ConstantsUtils.SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
             final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
             QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
-            String reference_id = qrCodeStringJson.getReference_id();
-            int expires_at = qrCodeStringJson.getExpires_at();
-            String type = qrCodeStringJson.getType();
-            String status = qrCodeStringJson.getStatus();
-            String scopes = qrCodeStringJson.getScopes();
-            addConnectionViewModel.verifyQrCodeClaim(reference_id, expires_at, type, status, scopes);
-
+            addConnectionViewModel.verifyQrCodeClaim(qrCodeStringJson.getReference_id(), qrCodeStringJson.getExpires_at(),
+                    qrCodeStringJson.getType(), qrCodeStringJson.getStatus(), qrCodeStringJson.getScopes());
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
@@ -383,8 +365,8 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         super.initBinding(inflater);
         Animation progress = AnimationUtils.loadAnimation(getActivity(), R.anim.progress_anim);
 //        mBinding.progress.startAnimation(progress);
-        mBinding.pendindRequestsRecyclerView.setLayoutManager(new SmoothLinearLayoutManager(getActivity()));
-        mBinding.pendindRequestsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        mBinding.pendingRequestsRecyclerView.setLayoutManager(new SmoothLinearLayoutManager(getActivity()));
+        mBinding.pendingRequestsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 Timber.d("OnScrollStateChanged: %d", newState);
@@ -394,7 +376,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                 super.onScrollStateChanged(recyclerView, newState);
             }
         });
-        mBinding.pendindRequestsRecyclerView.setItemAnimator(new SlideLeftItemAnimator());
+        mBinding.pendingRequestsRecyclerView.setItemAnimator(new SlideLeftItemAnimator());
 //        mBinding.addConnectionTest.setOnClickListener(v -> getQrCodeConnection());
 //        mBinding.bottomButton.addPartnershipPlus.setOnClickListener(v -> getQrCodeConnection());
 //        mBinding.menu.setOnClickListener(v -> ((AuthorizedActivity) getActivity()).openDrawer());
@@ -488,34 +470,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         lastListInteractionTime = TrueTime.now().getTime();
     }
 
-    private void hideBottomButton() {
-        //TODO: temporarily disabled
-//        ActivityUtils.scheduleOnMainThread(() -> {
-//            Timber.d("Hide button animation");
-//            mBinding.bottomButton.setAnimation(hideButtonAnimation);
-//            mBinding.bottomButton.setVisibility(View.INVISIBLE);
-//            mBinding.bottomButton.animate();
-//            ActivityUtils.scheduleOnMainThread(() -> {
-//                showBottomButton();
-//            }, SHOW_BUTTON_TIMEOUT);
-//        });
-    }
-
-    private void showBottomButton() {
-        //TODO: temporarily disabled
-//        if (mBinding.bottomButton.getVisibility() != View.VISIBLE) {
-//            if ((lastListInteractionTime + SHOW_BUTTON_TIMEOUT) <= new Date().getTime()) {
-//                mBinding.bottomButton.setAnimation(showButtonAnimation);
-//                mBinding.bottomButton.setVisibility(View.VISIBLE);
-//                mBinding.bottomButton.animate();
-//            } else {
-//                ActivityUtils.scheduleOnMainThread(() -> {
-//                    showBottomButton();
-//                }, SHOW_BUTTON_TIMEOUT);
-//            }
-//        }
-    }
-
     private void setAdapter(List<TransactionEntity> pendingTransactionsList) {
         if (mPartnershipAdapter == null) {
             mPartnershipAdapter = new PendingRequestsAdapter(pendingTransactionsList, this, this, this);
@@ -524,8 +478,8 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         }
 //        mPartnershipAdapter.setEmptyView(mBinding.emptyView);
         mPartnershipAdapter.setLogoView(mBinding.logo);
-        if (mBinding.pendindRequestsRecyclerView.getAdapter() == null) {
-            mBinding.pendindRequestsRecyclerView.setAdapter(mPartnershipAdapter);
+        if (mBinding.pendingRequestsRecyclerView.getAdapter() == null) {
+            mBinding.pendingRequestsRecyclerView.setAdapter(mPartnershipAdapter);
         }
     }
 
@@ -548,9 +502,9 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     @Override
     public void onPendingRequestOpened(int position) {
         ActivityUtils.scheduleOnMainThread(() -> {
-            LinearLayoutManager llm = (LinearLayoutManager) mBinding.pendindRequestsRecyclerView.getLayoutManager();
+            LinearLayoutManager llm = (LinearLayoutManager) mBinding.pendingRequestsRecyclerView.getLayoutManager();
             if (position > llm.findLastCompletelyVisibleItemPosition()) {
-                mBinding.pendindRequestsRecyclerView.smoothScrollToPosition(position);
+                mBinding.pendingRequestsRecyclerView.smoothScrollToPosition(position);
             }
         }, ConstantsUtils.FOUR_HUNDRED_MILLISECONDS);
     }
@@ -711,7 +665,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
             //SoundUtils.playResponseSound();
             mPartnershipAdapter.removeItemById(pendingTransaction.getId(), removalReason);
             //if it be correct to do this in fragment but not in adapter
-            mBinding.pendindRequestsRecyclerView.smoothScrollToPosition(0);
+            mBinding.pendingRequestsRecyclerView.smoothScrollToPosition(0);
             AppAdapter.removeConsumerRequest(pendingTransaction);
             AppAdapter.updateIconLauncherBadge();
             //getAllPendingRequests(DEFAULT_PAGE_NUMBER);
