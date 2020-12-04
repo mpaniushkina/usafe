@@ -297,6 +297,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                 this::showProgress,
                 response -> {
                     hideProgress();
+//                    loadAllData();
                 },
                 throwable -> {
                     hideProgress();
@@ -329,9 +330,9 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         ActivityUtils.scheduleOnMainThread(() -> {
             openFirstRequest();
         }, ConstantsUtils.THREE_HUNDRED_MILLISECONDS);
-        if (((AuthorizedActivity) getActivity()).isShouldAddConnectionShown()) {
-            getQrCodeConnection();
-        }
+//        if (((AuthorizedActivity) getActivity()).isShouldAddConnectionShown()) {
+//            getQrCodeConnection();
+//        }
         viewModel.checkLocked();
     }
 

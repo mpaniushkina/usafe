@@ -335,26 +335,6 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
 
     private void selectItem(int position) {
 
-//        Fragment fragment = null;
-//
-//        switch (position) {
-//            case HISTORY_ITEM:
-//                fragment = HistoryFragment.newInstance();
-//                break;
-//            case PARTNERSHIPS_ITEM:
-//                fragment = PartnershipFragment.newInstance();
-//                break;
-//            case SETTINGS_ITEM:
-//                fragment = SettingsFragment.newInstance();
-//                break;
-//            case HELP_ITEM:
-//                fragment = HelpFragment.newInstance();
-//                break;
-//            case ABOUT_ITEM:
-//                fragment = AboutFragment.newInstance();
-//                break;
-//        }
-//        fragmentToOpen = fragment;
 //        closeDrawer();
     }
 

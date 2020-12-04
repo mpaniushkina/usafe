@@ -48,7 +48,6 @@
 
                 <ListView
                     android:padding="@dimen/twenty_dp"
-
                     android:id="@+id/drwer_list"
                     android:layout_width="match_parent"
                     android:layout_centerInParent="true"
