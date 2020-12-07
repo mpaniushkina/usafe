@@ -238,8 +238,8 @@
     <string name="add_partnership">Add Connection</string>
     <string name="plus_add_partnership">+ Add Connection</string>
     <string name="add_partnership_plus">+</string>
-    <string name="pending_request_deny">Deny</string>
-    <string name="pending_request_verify">Verify</string>
+    <string name="pending_request_deny">Decline</string>
+    <string name="pending_request_verify">Accept</string>
     <string name="pending_request_extra_text_placeholder">Additional content\nAldus lorem delea ini serrata aldus parita selna vidi estera birusia.\n\nPartitum\nTelegram santum foresia ini malde uma.</string>
     <string name="pending_request_extra_text_template" translatable="false">(\\{%s\\})</string>
 
@@ -484,7 +484,7 @@
         <item>Fingerprint for iAM</item>
         <item>Push Notifications</item>
         <item>In-App Notifications</item>
-        <item>Language</item>
+<!--        <item>Language</item>-->
     </string-array>
 
     <string-array name="my_account_names">

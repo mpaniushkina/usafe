@@ -5,17 +5,17 @@
 
     <data>
 
-<!--        <import type="com.covrsecurity.io.R" />-->
+        <!--        <import type="com.covrsecurity.io.R" />-->
 
-<!--        <import type="com.covrsecurity.io.ui.component.LinkTouchMovementMethod" />-->
+        <!--        <import type="com.covrsecurity.io.ui.component.LinkTouchMovementMethod" />-->
 
-<!--        <variable-->
-<!--            name="isFavoriteExpanded"-->
-<!--            type="Boolean" />-->
+        <!--        <variable-->
+        <!--            name="isFavoriteExpanded"-->
+        <!--            type="Boolean" />-->
 
-<!--        <variable-->
-<!--            name="openFavoritesReadMoreAction"-->
-<!--            type="Runnable" />-->
+        <!--        <variable-->
+        <!--            name="openFavoritesReadMoreAction"-->
+        <!--            type="Runnable" />-->
 
     </data>
 
@@ -42,109 +42,109 @@
                 android:id="@+id/myAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/setting_item_margin_top"
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/setting_item_margin_top"
                 android:padding="@dimen/ten_dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_user_large"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_user_large" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/settings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/setting_item_margin_top"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
+                android:layout_marginEnd="@dimen/setting_item_margin_top"
                 android:padding="@dimen/ten_dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_settings" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_settings" />
             </RelativeLayout>
 
-<!--            <ImageView-->
-<!--                android:id="@+id/expand_favorite"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentEnd="true"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:layout_marginEnd="@dimen/twenty_dp"-->
-<!--                android:layout_marginStart="@dimen/twenty_dp"-->
-<!--                android:clickable="false"-->
-<!--                android:src="@{isFavoriteExpanded ? @drawable/ic_expand_less_black_24dp : @drawable/ic_expand_more_black_24dp}"-->
-<!--                android:visibility="invisible"-->
-<!--                app:tint="@color/soft_green" />-->
+            <!--            <ImageView-->
+            <!--                android:id="@+id/expand_favorite"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_alignParentEnd="true"-->
+            <!--                android:layout_centerVertical="true"-->
+            <!--                android:layout_marginEnd="@dimen/twenty_dp"-->
+            <!--                android:layout_marginStart="@dimen/twenty_dp"-->
+            <!--                android:clickable="false"-->
+            <!--                android:src="@{isFavoriteExpanded ? @drawable/ic_expand_less_black_24dp : @drawable/ic_expand_more_black_24dp}"-->
+            <!--                android:visibility="invisible"-->
+            <!--                app:tint="@color/soft_green" />-->
 
         </RelativeLayout>
 
-<!--        <RelativeLayout-->
-<!--            android:id="@+id/empty_view"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_alignParentStart="true"-->
-<!--            android:layout_alignParentTop="true"-->
-<!--            android:visibility="invisible">-->
+        <!--        <RelativeLayout-->
+        <!--            android:id="@+id/empty_view"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:layout_alignParentStart="true"-->
+        <!--            android:layout_alignParentTop="true"-->
+        <!--            android:visibility="invisible">-->
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/progress_layout"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="@dimen/progress_view_thickness"-->
-<!--                android:layout_above="@+id/iv_logo"-->
-<!--                android:layout_alignEnd="@+id/iv_logo"-->
-<!--                android:layout_alignStart="@+id/iv_logo">-->
+        <!--            <LinearLayout-->
+        <!--                android:id="@+id/progress_layout"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="@dimen/progress_view_thickness"-->
+        <!--                android:layout_above="@+id/iv_logo"-->
+        <!--                android:layout_alignEnd="@+id/iv_logo"-->
+        <!--                android:layout_alignStart="@+id/iv_logo">-->
 
-<!--                <View-->
-<!--                    android:id="@+id/progress"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:background="@drawable/progress_shape" />-->
+        <!--                <View-->
+        <!--                    android:id="@+id/progress"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="match_parent"-->
+        <!--                    android:background="@drawable/progress_shape" />-->
 
-<!--            </LinearLayout>-->
+        <!--            </LinearLayout>-->
 
-<!--            <View-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="@dimen/ten_dp"-->
-<!--                android:layout_above="@+id/iv_logo"-->
-<!--                android:layout_toRightOf="@+id/progress_layout"-->
-<!--                android:background="@color/white" />-->
+        <!--            <View-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="@dimen/ten_dp"-->
+        <!--                android:layout_above="@+id/iv_logo"-->
+        <!--                android:layout_toRightOf="@+id/progress_layout"-->
+        <!--                android:background="@color/white" />-->
 
-<!--            <View-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="@dimen/ten_dp"-->
-<!--                android:layout_above="@+id/iv_logo"-->
-<!--                android:layout_toLeftOf="@+id/progress_layout"-->
-<!--                android:background="@color/white" />-->
+        <!--            <View-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="@dimen/ten_dp"-->
+        <!--                android:layout_above="@+id/iv_logo"-->
+        <!--                android:layout_toLeftOf="@+id/progress_layout"-->
+        <!--                android:background="@color/white" />-->
 
-<!--            <ImageView-->
-<!--                android:id="@+id/iv_logo"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerInParent="true"-->
-<!--                android:layout_marginEnd="@dimen/standing_by_fragment_logo_margin_end"-->
-<!--                android:layout_marginTop="@dimen/eigth_dp"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:scaleType="centerCrop"-->
-<!--                android:src="@drawable/logo_large_green_without_strip" />-->
+        <!--            <ImageView-->
+        <!--                android:id="@+id/iv_logo"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_centerInParent="true"-->
+        <!--                android:layout_marginEnd="@dimen/standing_by_fragment_logo_margin_end"-->
+        <!--                android:layout_marginTop="@dimen/eigth_dp"-->
+        <!--                android:adjustViewBounds="true"-->
+        <!--                android:scaleType="centerCrop"-->
+        <!--                android:src="@drawable/logo_large_green_without_strip" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/label_info_new"-->
-<!--                style="@style/WhiteBottomButton"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@+id/iv_logo"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_marginTop="@dimen/fiveteen_dp"-->
-<!--                android:paddingLeft="@dimen/thirty_dp"-->
-<!--                android:paddingRight="@dimen/thirty_dp"-->
-<!--                android:text="@string/standing_by_waiting" />-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/label_info_new"-->
+        <!--                style="@style/WhiteBottomButton"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_below="@+id/iv_logo"-->
+        <!--                android:layout_centerHorizontal="true"-->
+        <!--                android:layout_marginTop="@dimen/fiveteen_dp"-->
+        <!--                android:paddingLeft="@dimen/thirty_dp"-->
+        <!--                android:paddingRight="@dimen/thirty_dp"-->
+        <!--                android:text="@string/standing_by_waiting" />-->
 
-<!--        </RelativeLayout>-->
+        <!--        </RelativeLayout>-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/pending_requests_recycler_view"
@@ -166,64 +166,55 @@
 <!--            android:orientation="vertical"-->
 <!--            android:visibility="gone">-->
 
-<!--            <View-->
-<!--                android:id="@+id/child_fragment_top_shadow"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_weight="@integer/fragment_sliding_up_transparency_weight"-->
-<!--                android:background="@color/transparent_gray"-->
-<!--                android:visibility="invisible" />-->
+<!--            &lt;!&ndash;            <View&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:id="@+id/child_fragment_top_shadow"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:layout_height="0dp"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:layout_weight="@integer/fragment_sliding_up_transparency_weight"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:background="@color/transparent_gray"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:visibility="invisible" />&ndash;&gt;-->
 
 <!--            <FrameLayout-->
 <!--                android:id="@+id/child_fragment_container"-->
 <!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_weight="@integer/fragment_sliding_up_content_weight"-->
-<!--                android:background="@color/backgroundMain" />-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="@integer/fragment_sliding_up_content_weight" />-->
 
 <!--        </LinearLayout>-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/scanQrButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="@dimen/thirty_dp">
+            android:layout_marginBottom="@dimen/thirty_dp"
+            android:visibility="visible">
 
-        <ImageView
-            android:id="@+id/scanQrBg"
-            android:background="@drawable/ic_qricon_bg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            <ImageView
+                android:id="@+id/scanQrBg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_qricon_bg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <RelativeLayout
                 android:id="@+id/scanQr"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_qricon"
-                    android:layout_centerInParent="true" />
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/ic_qricon" />
             </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--        <TextView-->
-<!--            android:id="@+id/addConnectionTest"-->
-<!--            style="@style/WhiteBottomButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:layout_marginTop="@dimen/fiveteen_dp"-->
-<!--            android:text="Test add connection" />-->
     </RelativeLayout>
 
 </layout>

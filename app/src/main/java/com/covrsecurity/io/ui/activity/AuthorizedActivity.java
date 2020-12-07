@@ -66,12 +66,6 @@ import timber.log.Timber;
 
 public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, AuthorizedActivityViewModel> {
 
-//    public static final int HISTORY_ITEM = 0;
-//    public static final int PARTNERSHIPS_ITEM = 1;
-//    public static final int SETTINGS_ITEM = 2;
-//    public static final int HELP_ITEM = 3;
-//    public static final int ABOUT_ITEM = 4;
-
     public static final String KEY_IS_ENTERED_AFTER_REGISTRATION = "IS_ENTERED_AFTER_REGISTRATION";
     public static final String KEY_IS_RESTORED_STATE = "KEY_IS_RESTORED_STATE";
     public static final String KEY_THIRD_PARTY_IN_APP_ACTIVITY_OPENED = "KEY_THIRD_PARTY_IN_APP_ACTIVITY_OPENED";

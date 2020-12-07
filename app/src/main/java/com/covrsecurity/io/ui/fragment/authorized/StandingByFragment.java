@@ -10,8 +10,10 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +23,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.covrsecurity.io.R;
@@ -36,6 +37,8 @@ import com.covrsecurity.io.event.GetMessagesEvent;
 import com.covrsecurity.io.event.HistoryBadgeEvent;
 import com.covrsecurity.io.event.NotificationHubConnectedEvent;
 import com.covrsecurity.io.manager.Analytics;
+import com.covrsecurity.io.model.BiometricsVerification;
+import com.covrsecurity.io.model.Fields;
 import com.covrsecurity.io.model.QrCodeStringJson;
 import com.covrsecurity.io.model.deeplink.AuthorizationDeeplink;
 import com.covrsecurity.io.model.error.BioMetricDataProvideCancel;
@@ -52,6 +55,7 @@ import com.covrsecurity.io.ui.fragment.authorized.vault.CovrVaultAboutQuickBar;
 import com.covrsecurity.io.ui.fragment.unauthorized.ScanFaceBiometricsFragment;
 import com.covrsecurity.io.ui.fragment.unauthorized.ScanQrCodeFragment;
 import com.covrsecurity.io.ui.interfaces.IChildFragmentListener;
+import com.covrsecurity.io.ui.viewmodel.base.BaseState;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.biometricsshared.BiometricsSharedViewModel;
 import com.covrsecurity.io.ui.viewmodel.biometricsshared.BiometricsSharedViewModelFactory;
@@ -62,22 +66,31 @@ import com.covrsecurity.io.ui.viewmodel.standingby.StandingByViewModel;
 import com.covrsecurity.io.ui.viewmodel.standingby.StandingByViewModelFabric;
 import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
+import com.covrsecurity.io.utils.FileUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
 import com.covrsecurity.io.utils.LogUtil;
-import com.covrsecurity.io.model.Fields;
 import com.google.gson.Gson;
 import com.instacart.library.truetime.TrueTime;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
 import java.net.URLDecoder;
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 
+import co.hyperverge.hypersnapsdk.activities.HVFaceActivity;
+import co.hyperverge.hypersnapsdk.listeners.FaceCaptureCompletionHandler;
+import co.hyperverge.hypersnapsdk.objects.HVError;
+import co.hyperverge.hypersnapsdk.objects.HVFaceConfig;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -178,7 +191,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         viewModel.transactionsLiveData.observe(this, new BaseObserver<>(
                 null,
                 response -> {
-
                     if (response.getPageNumber() == 0) {
                         AppAdapter.cleanConsumerRequests();
                     }
@@ -297,7 +309,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                 this::showProgress,
                 response -> {
                     hideProgress();
-//                    loadAllData();
                 },
                 throwable -> {
                     hideProgress();
@@ -324,7 +335,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     public void onResume() {
         super.onResume();
         setAdapter(AppAdapter.getPendingConsumerRequests());
-//        mBinding.slidingUpPanel.setVisibility(View.GONE);
 //        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
         ActivityUtils.setLastFragmentName(this.getClass().getName());
         ActivityUtils.scheduleOnMainThread(() -> {
@@ -364,7 +374,8 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     @Override
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
-        Animation progress = AnimationUtils.loadAnimation(getActivity(), R.anim.progress_anim);
+        mBinding.scanQrButton.setVisibility(View.VISIBLE);
+//        Animation progress = AnimationUtils.loadAnimation(getActivity(), R.anim.progress_anim);
 //        mBinding.progress.startAnimation(progress);
         mBinding.pendingRequestsRecyclerView.setLayoutManager(new SmoothLinearLayoutManager(getActivity()));
         mBinding.pendingRequestsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -378,7 +389,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
             }
         });
         mBinding.pendingRequestsRecyclerView.setItemAnimator(new SlideLeftItemAnimator());
-//        mBinding.addConnectionTest.setOnClickListener(v -> getQrCodeConnection());
 //        mBinding.bottomButton.addPartnershipPlus.setOnClickListener(v -> getQrCodeConnection());
 //        mBinding.menu.setOnClickListener(v -> ((AuthorizedActivity) getActivity()).openDrawer());
         hideButtonAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.add_button_hide);
@@ -487,28 +497,21 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     @Override
     public void onPendingRequestClicked(TransactionEntity pendingTransaction) {
         onListInteractionOccured();
+        Fragment fragment = PendingDetailsFragment.newInstance(pendingTransaction);
+        replaceFragment(fragment, fragment.getArguments(), true);
     }
 
-    @Override
-    public void onRejectRequestClicked(TransactionEntity pendingTransaction) {
-        postTransaction(pendingTransaction, false);
-    }
-
-    @Override
-    public void onAcceptRequestClicked(TransactionEntity pendingTransaction) {
-        postTransaction(pendingTransaction, true);
-    }
-
-    //smoothly scroll to just opened item if its not fully visible
-    @Override
-    public void onPendingRequestOpened(int position) {
-        ActivityUtils.scheduleOnMainThread(() -> {
-            LinearLayoutManager llm = (LinearLayoutManager) mBinding.pendingRequestsRecyclerView.getLayoutManager();
-            if (position > llm.findLastCompletelyVisibleItemPosition()) {
-                mBinding.pendingRequestsRecyclerView.smoothScrollToPosition(position);
-            }
-        }, ConstantsUtils.FOUR_HUNDRED_MILLISECONDS);
-    }
+//
+//    //smoothly scroll to just opened item if its not fully visible
+//    @Override
+//    public void onPendingRequestOpened(int position) {
+//        ActivityUtils.scheduleOnMainThread(() -> {
+//            LinearLayoutManager llm = (LinearLayoutManager) mBinding.pendingRequestsRecyclerView.getLayoutManager();
+//            if (position > llm.findLastCompletelyVisibleItemPosition()) {
+//                mBinding.pendingRequestsRecyclerView.smoothScrollToPosition(position);
+//            }
+//        }, ConstantsUtils.FOUR_HUNDRED_MILLISECONDS);
+//    }
 
     @Override
     public void onPendingRequestTimedOut() {
@@ -524,30 +527,29 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     }
 
     public void showChildFragment(Fragment fragment, Bundle args) {
-//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
+//        mBinding.slidingUpPanel.setVisibility(View.VISIBLE);
         replaceChildFragment(fragment, args, true, 0, 0, 0, 0);
         Animation bottomUp = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_up);
-//        bottomUp.setAnimationListener(new AnimationEndListner() {
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//                Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.appear);
+        bottomUp.setAnimationListener(new AnimationEndListner() {
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.appear);
 //                mBinding.childFragmentTopShadow.startAnimation(fadeOut);
 //                mBinding.childFragmentTopShadow.setVisibility(View.VISIBLE);
-//            }
-//        });
+            }
+        });
 //        mBinding.slidingUpPanel.startAnimation(bottomUp);
-//        mBinding.slidingUpPanel.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void closeChildFragment() {
         Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.disappear);
-        fadeOut.setAnimationListener(new AnimationEndListner() {
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                Animation bottomUp = AnimationUtils.loadAnimation(getActivity(), R.anim.up_bottom);
-//                mBinding.slidingUpPanel.startAnimation(bottomUp);
-//                mBinding.slidingUpPanel.setVisibility(View.GONE);
+//        fadeOut.setAnimationListener(new AnimationEndListner() {
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//                Animation bottomUp = AnimationUtils.loadAnimation(getActivity(), R.anim.up_bottom);
+////                mBinding.slidingUpPanel.startAnimation(bottomUp);
+////                mBinding.slidingUpPanel.setVisibility(View.GONE);
 //                ActivityUtils.scheduleOnMainThread(() -> {
 //                    FragmentManager childFragmentManager = getChildFragmentManager();
 //                    for (int i = 0; i < childFragmentManager.getBackStackEntryCount(); i++) {
@@ -560,8 +562,8 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
 //                    }
 //                    childFragmentManager.executePendingTransactions();
 //                }, ConstantsUtils.HALF_SECOND);
-            }
-        });
+//            }
+//        });
 //        mBinding.childFragmentTopShadow.startAnimation(fadeOut);
 //        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
         ActivityUtils.setLastFragmentName(this.getClass().getName());
@@ -602,8 +604,10 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
             ft.setCustomAnimations(enterAnimationId, exitAnimationId, popEnterAnimationId, popExitAnimationId);
         }
         if (add) {
+//            ft.add(f, fragmentName);
 //            ft.add(getFragmentContainerId(), f, fragmentName);
         } else {
+//            replaceFragment(f, f.getArguments(), true);
 //            ft.replace(getFragmentContainerId(), f, fragmentName);
         }
         try {
@@ -707,7 +711,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                 .subscribe(longs -> AppAdapter.settings().savePendingRequest(longs));
     }
 
-    private void postTransaction(TransactionEntity pendingTransaction, boolean accept) {
+    public void postTransaction(TransactionEntity pendingTransaction, boolean accept) {
         final boolean shouldBiometricBeProvided = shouldBiometricBeProvided(
                 pendingTransaction.getBiometric(),
                 accept
@@ -718,11 +722,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         );
         final boolean cameraPermissionGranted = cameraPermissionStatus == PERMISSION_GRANTED;
         if (shouldBiometricBeProvided && cameraPermissionGranted) {
-            final ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(
-                    pendingTransaction,
-                    accept
-            );
-            showChildFragment(fragment, fragment.getArguments());
+            captureHyperSnap(pendingTransaction, accept);
         } else if (shouldBiometricBeProvided) {
             viewModel.setPostedTransaction(pendingTransaction, accept);
             requestPermissions(ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
@@ -738,5 +738,49 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         return (BiometricTypeEntity.ALL == biometric.getBiometricType()) ||
                 (BiometricTypeEntity.ACCEPT == biometric.getBiometricType() && accept) ||
                 (BiometricTypeEntity.REJECT == biometric.getBiometricType() && !accept);
+    }
+
+    private void captureHyperSnap(TransactionEntity pendingTransaction, boolean accept) {
+        FaceCaptureCompletionHandler myCaptureCompletionListener = new FaceCaptureCompletionHandler() {
+            @Override
+            public void onResult(HVError error, JSONObject result, JSONObject headers) {
+                if (error != null && getActivity() != null) { /*Handle error*/
+                    Toast.makeText(getActivity(), error.getErrorMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        String selfie = (String) result.get("imageUri");
+                        if (!selfie.equals("")) {
+                            AuthorizedActivity.hideLockScreen = true;
+                            ActivityUtils.scheduleOnMainThread(() -> {
+                                BiometricsVerification biometricsVerification = null;
+                                try {
+                                    biometricsVerification = new BiometricsVerification(pendingTransaction, FileUtils.readAllBytes(new File(selfie)), accept);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                sharedViewModel.sharedLiveData.postValue(BaseState.getSuccessInstance(biometricsVerification));
+                            }, ConstantsUtils.TWO_HUNDRED_MILLISECONDS);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        HVFaceConfig hvFaceConfig = new HVFaceConfig();
+        hvFaceConfig.setShouldEnablePadding(true);
+        JSONObject livenessHeader = new JSONObject();
+        JSONObject livenessParams = new JSONObject();
+        try {
+            livenessHeader.put("transactionId", Integer.parseInt(UUID.randomUUID().toString()) /*Unique ID for customer - for billing*/);
+            livenessParams.put("enableDashboard", "yes");//This facilitates access to QC dashboard and debugging during POC }catch (JSONException e) { }
+            hvFaceConfig.setLivenessAPIHeaders(livenessHeader);
+            hvFaceConfig.setLivenessAPIParameters(livenessParams);
+            if (getActivity() != null) {
+                HVFaceActivity.start(getActivity(), hvFaceConfig, myCaptureCompletionListener);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

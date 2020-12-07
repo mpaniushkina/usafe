@@ -7,6 +7,7 @@ import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
 
 import com.covrsecurity.io.R;
+import com.covrsecurity.io.ui.activity.AuthorizedActivity;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.fragment.BaseViewModelFragment;
 import com.covrsecurity.io.ui.fragment.interfaces.IUnregisteredFragment;
@@ -33,17 +34,17 @@ public abstract class BaseScanFaceBiometricsFragment<Binding extends ViewDataBin
         if (unauthorizedActivity == null) {
             return;
         }
-//        if (!usesBottomButtons()) {
-//            unauthorizedActivity.hideButtons();
-//        } else {
-//            ActivityUtils.scheduleOnMainThread(() -> {
-//                unauthorizedActivity.makeButtonsInvisible();
-//                ActivityUtils.scheduleOnMainThread(
-//                        unauthorizedActivity::showButtons,
-//                        ULTRA_SHORT_DELAY
-//                );
-//            }, getResources().getInteger(R.integer.fragment_transition_animation_time_medium) - QUARTER_OF_SECOND_DELAY);
-//        }
+        if (!usesBottomButtons()) {
+            unauthorizedActivity.hideButtons();
+        } else {
+            ActivityUtils.scheduleOnMainThread(() -> {
+                unauthorizedActivity.makeButtonsInvisible();
+                ActivityUtils.scheduleOnMainThread(
+                        unauthorizedActivity::showButtons,
+                        ULTRA_SHORT_DELAY
+                );
+            }, getResources().getInteger(R.integer.fragment_transition_animation_time_medium) - QUARTER_OF_SECOND_DELAY);
+        }
     }
 
     @Override

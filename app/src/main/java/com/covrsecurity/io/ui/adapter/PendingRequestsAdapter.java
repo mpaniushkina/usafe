@@ -29,7 +29,6 @@ import com.covrsecurity.io.domain.entity.TransactionEntity;
 import com.covrsecurity.io.model.TimerInfo;
 import com.covrsecurity.io.ui.component.CircleTimer;
 import com.covrsecurity.io.ui.component.CovrCircleTimer;
-import com.covrsecurity.io.ui.component.ExpandableLayout;
 import com.covrsecurity.io.ui.fragment.authorized.StandingByFragment;
 import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
@@ -65,33 +64,21 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
 
     static class PendingRequestViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView mMessage;
         private TextView mPendingTitle;
         private ImageView mPendingLogo;
         private TextView mAction;
         private ViewGroup mItem;
-        private ViewGroup mExpandablePart;
         private FrameLayout mTimerWrapper;
         private CovrCircleTimer mTimer;
-        private TextView mPositiveButton;
-        private TextView mNegativeButton;
-        private ImageView mTransactionImage;
-        private ExpandableLayout mExpandableLayout;
 
         public PendingRequestViewHolder(View view) {
             super(view);
             mPendingLogo = view.findViewById(R.id.iv_pending_logo);
-            mPendingTitle = view.findViewById(R.id.tv_pending_title);
+            mPendingTitle = view.findViewById(R.id.pendingTitle);
             mAction = view.findViewById(R.id.tv_pending_action);
             mItem = view.findViewById(R.id.rl_partnership_item);
-            mExpandablePart = view.findViewById(R.id.rl_expandable_part);
             mTimer = null;
             mTimerWrapper = view.findViewById(R.id.timer_wrapper);
-            mPositiveButton = view.findViewById(R.id.positive_button);
-            mMessage = view.findViewById(R.id.transaction_overlay_message_text);
-            mNegativeButton = view.findViewById(R.id.negative_button);
-            mTransactionImage = view.findViewById(R.id.imageview_transaction_background);
-            mExpandableLayout = view.findViewById(R.id.expandablelayout);
         }
     }
 
@@ -147,64 +134,40 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
             return;
         }
 
-        holder.mExpandableLayout.setExpanded(request.isOpen(), request.isSmoothOpen());
         request.setSmoothOpen(false);
-        if (request.isOpen()) {
-            mPendingRequestClickListener.onPendingRequestOpened(position);
-        }
         holder.mPendingLogo.setImageDrawable(null);
         validateEmptyViewVisibility();
 
         holder.mItem.setOnClickListener(v -> {
-
             if (mPendingRequestsList.size() == 0) {
                 return;
             }
-
-            final boolean open = !request.isOpen();
-
-            request.setOpen(open);
-            holder.mExpandableLayout.setExpanded(open, true);
-
-            if (open) {
-                mActivePosition = position;
-                closePrevious(position);
-            }
-
             if (mPendingRequestClickListener != null) {
                 mPendingRequestClickListener.onPendingRequestClicked(request);
             }
         });
-        holder.mNegativeButton.setOnClickListener(v -> {
-            if (!request.isEnabled()) {
-                return;
-            }
-            request.setEnabled(false);
-            request.setIsPosBtnActivated(false);
-            setColorPressed(holder.mNegativeButton, true);
-            mPendingRequestClickListener.onRejectRequestClicked(request);
-        });
-        holder.mPositiveButton.setOnClickListener(v -> {
-            if (!request.isEnabled()) {
-                return;
-            }
-            request.setEnabled(false);
-            request.setIsPosBtnActivated(true);
-            setColorPressed(holder.mPositiveButton, true);
-            mPendingRequestClickListener.onAcceptRequestClicked(request);
-        });
+//        holder.mNegativeButton.setOnClickListener(v -> {
+//            if (!request.isEnabled()) {
+//                return;
+//            }
+//            request.setEnabled(false);
+//            request.setIsPosBtnActivated(false);
+//            setColorPressed(holder.mNegativeButton, true);
+//            mPendingRequestClickListener.onRejectRequestClicked(request);
+//        });
+//        holder.mPositiveButton.setOnClickListener(v -> {
+//            if (!request.isEnabled()) {
+//                return;
+//            }
+//            request.setEnabled(false);
+//            request.setIsPosBtnActivated(true);
+//            setColorPressed(holder.mPositiveButton, true);
+//            mPendingRequestClickListener.onAcceptRequestClicked(request);
+//        });
         if (holder.mTimer != null) {
             holder.mTimer.removeListener();
         }
 
-        holder.mMessage.setText(request.getRequest().getMessage());
-        holder.mPositiveButton.setText(request.getRequest().getAccept());
-        holder.mNegativeButton.setText(request.getRequest().getReject());
-        setColorPressed(holder.mPositiveButton, request.getIsPosBtnActivated() != null && request.getIsPosBtnActivated());
-        setColorPressed(holder.mNegativeButton, request.getIsPosBtnActivated() != null && !request.getIsPosBtnActivated());
-//            String testHtml = "<p style=\"text-align: center;font-size: 19px;color: #666;\"><br/>Establish a connection with</p>";
-
-        // create new timer!
         CovrCircleTimer timer = CovrCircleTimer.newInstance(holder.mTimerWrapper.getContext(), new TimerInfo(request.getCreated(), request.getValidTo()));
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         holder.mTimerWrapper.removeAllViews();
@@ -228,60 +191,46 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
         holder.mPendingTitle.setText(request.getCompany().getName());
         holder.mTimer.startAnim();
 
-        TemplateEntity template = request.getTemplate();
+//        TemplateEntity template = request.getTemplate();
 
-        String imageName = template.getTransactionImage();
-        if (TextUtils.isEmpty(imageName)) {
-            imageName = template.getBackgroundImage();
-        }
-        String backgroundImageURL = "";
-        if (!TextUtils.isEmpty(imageName)) {
-            backgroundImageURL = imageName;//CDNUtils.getImageUrl(companyId, imageName);
-        }
-
-        // Solve problem with intermittent imageview size problem by forcing the height to be
-        // same as the screen width
-        //ViewGroup.LayoutParams layoutParams = holder.mTransactionImage.getLayoutParams();
-        //layoutParams.height = screenWidth;
-        //holder.mTransactionImage.setLayoutParams(layoutParams);
-
-        holder.mTransactionImage.setVisibility(View.GONE);
-        int screenWidth = getScreenWidth();
-        if (!TextUtils.isEmpty(backgroundImageURL)) {
-            showTransactionImage(holder.mTransactionImage, backgroundImageURL, screenWidth);
-        }
+//        String imageName = template.getTransactionImage();
+//        if (TextUtils.isEmpty(imageName)) {
+//            imageName = template.getBackgroundImage();
+//        }
+//        String backgroundImageURL = "";
+//        if (!TextUtils.isEmpty(imageName)) {
+//            backgroundImageURL = imageName;//CDNUtils.getImageUrl(companyId, imageName);
+//        }
+//        holder.mTransactionImage.setVisibility(View.GONE);
+//        int screenWidth = getScreenWidth();
+//        if (!TextUtils.isEmpty(backgroundImageURL)) {
+//            showTransactionImage(holder.mTransactionImage, backgroundImageURL, screenWidth);
+//        }
 
         GlideApp.with(fragment)
                 .load(request.getCompany().getLogo())
                 .fitCenter()
-                .error(R.drawable.about_logo)
+                .error(R.drawable.iamlogo2x)
                 .into(holder.mPendingLogo);
     }
 
-    private void showTransactionImage(ImageView imageView, String backgroundImageURL, int screenWidth) {
-        imageView.setVisibility(View.VISIBLE);
-        GlideApp.with(fragment)
-                .load(backgroundImageURL)
-                .fitCenter()
-                .override(screenWidth, maxImageHeight)
-                .error(R.drawable.about_logo)
-                .into(imageView);
-    }
+//    private void showTransactionImage(ImageView imageView, String backgroundImageURL, int screenWidth) {
+//        imageView.setVisibility(View.VISIBLE);
+//        GlideApp.with(fragment)
+//                .load(backgroundImageURL)
+//                .fitCenter()
+//                .override(screenWidth, maxImageHeight)
+//                .error(R.drawable.iamlogo2x)
+//                .into(imageView);
+//    }
 
-    private int getScreenWidth() {
-        WindowManager wm = (WindowManager) AppAdapter.context().getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        return size.x;
-    }
-
-    private void setColorPressed(TextView text, boolean pressed) {
-        int colorWhite = AppAdapter.resources().getColor(R.color.white);
-        int colorGreen = AppAdapter.resources().getColor(R.color.soft_green);
-        text.setBackgroundColor(pressed ? colorGreen : colorWhite);
-        text.setTextColor(pressed ? colorWhite : colorGreen);
-    }
+//    private int getScreenWidth() {
+//        WindowManager wm = (WindowManager) AppAdapter.context().getSystemService(Context.WINDOW_SERVICE);
+//        Display display = wm.getDefaultDisplay();
+//        Point size = new Point();
+//        display.getSize(size);
+//        return size.x;
+//    }
 
     public void openTopItem() {
         mActivePosition = 0;
@@ -293,28 +242,27 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
         notifyDataSetChanged();
     }
 
-    private void closePrevious(int newPosition) {
-        int previousPosition = -1;
-        for (int i = 0; i < mPendingRequestsList.size(); i++) {
-            if (i == newPosition) {
-                continue;
-            }
-            final ListPendingRequest pendingRequest = mPendingRequestsList.get(i);
-            if (pendingRequest.isOpen()) {
-                previousPosition = i;
-                pendingRequest.setOpen(false);
-                pendingRequest.setSmoothOpen(true);
-            }
-        }
-        if (previousPosition != -1) {
-            notifyItemChanged(previousPosition);
-        }
-    }
+//    private void closePrevious(int newPosition) {
+//        int previousPosition = -1;
+//        for (int i = 0; i < mPendingRequestsList.size(); i++) {
+//            if (i == newPosition) {
+//                continue;
+//            }
+//            final ListPendingRequest pendingRequest = mPendingRequestsList.get(i);
+//            if (pendingRequest.isOpen()) {
+//                previousPosition = i;
+//                pendingRequest.setOpen(false);
+//                pendingRequest.setSmoothOpen(true);
+//            }
+//        }
+//        if (previousPosition != -1) {
+//            notifyItemChanged(previousPosition);
+//        }
+//    }
 
     @Override
     public void onViewDetachedFromWindow(PendingRequestViewHolder holder) {
         super.onViewDetachedFromWindow(holder);
-        holder.mExpandablePart.setVisibility(View.GONE);
         holder.mTimer.removeListener();
     }
 
@@ -391,12 +339,6 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
     public interface IPendingRequestListListener {
 
         void onPendingRequestClicked(TransactionEntity pendingTransaction);
-
-        void onRejectRequestClicked(TransactionEntity pendingTransaction);
-
-        void onAcceptRequestClicked(TransactionEntity pendingTransaction);
-
-        void onPendingRequestOpened(int position);
 
         void onPendingRequestTimedOut();
     }

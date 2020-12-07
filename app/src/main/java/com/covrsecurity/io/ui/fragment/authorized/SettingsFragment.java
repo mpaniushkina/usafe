@@ -2,9 +2,6 @@ package com.covrsecurity.io.ui.fragment.authorized;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,17 +12,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.covrsecurity.io.R;
-import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.databinding.FragmentSettingsBinding;
-import com.covrsecurity.io.manager.Analytics;
-import com.covrsecurity.io.manager.SettingsManager;
 import com.covrsecurity.io.ui.adapter.SettingsAdapter;
 import com.covrsecurity.io.ui.fragment.BaseParentFragment;
 import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeInfoFragment;
@@ -402,9 +395,9 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
             case IN_APP_NOTIFICATIONS_ITEM:
                 fragment = InAppNotificationsFragment.newInstance();
                 break;
-            case LANGUAGE_ITEM:
-                fragment = HelpFragment.newInstance();
-                break;
+//            case LANGUAGE_ITEM:
+//                fragment = HelpFragment.newInstance();
+//                break;
         }
         replaceFragment(fragment, fragment.getArguments(), true);
     }
