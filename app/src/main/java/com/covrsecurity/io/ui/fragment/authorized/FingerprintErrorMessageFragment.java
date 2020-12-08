@@ -42,14 +42,14 @@ public class FingerprintErrorMessageFragment extends BaseChildFragment<FragmentF
                     getContext().getString(R.string.fingerprint_auth_available_description, getContext().getString(R.string.read_more)),
                     getContext().getString(R.string.read_more), () -> {
                         Fragment f = ReadMorePhoneFragment.newInstance(getString(R.string.cfg_about_fingerprint));
-                        addChildFragment(f, f.getArguments(), true, FragmentAnimationSet.FADE_IN);
+                        replaceFragment(f, f.getArguments(), true, FragmentAnimationSet.FADE_IN);
                     }));
         } else {
             mBinding.useFingerprintGroup.setVisibility(View.VISIBLE);
             mBinding.title.setText(R.string.fingerprint_auth_ready_title);
             mBinding.description.setText(R.string.fingerprint_auth_ready_description);
         }
-        mBinding.setCloseClickListener(v -> closeChildFragment());
+        mBinding.setCloseClickListener(v -> onBackPressed());
     }
 
     @Override

@@ -155,8 +155,8 @@
     <string name="fingerprint_unlocking_app">Unlocking the iAM App</string>
     <string name="fingerprint_auth_ready_title">Use fingerprint?</string>
     <string name="fingerprint_auth_available_title">Fingerprint is available…</string>
-    <string name="fingerprint_auth_ready_description"><![CDATA[You have set up fingerprint for your device, do you want to use that for your PIN Code? You can turn this On or Off later in Covr settings. %s]]></string>
-    <string name="fingerprint_auth_available_description"><![CDATA[…on your device but it is not configured yet. Finish the iAM set-up and then go to device Settings and enable fingerprint. You can then turn fingerprint On in Covr settings. \n\nFingerprint can be used instead of the Covr Code you just created in previous steps. %s]]></string>
+    <string name="fingerprint_auth_ready_description"><![CDATA[You have set up fingerprint for your device, do you want to use that for your PIN Code? You can turn this On or Off later in iAM settings. %s]]></string>
+    <string name="fingerprint_auth_available_description"><![CDATA[…on your device but it is not configured yet. Finish the iAM set-up and then go to device Settings and enable fingerprint. You can then turn fingerprint On in iAM settings. \n\nFingerprint can be used instead of the PIN Code you just created in previous steps. %s]]></string>
 
     <!-- fingerprint dialog -->
     <string name="fingerprint_dialog_title">Fingerprint for \"%s\"</string>

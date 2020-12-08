@@ -11,7 +11,8 @@
         android:gravity="center"
         android:orientation="vertical"
         android:paddingBottom="8dp"
-        android:paddingTop="16dp">
+        android:paddingTop="16dp"
+        android:background="@color/blue">
 
         <ImageView
             android:id="@+id/fingerprint_icon"
@@ -32,7 +33,7 @@
             android:paddingStart="16dp"
             android:text="@string/fingerprint_dialog_failed_title"
             android:textAppearance="@android:style/TextAppearance.Material.Title"
-            android:textColor="?android:attr/textColorSecondary"
+            android:textColor="@color/white"
             android:textSize="16sp"
             tools:targetApi="lollipop" />
 
@@ -46,7 +47,7 @@
             android:paddingStart="16dp"
             android:text="@string/fingerprint_dialog_failed_description"
             android:textAppearance="@android:style/TextAppearance.Material.Subhead"
-            android:textColor="?android:attr/textColorSecondary"
+            android:textColor="@color/white"
             tools:targetApi="lollipop" />
 
         <TextView
@@ -58,7 +59,7 @@
             android:paddingEnd="16dp"
             android:paddingStart="16dp"
             android:text="@string/fingerprint_dialog_failed_note"
-            android:textColor="?android:attr/textColorSecondary"
+            android:textColor="@color/white"
             tools:targetApi="lollipop" />
 
         <View

@@ -10,6 +10,7 @@ import com.covrsecurity.io.utils.FragmentAnimationSet;
 public abstract class BaseChildFragment<T extends ViewDataBinding> extends BaseFragment<T> {
 
     protected void closeChildFragment() {
+        assert getParentFragment() != null;
         ((IChildFragmentListener) getParentFragment()).closeChildFragment();
     }
 

@@ -52,7 +52,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     @Override
     public void onBindViewHolder(HistoryViewHolder holder, int position) {
         final CheckingPendingRequest pendingRequest = getItem(position);
-//        if (pendingRequest != null) {
+        if (pendingRequest != null) {
 //
 //            holder.mItem.setOnClickListener(v -> {
 //                if (isSelectionState) {
@@ -93,25 +93,25 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 //                            ? View.VISIBLE : View.INVISIBLE);
 //
 //            holder.mPartnerTitle.setText(pendingRequest.getCompany().getName());
-//            String date;
-//
-//            if (pendingRequest.getUpdatedAt() != 0) {
-//                date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getUpdatedAt(),
-//                        ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
-//            } else {
-//                date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getCreated(),
-//                        ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
-//            }
-//            if (pendingRequest.getStatus() == StatusEntity.EXPIRED) {
-//                if (pendingRequest.getValidTo() != 0) {
-//                    date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getValidTo(),
-//                            ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
-//                }
-//            }
+            String date;
+
+            if (pendingRequest.getUpdatedAt() != 0) {
+                date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getUpdatedAt(),
+                        ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
+            } else {
+                date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getCreated(),
+                        ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
+            }
+            if (pendingRequest.getStatus() == StatusEntity.EXPIRED) {
+                if (pendingRequest.getValidTo() != 0) {
+                    date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getValidTo(),
+                            ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
+                }
+            }
 //            holder.mTime.setTextColor(pendingRequest.getStatus() == StatusEntity.EXPIRED
 //                    ? AppAdapter.resources().getColor(R.color.red)
 //                    : AppAdapter.resources().getColor(R.color.text_color_gray));
-//            holder.mTime.setText(getString(R.string.history_status_text, StatusUtils.getStatusText(IamApp.getInstance(), pendingRequest), date));
+            holder.mTime.setText(getString(R.string.history_status_text, StatusUtils.getStatusText(IamApp.getInstance(), pendingRequest), date));
 //            //holder.mNewElementIndicator.setVisibility(pendingRequest. ? View.VISIBLE : View.INVISIBLE);
 //            GlideApp.with(AppAdapter.context())
 //                    .load(pendingRequest.getCompany().getLogo())
@@ -119,14 +119,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 //                    .error(R.drawable.about_logo);
 //        }
 
-        holder.mItem.setOnClickListener(v -> {
-            if (mHistoryClickListener != null) {
-                mHistoryClickListener.onHistoryItemsClick(pendingRequest);
-            }
-        });
-        holder.mPartnerTitle.setText("Authentication to X");
-        holder.mDate.setText("20/11/22");
-        holder.mTime.setText("21:43");
+            holder.mItem.setOnClickListener(v -> {
+                if (mHistoryClickListener != null) {
+                    mHistoryClickListener.onHistoryItemsClick(pendingRequest);
+                }
+            });
+            holder.mPartnerTitle.setText(pendingRequest.getRequest().getTitle());
+            holder.mDate.setText("");
+        }
     }
 
     @Deprecated

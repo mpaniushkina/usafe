@@ -15,7 +15,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/blue">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -50,6 +51,7 @@
                     android:gravity="center"
                     android:padding="@dimen/view_padding_half_big"
                     android:text="@string/fingerprint_auth_ready_description"
+                    android:textColor="@color/white"
                     android:textColorHighlight="@android:color/transparent"
                     android:textColorLink="@color/clickable_text"
                     android:textSize="@dimen/text_regular" />
