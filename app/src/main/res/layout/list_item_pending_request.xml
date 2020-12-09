@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/margin_green_line"
+            android:layout_marginTop="@dimen/fiveteen_dp"
             android:background="@drawable/background_pending_item">
 
             <de.hdodenhof.circleimageview.CircleImageView

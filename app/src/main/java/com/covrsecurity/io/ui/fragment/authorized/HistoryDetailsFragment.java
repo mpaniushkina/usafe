@@ -15,6 +15,7 @@ import com.covrsecurity.io.app.GlideApp;
 import com.covrsecurity.io.databinding.FragmentHistoryDetailsBinding;
 import com.covrsecurity.io.domain.entity.TransactionEntity;
 import com.covrsecurity.io.ui.fragment.FromMenuFragment;
+import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.historydetails.HistoryDetailsViewModel;
 import com.covrsecurity.io.ui.viewmodel.historydetails.HistoryDetailsViewModelFactory;
@@ -28,6 +29,8 @@ import org.joda.time.DateTime;
 import java.net.ConnectException;
 
 import javax.inject.Inject;
+
+import static com.covrsecurity.io.domain.entity.StatusEntity.ACCEPTED;
 
 public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDetailsBinding, HistoryDetailsViewModel> {
 
@@ -90,7 +93,7 @@ public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDeta
                     if (throwable != null && ConnectException.class.equals(throwable.getClass())) {
                         showNoInternetDialog();
                     } else if (throwable != null) {
-//                        DialogUtils.showOkDialog(getActivity(), throwable.getMessage(), false, (dialog, which) -> onBackPressed());
+                        DialogUtils.showOkDialog(getActivity(), throwable.getMessage(), false, (dialog, which) -> onBackPressed());
                     }
                 }
         ));
@@ -109,12 +112,11 @@ public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDeta
     private void setUpViews(TransactionEntity pendingTransaction) {
         if (pendingTransaction != null && getActivity() != null) {
 
-            GlideApp.with(this)
-                    .load(pendingTransaction.getCompany().getLogo())
-                    .centerCrop()
-                    .error(R.drawable.about_logo);
+//            GlideApp.with(this)
+//                    .load(pendingTransaction.getCompany().getLogo())
+//                    .centerCrop()
+//                    .error(R.drawable.iamlogo2x);
 //                    .into(mBinding.ivHistoryDetailsLogo);
-
             mBinding.setHistoryFullName(pendingTransaction.getCompany().getName());
             mBinding.setHistoryIncomingRequest(AppAdapter.resources().getString(
                     R.string.history_details_not_available));
@@ -127,6 +129,17 @@ public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDeta
             String time = DateTimeUtils.getFormattedTime(new DateTime(pendingTransaction.getCreated()));
             mBinding.setHistoryTime(time);
             mBinding.setHistoryVerificationType(pendingTransaction.getRequest().getTitle());
+            switch (pendingTransaction.getStatus()) {
+                case ACCEPTED:
+                    mBinding.statusApproved.setVisibility(View.VISIBLE);
+                    break;
+                case REJECTED:
+                    mBinding.statusDeclined.setVisibility(View.VISIBLE);
+                    break;
+                case EXPIRED:
+                    mBinding.statusExpired.setVisibility(View.VISIBLE);
+                    break;
+            }
 //            mBinding.shareLayout.shareButton.setOnClickListener(v -> {
 //                String subject = AppAdapter.resources().getString(R.string.history_details_sharing_subject, pendingTransaction.getCompany().getName(), status);
 //                String body = EmailUtils.formatForEmail(getActivity(), pendingTransaction);
@@ -136,6 +149,6 @@ public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDeta
     }
 
     private void showProgressLayout(boolean show) {
-//        mBinding.progressLayout.container.setVisibility(show ? View.VISIBLE : View.GONE);
+        mBinding.progressLayout.container.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 }

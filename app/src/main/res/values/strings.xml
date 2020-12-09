@@ -298,6 +298,9 @@
     <string name="history_details_not_available">N/A</string>
     <string name="approve_btn">Approve</string>
     <string name="decline_btn">Decline</string>
+    <string name="approved_status">Approved</string>
+    <string name="declined_stutus">Declined</string>
+    <string name="expired_status">Expired</string>
 
     <!-- connected services -->
     <string name="services_details_title">Service details</string>

@@ -111,7 +111,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 //            holder.mTime.setTextColor(pendingRequest.getStatus() == StatusEntity.EXPIRED
 //                    ? AppAdapter.resources().getColor(R.color.red)
 //                    : AppAdapter.resources().getColor(R.color.text_color_gray));
-            holder.mTime.setText(getString(R.string.history_status_text, StatusUtils.getStatusText(IamApp.getInstance(), pendingRequest), date));
+            holder.mTime.setText(getString(R.string.history_status_text,
+                    StatusUtils.getStatusText(IamApp.getInstance(), pendingRequest) != null ? StatusUtils.getStatusText(IamApp.getInstance(), pendingRequest) : "",
+                    date));
 //            //holder.mNewElementIndicator.setVisibility(pendingRequest. ? View.VISIBLE : View.INVISIBLE);
 //            GlideApp.with(AppAdapter.context())
 //                    .load(pendingRequest.getCompany().getLogo())

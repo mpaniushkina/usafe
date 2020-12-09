@@ -772,7 +772,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         JSONObject livenessHeader = new JSONObject();
         JSONObject livenessParams = new JSONObject();
         try {
-            livenessHeader.put("transactionId", Integer.parseInt(UUID.randomUUID().toString()) /*Unique ID for customer - for billing*/);
+            livenessHeader.put("transactionId", 111111 /*Unique ID for customer - for billing*/);
             livenessParams.put("enableDashboard", "yes");//This facilitates access to QC dashboard and debugging during POC }catch (JSONException e) { }
             hvFaceConfig.setLivenessAPIHeaders(livenessHeader);
             hvFaceConfig.setLivenessAPIParameters(livenessParams);

@@ -93,8 +93,8 @@ public class HistoryFragment extends FromMenuFragment<FragmentHistoryBinding, Hi
     @Override
     public void onHistoryItemsClick(TransactionEntity pendingTransaction) {
         mAdapter.setViewed(pendingTransaction);
-//        Fragment fragment = HistoryDetailsFragment.newInstance(pendingTransaction.getId(), pendingTransaction.getCompany().getCompanyId());
-        Fragment fragment = HistoryDetailsFragment.newInstance("id", "My Company");
+        Fragment fragment = HistoryDetailsFragment.newInstance(pendingTransaction.getId(), pendingTransaction.getCompany().getCompanyId());
+//        Fragment fragment = HistoryDetailsFragment.newInstance("id", "My Company");
         replaceFragment(fragment, fragment.getArguments(), true);
     }
 
@@ -168,16 +168,6 @@ public class HistoryFragment extends FromMenuFragment<FragmentHistoryBinding, Hi
                 ActivityUtils.runOnMainThread(this::onBackPressed);
             }
         }).start();
-
-        //TODO delete after request is implemented
-//        List<TransactionEntity> itemsList = new ArrayList<>();
-//        TransactionEntity entity = new TransactionEntity("id", null, "companyClientId", "templateId", null, 100600, 100500, null, "createdByIp", "verifiedByIp", 100500, 100500, "acceptHistoryMessage", "rejectHistoryMessage", "expiredHistoryMessage", "historyMessage", null, false, null, null);
-//        itemsList.add(entity);
-//        itemsList.add(entity);
-//        itemsList.add(entity);
-//        itemsList.add(entity);
-//        itemsList.add(entity);
-//        setAdapter(itemsList);
     }
 
     @Override
