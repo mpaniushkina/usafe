@@ -88,7 +88,7 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
         if (requestCode == ConstantsUtils.SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
             final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
             ActivityUtils.scheduleOnMainThread(
-                    () -> onBackPressed(),
+                    this::onBackPressed,
                     ConstantsUtils.FOUR_HUNDRED_MILLISECONDS
             );
         } else {

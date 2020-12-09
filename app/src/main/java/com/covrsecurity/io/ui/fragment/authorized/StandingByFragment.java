@@ -233,9 +233,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         viewModel.postTransactionLiveData.observe(this, new BaseObserver<>(
                 this::showProgress,
                 response -> {
-
                     hideProgress();
-
                     if (StatusEntity.ACCEPTED == response.getStatus()) {
                         onRemoveRequest(
                                 response,
@@ -251,13 +249,9 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                     }
                 },
                 throwable -> {
-
                     hideProgress();
-
                     Timber.w(throwable);
-
                     mPartnershipAdapter.resetActiveItem();
-
                     if (throwable instanceof BiometricVerificationAttemptsExhaustedException) {
                         loadAllData();
                     } else if (throwable instanceof ConnectException) {
@@ -270,7 +264,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         addConnectionViewModel.addConnectionLiveData.observe(this, new BaseObserver<>(
                 this::showProgress,
                 response -> {
-
                     hideProgress();
                     Fragment fragment = ConnectionEstablishedFragment.newInstance(
                             response.getCompany().getLogo(),
@@ -287,7 +280,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         addConnectionViewModel.qrCodeConnectionLiveData.observe(this, new BaseObserver<>(
                 this::showProgress,
                 response -> {
-
                     hideProgress();
                     String mQrCode;
                     mQrCode = qrCodeStringValue;

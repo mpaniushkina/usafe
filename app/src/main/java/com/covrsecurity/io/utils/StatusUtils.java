@@ -18,8 +18,8 @@ import static com.covrsecurity.io.utils.ConstantsUtils.POSITIVE_BUTTON_TEXT_YES;
 public class StatusUtils {
 
     public static String getStatusText(Context context, TransactionEntity pendingTransaction) {
-        if (POSITIVE_BUTTON_TEXT_YES.equalsIgnoreCase(pendingTransaction.getRequest().getAccept()) ||
-                POSITIVE_BUTTON_TEXT_OK.equalsIgnoreCase(pendingTransaction.getRequest().getAccept())) {
+        if (pendingTransaction.getRequest() != null && (POSITIVE_BUTTON_TEXT_YES.equalsIgnoreCase(pendingTransaction.getRequest().getAccept()) ||
+                POSITIVE_BUTTON_TEXT_OK.equalsIgnoreCase(pendingTransaction.getRequest().getAccept()))) {
             if (ACCEPTED.equals(pendingTransaction.getStatus())) {
                 return context.getString(R.string.history_details_accepted);
             }

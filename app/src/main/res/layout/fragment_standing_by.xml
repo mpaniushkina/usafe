@@ -151,6 +151,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/margin_green_line"
+            android:layout_marginStart="@dimen/ten_dp"
+            android:layout_marginEnd="@dimen/ten_dp"
             android:layout_below="@+id/top_bar"
             android:overScrollMode="ifContentScrolls"
             android:scrollbars="vertical"

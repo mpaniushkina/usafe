@@ -1,5 +1,6 @@
 package com.covrsecurity.io.ui.adapter;
 
+import android.annotation.SuppressLint;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,8 +22,13 @@ import com.covrsecurity.io.utils.StatusUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
+import static com.covrsecurity.io.domain.entity.StatusEntity.ACCEPTED;
+import static com.covrsecurity.io.domain.entity.StatusEntity.EXPIRED;
+import static com.covrsecurity.io.domain.entity.StatusEntity.REJECTED;
 
 /**
  * Created by alex on 11.5.16.
@@ -49,6 +55,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         return new HistoryViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.history_list_item, parent, false));
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void onBindViewHolder(HistoryViewHolder holder, int position) {
         final CheckingPendingRequest pendingRequest = getItem(position);
@@ -92,9 +99,22 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 //                            pendingRequest.getStatus() == StatusEntity.EXPIRED)
 //                            ? View.VISIBLE : View.INVISIBLE);
 //
-//            holder.mPartnerTitle.setText(pendingRequest.getCompany().getName());
+            switch (pendingRequest.getStatus()) {
+                case ACCEPTED:
+                    holder.mNewElementIndicator.setBackground(AppAdapter.resources().getDrawable(R.drawable.ic_completed));
+                    break;
+                case REJECTED:
+                    holder.mNewElementIndicator.setBackground(AppAdapter.resources().getDrawable(R.drawable.ic_failed));
+                    break;
+                case EXPIRED:
+                    holder.mNewElementIndicator.setBackground(AppAdapter.resources().getDrawable(R.drawable.ic_failed));
+                    break;
+                case ACTIVE:
+                    holder.mNewElementIndicator.setBackground(AppAdapter.resources().getDrawable(R.drawable.ic_incoming));
+                    break;
+            }
+            holder.mPartnerTitle.setText(pendingRequest.getRequest() != null ? pendingRequest.getRequest().getTitle() : "");
             String date;
-
             if (pendingRequest.getUpdatedAt() != 0) {
                 date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getUpdatedAt(),
                         ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
@@ -102,12 +122,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                 date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getCreated(),
                         ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
             }
-            if (pendingRequest.getStatus() == StatusEntity.EXPIRED) {
+            if (pendingRequest.getStatus() == EXPIRED) {
                 if (pendingRequest.getValidTo() != 0) {
                     date = DateUtils.getRelativeDateTimeString(AppAdapter.context(), pendingRequest.getValidTo(),
                             ConstantsUtils.MILLISECONDS_IN_SECOND, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
                 }
             }
+            holder.mDate.setText(date);
 //            holder.mTime.setTextColor(pendingRequest.getStatus() == StatusEntity.EXPIRED
 //                    ? AppAdapter.resources().getColor(R.color.red)
 //                    : AppAdapter.resources().getColor(R.color.text_color_gray));
@@ -126,8 +147,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                     mHistoryClickListener.onHistoryItemsClick(pendingRequest);
                 }
             });
-            holder.mPartnerTitle.setText(pendingRequest.getRequest().getTitle());
-            holder.mDate.setText("");
         }
     }
 
@@ -156,32 +175,16 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         return position;
     }
 
-
     public void addAll(List<TransactionEntity> data) {
         if (mPendingRequests == null) {
             mPendingRequests = new ArrayList<>();
         }
         mPendingRequests.addAll(toCheckingPendingRequests(data));
-        //Collections.sort(mPendingRequests, (lhs, rhs) -> new Long(rhs.getSortTime().getMillis() - lhs.getSortTime().getMillis()).intValue());
         notifyDataSetChanged();
     }
 
-//    public List<TransactionEntity> getAll() {
-//        List<TransactionEntity> itemsList = new ArrayList<>();
-//        itemsList.add()
-//        return itemsList;
-//        return toPendingRequests(mPendingRequests);
-//    }
-
     public List<TransactionEntity> getAll() {
-        List<TransactionEntity> itemsList = new ArrayList<>();
-        TransactionEntity entity = new TransactionEntity("id", null, "companyClientId", "templateId", null, 100600, 100500, null, "createdByIp", "verifiedByIp", 100500, 100500, "acceptHistoryMessage", "rejectHistoryMessage", "expiredHistoryMessage", "historyMessage", null, false, null, null);
-        itemsList.add(entity);
-        itemsList.add(entity);
-        itemsList.add(entity);
-        itemsList.add(entity);
-        itemsList.add(entity);
-        return itemsList;
+        return toPendingRequests(mPendingRequests);
     }
 
     public List<CheckingPendingRequest> getAllChecking() {
@@ -288,7 +291,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         public HistoryViewHolder(View view) {
             super(view);
             mItem = view.findViewById(R.id.rl_history_item);
-            mNewElementIndicator = view.findViewById(R.id.history_new_element_indicator);
+            mNewElementIndicator = view.findViewById(R.id.historyNewElementIndicator);
             mPartnerTitle = view.findViewById(R.id.tv_history_title);
             mDate = view.findViewById(R.id.tv_history_date);
             mTime = view.findViewById(R.id.tv_history_time);
