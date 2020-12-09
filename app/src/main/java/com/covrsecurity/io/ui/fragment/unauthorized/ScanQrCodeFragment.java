@@ -20,6 +20,7 @@ import com.covrsecurity.io.databinding.FragmentStartQrCodeBinding;
 import com.covrsecurity.io.ui.activity.AuthorizedActivity;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.dialog.ScanQrCodeDialog;
+import com.covrsecurity.io.ui.fragment.authorized.StandingByFragment;
 import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
 import com.covrsecurity.io.utils.DialogUtils;
@@ -86,9 +87,14 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ConstantsUtils.SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
-            final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
             ActivityUtils.scheduleOnMainThread(
-                    this::onBackPressed,
+                    () -> {
+                        onBackPressed();
+                        StandingByFragment fragment = (StandingByFragment) getFragmentManager().findFragmentByTag(StandingByFragment.class.getName());
+                        if (fragment != null) {
+                            fragment.receiveClaimQrCodeTransaction(data);
+                        }
+                    },
                     ConstantsUtils.FOUR_HUNDRED_MILLISECONDS
             );
         } else {

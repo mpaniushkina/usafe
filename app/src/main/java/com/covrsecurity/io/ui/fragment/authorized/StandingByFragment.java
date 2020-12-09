@@ -314,10 +314,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ConstantsUtils.SCAN_QR_REQUEST_CODE && Activity.RESULT_OK == resultCode) {
-            final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
-            QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
-            addConnectionViewModel.verifyQrCodeClaim(qrCodeStringJson.getReference_id(), qrCodeStringJson.getExpires_at(),
-                    qrCodeStringJson.getType(), qrCodeStringJson.getStatus(), qrCodeStringJson.getScopes());
+            receiveClaimQrCodeTransaction(data);
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
@@ -407,6 +404,13 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         final ScanQrCodeDialog scanQrCodeDialog = new ScanQrCodeDialog();
         scanQrCodeDialog.show(getFragmentManager(), ScanQrCodeDialog.QR_CODE_TAG);
         scanQrCodeDialog.setTargetFragment(this, ConstantsUtils.SCAN_QR_REQUEST_CODE);
+    }
+
+    public void receiveClaimQrCodeTransaction(Intent data) {
+        final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
+        QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
+        addConnectionViewModel.verifyQrCodeClaim(qrCodeStringJson.getReference_id(), qrCodeStringJson.getExpires_at(),
+                qrCodeStringJson.getType(), qrCodeStringJson.getStatus(), qrCodeStringJson.getScopes());
     }
 
     private void getQrCodeConnection() {
