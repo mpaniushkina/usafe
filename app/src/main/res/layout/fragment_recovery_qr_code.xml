@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="scanClickListener"
             type="android.view.View.OnClickListener" />
@@ -11,31 +11,61 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundMain"
+        android:background="@color/blue"
         android:clipToPadding="false"
         android:orientation="vertical"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/twenty_dp"
-        android:paddingRight="@dimen/twenty_dp">
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/logo"
             android:layout_width="@dimen/topbar_logo_width"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/setting_item_margin_top"
             android:adjustViewBounds="true"
-            android:scaleType="centerInside"
-            android:src="@drawable/logo_large_green" />
+            android:src="@drawable/iamlogo3x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_back_button"
+            android:layout_marginTop="@dimen/setting_item_margin_top"
+            android:layout_marginStart="@dimen/setting_item_margin_top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/logo"/>
+
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_x_button"
+            android:layout_marginEnd="@dimen/setting_item_margin_top"
+            android:layout_marginTop="@dimen/setting_item_margin_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/logo"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/forty_eight_dp"
-            android:layout_below="@+id/logo"
+            android:layout_below="@+id/headerBar"
             android:layout_marginBottom="@dimen/setup_number_field_vertical_margin"
+            android:padding="@dimen/fiveteen_dp"
             android:gravity="center_horizontal"
             android:text="@string/please_scan_the_qr_code_from_the_recovery"
-            android:textColor="@color/covr_green"
+            android:textColor="@color/white"
             android:textSize="@dimen/text_toolbar_header" />
 
         <ImageView
@@ -51,7 +81,7 @@
             android:id="@+id/recovery_error"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/button_scan_code"
+            android:layout_above="@+id/button_wrapper"
             android:layout_marginBottom="@dimen/setup_number_field_vertical_margin"
             android:ellipsize="end"
             android:gravity="center_horizontal"
@@ -60,19 +90,31 @@
             android:textSize="@dimen/text_small"
             android:visibility="invisible" />
 
-        <Button
-            android:id="@+id/button_scan_code"
-            style="@style/GreenButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/button_wrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="@dimen/setup_top_margin"
-            android:layout_marginRight="@dimen/setup_top_margin"
-            android:layout_marginBottom="@dimen/setup_top_margin"
-            android:onClick="@{scanClickListener::onClick}"
-            android:text="@string/add_connection_qr_button" />
+            android:layout_alignParentBottom="true"
+            android:paddingStart="42dp"
+            android:paddingEnd="42dp"
+            android:layout_marginBottom="@dimen/code_displayer_right_margin">
 
+            <Button
+                android:id="@+id/button_scan_code"
+                style="@style/GreenButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/six_dp"
+                android:minWidth="@dimen/setup_button_min_size"
+                android:minHeight="@dimen/setup_button_min_size"
+                android:text="@string/add_connection_qr_button"
+                android:onClick="@{scanClickListener::onClick}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
-
 </layout>

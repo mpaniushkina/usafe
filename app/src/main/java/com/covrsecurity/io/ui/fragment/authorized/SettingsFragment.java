@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.covrsecurity.io.R;
@@ -22,9 +21,6 @@ import com.covrsecurity.io.databinding.FragmentSettingsBinding;
 import com.covrsecurity.io.ui.adapter.SettingsAdapter;
 import com.covrsecurity.io.ui.fragment.BaseParentFragment;
 import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeInfoFragment;
-import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
-import com.covrsecurity.io.ui.viewmodel.biometricsshared.BiometricsSharedViewModel;
-import com.covrsecurity.io.ui.viewmodel.biometricsshared.BiometricsSharedViewModelFactory;
 import com.covrsecurity.io.ui.viewmodel.settings.SettingsViewModel;
 import com.covrsecurity.io.ui.viewmodel.settings.SettingsViewModelFactory;
 
@@ -32,8 +28,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.inject.Inject;
-
-import timber.log.Timber;
 
 public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding, SettingsViewModel>
         implements SettingsAdapter.ItemClickListener {
@@ -44,11 +38,6 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
 
     @Inject
     SettingsViewModelFactory vmFactory;
-    @Inject
-    BiometricsSharedViewModelFactory sharedVmFactory;
-
-    private BiometricsSharedViewModel sharedViewModel;
-    private BiometricsSharedViewModel registerRecoveryLiveData;
 
     private AlertDialog dialogAndroidSettings;
     private boolean mReadyToUseFingerprintScanner;
@@ -81,27 +70,6 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel.registerBiometricRecoveryLiveData.observe(this, new BaseObserver<>(
-                this::showProgress,
-                response -> {
-                    hideProgress();
-                     showToast(R.string.recovery_set_up_success);
-                },
-                throwable -> {
-                    hideProgress();
-                    Timber.e(throwable);
-                    showErrToast(throwable);
-                }
-        ));
-        sharedViewModel = ViewModelProviders.of(getActivity(), sharedVmFactory).get(BiometricsSharedViewModel.class);
-        sharedViewModel.registerRecoveryLiveData.observe(this, new BaseObserver<>(
-                null,
-                response -> {
-                    closeChildFragment();
-                    registerRecoveryRequest(response.getBiometricsBytes(), response.getImageIdCard());
-                },
-                throwable -> Timber.e(throwable)
-        ));
     }
 
     @SuppressLint("NewApi")
@@ -250,10 +218,6 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
         adapter = new SettingsAdapter(getContext(), settingName);
         adapter.setClickListener(this);
         mBinding.settingsRecyclerView.setAdapter(adapter);
-    }
-
-    private void registerRecoveryRequest(byte[] biometricsData, byte[] imageIdCard) {
-        viewModel.registerRecoveryRequest(biometricsData, imageIdCard);
     }
 
 //    private void openAppSettings() {

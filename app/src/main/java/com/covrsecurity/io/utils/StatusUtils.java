@@ -36,12 +36,14 @@ public class StatusUtils {
             case REJECTED:
                 String buttonText = ACCEPTED.equals(status) ?
                         pendingTransaction.getRequest().getAccept() : pendingTransaction.getRequest().getReject();
-                if (buttonText.charAt(buttonText.length() - 1) == 'y') {
-                    buttonText = buttonText.substring(0, buttonText.length() - 2).concat("ied");
-                } else if (buttonText.charAt(buttonText.length() - 1) == 'e') {
-                    buttonText = buttonText.concat("d");
-                } else {
-                    buttonText = buttonText.concat("ed");
+                if (buttonText.length() > 0) {
+                    if (buttonText.charAt(buttonText.length() - 1) == 'y') {
+                        buttonText = buttonText.substring(0, buttonText.length() - 2).concat("ied");
+                    } else if (buttonText.charAt(buttonText.length() - 1) == 'e') {
+                        buttonText = buttonText.concat("d");
+                    } else {
+                        buttonText = buttonText.concat("ed");
+                    }
                 }
                 return buttonText;
             case EXPIRED:

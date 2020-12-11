@@ -15,7 +15,6 @@ import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.databinding.FragmentPartnershipBinding;
 import com.covrsecurity.io.domain.entity.MerchantEntity;
-import com.covrsecurity.io.model.Fields;
 import com.covrsecurity.io.ui.adapter.PartnershipAdapter;
 import com.covrsecurity.io.ui.component.IPartnershipClickListener;
 import com.covrsecurity.io.ui.fragment.BaseParentFragment;
@@ -31,8 +30,6 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
-import static com.covrsecurity.io.sdk.utils.QrCodeRequestResource.qrCodeStringValue;
-
 /**
  * Created by alex on 2.5.16.
  */
@@ -46,11 +43,6 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
     PartnershipViewModelFactory vmFactory;
 
     private PartnershipAdapter mPartnershipAdapter;
-
-    @Nullable
-    private String mQrCode;
-    private String fullName;
-    private String logo;
 
     @Override
     protected int getLayoutId() {
@@ -77,7 +69,6 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        qrCodeStringValue = null;
         viewModel.connectionsLiveData.observe(this, new BaseObserver<>(
                 this::showProgress,
                 response -> {
@@ -111,42 +102,6 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
                             || mBinding.partnershipRecyclerView.getAdapter().getItemCount() < 1);
                 }
         ));
-
-//        viewModel.addConnectionLiveData.observe(this, new BaseObserver<>(
-//                this::showProgress,
-//                response -> {
-//
-//                    hideProgress();
-//                    logo = response.getCompany().getLogo();
-//                    fullName = response.getCompany().getFullName();
-//                    showChildFragment();
-//                },
-//                throwable -> {
-//                    hideProgress();
-//                    Timber.e("" + throwable);
-//                    Timber.e(throwable);
-//                }
-//        ));
-//        viewModel.qrCodeConnectionLiveData.observe(this, new BaseObserver<>(
-//                this::showProgress,
-//                response -> {
-//
-//                    hideProgress();
-//                    mQrCode = qrCodeStringValue;
-//                    String decodedQrCode = null;
-//                    try {
-//                        decodedQrCode = URLDecoder.decode(mQrCode, "UTF-8");
-//                    } catch (UnsupportedEncodingException e) {
-//                        Log.e("utf8", "conversion", e);
-//                    }
-//                    viewModel.addConnection(decodedQrCode);
-//                },
-//                throwable -> {
-//                    hideProgress();
-//                    Timber.e("" + throwable);
-//                    Timber.e(throwable);
-//                }
-//        ));
     }
 
     @Override
@@ -160,8 +115,6 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
         super.initBinding(inflater);
         mBinding.rlMerchantProgress.setVisibility(View.VISIBLE);
         mBinding.partnershipRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-//        mBinding.bottomButton.addPartnership.setOnClickListener(v -> getQrCodeConnection());
-//        mBinding.bottomButton.addPartnershipPlus.setOnClickListener(v -> getQrCodeConnection());
         setAdapter(AppAdapter.getPartnerships());
     }
 
@@ -215,21 +168,8 @@ public class PartnershipFragment extends BaseParentFragment<FragmentPartnershipB
         }
     }
 
-    private void getQrCodeConnection() {
-        viewModel.getQrCodeConnection(Fields.GET_QRCODE_COMPANY_USER_ID, Fields.GET_QRCODE_TRANSACTION_ID);
-    }
-
     @Override
     public void showChildFragment() {
-        Fragment fragment = ConnectionEstablishedFragment.newInstance(logo, fullName);
-        showChildFragment(fragment, fragment.getArguments());
-    }
-    public void showChildFragment(Fragment fragment, Bundle args) {
-//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
-        replaceChildFragment(fragment, args, false, R.animator.right_slide_in,
-                R.animator.left_slide_in,
-                R.animator.fade_in,
-                R.animator.left_slide_in);
     }
 
     @Override

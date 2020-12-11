@@ -6,27 +6,48 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.databinding.FragmentMyAccountBinding;
 import com.covrsecurity.io.ui.adapter.SettingsAdapter;
-import com.covrsecurity.io.ui.fragment.BaseFragment;
+import com.covrsecurity.io.ui.fragment.BaseViewModelFragment;
 import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment;
+import com.covrsecurity.io.ui.fragment.unauthorized.ScanFaceBiometricsFragment;
+import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
+import com.covrsecurity.io.ui.viewmodel.biometricsshared.BiometricsSharedViewModel;
+import com.covrsecurity.io.ui.viewmodel.biometricsshared.BiometricsSharedViewModelFactory;
+import com.covrsecurity.io.ui.viewmodel.myaccount.MyAccountViewModel;
+import com.covrsecurity.io.ui.viewmodel.myaccount.MyAccountViewModelFactory;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MyAccountFragment extends BaseFragment<FragmentMyAccountBinding> implements SettingsAdapter.ItemClickListener {
+import javax.inject.Inject;
+
+import timber.log.Timber;
+
+public class MyAccountFragment extends BaseViewModelFragment<FragmentMyAccountBinding, MyAccountViewModel>
+        implements SettingsAdapter.ItemClickListener {
 
     public static final int CONNECTED_SERVICES_ITEM = 0;
     public static final int HISTORY_ITEM = 1;
     public static final int CHANGE_PIN_CODE_ITEM = 2;
     public static final int RECOVERY_ITEM = 3;
     public static final int HELP_ITEM = 4;
+
+    @Inject
+    MyAccountViewModelFactory vmFactory;
+    @Inject
+    BiometricsSharedViewModelFactory sharedVmFactory;
+    private BiometricsSharedViewModel sharedViewModel;
 
     private SettingsAdapter adapter;
 
@@ -37,6 +58,43 @@ public class MyAccountFragment extends BaseFragment<FragmentMyAccountBinding> im
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_my_account;
+    }
+
+    @NonNull
+    @Override
+    protected Class<MyAccountViewModel> getViewModelClass() {
+        return MyAccountViewModel.class;
+    }
+
+    @NonNull
+    @Override
+    protected ViewModelProvider.Factory getViewModelFactory() {
+        return vmFactory;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        viewModel.registerBiometricRecoveryLiveData.observe(this, new BaseObserver<>(
+                this::showProgress,
+                response -> {
+                    hideProgress();
+                    showToast(R.string.recovery_set_up_success);
+                },
+                throwable -> {
+                    hideProgress();
+                    Timber.e(throwable);
+                    showErrToast(throwable);
+                }
+        ));
+        sharedViewModel = ViewModelProviders.of(getActivity(), sharedVmFactory).get(BiometricsSharedViewModel.class);
+        sharedViewModel.registerRecoveryLiveData.observe(this, new BaseObserver<>(
+                null,
+                response -> {
+                    viewModel.registerRecoveryRequest(response.getBiometricsBytes(), response.getImageIdCard());
+                },
+                throwable -> Timber.e(throwable)
+        ));
     }
 
     @Override
@@ -74,7 +132,7 @@ public class MyAccountFragment extends BaseFragment<FragmentMyAccountBinding> im
                 fragment = ChangeCodeFragment.newInstance(false);
                 break;
             case RECOVERY_ITEM:
-                fragment = HelpFragment.newInstance();
+                fragment = ScanFaceBiometricsFragment.newInstance();
                 break;
 //            case HELP_ITEM:
 //                fragment = HelpFragment.newInstance();

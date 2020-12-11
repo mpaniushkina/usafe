@@ -140,11 +140,6 @@ public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDeta
                     mBinding.statusExpired.setVisibility(View.VISIBLE);
                     break;
             }
-//            mBinding.shareLayout.shareButton.setOnClickListener(v -> {
-//                String subject = AppAdapter.resources().getString(R.string.history_details_sharing_subject, pendingTransaction.getCompany().getName(), status);
-//                String body = EmailUtils.formatForEmail(getActivity(), pendingTransaction);
-//                EmailUtils.sendEmail(subject, body, getActivity());
-//            });
         }
     }
 

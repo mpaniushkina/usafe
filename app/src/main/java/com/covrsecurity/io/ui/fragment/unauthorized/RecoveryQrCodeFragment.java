@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.Settings;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -59,6 +60,8 @@ public class RecoveryQrCodeFragment extends BaseUnauthorizedFragment<FragmentRec
                 sendScanIntent();
             }
         });
+        mBinding.backButton.setOnClickListener((View backButton) -> onBackButton());
+        mBinding.closeButton.setOnClickListener((View closeButton) -> onBackButton());
     }
 
     @Override

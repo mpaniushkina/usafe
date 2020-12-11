@@ -38,7 +38,6 @@ import com.covrsecurity.io.event.HistoryBadgeEvent;
 import com.covrsecurity.io.event.NotificationHubConnectedEvent;
 import com.covrsecurity.io.manager.Analytics;
 import com.covrsecurity.io.model.BiometricsVerification;
-import com.covrsecurity.io.model.Fields;
 import com.covrsecurity.io.model.QrCodeStringJson;
 import com.covrsecurity.io.model.deeplink.AuthorizationDeeplink;
 import com.covrsecurity.io.model.error.BioMetricDataProvideCancel;
@@ -83,7 +82,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
 import java.net.URLDecoder;
 import java.util.List;
-import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -324,14 +322,10 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     public void onResume() {
         super.onResume();
         setAdapter(AppAdapter.getPendingConsumerRequests());
-//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
         ActivityUtils.setLastFragmentName(this.getClass().getName());
         ActivityUtils.scheduleOnMainThread(() -> {
             openFirstRequest();
         }, ConstantsUtils.THREE_HUNDRED_MILLISECONDS);
-//        if (((AuthorizedActivity) getActivity()).isShouldAddConnectionShown()) {
-//            getQrCodeConnection();
-//        }
         viewModel.checkLocked();
     }
 
@@ -378,8 +372,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
             }
         });
         mBinding.pendingRequestsRecyclerView.setItemAnimator(new SlideLeftItemAnimator());
-//        mBinding.bottomButton.addPartnershipPlus.setOnClickListener(v -> getQrCodeConnection());
-//        mBinding.menu.setOnClickListener(v -> ((AuthorizedActivity) getActivity()).openDrawer());
         hideButtonAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.add_button_hide);
         showButtonAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.add_button_show);
         mBinding.scanQr.setOnClickListener(view -> {
@@ -411,10 +403,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
         addConnectionViewModel.verifyQrCodeClaim(qrCodeStringJson.getReference_id(), qrCodeStringJson.getExpires_at(),
                 qrCodeStringJson.getType(), qrCodeStringJson.getStatus(), qrCodeStringJson.getScopes());
-    }
-
-    private void getQrCodeConnection() {
-        addConnectionViewModel.getQrCodeConnection(Fields.GET_QRCODE_COMPANY_USER_ID, Fields.GET_QRCODE_TRANSACTION_ID);
     }
 
     @Override

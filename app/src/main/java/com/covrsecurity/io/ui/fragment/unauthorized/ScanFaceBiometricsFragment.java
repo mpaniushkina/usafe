@@ -29,7 +29,7 @@ import com.covrsecurity.io.model.BiometricsVerification;
 import com.covrsecurity.io.model.error.BioMetricDataProvideCancel;
 import com.covrsecurity.io.ui.activity.AuthorizedActivity;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
-import com.covrsecurity.io.ui.fragment.authorized.SettingsFragment;
+import com.covrsecurity.io.ui.fragment.authorized.MyAccountFragment;
 import com.covrsecurity.io.ui.viewmodel.base.BaseState;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.biometricsshared.BiometricsSharedViewModel;
@@ -48,7 +48,6 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
-import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -72,9 +71,6 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
     private static final String TRANSACTION_EXTRA = "TRANSACTION_EXTRA";
     private static final String ACCEPT_EXTRA = "ACCEPT_EXTRA";
     public static final String SETUP_RECOVERY = "SETUP_RECOVERY";
-
-//    private static final String HYPER_SNAP_APP_ID = "9a6cc4";
-//    private static final String HYPER_SNAP_APP_KEY = "15df1efdb58328becfac";
 
     private String selfie = null;
     private String documentFrontSide = null;
@@ -254,12 +250,12 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                 requestPermissions(ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
             }
         });
-        mBinding.closeButton.setOnClickListener(close -> onBackButton());
+        mBinding.closeButton.setOnClickListener(close -> onBackPressed());
         mBinding.backButton.setOnClickListener(view1 -> {
             if (getActivity() instanceof UnauthorizedActivity) {
                 ((UnauthorizedActivity) Objects.requireNonNull(getActivity())).goBack();
             } else if (getActivity() instanceof AuthorizedActivity) {
-                onKeyboardBackPressed();
+                onBackPressed();
             }
 
         });
@@ -295,7 +291,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                 }
             }
         };
-        int selfieId = Integer.parseInt(UUID.randomUUID().toString());
+        int selfieId = 11111;
         HVFaceConfig hvFaceConfig = new HVFaceConfig();
         hvFaceConfig.setShouldEnablePadding(true);
         JSONObject livenessHeader = new JSONObject();
@@ -365,8 +361,9 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                             e.printStackTrace();
                         }
                         sharedViewModel.registerRecoveryLiveData.postValue(BaseState.getSuccessInstance(registerRecovery));
-                        final Fragment fragment = SettingsFragment.newInstance();
-                        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+                        showProgress();
+                        final Fragment fragment = MyAccountFragment.newInstance();
+                        replaceFragment(fragment, fragment.getArguments(), true);
                     }
                 }, ConstantsUtils.TWO_HUNDRED_MILLISECONDS);
             } else {

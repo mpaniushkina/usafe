@@ -60,11 +60,9 @@ public class TutorialFragment extends BaseUnauthorizedFragment<FragmentTutorialB
         mBinding.buttonRecoverId.setOnClickListener(view1 -> {
             checkForRootWithCallback((boolean isRooted) -> {
                 if (!isRooted) {
-                    Toast.makeText(getActivity(), "Not implemented yet", Toast.LENGTH_SHORT).show();
-                    //TODO uncommented when UI will be added, the flow is left as is
-//                    ((UnauthorizedActivity) getActivity()).setAllowShowingBottomButtons(true);
-//                    Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_RECOVERY_START);
-//                    replaceFragment(RecoveryQrCodeFragment.newInstance(), null, true, FragmentAnimationSet.SLIDE_UP);
+                    ((UnauthorizedActivity) getActivity()).setAllowShowingBottomButtons(true);
+                    Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_RECOVERY_START);
+                    replaceFragment(RecoveryQrCodeFragment.newInstance(), null, true);
                 }
             });
         });
