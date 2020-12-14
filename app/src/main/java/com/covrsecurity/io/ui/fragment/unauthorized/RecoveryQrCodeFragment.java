@@ -20,9 +20,8 @@ import com.covrsecurity.io.databinding.FragmentRecoveryQrCodeBinding;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.dialog.ScanQrCodeDialog;
 import com.covrsecurity.io.utils.ActivityUtils;
-import com.covrsecurity.io.utils.DialogUtils;
-import com.covrsecurity.io.utils.FragmentAnimationSet;
 import com.covrsecurity.io.utils.ConstantsUtils;
+import com.covrsecurity.io.utils.DialogUtils;
 
 public class RecoveryQrCodeFragment extends BaseUnauthorizedFragment<FragmentRecoveryQrCodeBinding> {
 
@@ -34,11 +33,6 @@ public class RecoveryQrCodeFragment extends BaseUnauthorizedFragment<FragmentRec
     private AlertDialog mDialog;
     @Nullable
     private ScanQrCodeDialog mScanQrCodeDialog;
-
-    @Override
-    public boolean usesBottomButtons() {
-        return false;
-    }
 
     @Override
     protected int getLayoutId() {
@@ -60,8 +54,8 @@ public class RecoveryQrCodeFragment extends BaseUnauthorizedFragment<FragmentRec
                 sendScanIntent();
             }
         });
-        mBinding.backButton.setOnClickListener((View backButton) -> onBackButton());
-        mBinding.closeButton.setOnClickListener((View closeButton) -> onBackButton());
+        mBinding.backButton.setOnClickListener((View backButton) -> onBackPressed());
+        mBinding.closeButton.setOnClickListener((View closeButton) -> onBackPressed());
     }
 
     @Override
@@ -71,7 +65,6 @@ public class RecoveryQrCodeFragment extends BaseUnauthorizedFragment<FragmentRec
         if (unauthorizedActivity == null) {
             return;
         }
-        unauthorizedActivity.showButtons();
     }
 
     @Override
@@ -145,6 +138,6 @@ public class RecoveryQrCodeFragment extends BaseUnauthorizedFragment<FragmentRec
 
     private void moveToScanFaceBiometricsFragment(String qrCode) {
         final ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(qrCode);
-        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+        replaceFragment(fragment, fragment.getArguments(), true);
     }
 }

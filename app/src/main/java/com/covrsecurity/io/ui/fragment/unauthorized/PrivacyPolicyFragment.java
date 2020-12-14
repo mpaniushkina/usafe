@@ -107,11 +107,6 @@ public class PrivacyPolicyFragment extends BaseUnauthorizedFragment<FragmentPriv
     }
 
     @Override
-    public boolean usesBottomButtons() {
-        return false;
-    }
-
-    @Override
     public boolean onBackButton() {
         if (mBinding.wvInfo.canGoBack()) {
             mBinding.wvInfo.goBack();

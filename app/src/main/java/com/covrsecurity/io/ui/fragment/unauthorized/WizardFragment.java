@@ -89,9 +89,4 @@ public class WizardFragment extends BaseUnauthorizedFragment<FragmentWizardScree
         });
         mBinding.skip.setOnClickListener(view1 -> pager.setCurrentItem(items.length - 1));
     }
-
-    @Override
-    public boolean usesBottomButtons() {
-        return false;
-    }
 }

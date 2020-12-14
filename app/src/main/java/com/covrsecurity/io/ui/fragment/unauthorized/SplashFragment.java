@@ -19,7 +19,6 @@ import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.splash.SplashViewModel;
 import com.covrsecurity.io.ui.viewmodel.splash.SplashViewModelFactory;
 import com.covrsecurity.io.utils.ConnectivityUtils;
-import com.covrsecurity.io.utils.FragmentAnimationSet;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -54,11 +53,6 @@ public class SplashFragment extends BaseUnauthorizedViewModelFragment<FragmentSp
     @Override
     protected ViewModelProvider.Factory getViewModelFactory() {
         return vmFactory;
-    }
-
-    @Override
-    public boolean usesBottomButtons() {
-        return false;
     }
 
     @Override

@@ -23,8 +23,6 @@ import com.covrsecurity.io.utils.FingerprintUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
 import com.covrsecurity.io.utils.StringUtils;
 
-import java.util.Arrays;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 
@@ -66,11 +64,6 @@ public class UseFingerprintAuthFragment extends BaseUnauthorizedFragment<Fragmen
     private Disposable mDisposable;
 
     @Override
-    public boolean usesBottomButtons() {
-        return true;
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.fragment_use_fingerprint_auth;
     }
@@ -95,7 +88,6 @@ public class UseFingerprintAuthFragment extends BaseUnauthorizedFragment<Fragmen
     @SuppressWarnings({"MissingPermission"})
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
-        enableNextButton(true);
         boolean canUseFingerprintScanner = FingerprintUtils.getInstance(getContext()).canUseFingerprintScanner(getContext());
         mBinding.useFingerprintGroup.setVisibility(canUseFingerprintScanner ? View.VISIBLE : View.GONE);
         FingerprintUtils instance = FingerprintUtils.getInstance(getContext());

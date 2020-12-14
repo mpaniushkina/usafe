@@ -8,7 +8,6 @@ import android.provider.Telephony;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.text.TextUtils;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,8 +42,6 @@ public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, Una
 
     @Inject
     UnauthorizedActivityViewModelFactory vmFactory;
-
-    private boolean allowShowingBottomButtons = false;
 
     @Override
     protected int getLayoutId() {
@@ -170,34 +167,8 @@ public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, Una
         viewModel.clearData();
     }
 
-    public void hideButtons() {
-        mBinding.bottomButtonsLayout.setVisibility(View.GONE);
-    }
-
-    // this is used for smooth fragment transition
-    public void makeButtonsInvisible() {
-        if (doesAllowShowingBottomButtons()) {
-            mBinding.bottomButtonsLayout.setVisibility(View.INVISIBLE);
-        }
-    }
-
-    public void showButtons() {
-        if (doesAllowShowingBottomButtons()) {
-            mBinding.bottomButtonsLayout.setVisibility(View.VISIBLE);
-        }
-    }
-
-    public View getLeftButton() {
-        return mBinding.leftBottomButton;
-    }
-
-    public View getRightButton() {
-        return mBinding.rightBottomButton;
-    }
-
     private void openGreetingScreen() {
         Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_SETUP_CANCEL);
-        setAllowShowingBottomButtons(false);
         clearBackStack();
         initScreen();
     }
@@ -209,21 +180,13 @@ public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, Una
             super.onBackPressed();
         } else if ((currentFragment instanceof BaseUnauthorizedFragment) && !((BaseUnauthorizedFragment) currentFragment).onBackButton()) {
             super.onBackPressed();
-        } else if ((currentFragment instanceof ScanFaceBiometricsFragment) && !((ScanFaceBiometricsFragment) currentFragment).onBackButton()) { // todo reimplement
+        } else if ((currentFragment instanceof ScanFaceBiometricsFragment)) {
             super.onBackPressed();
         }
     }
 
     public void goBack() {
         super.onBackPressed();
-    }
-
-    private boolean doesAllowShowingBottomButtons() {
-        return allowShowingBottomButtons;
-    }
-
-    public void setAllowShowingBottomButtons(boolean allowShowingBottomButtons) {
-        this.allowShowingBottomButtons = allowShowingBottomButtons;
     }
 
     private PendingIntent createSmsTokenPendingIntent() {

@@ -6,6 +6,7 @@ import com.covrsecurity.io.ui.fragment.authorized.HelpFragment;
 import com.covrsecurity.io.ui.fragment.authorized.HistoryDetailsFragment;
 import com.covrsecurity.io.ui.fragment.authorized.HistoryFragment;
 import com.covrsecurity.io.ui.fragment.authorized.LockScreenFragment;
+import com.covrsecurity.io.ui.fragment.authorized.MyAccountFragment;
 import com.covrsecurity.io.ui.fragment.authorized.PartnershipDetailsFragment;
 import com.covrsecurity.io.ui.fragment.authorized.PartnershipFragment;
 import com.covrsecurity.io.ui.fragment.authorized.SettingsFragment;
@@ -51,6 +52,9 @@ public abstract class AuthorizedFragmentModule {
     @ContributesAndroidInjector
     abstract AddConnectionFragment contributeAddConnectionFragment();
 
+    @ContributesAndroidInjector
+    abstract MyAccountFragment contributeMyAccountFragment();
+
     /*
         AddPartnershipFragment
         ConnectionEstablishedFragment
@@ -59,5 +63,6 @@ public abstract class AuthorizedFragmentModule {
         LockedScreenFragment
         NavigationDrawerFragment
         ChangeCodeInfoFragment
+        MyAccountFragment
      */
 }

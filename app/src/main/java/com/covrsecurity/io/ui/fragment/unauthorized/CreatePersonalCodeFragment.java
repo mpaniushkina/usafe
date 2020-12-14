@@ -210,7 +210,7 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         mBinding.infoPager.setAdapter(new InfoPagerAdapter(getChildFragmentManager()));
-        mBinding.closeButton.setOnClickListener(view1 -> onBackButton());
+        mBinding.closeButton.setOnClickListener(view1 -> onBackPressed());
         mBinding.backButton.setOnClickListener(view1 -> {
                     if (mBinding.infoPager.getCurrentItem() == InfoPagerAdapter.VERIFY_PAGE) {
                         goToEnterPage();
@@ -258,7 +258,6 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
 
     @Override
     public void codeLengthNOK() {
-        enableNextButton(false);
     }
 
     @Override
@@ -268,11 +267,6 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
 
     @Override
     protected boolean infoPagerIsDisplayed() {
-        return true;
-    }
-
-    @Override
-    public boolean usesBottomButtons() {
         return true;
     }
 

@@ -27,11 +27,6 @@ public class GreetingFragment extends BaseUnauthorizedFragment<FragmentGreetingB
     }
 
     @Override
-    public boolean usesBottomButtons() {
-        return true;
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.fragment_greeting;
     }
@@ -39,7 +34,6 @@ public class GreetingFragment extends BaseUnauthorizedFragment<FragmentGreetingB
     @Override
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
-        enableNextButton(true);
     }
 
     @Override
@@ -121,7 +115,6 @@ public class GreetingFragment extends BaseUnauthorizedFragment<FragmentGreetingB
     }
 
     public boolean onBackButton() {
-        //((UnauthorizedActivity) getActivity()).getLeftButton().callOnClick();
         return false;
     }
 }

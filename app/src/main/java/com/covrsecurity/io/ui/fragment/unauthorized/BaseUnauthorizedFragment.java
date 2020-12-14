@@ -6,31 +6,14 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
 
-import com.covrsecurity.io.R;
 import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.fragment.BaseFragment;
 import com.covrsecurity.io.ui.fragment.interfaces.IUnregisteredFragment;
-import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.IamTools;
 
 import timber.log.Timber;
 
 public abstract class BaseUnauthorizedFragment<T extends ViewDataBinding> extends BaseFragment<T> implements IUnregisteredFragment {
-    /**
-     * @return true if this fragment needs to use UnauthorizedActivity's bottom buttons
-     */
-    public abstract boolean usesBottomButtons();
-
-//    protected VM viewModel;
-
-    private static final int ULTRA_SHORT_DELAY = 50;
-    private static final int QUARTER_OF_SECOND_DELAY = 250;
-
-//    @NonNull
-//    protected abstract Class<VM> getViewModelClass();
-//
-//    @NonNull
-//    protected abstract ViewModelProvider.Factory getViewModelFactory();
 
     @Override
     public void onResume() {
@@ -39,37 +22,12 @@ public abstract class BaseUnauthorizedFragment<T extends ViewDataBinding> extend
         if (unauthorizedActivity == null) {
             return;
         }
-        if (!usesBottomButtons()) {
-            unauthorizedActivity.hideButtons();
-        } else {
-            ActivityUtils.scheduleOnMainThread(() -> {
-                unauthorizedActivity.makeButtonsInvisible();
-                ActivityUtils.scheduleOnMainThread(
-                        unauthorizedActivity::showButtons,
-                        ULTRA_SHORT_DELAY
-                );
-            }, getResources().getInteger(R.integer.fragment_transition_animation_time_medium) - QUARTER_OF_SECOND_DELAY);
-        }
     }
 
     @Override
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
         mBinding = DataBindingUtil.inflate(inflater, getLayoutId(), null, false);
-        UnauthorizedActivity unauthorizedActivity = getUnauthorizedActivity();
-        if (unauthorizedActivity != null) {
-            unauthorizedActivity.getRightButton().setOnClickListener(v -> {
-                onNextButtonClick();
-            });
-        }
-        enableNextButton(false);
-    }
-
-    protected void enableNextButton(boolean enable) {
-        UnauthorizedActivity unauthorizedActivity = getUnauthorizedActivity();
-        if (unauthorizedActivity != null) {
-            unauthorizedActivity.getRightButton().setEnabled(enable);
-        }
     }
 
     protected void onNextButtonClick() {
@@ -82,7 +40,7 @@ public abstract class BaseUnauthorizedFragment<T extends ViewDataBinding> extend
     public boolean onBackButton() {
         UnauthorizedActivity unauthorizedActivity = getUnauthorizedActivity();
         if (unauthorizedActivity != null) {
-            unauthorizedActivity.getLeftButton().callOnClick();
+            unauthorizedActivity.showCancelSetupDialog();
         }
         return true;
     }

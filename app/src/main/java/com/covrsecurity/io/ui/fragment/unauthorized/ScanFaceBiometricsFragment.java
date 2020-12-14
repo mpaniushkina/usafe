@@ -40,7 +40,6 @@ import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
 import com.covrsecurity.io.utils.DialogUtils;
 import com.covrsecurity.io.utils.FileUtils;
-import com.covrsecurity.io.utils.FragmentAnimationSet;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -140,11 +139,6 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
     }
 
     @Override
-    public boolean usesBottomButtons() {
-        return true;
-    }
-
-    @Override
     public boolean isRegistration() {
         return mScanReason != ScanIntention.RECOVERY;
     }
@@ -179,7 +173,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                     hideProgress();
                     // TODO Analytics.logEvent
                     final Fragment fragment = CreatePersonalCodeFragment.newInstance(CreatePersonalCodeFragment.CreateCodeIntention.RECOVER);
-                    replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+                    replaceFragment(fragment, fragment.getArguments(), true);
                 },
                 throwable -> {
                     hideProgress();
@@ -193,7 +187,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                     hideProgress();
                     Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_CODE_CREATE);
                     final Fragment fragment = RegisterBiometricRecoveryFragment.getInstance(mEnteredText, selfie, documentFrontSide);
-                    replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
+                    replaceFragment(fragment, fragment.getArguments(), true);
 //                    final boolean registration = isRegistration();
 //                    if (FingerprintUtils.getInstance(getActivity()).canUseFingerprintScanner(getActivity())) {
 //                        Fragment fragment = UseFingerprintAuthFragment.newInstance(mEnteredText, registration);
@@ -229,7 +223,6 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
         } else {
             requestPermissions(ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
         }
-        mBinding.next.setVisibility(View.GONE);
         mBinding.capture.setOnClickListener(view1 -> {
             if ((getContext() != null || getActivity() != null) && ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
                 mBinding.capture.setEnabled(true);
@@ -250,7 +243,7 @@ public class ScanFaceBiometricsFragment extends BaseScanFaceBiometricsFragment<F
                 requestPermissions(ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
             }
         });
-        mBinding.closeButton.setOnClickListener(close -> onBackPressed());
+        mBinding.closeButton.setOnClickListener(close -> onBackButton());
         mBinding.backButton.setOnClickListener(view1 -> {
             if (getActivity() instanceof UnauthorizedActivity) {
                 ((UnauthorizedActivity) Objects.requireNonNull(getActivity())).goBack();

@@ -1,6 +1,5 @@
 package com.covrsecurity.io.ui.fragment.unauthorized;
 
-import android.graphics.Color;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -86,8 +85,6 @@ public class PhoneNumberFragment extends BaseUnauthorizedFragment<FragmentPhoneN
                             .substring(mCountry.getPhoneCode().length())
                             .trim());
                 }
-                enableNextButton(PhoneNumberUtils.isPhoneNumberValid(
-                        PhoneNumberUtils.normalizePhoneNumber(mCountry.getPhoneCode() + mBinding.getPhoneNumber())));
             }
 
             @Override
@@ -137,12 +134,6 @@ public class PhoneNumberFragment extends BaseUnauthorizedFragment<FragmentPhoneN
 
     @Override
     public void onBackspaceButtonClick() {
-
-    }
-
-    @Override
-    public boolean usesBottomButtons() {
-        return true;
     }
 
     @Override

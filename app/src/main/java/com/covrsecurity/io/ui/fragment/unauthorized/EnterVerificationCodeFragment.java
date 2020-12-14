@@ -87,7 +87,6 @@ public class EnterVerificationCodeFragment extends BaseUnauthorizedFragment<Frag
         }
         mBinding.setEnterVerificationModel(enterVerificationModel);
         mBinding.digitalKeyboard.setKeyboardListener(this);
-        enableNextButton(enterVerificationModel.getDigitsNumber() == MAX_CODE_LENGTH);
         mBinding.deleteButton.setOnClickListener((View deleteButton) -> removeDigit());
         SpannableString spannableString = new SpannableString(getString(R.string.verification_explanation));
         ClickableSpan clickableSpan = new ClickableSpan() {
@@ -146,11 +145,6 @@ public class EnterVerificationCodeFragment extends BaseUnauthorizedFragment<Frag
     }
 
     @Override
-    public boolean usesBottomButtons() {
-        return true;
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.fragment_enter_verification_code;
     }
@@ -203,16 +197,10 @@ public class EnterVerificationCodeFragment extends BaseUnauthorizedFragment<Frag
 
     private void addDigit(char value) {
         enterVerificationModel.addDigit(value);
-        if (enterVerificationModel.getDigitsNumber() == MAX_CODE_LENGTH) {
-            enableNextButton(true);
-        }
     }
 
     private void removeDigit() {
         enterVerificationModel.remoteDigit();
-        if (enterVerificationModel.getDigitsNumber() < MAX_CODE_LENGTH) {
-            enableNextButton(false);
-        }
     }
 
     private void defineSpace() {

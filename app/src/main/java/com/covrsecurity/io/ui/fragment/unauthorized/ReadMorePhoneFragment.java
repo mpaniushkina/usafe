@@ -57,11 +57,6 @@ public class ReadMorePhoneFragment extends BaseUnauthorizedFragment<FragmentPhon
     private String host;
 
     @Override
-    public boolean usesBottomButtons() {
-        return false;
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.fragment_phone_read_more;
     }

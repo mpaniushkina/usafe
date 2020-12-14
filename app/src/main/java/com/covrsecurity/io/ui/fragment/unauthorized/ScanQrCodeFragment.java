@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.databinding.FragmentStartQrCodeBinding;
@@ -24,7 +23,6 @@ import com.covrsecurity.io.ui.fragment.authorized.StandingByFragment;
 import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
 import com.covrsecurity.io.utils.DialogUtils;
-import com.covrsecurity.io.utils.FragmentAnimationSet;
 
 import java.util.Objects;
 
@@ -70,7 +68,6 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
         if (unauthorizedActivity == null) {
             return;
         }
-        unauthorizedActivity.showButtons();
     }
 
     @Override
@@ -145,10 +142,5 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
         String uriString = String.format(ConstantsUtils.APP_SETTINGS_TEMPLATE, getActivity().getPackageName());
         Intent appSettingsIntent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse(uriString));
         startActivityForResult(appSettingsIntent, ConstantsUtils.CAMERA_REQUEST_CODE);
-    }
-
-    @Override
-    public boolean usesBottomButtons() {
-        return false;
     }
 }

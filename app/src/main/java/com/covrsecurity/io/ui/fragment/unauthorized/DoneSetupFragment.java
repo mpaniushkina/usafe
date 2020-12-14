@@ -29,11 +29,6 @@ public class DoneSetupFragment extends BaseUnauthorizedFragment<FragmentDoneBind
     }
 
     @Override
-    public boolean usesBottomButtons() {
-        return false;
-    }
-
-    @Override
     public boolean isRegistration() {
         return mIsRegistration;
     }
@@ -51,10 +46,5 @@ public class DoneSetupFragment extends BaseUnauthorizedFragment<FragmentDoneBind
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
         mBinding.setDoneClickListener(v -> startAuthorizedActivity(true));
-    }
-
-    @Override
-    public boolean onBackButton() {
-        return true;
     }
 }

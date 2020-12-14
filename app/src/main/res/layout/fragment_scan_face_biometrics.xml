@@ -122,14 +122,14 @@
             android:id="@+id/capture_image"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/ten_dp"
             android:layout_marginBottom="@dimen/ten_dp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/camera_guideline"
             app:layout_constraintDimensionRatio="960:1280"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo"
             tools:background="@color/tealish"
             tools:visibility="gone" />
 
@@ -156,17 +156,16 @@
             style="@style/GreenButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/ten_dp"
             android:text="@string/tutorial_next_arrow"
-            android:elevation="0dp"
             android:minWidth="@dimen/setup_button_min_size"
             android:minHeight="@dimen/setup_button_min_size"
-            app:elevation="0dp"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
+            android:paddingStart="@dimen/forty_dp"
+            android:paddingEnd="@dimen/forty_dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

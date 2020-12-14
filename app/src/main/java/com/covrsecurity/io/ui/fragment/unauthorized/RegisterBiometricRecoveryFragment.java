@@ -13,9 +13,9 @@ import com.covrsecurity.io.databinding.FragmentRegisterBiometricRecoveryBinding;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.registerbiometricrecovery.RegisterBiometricRecoveryViewModel;
 import com.covrsecurity.io.ui.viewmodel.registerbiometricrecovery.RegisterBiometricRecoveryViewModelFactory;
+import com.covrsecurity.io.utils.FileUtils;
 import com.covrsecurity.io.utils.FingerprintUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
-import com.covrsecurity.io.utils.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -59,11 +59,6 @@ public class RegisterBiometricRecoveryFragment extends BaseUnauthorizedViewModel
     }
 
     @Override
-    public boolean usesBottomButtons() {
-        return true;
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.fragment_register_biometric_recovery;
     }
@@ -99,7 +94,6 @@ public class RegisterBiometricRecoveryFragment extends BaseUnauthorizedViewModel
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
         mBinding.setUseRecovery(true);
-        enableNextButton(true);
     }
 
     @Override

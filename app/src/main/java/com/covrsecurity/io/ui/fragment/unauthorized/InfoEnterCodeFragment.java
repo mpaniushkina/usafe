@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.databinding.FragmentInfoAboutToChooseCodeBinding;
-import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
 
 /**
@@ -27,11 +26,6 @@ public class InfoEnterCodeFragment extends BaseUnauthorizedFragment<FragmentInfo
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_info_about_to_choose_code;
-    }
-
-    @Override
-    public boolean usesBottomButtons() {
-        return true;
     }
 
     @Override
@@ -68,9 +62,5 @@ public class InfoEnterCodeFragment extends BaseUnauthorizedFragment<FragmentInfo
     @Override
     public void onResume() {
         super.onResume();
-        enableNextButton(true);
-        ((UnauthorizedActivity) getActivity()).getRightButton().setOnClickListener((v) -> {
-            onNextButtonClick();
-        });
     }
 }

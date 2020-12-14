@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="cancelSetupClickListener"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -14,64 +14,18 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-    <LinearLayout
-        android:background="@color/white"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-<!--        <View android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:background="@color/covr_green"-->
-<!--            android:id="@+id/sb_login"/>-->
-
-        <FrameLayout
-            android:id="@+id/frameLayoutFragmentContainer"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
 
-        <FrameLayout
-            android:id="@+id/bottom_buttons_layout"
-            android:layout_width="match_parent"
-            android:visibility="gone"
-            android:layout_height="@dimen/bottom_button_height">
-            <LinearLayout
-                android:id="@+id/buttons_wrapper"
+            <FrameLayout
+                android:id="@+id/frameLayoutFragmentContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_below="@id/horizontal_border"
-                android:layout_alignParentBottom="true">
-                <TextView
-                    android:id="@+id/left_bottom_button"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:onClick="@{cancelSetupClickListener::onClick}"
-                    style="@style/WhiteBottomButton"
-                    android:text="@string/setup_cancel_button"/>
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/grey"/>
-                <TextView
-                    android:id="@+id/right_bottom_button"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    style="@style/WhiteBottomButton"
-                    android:text="@string/setup_continue_button"/>
-            </LinearLayout>
-            <View
-                android:id="@+id/horizontal_border"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/grey"/>
-        </FrameLayout>
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-    </LinearLayout>
-
+        </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 </layout>

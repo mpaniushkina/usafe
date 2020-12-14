@@ -149,7 +149,7 @@
     <string name="backup_and_enter">Back up and enter a new code.</string>
 
     <!-- fingerprint fragment -->
-    <string name="fingerprint_title">Fingerprint for iAM</string>
+    <string name="fingerprint_title">UnLock with Biometrics</string>
     <string name="fingerprint_info">Enable fingerprint for</string>
     <string name="fingerprint_authorizing_transactions">Authorizing Transactions</string>
     <string name="fingerprint_unlocking_app">Unlocking the iAM App</string>
@@ -484,7 +484,7 @@
 
     <string-array name="setting_names">
         <item>About iAM</item>
-        <item>Fingerprint for iAM</item>
+        <item>UnLock with Biometrics</item>
         <item>Push Notifications</item>
         <item>In-App Notifications</item>
 <!--        <item>Language</item>-->
