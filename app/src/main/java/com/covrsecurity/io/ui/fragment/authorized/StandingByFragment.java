@@ -511,56 +511,23 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     }
 
     public void showChildFragment(Fragment fragment, Bundle args) {
-//        mBinding.slidingUpPanel.setVisibility(View.VISIBLE);
         replaceChildFragment(fragment, args, true, 0, 0, 0, 0);
         Animation bottomUp = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_up);
         bottomUp.setAnimationListener(new AnimationEndListner() {
             @Override
             public void onAnimationEnd(Animation animation) {
-                Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.appear);
-//                mBinding.childFragmentTopShadow.startAnimation(fadeOut);
-//                mBinding.childFragmentTopShadow.setVisibility(View.VISIBLE);
             }
         });
-//        mBinding.slidingUpPanel.startAnimation(bottomUp);
     }
 
     @Override
     public void closeChildFragment() {
-        Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.disappear);
-//        fadeOut.setAnimationListener(new AnimationEndListner() {
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//                Animation bottomUp = AnimationUtils.loadAnimation(getActivity(), R.anim.up_bottom);
-////                mBinding.slidingUpPanel.startAnimation(bottomUp);
-////                mBinding.slidingUpPanel.setVisibility(View.GONE);
-//                ActivityUtils.scheduleOnMainThread(() -> {
-//                    FragmentManager childFragmentManager = getChildFragmentManager();
-//                    for (int i = 0; i < childFragmentManager.getBackStackEntryCount(); i++) {
-//                        final BaseFragment baseFragment = (BaseFragment) childFragmentManager
-//                                .findFragmentById(getFragmentContainerId());
-//                        if (baseFragment != null) {
-//                            baseFragment.onKeyboardBackPressed();
-//                        }
-//                        childFragmentManager.popBackStack();
-//                    }
-//                    childFragmentManager.executePendingTransactions();
-//                }, ConstantsUtils.HALF_SECOND);
-//            }
-//        });
-//        mBinding.childFragmentTopShadow.startAnimation(fadeOut);
-//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
         ActivityUtils.setLastFragmentName(this.getClass().getName());
     }
 
     public void closeSlidingUpPanel() {
 //        mBinding.slidingUpPanel.setVisibility(View.GONE);
-//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
     }
-
-//    protected int getFragmentContainerId() {
-//        return R.id.child_fragment_container;
-//    }
 
     @Override
     public void replaceChildFragment(Fragment fragment, Bundle bundle, boolean addToBackStack,

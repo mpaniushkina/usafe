@@ -6,14 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -33,15 +29,9 @@ import com.covrsecurity.io.event.NotificationHubConnectedEvent;
 import com.covrsecurity.io.event.PartnershipBadgeEvent;
 import com.covrsecurity.io.event.TimerTimeoutEvent;
 import com.covrsecurity.io.model.deeplink.AuthorizationDeeplink;
-import com.covrsecurity.io.ui.adapter.DrawerAdapter;
 import com.covrsecurity.io.ui.component.AnimationEndListner;
 import com.covrsecurity.io.ui.fragment.BaseFragment;
-import com.covrsecurity.io.ui.fragment.authorized.AboutFragment;
-import com.covrsecurity.io.ui.fragment.authorized.HelpFragment;
-import com.covrsecurity.io.ui.fragment.authorized.HistoryFragment;
 import com.covrsecurity.io.ui.fragment.authorized.LockScreenFragment;
-import com.covrsecurity.io.ui.fragment.authorized.PartnershipFragment;
-import com.covrsecurity.io.ui.fragment.authorized.SettingsFragment;
 import com.covrsecurity.io.ui.fragment.authorized.StandingByFragment;
 import com.covrsecurity.io.ui.fragment.interfaces.OnKeyboardBackPressed;
 import com.covrsecurity.io.ui.interfaces.IChildFragmentListener;
@@ -147,33 +137,6 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
     @Override
     protected void initViews() {
         super.initViews();
-        mBinding.drwerList.setAdapter(new DrawerAdapter(this));
-        mBinding.drwerList.setOnItemClickListener(new DrawerItemClickListener());
-        mBinding.drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-                if (mPendingRunnable != null && slideOffset > 0 && slideOffset < 1) {
-                    mBinding.drawerLayout.post(mPendingRunnable);
-                    mPendingRunnable = null;
-                }
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                invalidateOptionsMenu();
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                isReplacing = false;
-                invalidateOptionsMenu();
-            }
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-
-            }
-        });
         replaceFragment(StandingByFragment.newInstance(), null, false);
         viewModel.pushNotificationsLiveData.observe(this, new BaseObserver<>(
                 null,
@@ -188,13 +151,8 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
     @Override
     protected void onStart() {
         super.onStart();
-        //this need for reinitialize views after restore activity from background,
-        // blur at LockScreen doesn't work without it after restore activity from background.
-        closeDrawer();
         SoundUtils.initSoundPool(this, SOUNDS_TO_LOAD, () -> Timber.d("Sound pool is initialized"));
         checkAndOpenLockscreen();
-        //TODO: REMOVE FOLLOWING LINE IN CASE CUSTOMER WANTS TO REMEMBER LAST SCREEN WE'VE BEEN ON.
-        //TODO: see https://softteco.atlassian.net/browse/UA-48
         if (!mShouldFragmentBeRetained) {
             if (!isThirdPartyInAppActivityOpened || IamApp.getInstance().isApplicationWasMinimized()) {
                 replaceWithStandingByFragment();
@@ -308,36 +266,9 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
         }
     }
 
-    public void closeDrawer() {
-        mBinding.drawerLayout.closeDrawer(mBinding.leftDrawer);
-    }
-
-    public void openDrawer() {
-        mBinding.drawerLayout.openDrawer(mBinding.leftDrawer);
-    }
-
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView parent, View view, int position, long id) {
-            selectItem(position);
-            mPendingRunnable = () -> {
-                invalidateOptionsMenu();
-                replaceWithRememberedFragment();
-            };
-        }
-    }
-
-    private void selectItem(int position) {
-
-//        closeDrawer();
-    }
-
     public void openLockScreen() {
         setupLockFragment();
         ((BaseFragment) getCurrentFragment()).onLocked();
-        mBinding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-        // commented out for UA-30 ticket
-        // don't use animation for showing lock screen - open it right away so that underlying screen wouldn't be visible
         Animation bottomUp = AnimationUtils.loadAnimation(this, R.anim.lockscreen_up);
         mBinding.activitySlidingUpPanel.startAnimation(bottomUp);
         mBinding.activitySlidingUpPanel.setVisibility(View.VISIBLE);
@@ -345,7 +276,6 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
     }
 
     public void hideLockScreen() {
-        mBinding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         Animation bottomUp = AnimationUtils.loadAnimation(this, R.anim.lockscreen_fade_away);
         bottomUp.setAnimationListener(new AnimationEndListner() {
             @Override
@@ -383,7 +313,6 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
     protected void setupLockFragment() {
         Timber.d("SetupLockFragment()");
         Fragment fragment = new LockScreenFragment();
-        //Fragment fragment = HelpFragment.newInstance();
         String fragmentName = fragment.getClass().getName();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.activity_lockscreen_container, fragment, fragmentName);
@@ -405,10 +334,6 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
                     AppAdapter.getConsumerRequests().size() + event.getBadgeCount());
             }
             AppAdapter.updateIconLauncherBadge();
-            ListAdapter adapter = mBinding.drwerList.getAdapter();
-            if (adapter != null) {
-                ((DrawerAdapter) adapter).setRequestsCount(event.getBadgeCount());
-            }
         }
     }
 
@@ -439,10 +364,6 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
         if (event != null) {
             AppAdapter.bus().removeStickyEvent(event);
             Timber.d("Changing partnership badge count");
-            ListAdapter adapter = mBinding.drwerList.getAdapter();
-            if (adapter != null) {
-                ((DrawerAdapter) adapter).setPartnershipCount(event.getPartnershipBadgeCount());
-            }
         }
     }
 
