@@ -84,11 +84,21 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
     private static final String DIALOG_FAILED_LOGIN_TAG = "DIALOG_FAILED_LOGIN_TAG";
     private static final String CHECK_CODE_ONLY_EXTRA = "CHECK_CODE_ONLY_EXTRA";
     private static final String DIALOG_FAILED_PIN_TAG = "DIALOG_FAILED_PIN_TAG";
+    public static final String SETUP_FINGERPRINT_EXTRA = "SETUP_FINGERPRINT_EXTRA";
 
     public static Fragment newInstance(boolean checkCodeOnly) {
         ChangeCodeFragment fragment = new ChangeCodeFragment();
         Bundle bundle = new Bundle();
         bundle.putBoolean(CHECK_CODE_ONLY_EXTRA, checkCodeOnly);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    public static Fragment newInstance(boolean checkCodeOnly, boolean setupFingerprint) {
+        ChangeCodeFragment fragment = new ChangeCodeFragment();
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(CHECK_CODE_ONLY_EXTRA, checkCodeOnly);
+        bundle.putBoolean(SETUP_FINGERPRINT_EXTRA, setupFingerprint);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -112,6 +122,8 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
     private FailedPinCodeDialogFragment mFailedPinCodeDialog;
     private boolean isDialogFailedAdded;
     private boolean checkCodeOnly;
+    private boolean setupFingerprint;
+    public static boolean isFingerprintSetup;
 
     private Disposable mDisposable;
 
@@ -256,11 +268,6 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                 this::showProgress,
                 response -> {
                     hideProgress();
-                    /* TODO !!!
-                    Bundle params = new Bundle();
-                    params.putString("max_attempts", String.valueOf(MAX_ATTEMPTS_REMAINING));
-                    params.putString("attempts_remaining", String.valueOf(mAttemptsRemaining));
-                    */
                     Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_CODE_CHANGE/*, params*/);
                     AppAdapter.settings().clearFingerprintPasswordIv();
                     if (AppAdapter.settings().getFingerprintAuthUses()) {
@@ -273,7 +280,6 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                             mDialogScanning.show(getFragmentManager(), DIALOG_SCANNING_TAG);
                         }
                     } else {
-//                        closeChildFragment();
                         onBackPressed();
                     }
                 },
@@ -291,6 +297,7 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
         checkCodeOnly = getArguments().getBoolean(CHECK_CODE_ONLY_EXTRA);
+        setupFingerprint = getArguments().getBoolean(SETUP_FINGERPRINT_EXTRA);
     }
 
     @Override
@@ -298,6 +305,7 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
         super.initBinding(inflater);
         mBinding.digitalKeyboard.setKeyboardListener(this);
         mBinding.personCodeLL.setLenghtCodeChecker(this);
+        isFingerprintSetup = setupFingerprint;
         mBinding.infoPager.setAdapter(new ChangeCodeInfoPagerAdapter(getChildFragmentManager()));
     }
 
@@ -305,7 +313,7 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TextView titleView = view.findViewById(R.id.title);
-        titleView.setText(R.string.change_pin_title);
+        titleView.setText(setupFingerprint ? R.string.setup_fingerprint_title : R.string.change_pin_title);
         LinearLayout backButton = view.findViewById(R.id.tool_left_button);
         backButton.setOnClickListener((v) -> onBackPressed());
     }
@@ -449,7 +457,6 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                 .andThen(Completable.fromAction(() -> AppAdapter.settings().setKeyFingerprintAuthTooManyAttempts(false)))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(this::closeChildFragment, Timber::e);
                 .subscribe(this::onBackPressed, Timber::e);
     }
 

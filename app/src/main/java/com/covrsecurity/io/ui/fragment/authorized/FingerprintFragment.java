@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 public class FingerprintFragment extends BaseFragment<FragmentFingerprintBinding> {
 
     private boolean mReadyToUseFingerprintScanner;
+    private boolean fingerprintAuthUses;
 
     public static Fragment newInstance() {
         return new FingerprintFragment();
@@ -37,15 +38,16 @@ public class FingerprintFragment extends BaseFragment<FragmentFingerprintBinding
         LinearLayout backButton = view.findViewById(R.id.tool_left_button);
         backButton.setOnClickListener((v) -> onBackPressed());
         mReadyToUseFingerprintScanner = FingerprintUtils.getInstance(getActivity()).readyToUseFingerprintScanner(getActivity());
-        boolean fingerprintAuthUses = AppAdapter.settings().getFingerprintAuthUses();
+        fingerprintAuthUses = AppAdapter.settings().getFingerprintAuthUses();
         mBinding.fingerprintUnlockState.setImageResource(fingerprintAuthUses ? R.drawable.item_approved : R.drawable.item_declined);
         mBinding.fingerprintUnlocking.setOnClickListener(view1 -> {
             if (mReadyToUseFingerprintScanner && !fingerprintAuthUses) {
-                Fragment fragment = ChangeCodeFragment.newInstance(true);
+                Fragment fragment = ChangeCodeFragment.newInstance(true, true);
                 replaceFragment(fragment, fragment.getArguments(), true);
                 mBinding.fingerprintUnlockState.setImageResource(R.drawable.item_approved);
             } else if (mReadyToUseFingerprintScanner) {
                 AppAdapter.settings().setUseFingerprintAuth(false);
+                fingerprintAuthUses = false;
                 mBinding.fingerprintUnlockState.setImageResource(R.drawable.item_declined);
             } else {
                 AppAdapter.settings().setUseFingerprintAuth(false);

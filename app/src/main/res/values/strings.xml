@@ -150,13 +150,15 @@
 
     <!-- fingerprint fragment -->
     <string name="fingerprint_title">UnLock with Biometrics</string>
+    <string name="setup_fingerprint_title">Enable Fingerprint</string>
     <string name="fingerprint_info">Enable fingerprint for</string>
     <string name="fingerprint_authorizing_transactions">Authorizing Transactions</string>
     <string name="fingerprint_unlocking_app">Unlocking the iAM App</string>
     <string name="fingerprint_auth_ready_title">Use fingerprint?</string>
     <string name="fingerprint_auth_available_title">Fingerprint is available…</string>
     <string name="fingerprint_auth_ready_description"><![CDATA[You have set up fingerprint for your device, do you want to use that for your PIN Code? You can turn this On or Off later in iAM settings. %s]]></string>
-    <string name="fingerprint_auth_available_description"><![CDATA[…on your device but it is not configured yet. Finish the iAM set-up and then go to device Settings and enable fingerprint. You can then turn fingerprint On in iAM settings. \n\nFingerprint can be used instead of the PIN Code you just created in previous steps. %s]]></string>
+    <string name="fingerprint_auth_available_description"><![CDATA[…on your Phone but it is not configured yet. Go to Phone Settings and enable fingerprint for your device. Once completed you can then turn fingerprint On in iAM Settings.\n\nFingerprint can be used instead of your PIN code to unlock the iAM App. %s]]></string>
+    <string name="fingerprint_auth_available_description_setup"><![CDATA[…on your Phone but it is not configured yet. Finish the iAM set-up and then go to iPhone Settings and enable fingerprint. You can then turn fingerprint On in iAM Settings.\n\nFingerprint be used instead of the PIN code you just created in previous step. %s]]></string>
 
     <!-- fingerprint dialog -->
     <string name="fingerprint_dialog_title">Fingerprint for \"%s\"</string>
@@ -196,6 +198,7 @@
     <string name="settings_change_password_info_header">You are about to change your PIN Code.</string>
     <string name="settings_change_password_info_text">You will need to enter your current PIN Code before you can change it. Read more\u00A0></string>
     <string name="settings_change_password_enter_current">Enter old pin code</string>
+    <string name="setup_fingerprint_text">Confirm your PIN Code</string>
     <string name="settings_change_password_attempts">%1$d of 10 attempts remaining.</string>
     <string name="settings_change_password_enter_new">Enter new pin code</string>
     <string name="settings_change_password_reenter_new">Repeat new pin code</string>

@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <variable
             name="closeClickListener"
             type="android.view.View.OnClickListener" />
@@ -10,7 +9,6 @@
         <variable
             name="useFingerprint"
             type="java.lang.Boolean" />
-
     </data>
 
     <RelativeLayout
@@ -18,9 +16,20 @@
         android:layout_height="match_parent"
         android:background="@color/blue">
 
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_x_button"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/setting_item_margin_top"
+            android:layout_marginTop="@dimen/setting_item_margin_top"
+            android:onClick="@{closeClickListener::onClick}"/>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/closeButton"
             android:layout_above="@+id/horizontal_border">
 
             <LinearLayout
@@ -86,29 +95,8 @@
                             android:textSize="@dimen/text_header_small" />
 
                     </RadioGroup>
-
                 </FrameLayout>
-
             </LinearLayout>
-
         </ScrollView>
-
-        <View
-            android:id="@+id/horizontal_border"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/border_line_thin_thickness"
-            android:layout_above="@+id/left_bottom_button"
-            android:background="@color/grey" />
-
-        <TextView
-            android:id="@+id/left_bottom_button"
-            style="@style/WhiteBottomButton"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bottom_button_height"
-            android:layout_alignParentBottom="true"
-            android:onClick="@{closeClickListener::onClick}"
-            android:text="@string/close" />
-
     </RelativeLayout>
-
 </layout>

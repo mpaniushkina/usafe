@@ -39,9 +39,6 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
     @Inject
     SettingsViewModelFactory vmFactory;
 
-    private AlertDialog dialogAndroidSettings;
-    private boolean mReadyToUseFingerprintScanner;
-    private boolean mOnViewBounded;
     private SettingsAdapter adapter;
 
     public static final int ABOUT_ITEM = 0;
@@ -220,52 +217,8 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
         mBinding.settingsRecyclerView.setAdapter(adapter);
     }
 
-//    private void openAppSettings() {
-//        try {
-//            //Open the specific App Info page:
-//            Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-//            intent.setData(Uri.parse("package:" + getActivity().getPackageName()));
-//            startActivity(intent);
-//        } catch (ActivityNotFoundException e) {
-//            //e.printStackTrace();
-//            //Open the generic Apps page:
-//            Intent intent = new Intent(android.provider.Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS);
-//            startActivity(intent);
-//        }
-//    }
-
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        NotificationManagerCompat nm = NotificationManagerCompat.from(getActivity());
-//        boolean notificationsEnabled = nm.areNotificationsEnabled();
-//        if (!notificationsEnabled) {
-//            mBinding.setPushNotificationEnable(false);
-//            mBinding.setPushSoundEnable(false);
-//            mBinding.setPushVibrateEnable(false);
-//        }
-//        mBinding.settingsNotificationSwitch.setEnabled(notificationsEnabled);
-//        mBinding.settingsSoundSwitch.setEnabled(notificationsEnabled);
-//        mBinding.settingsVibrateSwitch.setEnabled(notificationsEnabled);
-//    }
-
-//    private void setUseFingerprint() {
-//        boolean fingerprintAuthUses = AppAdapter.settings().getFingerprintAuthUses();
-//        mBinding.setUseFingerprint(fingerprintAuthUses && mReadyToUseFingerprintScanner);
-//    }
-
-//    @SuppressLint("NewApi")
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        if (dialogAndroidSettings != null && dialogAndroidSettings.isShowing()) {
-//            dialogAndroidSettings.dismiss();
-//        }
-//    }
-
     @Override
     protected int getFragmentContainerId() {
-//        return mBinding.settingChildFramgnetContainer.getId();
         return 0;
     }
 
@@ -296,23 +249,6 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
 
     @Override
     public void closeChildFragment() {
-        Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.disappear);
-//        fadeOut.setAnimationListener(new AnimationEndListner() {
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//                Animation bottomUp = AnimationUtils.loadAnimation(getActivity(), R.anim.up_bottom);
-//                mBinding.settingsSlidingUpPanel.startAnimation(bottomUp);
-//                mBinding.settingsSlidingUpPanel.setVisibility(View.GONE);
-//                ActivityUtils.scheduleOnMainThread(() -> {
-//                    if (!isStateSaved()) {
-//                        getChildFragmentManager().popBackStack();
-//                    }
-//                }, ConstantsUtils.HALF_SECOND);
-//            }
-//        });
-//        setUseFingerprint();
-//        mBinding.childFragmentTopShadow.startAnimation(fadeOut);
-//        mBinding.childFragmentTopShadow.setVisibility(View.INVISIBLE);
     }
 
 
@@ -320,28 +256,6 @@ public class SettingsFragment extends BaseParentFragment<FragmentSettingsBinding
     protected int getTitleId() {
         return R.string.settings;
     }
-
-//    @Override
-//    public void onDestroyView() {
-//        Bundle b = new Bundle();
-//        SettingsManager settings = AppAdapter.settings();
-//        b.putString("push_enabled", boolToStr(settings.getPushNotificationsEnable()));
-//        b.putString("push_sound", boolToStr(settings.getPushSoundEnable()));
-//        b.putString("push_vibration", boolToStr(settings.getPushVibrateEnable()));
-//        b.putString("inapp_incoming_sound", boolToStr(settings.getInappIncomingSoundEnabled()));
-//        b.putString("inapp_incoming_vibration", boolToStr(settings.getInappIncomingVibrationEnabled()));
-//        b.putString("inapp_response_sound", boolToStr(settings.getInappResponseSoundEnabled()));
-//        b.putString("inapp_timed_out_sound", boolToStr(settings.getInappTimeoutSoundEnabled()));
-//        b.putString("inapp_incoming_sound", boolToStr(settings.getInappIncomingSoundEnabled()));
-//        b.putString("personal_code_sound", boolToStr(settings.getKeyboardSoundEnabled()));
-//        b.putString("personal_code_vibration", boolToStr(settings.getKeyboardVibrationEnabled()));
-//        Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_SETTINGS_UPDATE, b);
-//        super.onDestroyView();
-//    }
-//
-//    private String boolToStr(boolean v) {
-//        return v ? "1" : "0";
-//    }
 
     @Override
     public void onItemClick(View view, int position) {

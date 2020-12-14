@@ -15,6 +15,8 @@ import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import static com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment.SETUP_FINGERPRINT_EXTRA;
+
 public class ChangeCodeInfoItem extends Fragment {
 
     private static final String FORMAT_DATE_NORMAL_STR = "dd.MM.yyyy HH:mm:ss";
@@ -25,10 +27,11 @@ public class ChangeCodeInfoItem extends Fragment {
     private TextView mHeaderText;
     private TextView mRemainingAttemptsText;
 
-    public static ChangeCodeInfoItem newInstance(int position) {
+    public static ChangeCodeInfoItem newInstance(int position, boolean setupFingerprint) {
         ChangeCodeInfoItem fragment = new ChangeCodeInfoItem();
         Bundle args = new Bundle();
         args.putInt(CURRENT_ITEM, position);
+        args.putBoolean(SETUP_FINGERPRINT_EXTRA, setupFingerprint);
         fragment.setArguments(args);
         return fragment;
     }
@@ -38,11 +41,12 @@ public class ChangeCodeInfoItem extends Fragment {
                              Bundle savedInstanceState) {
         Bundle args = getArguments();
         int currentItem = args.getInt(CURRENT_ITEM);
+        boolean setupFingerprint = args.getBoolean(SETUP_FINGERPRINT_EXTRA);
         View rootView = inflater.inflate(R.layout.change_code_pager_item, container, false);
         mHeaderText = rootView.findViewById(R.id.change_code_header);
         mRemainingAttemptsText = rootView.findViewById(R.id.change_code_attempts);
         if (currentItem == ChangeCodeFragment.CURRENT_CODE_PAGE) {
-            mHeaderText.setText(getString(R.string.settings_change_password_enter_current));
+            mHeaderText.setText(getString(setupFingerprint ? R.string.setup_fingerprint_text : R.string.settings_change_password_enter_current));
             clearRemainingAttempts();
         } else if (currentItem == ChangeCodeFragment.NEW_CODE_PAGE) {
             mHeaderText.setText(getString(R.string.settings_change_password_enter_new));
