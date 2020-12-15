@@ -279,7 +279,7 @@
     <string name="history_details_expired">Timed Out</string>
     <string name="history_details_failed_biometric">Biometric failed</string>
     <string name="history_details_verified">Verified</string>
-    <string name="history_details_denied">Denied</string>
+    <string name="history_details_denied">Rejected</string>
     <string name="history_details_undefined">Undefined</string>
     <string name="history_paried">Paired - %1$s</string>
     <!--string name="history_delete_msg">All history will be deleted. Proceed?</string-->

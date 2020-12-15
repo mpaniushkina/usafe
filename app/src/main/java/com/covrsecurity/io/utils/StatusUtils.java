@@ -33,6 +33,7 @@ public class StatusUtils {
         }
         switch (status) {
             case ACCEPTED:
+                return context.getString(R.string.history_details_accepted);
             case REJECTED:
                 String buttonText = ACCEPTED.equals(status) ?
                         pendingTransaction.getRequest().getAccept() : pendingTransaction.getRequest().getReject();
@@ -45,7 +46,8 @@ public class StatusUtils {
                         buttonText = buttonText.concat("ed");
                     }
                 }
-                return buttonText;
+//                return buttonText;
+                return context.getString(R.string.history_details_denied);
             case EXPIRED:
                 return context.getString(R.string.history_details_expired);
             case FAILED_BIOMETRIC:

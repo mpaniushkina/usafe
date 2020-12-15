@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -28,103 +27,26 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_marginBottom="@dimen/view_padding_small" />
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/toolbar_chats_container"-->
-<!--                android:layout_width="@dimen/history_fragment_chats_toolbar_width"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:padding="@dimen/five_dp">-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/partnership_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tool_bar"
+            android:layout_marginTop="@dimen/personal_code_header_margin"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-<!--                <CheckBox-->
-<!--                    android:id="@+id/toolbar_all"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@drawable/check_tab_left_selector"-->
-<!--                    android:button="@null"-->
-<!--                    android:checked="true"-->
-<!--                    android:gravity="center"-->
-<!--                    android:onClick="@{allClickListener::onClick}"-->
-<!--                    android:paddingTop="@dimen/five_dp"-->
-<!--                    android:paddingBottom="@dimen/five_dp"-->
-<!--                    android:text="@string/all"-->
-<!--                    android:textColor="@drawable/check_tab_color_selector" />-->
+        <!--                <androidx.recyclerview.widget.RecyclerView-->
+        <!--                    android:id="@+id/partnership_expired_recycler_view"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="match_parent"-->
+        <!--                    android:layout_below="@+id/tool_bar"-->
+        <!--                    android:layout_marginTop="@dimen/personal_code_header_margin"-->
+        <!--                    android:scrollbars="vertical"-->
+        <!--                    android:visibility="visible"-->
+        <!--                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
 
-<!--                <CheckBox-->
-<!--                    android:id="@+id/toolbar_timed_out"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@drawable/check_tab_right_selector"-->
-<!--                    android:button="@null"-->
-<!--                    android:gravity="center"-->
-<!--                    android:onClick="@{timedOutClickListener::onClick}"-->
-<!--                    android:paddingTop="@dimen/five_dp"-->
-<!--                    android:paddingBottom="@dimen/five_dp"-->
-<!--                    android:text="@string/timed_out"-->
-<!--                    android:textColor="@drawable/check_tab_color_selector" />-->
-
-<!--            </LinearLayout>-->
-
-
-<!--            <View-->
-<!--                android:id="@+id/horizontal_border"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="@dimen/border_line_thin_thickness"-->
-<!--                android:background="@color/light_grey" />-->
-
-<!--            <RelativeLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent">-->
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/no_history"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:background="@color/white"-->
-<!--                    android:gravity="center_horizontal"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:padding="@dimen/bottom_button_height"-->
-<!--                    android:visibility="gone"-->
-<!--                    tools:visibility="visible">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/nohistory_green" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="@dimen/view_padding_big"-->
-<!--                        android:gravity="center"-->
-<!--                        android:text="@string/history_info"-->
-<!--                        android:textColor="@color/setting_header_black"-->
-<!--                        android:textSize="@dimen/text_small" />-->
-<!--                </LinearLayout>-->
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/partnership_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/tool_bar"
-                    android:layout_marginTop="@dimen/personal_code_header_margin"
-                    android:scrollbars="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-<!--                <androidx.recyclerview.widget.RecyclerView-->
-<!--                    android:id="@+id/partnership_expired_recycler_view"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_below="@+id/tool_bar"-->
-<!--                    android:layout_marginTop="@dimen/personal_code_header_margin"-->
-<!--                    android:scrollbars="vertical"-->
-<!--                    android:visibility="visible"-->
-<!--                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
-
-<!--            </RelativeLayout>-->
+        <!--            </RelativeLayout>-->
 
         <include
             android:id="@+id/progress_layout"

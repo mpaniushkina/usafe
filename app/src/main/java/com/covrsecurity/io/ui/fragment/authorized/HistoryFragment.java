@@ -27,7 +27,6 @@ import com.covrsecurity.io.ui.viewmodel.history.HistoryViewModelFactory;
 import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.ConnectivityUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
-import com.covrsecurity.io.utils.FragmentAnimationSet;
 
 import java.net.ConnectException;
 import java.util.ArrayList;
@@ -37,9 +36,6 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
-/**
- * Created by elena on 5/2/16.
- */
 public class HistoryFragment extends FromMenuFragment<FragmentHistoryBinding, HistoryViewModel> implements
         HistoryAdapter.IHistoryClickListener {
 
@@ -120,8 +116,6 @@ public class HistoryFragment extends FromMenuFragment<FragmentHistoryBinding, Hi
                     showErrToast(throwable);
                     showEmpty(mBinding.partnershipRecyclerView.getAdapter() == null
                             || mBinding.partnershipRecyclerView.getAdapter().getItemCount() < 1);
-//                    showEmptyExpired(mBinding.partnershipExpiredRecyclerView.getAdapter() == null
-//                            || mBinding.partnershipExpiredRecyclerView.getAdapter().getItemCount() < 1);
                 }
         ));
         viewModel.markHistoryAsViewedLiveData.observe(this, new BaseObserver<>(
@@ -143,16 +137,9 @@ public class HistoryFragment extends FromMenuFragment<FragmentHistoryBinding, Hi
         super.initBinding(inflater);
         mBinding.setAllClickListener(v -> {
             selectAll();
-//            showEmptyExpired(true);
             showEmpty(mBinding.partnershipRecyclerView.getAdapter() == null
                     || mBinding.partnershipRecyclerView.getAdapter().getItemCount() < 1);
         });
-//        mBinding.setTimedOutClickListener(v -> {
-//            selectTimedOut();
-//            showEmpty(true);
-//            showEmptyExpired(mBinding.partnershipExpiredRecyclerView.getAdapter() == null
-//                    || mBinding.partnershipExpiredRecyclerView.getAdapter().getItemCount() < 1);
-//        });
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
             if (ConnectivityUtils.hasNetworkConnection()) {
@@ -213,34 +200,16 @@ public class HistoryFragment extends FromMenuFragment<FragmentHistoryBinding, Hi
         } else {
             mAdapter.addAll(pendingTransactions);
         }
-
-//        if (mBinding.partnershipExpiredRecyclerView.getAdapter() == null) {
-//            mExpiredAdapter = new HistoryAdapter(getExpired(pendingTransactions), HistoryFragment.this);
-//            mBinding.partnershipExpiredRecyclerView.setAdapter(mExpiredAdapter);
-//        } else {
-//            mExpiredAdapter.addAll(getExpired(pendingTransactions));
-//        }
-//        if (((AuthorizedActivity) getActivity()).isHistoryAllSelected()) {
-            showEmpty((pendingTransactions == null || pendingTransactions.isEmpty())
-                    && (mBinding.partnershipRecyclerView.getAdapter() == null
-                    || mBinding.partnershipRecyclerView.getAdapter().getItemCount() < 1));
-//        } else {
-//            showEmptyExpired((pendingTransactions == null || pendingTransactions.isEmpty())
-//                    && mBinding.partnershipExpiredRecyclerView.getAdapter() == null
-//                    || mBinding.partnershipExpiredRecyclerView.getAdapter().getItemCount() < 1);
-//        }
+        showEmpty((pendingTransactions == null || pendingTransactions.isEmpty())
+                && (mBinding.partnershipRecyclerView.getAdapter() == null
+                || mBinding.partnershipRecyclerView.getAdapter().getItemCount() < 1));
     }
 
     private void selectAll() {
         ((AuthorizedActivity) getActivity()).setHistoryAllSelected(true);
-//        mBinding.toolbarAll.setChecked(true);
-//        mBinding.toolbarTimedOut.setChecked(false);
     }
 
     private void selectTimedOut() {
-//        ((AuthorizedActivity) getActivity()).setHistoryAllSelected(false);
-//        mBinding.toolbarAll.setChecked(false);
-//        mBinding.toolbarTimedOut.setChecked(true);
     }
 
     private void setScrollListener(boolean hasNext) {
@@ -260,12 +229,6 @@ public class HistoryFragment extends FromMenuFragment<FragmentHistoryBinding, Hi
 
     private void showEmpty(boolean show) {
         mBinding.partnershipRecyclerView.setVisibility(show ? View.GONE : View.VISIBLE);
-//        mBinding.noHistory.setVisibility(show ? View.VISIBLE : View.GONE);
-    }
-
-    private void showEmptyExpired(boolean show) {
-//        mBinding.partnershipExpiredRecyclerView.setVisibility(show ? View.GONE : View.VISIBLE);
-//        mBinding.noHistory.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
     private List<TransactionEntity> getExpired(List<TransactionEntity> requestList) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rl_history_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -28,7 +29,7 @@
         android:layout_toRightOf="@+id/historyNewElementIndicator"
         android:gravity="center_vertical">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/history_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,31 +46,22 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_small"
                 android:includeFontPadding="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Authentication to X"/>
-
-            <TextView
-                android:id="@+id/tv_history_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/ten_dp"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_small"
-                android:ellipsize="end"
-                tools:text="20/11/22"
-                android:includeFontPadding="false"/>
 
             <TextView
                 android:id="@+id/tv_history_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/ten_dp"
                 android:maxLines="1"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_small"
                 tools:text="21:43"
+                app:layout_constraintTop_toBottomOf="@+id/tv_history_title"
+                app:layout_constraintStart_toEndOf="@+id/tv_history_date"
                 android:includeFontPadding="false"/>
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
 

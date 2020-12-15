@@ -525,10 +525,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         ActivityUtils.setLastFragmentName(this.getClass().getName());
     }
 
-    public void closeSlidingUpPanel() {
-//        mBinding.slidingUpPanel.setVisibility(View.GONE);
-    }
-
     @Override
     public void replaceChildFragment(Fragment fragment, Bundle bundle, boolean addToBackStack,
                                      FragmentAnimationSet animations) {

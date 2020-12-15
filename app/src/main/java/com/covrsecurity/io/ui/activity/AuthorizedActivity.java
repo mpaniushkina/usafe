@@ -226,7 +226,6 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
                 childFragmentManager.popBackStack();
             }
             childFragmentManager.executePendingTransactions();
-            standingByFragment.closeSlidingUpPanel();
         }
     }
 
@@ -240,7 +239,6 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
                     for (int i = 0; i < childFragmentManager.getBackStackEntryCount(); i++) {
                         childFragmentManager.popBackStack();
                     }
-                    standingByFragment.closeSlidingUpPanel();
                 }
             });
         } else {
