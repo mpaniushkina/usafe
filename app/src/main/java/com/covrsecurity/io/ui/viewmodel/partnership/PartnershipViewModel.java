@@ -7,12 +7,15 @@ import com.covrsecurity.io.domain.entity.request.GetConnectionsRequestEntity;
 import com.covrsecurity.io.domain.entity.request.PostQrCodeRequestEntity;
 import com.covrsecurity.io.domain.entity.request.QrCodeClaimRequestEntity;
 import com.covrsecurity.io.domain.entity.request.QrCodeConnectionRequestEntity;
+import com.covrsecurity.io.domain.entity.request.TransactionClaimRequestEntity;
 import com.covrsecurity.io.domain.entity.response.GetConnectionsResponseEntity;
 import com.covrsecurity.io.domain.entity.response.PostQrCodeResponseEntity;
 import com.covrsecurity.io.domain.entity.response.QrCodeClaimResponseEntity;
+import com.covrsecurity.io.domain.entity.response.TransactionClaimResponseEntity;
 import com.covrsecurity.io.domain.usecase.registred.AddConnectionUseCase;
 import com.covrsecurity.io.domain.usecase.registred.GetConnectionsUseCase;
 import com.covrsecurity.io.domain.usecase.registred.QrCodeClaimUseCase;
+import com.covrsecurity.io.domain.usecase.registred.TransactionClaimCompleteUseCase;
 import com.covrsecurity.io.domain.usecase.unregistered.QrCodeConnectionUseCase;
 import com.covrsecurity.io.sdk.response.QrCodeConnectionResponse;
 import com.covrsecurity.io.ui.viewmodel.base.BaseState;
@@ -30,12 +33,13 @@ public class PartnershipViewModel extends BaseViewModel {
     public final MutableLiveData<BaseState<PostQrCodeResponseEntity>> addConnectionLiveData = new MutableLiveData<>();
     public final MutableLiveData<BaseState<QrCodeConnectionResponse>> qrCodeConnectionLiveData = new MutableLiveData<>();
     public final MutableLiveData<BaseState<QrCodeClaimResponseEntity>> qrCodeClaimLiveData = new MutableLiveData<>();
+    public final MutableLiveData<BaseState<TransactionClaimResponseEntity>> transactionClaimLiveData = new MutableLiveData<>();
 
     private final GetConnectionsUseCase getConnectionsUseCase;
-
     private final AddConnectionUseCase addConnectionUseCase;
     private final QrCodeConnectionUseCase qrCodeConnectionUseCase;
     private final QrCodeClaimUseCase qrCodeClaimUseCase;
+    private final TransactionClaimCompleteUseCase transactionClaimCompleteUseCase;
 
     @Nullable
     private Disposable disposable;
@@ -43,11 +47,12 @@ public class PartnershipViewModel extends BaseViewModel {
     private final CompositeDisposable disposables = new CompositeDisposable();
 
     public PartnershipViewModel(GetConnectionsUseCase getConnectionsUseCase, AddConnectionUseCase addConnectionUseCase,
-                                QrCodeConnectionUseCase qrCodeConnectionUseCase, QrCodeClaimUseCase qrCodeClaimUseCase) {
+                                QrCodeConnectionUseCase qrCodeConnectionUseCase, QrCodeClaimUseCase qrCodeClaimUseCase, TransactionClaimCompleteUseCase transactionClaimCompleteUseCase) {
         this.getConnectionsUseCase = getConnectionsUseCase;
         this.addConnectionUseCase = addConnectionUseCase;
         this.qrCodeConnectionUseCase = qrCodeConnectionUseCase;
         this.qrCodeClaimUseCase = qrCodeClaimUseCase;
+        this.transactionClaimCompleteUseCase = transactionClaimCompleteUseCase;
     }
 
     @Override
@@ -86,6 +91,15 @@ public class PartnershipViewModel extends BaseViewModel {
                 .subscribe(
                         response -> qrCodeClaimLiveData.setValue(BaseState.getSuccessInstance(response)),
                         throwable -> qrCodeClaimLiveData.setValue(BaseState.getErrorInstance(throwable))
+                );
+    }
+
+    public void transactionClaimComplete(String referenceId, String companyRegPublicKey) {
+        disposable = Single.just(new TransactionClaimRequestEntity(referenceId, companyRegPublicKey))
+                .flatMap(transactionClaimCompleteUseCase::execute)
+                .subscribe(
+                        response -> transactionClaimLiveData.setValue(BaseState.getSuccessInstance(response)),
+                        throwable -> transactionClaimLiveData.setValue(BaseState.getErrorInstance(throwable))
                 );
     }
 

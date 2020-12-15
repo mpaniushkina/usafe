@@ -192,9 +192,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                     if (response.getPageNumber() == 0) {
                         AppAdapter.cleanConsumerRequests();
                     }
-
                     AppAdapter.addConsumerRequests(response.getTransactions());
-
                     if (response.isHasNext()) {
                         viewModel.getTransactions(response.getPageNumber() + 1);
                     } else {
@@ -232,6 +230,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                 this::showProgress,
                 response -> {
                     hideProgress();
+//                    addConnectionViewModel.transactionClaimComplete()
                     if (StatusEntity.ACCEPTED == response.getStatus()) {
                         onRemoveRequest(
                                 response,
@@ -296,6 +295,18 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                 }
         ));
         addConnectionViewModel.qrCodeClaimLiveData.observe(this, new BaseObserver<>(
+                this::showProgress,
+                response -> {
+                    hideProgress();
+                },
+                throwable -> {
+                    hideProgress();
+                    Timber.e("" + throwable);
+                    Timber.e(throwable);
+                    showErrToast(throwable);
+                }
+        ));
+        addConnectionViewModel.transactionClaimLiveData.observe(this, new BaseObserver<>(
                 this::showProgress,
                 response -> {
                     hideProgress();
@@ -471,7 +482,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         } else {
             mPartnershipAdapter.setData(pendingTransactionsList);
         }
-//        mPartnershipAdapter.setEmptyView(mBinding.emptyView);
         mPartnershipAdapter.setLogoView(mBinding.logo);
         if (mBinding.pendingRequestsRecyclerView.getAdapter() == null) {
             mBinding.pendingRequestsRecyclerView.setAdapter(mPartnershipAdapter);
