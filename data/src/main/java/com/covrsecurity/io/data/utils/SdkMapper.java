@@ -114,7 +114,9 @@ public class SdkMapper {
                 request,
                 transactionEntity.isViewed(),
                 signature,
-                biometric
+                biometric,
+                transactionEntity.getReferenceId(),
+                transactionEntity.getReferenceType()
         );
     }
 

@@ -48,7 +48,8 @@ public class StandingByViewModel extends BaseViewModel {
     private final CompositeDisposable disposables = new CompositeDisposable();
     private final AtomicInteger requestCounter = new AtomicInteger(0);
 
-    public StandingByViewModel(CheckLockedUseCase checkLockedUseCase, GetConnectionsUseCase connectionsUseCase, GetTransactionsUseCase transactionsUseCase, GetUnreadHistoryCountUseCase unreadHistoryCountUseCase, PostTransactionUseCase postTransactionUseCase) {
+    public StandingByViewModel(CheckLockedUseCase checkLockedUseCase, GetConnectionsUseCase connectionsUseCase, GetTransactionsUseCase transactionsUseCase,
+                               GetUnreadHistoryCountUseCase unreadHistoryCountUseCase, PostTransactionUseCase postTransactionUseCase) {
         this.checkLockedUseCase = checkLockedUseCase;
         this.connectionsUseCase = connectionsUseCase;
         this.transactionsUseCase = transactionsUseCase;

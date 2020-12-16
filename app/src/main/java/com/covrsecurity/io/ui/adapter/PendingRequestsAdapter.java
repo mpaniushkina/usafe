@@ -492,12 +492,11 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
         private boolean mEnabled = true;
 
         public ListPendingRequest(TransactionEntity r) {
-            super(r.getId(), r.getCompany(), r.getCompanyClientId(), r.getTemplateId(),
-                    r.getTemplate(), r.getValidTo(), r.getValidFrom(), r.getStatus(),
-                    r.getCreatedByIp(), r.getVerifiedByIp(), r.getCreated(), r.getUpdatedAt(),
-                    r.getAcceptHistoryMessage(), r.getRejectHistoryMessage(),
-                    r.getExpiredHistoryMessage(), r.getFailedBiometricHistoryMessage(),
-                    r.getRequest(), r.isViewed(), r.getSignature(), r.getBiometric());
+            super(r.getId(), r.getCompany(), r.getCompanyClientId(), r.getTemplateId(), r.getTemplate(),
+                    r.getValidTo(), r.getValidFrom(), r.getStatus(), r.getCreatedByIp(), r.getVerifiedByIp(),
+                    r.getCreated(), r.getUpdatedAt(), r.getAcceptHistoryMessage(), r.getRejectHistoryMessage(),
+                    r.getExpiredHistoryMessage(), r.getFailedBiometricHistoryMessage(), r.getRequest(),
+                    r.isViewed(), r.getSignature(), r.getBiometric(), r.getReferenceId(), r.getReferenceType());
         }
 
         public boolean isOpen() {

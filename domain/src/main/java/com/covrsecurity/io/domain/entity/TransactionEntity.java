@@ -25,10 +25,17 @@ public class TransactionEntity implements Serializable {
     private com.covrsecurity.io.domain.entity.RequestEntity request;
     private boolean isViewed;
     private NtSignatureEntity signature;
+    private String referenceId;
+    private String referenceType;
+
     @Nullable
     private com.covrsecurity.io.domain.entity.BiometricEntity biometric;
 
-    public TransactionEntity(String id, com.covrsecurity.io.domain.entity.CompanyEntity company, String companyClientId, String templateId, com.covrsecurity.io.domain.entity.TemplateEntity template, long validTo, long validFrom, com.covrsecurity.io.domain.entity.StatusEntity status, String createdByIp, String verifiedByIp, long created, long updatedAt, String acceptHistoryMessage, String rejectHistoryMessage, String expiredHistoryMessage, String failedBiometricHistoryMessage, com.covrsecurity.io.domain.entity.RequestEntity request, boolean isViewed, NtSignatureEntity signature, @Nullable com.covrsecurity.io.domain.entity.BiometricEntity biometric) {
+    public TransactionEntity(String id, com.covrsecurity.io.domain.entity.CompanyEntity company, String companyClientId, String templateId, com.covrsecurity.io.domain.entity.TemplateEntity template,
+                             long validTo, long validFrom, com.covrsecurity.io.domain.entity.StatusEntity status, String createdByIp, String verifiedByIp, long created, long updatedAt,
+                             String acceptHistoryMessage, String rejectHistoryMessage, String expiredHistoryMessage, String failedBiometricHistoryMessage,
+                             com.covrsecurity.io.domain.entity.RequestEntity request, boolean isViewed, NtSignatureEntity signature,
+                             @Nullable com.covrsecurity.io.domain.entity.BiometricEntity biometric, String referenceId, String referenceType) {
         this.id = id;
         this.company = company;
         this.companyClientId = companyClientId;
@@ -49,6 +56,8 @@ public class TransactionEntity implements Serializable {
         this.isViewed = isViewed;
         this.signature = signature;
         this.biometric = biometric;
+        this.referenceId = referenceId;
+        this.referenceType = referenceType;
     }
 
     public String getId() {
@@ -212,6 +221,14 @@ public class TransactionEntity implements Serializable {
         this.biometric = biometric;
     }
 
+    public String getReferenceId() {
+        return referenceId;
+    }
+
+    public String getReferenceType() {
+        return referenceType;
+    }
+
     @Override
     public String toString() {
         return "TransactionEntity{" +
@@ -235,6 +252,8 @@ public class TransactionEntity implements Serializable {
                 ", isViewed=" + isViewed +
                 ", signature=" + signature +
                 ", biometric=" + biometric +
+                ", referenceId=" + referenceId +
+                ", referenceType=" + referenceType +
                 '}';
     }
 }

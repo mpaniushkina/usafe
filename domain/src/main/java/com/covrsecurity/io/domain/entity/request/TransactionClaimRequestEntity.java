@@ -2,14 +2,15 @@ package com.covrsecurity.io.domain.entity.request;
 
 public class TransactionClaimRequestEntity {
     private String referenceId;
-    private String companyRegPublicKey;
+    private String companyId;
 
     public TransactionClaimRequestEntity() {
     }
 
-    public TransactionClaimRequestEntity(String referenceId, String companyRegPublicKey) {
+    public TransactionClaimRequestEntity(String referenceId, String companyId
+    ) {
         this.referenceId = referenceId;
-        this.companyRegPublicKey = companyRegPublicKey;
+        this.companyId = companyId;
     }
 
     public String getReferenceId() {
@@ -20,19 +21,19 @@ public class TransactionClaimRequestEntity {
         this.referenceId = referenceId;
     }
 
-    public String getCompanyRegPublicKey() {
-        return companyRegPublicKey;
+    public String getCompanyId() {
+        return companyId;
     }
 
-    public void setExpiresAt(String companyRegPublicKey) {
-        this.companyRegPublicKey = companyRegPublicKey;
+    public void setCompanyId(String companyRegPublicKey) {
+        this.companyId = companyId;
     }
 
     @Override
     public String toString() {
         return "TransactionClaimRequestEntity{" +
                 "referenceId='" + referenceId + '\'' +
-                "companyRegPublicKey='" + companyRegPublicKey + '\'' +
+                "companyId='" + companyId + '\'' +
                 '}';
     }
 }

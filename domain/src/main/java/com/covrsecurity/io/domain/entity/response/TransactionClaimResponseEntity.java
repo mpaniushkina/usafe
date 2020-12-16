@@ -1,20 +1,50 @@
 package com.covrsecurity.io.domain.entity.response;
 
-public class TransactionClaimResponseEntity {
-    private boolean isValid;
+import com.covrsecurity.io.domain.entity.CompanyEntity;
 
-    public TransactionClaimResponseEntity(boolean isValid) {
-        this.isValid = isValid;
+public class TransactionClaimResponseEntity {
+    private  String id;
+    private  String userName;
+    private  String createdDate;
+    private CompanyEntity merchant;
+    private  String status;
+
+    public TransactionClaimResponseEntity(String id, String userName, String createdDate, CompanyEntity merchant, String status) {
+        this.id = id;
+        this.userName = userName;
+        this.createdDate = createdDate;
+        this.merchant = merchant;
+        this.status = status;
     }
 
-    public boolean isValid() {
-        return isValid;
+    public String getId() {
+        return id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public CompanyEntity getMerchant() {
+        return merchant;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     @Override
     public String toString() {
         return "TransactionClaimResponseEntity{" +
-                "isValid=" + isValid +
+                "id=" + id +
+                "userName=" + userName +
+                "createdDate=" + createdDate +
+                "merchant=" + merchant +
+                "status=" + status +
                 '}';
     }
 }

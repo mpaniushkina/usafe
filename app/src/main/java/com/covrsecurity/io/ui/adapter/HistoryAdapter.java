@@ -247,7 +247,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                     r.getCreatedByIp(), r.getVerifiedByIp(), r.getCreated(), r.getUpdatedAt(),
                     r.getAcceptHistoryMessage(), r.getRejectHistoryMessage(),
                     r.getExpiredHistoryMessage(), r.getFailedBiometricHistoryMessage(),
-                    r.getRequest(), r.isViewed(), r.getSignature(), r.getBiometric());
+                    r.getRequest(), r.isViewed(), r.getSignature(), r.getBiometric(), r.getReferenceId(), r.getReferenceType());
             mIsChecked = isChecked;
         }
 

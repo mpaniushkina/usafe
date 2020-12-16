@@ -212,10 +212,14 @@ public class RegisteredRepositoryImpl implements RegisteredRepository {
     @Override
     public Single<TransactionClaimResponseEntity> transactionClaimComplete(TransactionClaimRequestEntity requestEntity) {
         return Single.just(requestEntity)
-                .map(entity -> new TransactionClaimCompleteRequest(entity.getReferenceId(), entity.getCompanyRegPublicKey()))
+                .map(entity -> new TransactionClaimCompleteRequest(entity.getReferenceId(), entity.getCompanyId()))
                 .flatMap(covrInterface::transactionClaimComplete)
                 .map(response -> new TransactionClaimResponseEntity(
-                        response.isValid()
+                        response.getId(),
+                        response.getUserName(),
+                        response.getCreatedDate(),
+                        getCompanyEntity(response.getMerchant()),
+                        response.getStatus()
                 ));
     }
 

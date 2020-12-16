@@ -230,7 +230,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                 this::showProgress,
                 response -> {
                     hideProgress();
-//                    addConnectionViewModel.transactionClaimComplete()
                     if (StatusEntity.ACCEPTED == response.getStatus()) {
                         onRemoveRequest(
                                 response,
@@ -243,6 +242,9 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                                 PendingRequestsAdapter.RemovalReason.REJECTED,
                                 Analytics.EVENT_REQUEST_DENY
                         );
+                    }
+                    if (response.getReferenceType().equals("Claim")) {
+                        addConnectionViewModel.transactionClaimComplete(response.getReferenceId(), response.getCompany().getId());
                     }
                 },
                 throwable -> {

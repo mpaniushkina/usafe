@@ -145,7 +145,9 @@ public class EntityMapper {
                 requestEntity,
                 transaction.isViewed(),
                 ntSignatureEntity,
-                biometricEntity
+                biometricEntity,
+                transaction.getReferenceId(),
+                transaction.getReferenceType()
         );
     }
 
