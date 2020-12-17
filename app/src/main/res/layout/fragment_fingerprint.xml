@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="fingerprintEnable"
+            type="java.lang.Boolean" />
     </data>
 
     <RelativeLayout
@@ -51,56 +55,67 @@
                 android:layout_marginTop="@dimen/ten_dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="@string/fingerprint_unlocking_app"
+                android:layout_centerVertical="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_small" />
 
-            <ImageView
-                android:id="@+id/fingerprintUnlockState"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/twenty_dp"
-                android:layout_marginTop="@dimen/thirty_dp"
-                android:layout_marginEnd="@dimen/twenty_dp"
-                android:src="@drawable/item_declined"/>
+<!--            <ImageView-->
+<!--                android:id="@+id/fingerprintUnlockState"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginStart="@dimen/twenty_dp"-->
+<!--                android:layout_marginTop="@dimen/thirty_dp"-->
+<!--                android:layout_marginEnd="@dimen/twenty_dp"-->
+<!--                android:src="@drawable/item_declined"/>-->
+
+            <Switch
+                android:id="@+id/fingerprintState"
+                style="@style/SettingsSwitchStyle"
+                android:layout_marginEnd="@dimen/ten_dp"
+                android:trackTint="@color/black"
+                android:checked="@{fingerprintEnable}"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/fingerprintAuthTransaction"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/fingerprintUnlocking"
-            android:layout_marginStart="@dimen/twenty_dp"
-            android:layout_marginTop="@dimen/twenty_dp"
-            android:layout_marginEnd="@dimen/twenty_dp"
-            android:background="@drawable/background_pending_item"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/ten_dp"
-            android:paddingBottom="@dimen/ten_dp"
-            android:visibility="gone">
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/fingerprintAuthTransaction"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/fingerprintUnlocking"-->
+<!--            android:layout_marginStart="@dimen/twenty_dp"-->
+<!--            android:layout_marginTop="@dimen/twenty_dp"-->
+<!--            android:layout_marginEnd="@dimen/twenty_dp"-->
+<!--            android:background="@drawable/background_pending_item"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:paddingTop="@dimen/ten_dp"-->
+<!--            android:paddingBottom="@dimen/ten_dp"-->
+<!--            android:visibility="gone">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/twenty_dp"
-                android:layout_marginTop="@dimen/ten_dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/fingerprint_authorizing_transactions"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_small" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentStart="true"-->
+<!--                android:layout_marginStart="@dimen/twenty_dp"-->
+<!--                android:layout_marginTop="@dimen/ten_dp"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:text="@string/fingerprint_authorizing_transactions"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="@dimen/text_small" />-->
 
-            <ImageView
-                android:id="@+id/fingerprintAuthState"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/twenty_dp"
-                android:layout_marginTop="@dimen/thirty_dp"
-                android:layout_marginEnd="@dimen/twenty_dp"
-                android:src="@drawable/item_declined" />
-        </RelativeLayout>
+<!--            -->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/fingerprintAuthState"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginStart="@dimen/twenty_dp"-->
+<!--                android:layout_marginTop="@dimen/thirty_dp"-->
+<!--                android:layout_marginEnd="@dimen/twenty_dp"-->
+<!--                android:src="@drawable/item_declined" />-->
+<!--        </RelativeLayout>-->
     </RelativeLayout>
 </layout>

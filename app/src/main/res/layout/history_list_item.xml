@@ -56,10 +56,11 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:textColor="@color/white"
+                android:layout_marginStart="@dimen/five_dp"
                 android:textSize="@dimen/text_small"
                 tools:text="21:43"
                 app:layout_constraintTop_toBottomOf="@+id/tv_history_title"
-                app:layout_constraintStart_toEndOf="@+id/tv_history_date"
+                app:layout_constraintStart_toStartOf="parent"
                 android:includeFontPadding="false"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
