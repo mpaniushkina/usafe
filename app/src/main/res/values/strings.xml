@@ -432,8 +432,8 @@
     <string name="camera_permission_declined">You should grand the permission to assess the camera</string>
     <string name="channel_description">This channel uses to receive new pending requests</string>
     <string name="channel_silent_description">This channel uses to make sure badge count is updated</string>
-
     <string name="touch_been_intercepted_alert">Your touch been intercepted! Please, check overlay apps and disable them.</string>
+    <string name="error_invalid_qr">QR code not valid, please try again.</string>
 
     <!--Forced update-->
     <string name="force_update_dialog_update_message">You are running an old version of iAM. To continue, you must first update to the latest version.</string>

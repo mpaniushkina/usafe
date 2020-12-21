@@ -48,7 +48,20 @@
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginBottom="@dimen/twenty_dp"
                 android:layout_marginStart="@dimen/twenty_dp"
-                android:lines="5"/>
+                android:lines="4"/>
+
+            <TextView
+                android:id="@+id/timerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/red_declined"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_below="@+id/transactionOverlayMessageText"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_marginBottom="@dimen/twenty_dp"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:lines="1"/>
 
         </RelativeLayout>
 

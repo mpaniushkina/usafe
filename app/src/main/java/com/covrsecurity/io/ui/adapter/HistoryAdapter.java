@@ -63,6 +63,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                 case ACTIVE:
                     holder.mNewElementIndicator.setBackground(AppAdapter.resources().getDrawable(R.drawable.ic_incoming));
                     break;
+                case FAILED_BIOMETRIC:
+                    holder.mNewElementIndicator.setBackground(AppAdapter.resources().getDrawable(R.drawable.ic_biometric_icon_failed));
+                    break;
             }
             holder.mPartnerTitle.setText(pendingRequest.getRequest() != null ? pendingRequest.getRequest().getTitle() : "");
             String date;

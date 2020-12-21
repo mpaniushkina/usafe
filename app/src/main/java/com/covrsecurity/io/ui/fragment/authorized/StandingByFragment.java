@@ -243,7 +243,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                                 Analytics.EVENT_REQUEST_DENY
                         );
                     }
-                    if (response.getReferenceType().equals("Claim")) {
+                    if (response.getReferenceType().equals(QrCodeType.CLAIM.getValue())) {
                         addConnectionViewModel.transactionClaimComplete(response.getReferenceId(), response.getCompany().getId());
                     }
                 },
@@ -413,9 +413,14 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
 
     public void receiveClaimQrCodeTransaction(Intent data) {
         final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
-        QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
-        addConnectionViewModel.verifyQrCodeClaim(qrCodeStringJson.getReference_id(), qrCodeStringJson.getExpires_at(),
-                qrCodeStringJson.getType(), qrCodeStringJson.getStatus(), qrCodeStringJson.getScopes());
+        if (qrCode.contains("reference_id")) {
+            QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
+            addConnectionViewModel.verifyQrCodeClaim(qrCodeStringJson.getReference_id(), qrCodeStringJson.getExpires_at(),
+                    qrCodeStringJson.getType(), qrCodeStringJson.getStatus(), qrCodeStringJson.getScopes());
+        } else {
+            showToast(getString(R.string.error_invalid_qr));
+        }
+
     }
 
     @Override
@@ -740,6 +745,20 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
             }
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    public enum QrCodeType {
+        CLAIM("Claim");
+
+        private String value;
+
+        QrCodeType(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
         }
     }
 }
