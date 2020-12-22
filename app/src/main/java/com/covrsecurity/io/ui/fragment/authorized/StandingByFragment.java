@@ -498,7 +498,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     @Override
     public void onPendingRequestClicked(TransactionEntity pendingTransaction) {
         onListInteractionOccured();
-        Fragment fragment = PendingDetailsFragment.newInstance(pendingTransaction);
+        Fragment fragment = PendingDetailsFragment.newInstance(pendingTransaction, mPartnershipAdapter.currentTime());
         replaceFragment(fragment, fragment.getArguments(), true);
     }
 

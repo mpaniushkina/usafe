@@ -144,12 +144,6 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                     hideProgress();
                     Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_CODE_CREATE);
                     addConnectionViewModel.getQrCodeConnection(Fields.GET_QRCODE_COMPANY_USER_ID, Fields.GET_QRCODE_TRANSACTION_ID);
-//                    if (FingerprintUtils.getInstance(getActivity()).canUseFingerprintScanner(getActivity())) {
-//                        Fragment fragment = UseFingerprintAuthFragment.newInstance(mEnteredText, registration);
-//                        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
-//                    } else {
-//                        replaceFragment(DoneSetupFragment.newInstance(registration), null, true, FragmentAnimationSet.SLIDE_LEFT);
-//                    }
                 },
                 throwable -> {
                     hideProgress();

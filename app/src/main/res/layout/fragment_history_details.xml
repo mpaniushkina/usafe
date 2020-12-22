@@ -60,14 +60,26 @@
             android:paddingStart="@dimen/twenty_dp"
             android:background="@drawable/background_pending_item">
 
+            <ImageView
+                android:id="@+id/transactionStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/twenty_dp"
+                android:layout_marginEnd="@dimen/ten_dp"
+                android:layout_alignBaseline="@+id/historyDetailsHeader"
+                android:baseline="@dimen/ten_dp"
+                android:background="@drawable/ic_biometric_icon_failed"/>
+
             <TextView
                 android:id="@+id/historyDetailsHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_small"
                 android:textColor="@color/white"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_toEndOf="@+id/transactionStatus"
                 android:layout_marginTop="@dimen/twenty_dp"
+                android:inputType="textCapCharacters"
                 android:text="@{historyFullName}" />
 
             <TextView
@@ -78,6 +90,7 @@
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_below="@+id/historyDetailsHeader"
+                android:layout_toEndOf="@+id/transactionStatus"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginBottom="@dimen/twenty_dp"
                 android:text="@{description}"/>
@@ -90,6 +103,7 @@
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_below="@+id/historyDetailsMessage"
+                android:layout_toEndOf="@+id/transactionStatus"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginBottom="@dimen/twenty_dp"
                 android:text="@{historyTime}"/>
@@ -102,6 +116,7 @@
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_below="@+id/historyTime"
+                android:layout_toEndOf="@+id/transactionStatus"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginBottom="@dimen/twenty_dp"
                 android:text="@{historyIncomingRequest}"/>
@@ -114,6 +129,7 @@
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_below="@+id/historyIncomingRequest"
+                android:layout_toEndOf="@+id/transactionStatus"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginBottom="@dimen/twenty_dp"
                 android:text="@{historyVerifiedFrom}"/>

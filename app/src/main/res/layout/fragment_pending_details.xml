@@ -101,5 +101,17 @@
                 android:text="@string/pending_request_deny"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/transactionExpireText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:layout_below="@+id/transactionButtons"
+            android:text="@string/transaction_has_expired"
+            android:textColor="@color/red_declined"
+            android:textSize="@dimen/text_small"
+            android:gravity="center"
+            android:visibility="gone"/>
     </RelativeLayout>
 </layout>

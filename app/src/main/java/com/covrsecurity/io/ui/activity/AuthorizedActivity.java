@@ -376,7 +376,8 @@ public class AuthorizedActivity extends BaseActivity<ActivityAuthorizedBinding, 
         AppAdapter.updateIconLauncherBadge();
         if (!ActivityUtils.getLastFragmentName().equals(StandingByFragment.class.getName())
                 && !ActivityUtils.getLastFragmentName().equals(LockScreenFragment.class.getName())) {
-            showToast(R.string.toast_inapp_request_timed_out);
+            //TODO Hidden according to ios, should be uncommented after qa will approve
+//            showToast(R.string.toast_inapp_request_timed_out);
         }
     }
 

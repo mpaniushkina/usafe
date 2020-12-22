@@ -96,6 +96,14 @@ public class CovrCircleTimer extends CircleTimer {
         public float startValue;
     }
 
+    public long getCurrentTime() {
+        AdaptedTime adaptedTime = new AdaptedTime();
+        long curTime = TrueTime.now().getTime();
+        long endTime = mTimerInfo.getDueTime();
+        adaptedTime.duration = endTime - curTime;
+        return adaptedTime.duration;
+    }
+
     @Override
     protected void onAnimationEnd(Animator animator) {
         SimpleDateFormat f = new SimpleDateFormat("HH:mm:ss");

@@ -270,7 +270,6 @@
     <string name="history_expired">Timed out - %1$s</string>
     <string name="history_verified">Verified - %1$s</string>
     <string name="history_denied">Denied - %1$s</string>
-
     <string name="history_status_text">%1$s - %2$s</string>
     <string name="history_default_accepted">Accepted - %1$s</string>
     <string name="history_default_cancelled">Cancelled - %1$s</string>
@@ -281,6 +280,7 @@
     <string name="history_details_verified">Verified</string>
     <string name="history_details_denied">Rejected</string>
     <string name="history_details_undefined">Undefined</string>
+    <string name="history_details_failed">Failed</string>
     <string name="history_paried">Paired - %1$s</string>
     <!--string name="history_delete_msg">All history will be deleted. Proceed?</string-->
     <string name="history_delete_msg">Do you really want to delete selected items?</string>
@@ -484,6 +484,10 @@
     <string name="biometric_subtitle">Scan your face to continue \nthe registration.</string>
     <string name="biometric_description1">Scanning your face verifies your identity and ensures that only you have access to the information.</string>
     <string name="biometric_description2">Tap the "Face Scan" button below to continue the registration process.</string>
+
+    <string name="timer_expires">\Expires in: \</string>
+    <string name="transaction_has_expired">Transaction has expired</string>
+    <string name="transaction_details_title">Transaction Details</string>
 
     <string-array name="setting_names">
         <item>About iAM</item>

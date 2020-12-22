@@ -61,6 +61,7 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
     private ItemsManager mItemManager;
     private int maxImageHeight;
     private int mActivePosition;
+    private CovrCircleTimer timer;
 
     static class PendingRequestViewHolder extends RecyclerView.ViewHolder {
 
@@ -96,6 +97,7 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
         this.mLogoView = null;
         this.mItemManager = new ItemsManager();
         maxImageHeight = (int) IamApp.getInstance().getResources().getDimension(R.dimen.max_image_height);
+        this.timer = null;
         validateEmptyViewVisibility();
         notifyRequestsCountChange();
     }
@@ -146,29 +148,12 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
                 mPendingRequestClickListener.onPendingRequestClicked(request);
             }
         });
-//        holder.mNegativeButton.setOnClickListener(v -> {
-//            if (!request.isEnabled()) {
-//                return;
-//            }
-//            request.setEnabled(false);
-//            request.setIsPosBtnActivated(false);
-//            setColorPressed(holder.mNegativeButton, true);
-//            mPendingRequestClickListener.onRejectRequestClicked(request);
-//        });
-//        holder.mPositiveButton.setOnClickListener(v -> {
-//            if (!request.isEnabled()) {
-//                return;
-//            }
-//            request.setEnabled(false);
-//            request.setIsPosBtnActivated(true);
-//            setColorPressed(holder.mPositiveButton, true);
-//            mPendingRequestClickListener.onAcceptRequestClicked(request);
-//        });
+
         if (holder.mTimer != null) {
             holder.mTimer.removeListener();
         }
 
-        CovrCircleTimer timer = CovrCircleTimer.newInstance(holder.mTimerWrapper.getContext(), new TimerInfo(request.getCreated(), request.getValidTo()));
+        timer = CovrCircleTimer.newInstance(holder.mTimerWrapper.getContext(), new TimerInfo(request.getCreated(), request.getValidTo()));
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         holder.mTimerWrapper.removeAllViews();
         holder.mTimerWrapper.addView(timer, params);
@@ -191,22 +176,6 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
         holder.mPendingTitle.setText(request.getCompany().getName());
         holder.mTimer.startAnim();
 
-//        TemplateEntity template = request.getTemplate();
-
-//        String imageName = template.getTransactionImage();
-//        if (TextUtils.isEmpty(imageName)) {
-//            imageName = template.getBackgroundImage();
-//        }
-//        String backgroundImageURL = "";
-//        if (!TextUtils.isEmpty(imageName)) {
-//            backgroundImageURL = imageName;//CDNUtils.getImageUrl(companyId, imageName);
-//        }
-//        holder.mTransactionImage.setVisibility(View.GONE);
-//        int screenWidth = getScreenWidth();
-//        if (!TextUtils.isEmpty(backgroundImageURL)) {
-//            showTransactionImage(holder.mTransactionImage, backgroundImageURL, screenWidth);
-//        }
-
         GlideApp.with(fragment)
                 .load(request.getCompany().getLogo())
                 .fitCenter()
@@ -214,23 +183,9 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
                 .into(holder.mPendingLogo);
     }
 
-//    private void showTransactionImage(ImageView imageView, String backgroundImageURL, int screenWidth) {
-//        imageView.setVisibility(View.VISIBLE);
-//        GlideApp.with(fragment)
-//                .load(backgroundImageURL)
-//                .fitCenter()
-//                .override(screenWidth, maxImageHeight)
-//                .error(R.drawable.iamlogo2x)
-//                .into(imageView);
-//    }
-
-//    private int getScreenWidth() {
-//        WindowManager wm = (WindowManager) AppAdapter.context().getSystemService(Context.WINDOW_SERVICE);
-//        Display display = wm.getDefaultDisplay();
-//        Point size = new Point();
-//        display.getSize(size);
-//        return size.x;
-//    }
+    public long currentTime() {
+        return timer.getCurrentTime();
+    }
 
     public void openTopItem() {
         mActivePosition = 0;
@@ -241,24 +196,6 @@ public class PendingRequestsAdapter extends RecyclerView.Adapter<PendingRequests
         }
         notifyDataSetChanged();
     }
-
-//    private void closePrevious(int newPosition) {
-//        int previousPosition = -1;
-//        for (int i = 0; i < mPendingRequestsList.size(); i++) {
-//            if (i == newPosition) {
-//                continue;
-//            }
-//            final ListPendingRequest pendingRequest = mPendingRequestsList.get(i);
-//            if (pendingRequest.isOpen()) {
-//                previousPosition = i;
-//                pendingRequest.setOpen(false);
-//                pendingRequest.setSmoothOpen(true);
-//            }
-//        }
-//        if (previousPosition != -1) {
-//            notifyItemChanged(previousPosition);
-//        }
-//    }
 
     @Override
     public void onViewDetachedFromWindow(PendingRequestViewHolder holder) {

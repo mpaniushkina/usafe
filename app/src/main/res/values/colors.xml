@@ -10,7 +10,9 @@
     <color name="dark_blue_bg">#2e3b4c</color>
     <color name="dark_bg">#212934</color>
     <color name="green_approved">#41b26c</color>
+    <color name="green_alpha_50">#8041b26c</color>
     <color name="red_declined">#c44562</color>
+    <color name="red_alpha_50">#80c44562</color>
     <color name="light_tealish_1">#71B5A4</color> <!-- 3 -->
     <color name="light_tealish_2">#ECFBF5</color> <!-- 4 -->
     <color name="light_tealish_3">#EEFAF5</color> <!-- 5 -->
