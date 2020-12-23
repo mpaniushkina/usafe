@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -60,15 +61,18 @@
             android:paddingStart="@dimen/twenty_dp"
             android:background="@drawable/background_pending_item">
 
-            <ImageView
+            <View
                 android:id="@+id/transactionStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/twenty_dp"
-                android:layout_marginEnd="@dimen/ten_dp"
-                android:layout_alignBaseline="@+id/historyDetailsHeader"
-                android:baseline="@dimen/ten_dp"
-                android:background="@drawable/ic_biometric_icon_failed"/>
+                android:layout_width="@dimen/new_element_indicator_diameter"
+                android:layout_height="@dimen/new_element_indicator_diameter"
+                android:layout_marginEnd="@dimen/fiveteen_dp"
+                android:layout_marginTop="@dimen/five_dp"
+                android:layout_marginStart="@dimen/five_dp"
+                android:layout_alignTop="@+id/historyDetailsHeader"
+                android:background="@drawable/ic_completed"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/historyDetailsHeader"
@@ -79,8 +83,8 @@
                 android:fontFamily="@font/poppins_bold"
                 android:layout_toEndOf="@+id/transactionStatus"
                 android:layout_marginTop="@dimen/twenty_dp"
-                android:inputType="textCapCharacters"
-                android:text="@{historyFullName}" />
+                android:text="@{historyFullName}"
+                tools:text="iAM"/>
 
             <TextView
                 android:id="@+id/historyDetailsMessage"
@@ -91,7 +95,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:layout_below="@+id/historyDetailsHeader"
                 android:layout_toEndOf="@+id/transactionStatus"
-                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_marginTop="@dimen/five_dp"
                 android:layout_marginBottom="@dimen/twenty_dp"
                 android:text="@{description}"/>
 
@@ -104,7 +108,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:layout_below="@+id/historyDetailsMessage"
                 android:layout_toEndOf="@+id/transactionStatus"
-                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_marginTop="@dimen/five_dp"
                 android:layout_marginBottom="@dimen/twenty_dp"
                 android:text="@{historyTime}"/>
 
@@ -117,7 +121,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:layout_below="@+id/historyTime"
                 android:layout_toEndOf="@+id/transactionStatus"
-                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_marginTop="@dimen/five_dp"
                 android:layout_marginBottom="@dimen/twenty_dp"
                 android:text="@{historyIncomingRequest}"/>
 
@@ -130,7 +134,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:layout_below="@+id/historyIncomingRequest"
                 android:layout_toEndOf="@+id/transactionStatus"
-                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_marginTop="@dimen/five_dp"
                 android:layout_marginBottom="@dimen/twenty_dp"
                 android:text="@{historyVerifiedFrom}"/>
         </RelativeLayout>

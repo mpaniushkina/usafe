@@ -3,11 +3,11 @@ package com.covrsecurity.io.domain.entity.response;
 import com.covrsecurity.io.domain.entity.CompanyEntity;
 
 public class TransactionClaimResponseEntity {
-    private  String id;
-    private  String userName;
-    private  String createdDate;
+    private String id;
+    private String userName;
+    private String createdDate;
     private CompanyEntity merchant;
-    private  String status;
+    private String status;
 
     public TransactionClaimResponseEntity(String id, String userName, String createdDate, CompanyEntity merchant, String status) {
         this.id = id;

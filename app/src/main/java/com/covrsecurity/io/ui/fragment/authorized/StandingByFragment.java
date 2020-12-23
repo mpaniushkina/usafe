@@ -317,7 +317,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                     hideProgress();
                     Timber.e("" + throwable);
                     Timber.e(throwable);
-                    showErrToast(throwable);
                 }
         ));
     }
@@ -445,10 +444,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     private boolean isCameraPermissionsGranted() {
         return ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private void requestCameraPermissions() {
-        ActivityCompat.requestPermissions(getActivity(), ConstantsUtils.CAMERA_PERMISSION, ConstantsUtils.CAMERA_REQUEST_CODE);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.covrsecurity.io.ui.fragment.authorized;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -109,6 +110,7 @@ public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDeta
         }
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void setUpViews(TransactionEntity pendingTransaction) {
         if (pendingTransaction != null && getActivity() != null) {
             mBinding.setHistoryFullName(pendingTransaction.getCompany().getName());
@@ -126,20 +128,24 @@ public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDeta
             switch (pendingTransaction.getStatus()) {
                 case ACCEPTED:
                     mBinding.statusApproved.setVisibility(View.VISIBLE);
-                    mBinding.transactionStatus.setImageResource(R.drawable.ic_completed);
+                    mBinding.transactionStatus.setVisibility(View.VISIBLE);
+                    mBinding.transactionStatus.setBackground(AppAdapter.resources().getDrawable(R.drawable.ic_completed));
                     break;
                 case REJECTED:
                     mBinding.statusDeclined.setVisibility(View.VISIBLE);
-                    mBinding.transactionStatus.setImageResource(R.drawable.ic_failed);
+                    mBinding.transactionStatus.setVisibility(View.VISIBLE);
+                    mBinding.transactionStatus.setBackground(AppAdapter.resources().getDrawable(R.drawable.ic_failed));
                     break;
                 case EXPIRED:
                     mBinding.statusExpired.setVisibility(View.VISIBLE);
-                    mBinding.transactionStatus.setImageResource(R.drawable.ic_failed);
+                    mBinding.transactionStatus.setVisibility(View.VISIBLE);
+                    mBinding.transactionStatus.setBackground(AppAdapter.resources().getDrawable(R.drawable.ic_failed));
                     break;
                 case FAILED_BIOMETRIC:
                     mBinding.statusDeclined.setVisibility(View.VISIBLE);
                     mBinding.statusDeclined.setText(getString(R.string.history_details_failed));
-                    mBinding.transactionStatus.setImageResource(R.drawable.ic_biometric_icon_failed);
+                    mBinding.transactionStatus.setVisibility(View.VISIBLE);
+                    mBinding.transactionStatus.setBackground(AppAdapter.resources().getDrawable(R.drawable.ic_biometric_icon_failed));
                     break;
 
             }

@@ -82,13 +82,6 @@ public class UnregisteredRepositoryImpl implements UnregisteredRepository {
                 .flatMapCompletable(covrInterface::getQrCode);
     }
 
-//    @Override
-//    public Single<QrCodeConnectionResponse> getQrCode(QrCodeConnectionRequestEntity requestEntity) {
-//        return Single.just(requestEntity)
-//                .map(request -> new QrCodeConnectionRequest(request.getCompanyUserId(), request.getTransactionId()))
-//                .flatMap(covrInterface::getQrCode);
-//    }
-
     @Override
     public Completable setUpPassword(SetUpPasswordRequestEntity requestEntity) {
         return Single.just(requestEntity)

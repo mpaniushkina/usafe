@@ -109,14 +109,6 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                 response -> {
                     hideProgress();
                     startAuthorizedActivity(true);
-//                    ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
-//                    replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
-//                    if (FingerprintUtils.getInstance(getActivity()).canUseFingerprintScanner(getActivity())) {
-//                        Fragment fragment = UseFingerprintAuthFragment.newInstance(mEnteredText, registration);
-//                        replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
-//                    } else {
-//                        replaceFragment(DoneSetupFragment.newInstance(registration), null, true, FragmentAnimationSet.SLIDE_LEFT);
-//                    }
                 },
                 throwable -> {
                     hideProgress();
@@ -237,8 +229,6 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
                     goToVerifyPage();
                 } else if (isRegister && Arrays.equals(mBinding.personCodeLL.getEnteredText(), mEnteredText)) {
                      viewModel.register(mBinding.personCodeLL.getEnteredText(), true);
-//                    ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
-//                    replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
                 } else if (!isRegister) {
                     viewModel.setUpPassword(mEnteredText, true);
                 }
@@ -271,10 +261,7 @@ public class CreatePersonalCodeFragment extends EnterPersonalCodeFragment {
             goToVerifyPage();
         } else if (isRegister && Arrays.equals(mBinding.personCodeLL.getEnteredText(), mEnteredText)) {
             viewModel.register(mBinding.personCodeLL.getEnteredText(), true);
-//            ScanFaceBiometricsFragment fragment = ScanFaceBiometricsFragment.newInstance(mEnteredText);
-//            replaceFragment(fragment, fragment.getArguments(), true, FragmentAnimationSet.SLIDE_LEFT);
         } else if (!isRegister) {
-            // todo Analytics.logEvent
             viewModel.setUpPassword(mEnteredText, true);
         }
     }
