@@ -1,11 +1,13 @@
 package com.covrsecurity.io.ui.fragment.authorized;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -104,10 +106,12 @@ public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDeta
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @SuppressLint("UseCompatLoadingForDrawables")
     private void setUpViews(TransactionEntity pendingTransaction) {
         if (pendingTransaction != null && getActivity() != null) {
             mBinding.setHistoryFullName(pendingTransaction.getCompany().getName());
+            mBinding.historyDetailsHeader.setTextAppearance(R.style.BoldText);
             final String status = StatusUtils.getStatusText(getActivity(), pendingTransaction);
             mBinding.setHistoryStatus(status);
             mBinding.historyDetailsTitle.setText(pendingTransaction.getRequest().getTitle());

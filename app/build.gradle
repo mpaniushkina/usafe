@@ -128,17 +128,13 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation "androidx.legacy:legacy-support-v13:$global.androidxVer"
     implementation "androidx.legacy:legacy-support-v4:$global.androidxVer"
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation "com.google.android.material:material:$global.androidxVer"
     implementation "androidx.annotation:annotation:$global.androidxVer"
     implementation "androidx.work:work-runtime:$global.work_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
     // dagger
-//    implementation "com.google.dagger:dagger:$global.daggerVer"
-//    implementation "com.google.dagger:dagger-android-support:$global.daggerVer"
-//    annotationProcessor "com.google.dagger:dagger-compiler:$global.daggerVer"
-    //    annotationProcessor "com.google.dagger:dagger-android-processor:$global.daggerVer"
     implementation "com.google.dagger:dagger-android-support:2.22.1"
     implementation "com.google.dagger:dagger:2.23.2"
     annotationProcessor "com.google.dagger:dagger-compiler:2.22.1"

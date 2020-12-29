@@ -2,6 +2,7 @@ package com.covrsecurity.io.ui.fragment.authorized;
 
 import android.animation.Animator;
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.covrsecurity.io.R;
@@ -63,6 +65,7 @@ public class PendingDetailsFragment extends BaseFragment<FragmentPendingDetailsB
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onViewCreated(@NotNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -71,6 +74,7 @@ public class PendingDetailsFragment extends BaseFragment<FragmentPendingDetailsB
         LinearLayout backButton = view.findViewById(R.id.tool_left_button);
         backButton.setOnClickListener((v) -> onBackPressed());
         mBinding.pendingCompany.setText(transactionDetails.getCompany().getName());
+        mBinding.pendingCompany.setTextAppearance(R.style.BoldText);
         mBinding.pendingTitle.setText(transactionDetails.getRequest().getTitle());
         mBinding.transactionOverlayMessageText.setText(transactionDetails.getRequest().getMessage());
         mBinding.positiveButton.setText(transactionDetails.getRequest().getAccept().length() > 0 ?

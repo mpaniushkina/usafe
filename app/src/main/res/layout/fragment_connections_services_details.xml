@@ -55,11 +55,11 @@
 
                     <TextView
                         android:id="@+id/companyName"
+                        android:textAppearance="@style/BoldText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/twenty_dp"
                         android:layout_marginTop="@dimen/twenty_dp"
-                        android:fontFamily="@font/poppins_bold"
                         android:lines="1"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_small"
@@ -70,9 +70,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/companyName"
+                        android:fontFamily="@font/poppins_medium"
                         android:layout_marginStart="@dimen/twenty_dp"
                         android:layout_marginTop="@dimen/twenty_dp"
-                        android:fontFamily="@font/poppins_medium"
                         android:lines="1"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_small"

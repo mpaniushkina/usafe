@@ -106,32 +106,6 @@
                 android:layout_toEndOf="@+id/transactionStatus"
                 android:layout_marginTop="@dimen/five_dp"
                 tools:text="Message"/>
-
-<!--            <TextView-->
-<!--                android:id="@+id/historyIncomingRequest"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textSize="@dimen/text_small"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:fontFamily="@font/poppins_regular"-->
-<!--                android:layout_below="@+id/historyTime"-->
-<!--                android:layout_toEndOf="@+id/transactionStatus"-->
-<!--                android:layout_marginTop="@dimen/five_dp"-->
-<!--                android:layout_marginBottom="@dimen/twenty_dp"-->
-<!--                android:text="@{historyIncomingRequest}"/>-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/historyVerifiedFrom"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textSize="@dimen/text_small"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:fontFamily="@font/poppins_regular"-->
-<!--                android:layout_below="@+id/historyIncomingRequest"-->
-<!--                android:layout_toEndOf="@+id/transactionStatus"-->
-<!--                android:layout_marginTop="@dimen/five_dp"-->
-<!--                android:layout_marginBottom="@dimen/twenty_dp"-->
-<!--                android:text="@{historyVerifiedFrom}"/>-->
         </RelativeLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

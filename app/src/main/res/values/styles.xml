@@ -249,6 +249,18 @@
         <item name="android:textColor">@color/text_color_gray</item>
     </style>
 
+    <style name="BoldText">
+        <item name="fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="MediumText">
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="RegularText">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
     <style name="RecyclerViewEdgeColor">
         <item name="colorPrimary">@color/white</item>
     </style>

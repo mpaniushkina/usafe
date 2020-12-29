@@ -3,10 +3,12 @@ package com.covrsecurity.io.ui.fragment.authorized;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -73,6 +75,7 @@ public class PartnershipDetailsFragment extends FromMenuFragment<FragmentConnect
         return false;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
@@ -84,6 +87,7 @@ public class PartnershipDetailsFragment extends FromMenuFragment<FragmentConnect
                     .error(R.drawable.iamlogo2x)
                     .into(mBinding.connectionLogo);
             mBinding.companyName.setText(mPartnership.getCompany().getName());
+            mBinding.companyName.setTextAppearance(R.style.BoldText);
             mBinding.companyWebSite.setText(getString(R.string.service_company, mPartnership.getCompany().getWebsiteUrl()));
             mBinding.companyWebSite.setOnClickListener(view -> startBrowser(mPartnership.getCompany().getWebsiteUrl()));
             mBinding.companyDate.setText(getString(R.string.date_added, (mPartnership.getCreatedDate() == 0

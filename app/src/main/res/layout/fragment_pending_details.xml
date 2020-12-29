@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_small"
                 android:textColor="@color/white"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/poppins_medium"
                 android:layout_below="@+id/pendingTitle"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginBottom="@dimen/ten_dp"
