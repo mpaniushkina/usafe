@@ -14,25 +14,25 @@ android {
         maven { url "https://jitpack.io" }
         maven { url 'https://maven.fabric.io/public' }
 
-//        maven {
-//            url "s3://hvsdk/android/releases"
-//            credentials(AwsCredentials) {
-//                accessKey "AKIAIIQJNVDGKVQWN62Q"
-//                secretKey "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"
-//            }
-//        }
+        maven {
+            url "s3://hvsdk/android/releases"
+            credentials(AwsCredentials) {
+                accessKey "AKIAIIQJNVDGKVQWN62Q"
+                secretKey "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"
+            }
+        }
 
+    }
+
+    compileOptions {
+        sourceCompatibility global.javacCompatibility
+        targetCompatibility global.javacCompatibility
     }
 
 //    compileOptions {
-//        sourceCompatibility global.javacCompatibility
-//        targetCompatibility global.javacCompatibility
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
 //    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 
     defaultConfig {
         applicationId "${APPLICATION_ID}"
@@ -155,8 +155,10 @@ dependencies {
     implementation 'com.google.android.gms:play-services-base:17.4.0'
     implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
     //    firebase
-    implementation 'com.google.firebase:firebase-core:17.2.0'
-    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.google.firebase:firebase-core:18.0.0'
+    implementation 'com.google.firebase:firebase-messaging:21.0.1'
+    implementation 'com.google.firebase:firebase-analytics'
+//    implementation 'com.google.firebase:firebase-bom:26.2.0'
     //    core
     implementation "io.reactivex.rxjava2:rxandroid:$global.rxandroidVer"
     implementation "io.reactivex.rxjava2:rxjava:$global.rxjavaVer"

@@ -1,12 +1,9 @@
 package com.covrsecurity.io.ui.adapter;
 
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,7 +11,6 @@ import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.app.GlideApp;
 import com.covrsecurity.io.domain.entity.MerchantEntity;
-import com.covrsecurity.io.domain.entity.StatusEntity;
 import com.covrsecurity.io.ui.component.IPartnershipClickListener;
 
 import java.util.ArrayList;
@@ -22,9 +18,6 @@ import java.util.List;
 
 import timber.log.Timber;
 
-/**
- * Created by alex on 2.5.16.
- */
 public class PartnershipAdapter extends RecyclerView.Adapter<PartnershipAdapter.PartnershipViewHolder> {
 
     private List<MerchantEntity> mPartnershipsList;
@@ -43,7 +36,7 @@ public class PartnershipAdapter extends RecyclerView.Adapter<PartnershipAdapter.
 
         @Override
         public void onClick(View view) {
-            if (mPartnershipClickListener != null) mPartnershipClickListener.onPartnershipClicked(partnership);
+            if (mPartnershipClickListener != null) mPartnershipClickListener.onPartnershipClicked(mPartnershipsList.get(getAdapterPosition()));
         }
     }
 
@@ -63,17 +56,6 @@ public class PartnershipAdapter extends RecyclerView.Adapter<PartnershipAdapter.
             Timber.e("setData: partnershipsList == null!");
         }
         notifyDataSetChanged();
-    }
-
-    private boolean isPartnershipAlreadyExist(MerchantEntity partnershipToAdd) {
-        if (mPartnershipsList != null && !mPartnershipsList.isEmpty()) {
-            for (MerchantEntity partnership : mPartnershipsList) {
-                if (partnership.getId().equals(partnershipToAdd.getId())) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     @Override

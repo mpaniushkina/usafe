@@ -75,27 +75,6 @@ public class PartnershipDetailsFragment extends FromMenuFragment<FragmentConnect
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-//        viewModel.markConnectionAsViewedLiveData.observe(this, new BaseObserver<>(
-//                null,
-//                response -> {
-//                    Timber.d("merchant successfully marked as viewed");
-//                    AppAdapter.markPartnershipAsViewed(mPartnership.getId());
-//                },
-//                throwable -> {
-//                    Timber.d("error marking merchant as viewed");
-//                    if (throwable != null && ConnectException.class.equals(throwable.getClass())) {
-//                        showNoInternetDialog();
-//                    }
-//                }
-//        ));
-//        if (!mPartnership.getCompany().isViewed()) {
-//            viewModel.markConnectionAsViewed(mPartnership.getCompany().getCompanyId());
-//        }
-    }
-
-    @Override
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
         getPartnership();
@@ -106,13 +85,10 @@ public class PartnershipDetailsFragment extends FromMenuFragment<FragmentConnect
                     .error(R.drawable.iamlogo2x)
                     .into(mBinding.connectionLogo);
             mBinding.companyName.setText(mPartnership.getCompany().getName());
-            mBinding.companyWebSite.setText(mPartnership.getCompany().getWebsiteUrl());
+            mBinding.companyWebSite.setText(getString(R.string.service_company, mPartnership.getCompany().getWebsiteUrl()));
             mBinding.companyWebSite.setOnClickListener(view -> startBrowser(mPartnership.getCompany().getWebsiteUrl()));
-            mBinding.companyDate.setText(mPartnership.getCreatedDate() == 0
-                    ? getString(R.string.history_details_not_available) : DateTimeUtils.getFormattedTime(new DateTime(mPartnership.getCreatedDate())));
-//            boolean isActive = mPartnership.getCompany().isActive();
-//            mBinding.setPartnerStatus(isActive ? getString(R.string.company_status_active) :
-//                    getString(R.string.company_status_inactive));
+            mBinding.companyDate.setText(getString(R.string.date_added, (mPartnership.getCreatedDate() == 0
+                    ? getString(R.string.history_details_not_available) : DateTimeUtils.getFormattedTime(new DateTime(mPartnership.getCreatedDate())))));
         }
     }
 

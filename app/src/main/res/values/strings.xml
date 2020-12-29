@@ -185,7 +185,7 @@
     <string name="my_account">My Account</string>
     <string name="settings_cancel">Cancel</string>
     <string name="change_pin_title">Change pin</string>
-    <string name="connected_services_title">Connected services</string>
+    <string name="connected_services_title">Connected Services</string>
     <string name="settings_change_personal_code">Change PIN Code</string>
     <string name="settings_use_fingerprint">Use fingerprint</string>
     <string name="settings_notification">Notifications</string>
@@ -206,9 +206,9 @@
     <string name="settings_change_password_error_dialog_text">Please, try from the beginning</string>
     <string name="settings_personal_code_input">PIN Code input</string>
     <string name="settings_personal_code_input_help">Choose if you want tactile and/or audio feedback when entering your PIN Code.</string>
-    <string name="settings_inapp_notifications">In-app Notifications</string>
+    <string name="settings_inapp_notifications">In-App Notifications</string>
     <string name="in_app_notifications_for">In-App Notifications for</string>
-    <string name="settings_inapp_notifications_help">In-app notifications are used when you are in iAM application and you are receiving or responding to requests.</string>
+    <string name="settings_inapp_notifications_help">In-App notifications are used when you are in iAM application and you are receiving or responding to requests.</string>
     <string name="settings_inapp_incomin_request_sound">Incoming request sound</string>
     <string name="settings_inapp_incoming_request_vibration">Incoming request vibration</string>
     <string name="settings_inapp_request_response_sound">Request response sound</string>
@@ -267,18 +267,18 @@
     <string name="history_info">There are currently no transactions in your history. As you respond to Covr requests, they will appear here.</string>
     <string name="all">All</string>
     <string name="timed_out">Timed out</string>
-    <string name="history_expired">Timed out - %1$s</string>
+    <string name="history_expired">Expired - %1$s</string>
     <string name="history_verified">Verified - %1$s</string>
     <string name="history_denied">Denied - %1$s</string>
     <string name="history_status_text">%1$s - %2$s</string>
     <string name="history_default_accepted">Accepted - %1$s</string>
     <string name="history_default_cancelled">Cancelled - %1$s</string>
-    <string name="history_details_accepted">Accepted</string>
+    <string name="history_details_accepted">Approved</string>
     <string name="history_details_cancelled">Cancelled</string>
-    <string name="history_details_expired">Timed Out</string>
-    <string name="history_details_failed_biometric">Biometric failed</string>
+    <string name="history_details_expired">Expired</string>
+    <string name="history_details_failed_biometric">Failed</string>
     <string name="history_details_verified">Verified</string>
-    <string name="history_details_denied">Rejected</string>
+    <string name="history_details_denied">Declined</string>
     <string name="history_details_undefined">Undefined</string>
     <string name="history_details_failed">Failed</string>
     <string name="history_paried">Paired - %1$s</string>
@@ -289,7 +289,7 @@
     <string name="history_unselect_all">Unselect all</string>
 
     <!-- history details -->
-    <string name="history_details_title">History details</string>
+    <string name="history_details_title">History Details</string>
     <string name="history_details_sharing_subject">COVR: %1$s - %2$s</string>
     <string name="history_details_verification_type">verification type</string>
     <string name="history_details_description">description</string>
@@ -306,7 +306,7 @@
     <string name="expired_status">Expired</string>
 
     <!-- connected services -->
-    <string name="services_details_title">Service details</string>
+    <string name="services_details_title">Service Details</string>
 
     <!-- add partnership -->
     <string name="add_partnership_title">Add new connection</string>
@@ -315,6 +315,8 @@
     <string name="add_partnership_pairing_successful">You are now able to receive verification requests from:\n %s</string>
     <string name="add_partnership_pairing_failed_title">Pairing failed!</string>
     <string name="add_partnership_pairing_failed">Something went wrong while trying to verify your Partnership. Please try entering your pairing code again or contact customer support.</string>
+    <string name="date_added">Date Added: %1$s</string>
+    <string name="service_company">Company: %1$s</string>
 
     <!-- toasts -->
     <string name="toast_inapp_new_request">You just received a new request</string>

@@ -59,20 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/twenty_dp"
                         android:layout_marginTop="@dimen/twenty_dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:lines="1"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_small"
-                        tools:text="Authentication at n\Testsite.com" />
-
-                    <TextView
-                        android:id="@+id/companyWebSite"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/companyName"
-                        android:layout_marginStart="@dimen/twenty_dp"
-                        android:layout_marginTop="@dimen/five_dp"
-                        android:fontFamily="@font/poppins_medium"
+                        android:fontFamily="@font/poppins_bold"
                         android:lines="1"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_small"
@@ -82,15 +69,27 @@
                         android:id="@+id/companyDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/companyWebSite"
+                        android:layout_below="@+id/companyName"
                         android:layout_marginStart="@dimen/twenty_dp"
-                        android:layout_marginTop="@dimen/ten_dp"
-                        android:layout_marginBottom="@dimen/twenty_dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:lines="5"
+                        android:layout_marginTop="@dimen/twenty_dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:lines="1"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_small"
                         tools:text="Date: yyyy-mm-dd" />
+
+                    <TextView
+                        android:id="@+id/companyWebSite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/companyDate"
+                        android:layout_marginStart="@dimen/twenty_dp"
+                        android:layout_marginTop="@dimen/ten_dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:lines="5"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_small"
+                        tools:text="Company: test.com" />
                 </RelativeLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout

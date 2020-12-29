@@ -50,7 +50,6 @@ task clean(type: Delete) {
 }
 
 def env = System.getenv()
-//to delete when receive creeds from jenkins
 def number = 3 // env['BUILD_NUMBER']
 def final_number = number as Integer ?: 1
 def param_version_name = "2.1" // env['version_name']

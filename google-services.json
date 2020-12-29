@@ -1,9 +1,8 @@
 {
   "project_info": {
-    "project_number": "196224125385",
-    "firebase_url": "https://covr-mobile-app.firebaseio.com",
-    "project_id": "covr-mobile-app",
-    "storage_bucket": "covr-mobile-app.appspot.com"
+    "project_number": "1090720326412",
+    "project_id": "apppaniushkina",
+    "storage_bucket": "apppaniushkina.appspot.com"
   },
   "client": [
     {
@@ -15,28 +14,21 @@
       },
       "oauth_client": [
         {
-          "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
+          "client_id": "1090720326412-9pr73l2qln9sfe4l13s9prk3n009a8av.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCw1UpHlj4neT6PTfistogwq6sD-P-uYJc"
+          "current_key": "AIzaSyCJZuJgP9J3HzaDXcQVlYT_cDR3nnx-wu8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
+              "client_id": "1090720326412-9pr73l2qln9sfe4l13s9prk3n009a8av.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "196224125385-uqk53k9r85kdcini2qnj5s370jnu3lr2.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.iamglobalid.test"
-              }
             }
           ]
         }
