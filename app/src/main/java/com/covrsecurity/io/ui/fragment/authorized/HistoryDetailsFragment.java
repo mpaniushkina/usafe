@@ -2,7 +2,6 @@ package com.covrsecurity.io.ui.fragment.authorized;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -12,17 +11,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
-import com.covrsecurity.io.app.GlideApp;
 import com.covrsecurity.io.databinding.FragmentHistoryDetailsBinding;
 import com.covrsecurity.io.domain.entity.TransactionEntity;
 import com.covrsecurity.io.ui.fragment.FromMenuFragment;
-import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment;
 import com.covrsecurity.io.ui.viewmodel.base.observer.BaseObserver;
 import com.covrsecurity.io.ui.viewmodel.historydetails.HistoryDetailsViewModel;
 import com.covrsecurity.io.ui.viewmodel.historydetails.HistoryDetailsViewModelFactory;
 import com.covrsecurity.io.utils.DateTimeUtils;
 import com.covrsecurity.io.utils.DialogUtils;
-import com.covrsecurity.io.utils.EmailUtils;
 import com.covrsecurity.io.utils.StatusUtils;
 
 import org.joda.time.DateTime;
@@ -30,8 +26,6 @@ import org.joda.time.DateTime;
 import java.net.ConnectException;
 
 import javax.inject.Inject;
-
-import static com.covrsecurity.io.domain.entity.StatusEntity.ACCEPTED;
 
 public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDetailsBinding, HistoryDetailsViewModel> {
 
@@ -114,17 +108,12 @@ public class HistoryDetailsFragment extends FromMenuFragment<FragmentHistoryDeta
     private void setUpViews(TransactionEntity pendingTransaction) {
         if (pendingTransaction != null && getActivity() != null) {
             mBinding.setHistoryFullName(pendingTransaction.getCompany().getName());
-            mBinding.setHistoryIncomingRequest(AppAdapter.resources().getString(
-                    R.string.history_details_not_available));
-            mBinding.setHistoryVerifiedFrom(TextUtils.isEmpty(pendingTransaction.getVerifiedByIp())
-                    ? AppAdapter.resources().getString(R.string.history_details_not_available)
-                    : pendingTransaction.getVerifiedByIp());
             final String status = StatusUtils.getStatusText(getActivity(), pendingTransaction);
             mBinding.setHistoryStatus(status);
-            mBinding.setDescription(StatusUtils.getHistoryText(getActivity(), pendingTransaction));
+            mBinding.historyDetailsTitle.setText(pendingTransaction.getRequest().getTitle());
+            mBinding.historyDetailsMessage.setText(pendingTransaction.getRequest().getMessage());
             String time = DateTimeUtils.getFormattedTime(new DateTime(pendingTransaction.getCreated()));
             mBinding.setHistoryTime(time);
-            mBinding.setHistoryVerificationType(pendingTransaction.getRequest().getTitle());
             switch (pendingTransaction.getStatus()) {
                 case ACCEPTED:
                     mBinding.statusApproved.setVisibility(View.VISIBLE);

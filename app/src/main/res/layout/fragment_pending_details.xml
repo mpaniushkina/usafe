@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
     </data>
@@ -27,15 +28,27 @@
             android:background="@drawable/background_pending_item">
 
             <TextView
+                android:id="@+id/pendingCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/twenty_dp"
+                tools:text="iAM" />
+
+            <TextView
                 android:id="@+id/pendingTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_small"
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins_medium"
+                android:layout_below="@+id/pendingCompany"
                 android:layout_marginStart="@dimen/twenty_dp"
                 android:layout_marginTop="@dimen/twenty_dp"
-                android:lines="2" />
+                tools:text="Claim your identity"/>
 
             <TextView
                 android:id="@+id/transactionOverlayMessageText"
@@ -46,9 +59,9 @@
                 android:fontFamily="@font/poppins_regular"
                 android:layout_below="@+id/pendingTitle"
                 android:layout_marginTop="@dimen/ten_dp"
-                android:layout_marginBottom="@dimen/twenty_dp"
+                android:layout_marginBottom="@dimen/ten_dp"
                 android:layout_marginStart="@dimen/twenty_dp"
-                android:lines="4"/>
+                tools:text="Some message"/>
 
             <TextView
                 android:id="@+id/timerText"
@@ -61,7 +74,7 @@
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginBottom="@dimen/twenty_dp"
                 android:layout_marginStart="@dimen/twenty_dp"
-                android:lines="1"/>
+                tools:text="Expired:"/>
 
         </RelativeLayout>
 

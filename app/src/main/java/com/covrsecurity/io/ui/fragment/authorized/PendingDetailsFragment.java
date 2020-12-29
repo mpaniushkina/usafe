@@ -70,10 +70,11 @@ public class PendingDetailsFragment extends BaseFragment<FragmentPendingDetailsB
         titleView.setText(R.string.transaction_details_title);
         LinearLayout backButton = view.findViewById(R.id.tool_left_button);
         backButton.setOnClickListener((v) -> onBackPressed());
+        mBinding.pendingCompany.setText(transactionDetails.getCompany().getName());
         mBinding.pendingTitle.setText(transactionDetails.getRequest().getTitle());
         mBinding.transactionOverlayMessageText.setText(transactionDetails.getRequest().getMessage());
         mBinding.positiveButton.setText(transactionDetails.getRequest().getAccept().length() > 0 ?
-                transactionDetails.getRequest().getAccept() : getString(R.string.pending_request_verify));
+                transactionDetails.getRequest().getAccept() : getString(R.string.approve_btn));
         mBinding.negativeButton.setText(transactionDetails.getRequest().getReject().length() > 0 ?
                 transactionDetails.getRequest().getReject() : getString(R.string.pending_request_deny));
         mBinding.timerText.setVisibility(View.VISIBLE);
