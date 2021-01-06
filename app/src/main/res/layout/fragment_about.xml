@@ -86,7 +86,7 @@
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginBottom="@dimen/forty_eight_dp"
                 android:layout_marginStart="@dimen/twenty_dp"
-                android:text="@string/about_date"/>
+                android:text="@string/about_cover_update_status_ok"/>
 
         </LinearLayout>
 

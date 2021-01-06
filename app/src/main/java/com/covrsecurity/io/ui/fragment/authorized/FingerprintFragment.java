@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import com.covrsecurity.io.R;
 import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.databinding.FragmentFingerprintBinding;
+import com.covrsecurity.io.manager.Analytics;
 import com.covrsecurity.io.ui.fragment.BaseFragment;
 import com.covrsecurity.io.ui.fragment.authorized.codechange.ChangeCodeFragment;
 import com.covrsecurity.io.utils.FingerprintUtils;
@@ -61,6 +62,7 @@ public class FingerprintFragment extends BaseFragment<FragmentFingerprintBinding
                 mBinding.setFingerprintEnable(true);
                 Fragment fragment = ChangeCodeFragment.newInstance(true, true);
                 replaceFragment(fragment, fragment.getArguments(), true);
+                Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_USE_BIOMETRIC);
             } else if (mReadyToUseFingerprintScanner) {
                 AppAdapter.settings().setUseFingerprintAuth(false);
                 fingerprintAuthUses = false;

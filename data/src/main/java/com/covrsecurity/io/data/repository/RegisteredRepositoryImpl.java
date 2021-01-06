@@ -224,6 +224,16 @@ public class RegisteredRepositoryImpl implements RegisteredRepository {
     }
 
     @Override
+    public Single<QrCodeClaimResponseEntity> reuseQrCode(QrCodeClaimRequestEntity requestEntity) {
+        return Single.just(requestEntity)
+                .map(entity -> new QrCodeClaimRequest(entity.getReference_id(), entity.getExpires_at(), entity.getType(), entity.getStatus(), entity.getScopes()))
+                .flatMap(covrInterface::reuseQrCode)
+                .map(response -> new QrCodeClaimResponseEntity(
+                        response.isValid()
+                ));
+    }
+
+    @Override
     public Single<PostQrCodeResponseEntity> addConnection(PostQrCodeRequestEntity requestEntity) {
         return Single.just(requestEntity)
                 .map(entity -> new PostQrCodeRequest(entity.getQrCodeString()))

@@ -476,6 +476,7 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
 
     private void useWeakPin() {
         changeItem(RE_NEW_CODE_PAGE);
+        Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_USE_WEAK_PIN);
     }
 
     private void chooseNewPin() {

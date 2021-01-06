@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.covrsecurity.io.R;
+import com.covrsecurity.io.app.AppAdapter;
 import com.covrsecurity.io.databinding.FragmentWizardScreensBinding;
+import com.covrsecurity.io.manager.Analytics;
 import com.covrsecurity.io.ui.adapter.WizardPagerAdapter;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
 import com.viewpagerindicator.CirclePageIndicator;
@@ -87,6 +89,9 @@ public class WizardFragment extends BaseUnauthorizedFragment<FragmentWizardScree
                 replaceFragment(f, f.getArguments(), true, FragmentAnimationSet.FADE_IN);
             }
         });
-        mBinding.skip.setOnClickListener(view1 -> pager.setCurrentItem(items.length - 1));
+        mBinding.skip.setOnClickListener(view1 -> {
+            pager.setCurrentItem(items.length - 1);
+            Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_SKIP_TUTORIAL);
+        });
     }
 }

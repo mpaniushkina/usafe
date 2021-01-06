@@ -1,8 +1,8 @@
 {
   "project_info": {
-    "project_number": "1090720326412",
-    "project_id": "apppaniushkina",
-    "storage_bucket": "apppaniushkina.appspot.com"
+    "project_number": "281717164213",
+    "project_id": "iam-grogo",
+    "storage_bucket": "iam-grogo.appspot.com"
   },
   "client": [
     {
@@ -14,21 +14,28 @@
       },
       "oauth_client": [
         {
-          "client_id": "1090720326412-9pr73l2qln9sfe4l13s9prk3n009a8av.apps.googleusercontent.com",
+          "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCJZuJgP9J3HzaDXcQVlYT_cDR3nnx-wu8"
+          "current_key": "AIzaSyCw1UpHlj4neT6PTfistogwq6sD-P-uYJc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1090720326412-9pr73l2qln9sfe4l13s9prk3n009a8av.apps.googleusercontent.com",
+              "client_id": "196224125385-5q3knder05uaqrneb6ece9164h9dtt4q.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "196224125385-uqk53k9r85kdcini2qnj5s370jnu3lr2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.covrsecurity.io.test"
+              }
             }
           ]
         }

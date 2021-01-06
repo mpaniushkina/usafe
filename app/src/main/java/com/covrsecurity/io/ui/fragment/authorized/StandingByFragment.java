@@ -229,7 +229,8 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         viewModel.postTransactionLiveData.observe(this, new BaseObserver<>(
                 this::showProgress,
                 response -> {
-                    hideProgress();
+//                    hideProgress();
+                    showProgress();
                     if (StatusEntity.ACCEPTED == response.getStatus()) {
                         onRemoveRequest(
                                 response,
@@ -244,6 +245,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                         );
                     }
                     if (response.getReferenceType().equals(QrCodeType.CLAIM.getValue())) {
+                        showProgress();
                         addConnectionViewModel.transactionClaimComplete(response.getReferenceId(), response.getCompany().getId());
                     }
                 },
@@ -412,9 +414,13 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
 
     public void receiveClaimQrCodeTransaction(Intent data) {
         final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
-        if (qrCode.contains("reference_id")) {
+        if (qrCode.contains(QrCodeType.CLAIM.getValue())) {
             QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
             addConnectionViewModel.verifyQrCodeClaim(qrCodeStringJson.getReference_id(), qrCodeStringJson.getExpires_at(),
+                    qrCodeStringJson.getType(), qrCodeStringJson.getStatus(), qrCodeStringJson.getScopes());
+        } else if (qrCode.contains(QrCodeType.REUSE.getValue())) {
+            QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
+            addConnectionViewModel.reuseQrCode(qrCodeStringJson.getReference_id(), qrCodeStringJson.getExpires_at(),
                     qrCodeStringJson.getType(), qrCodeStringJson.getStatus(), qrCodeStringJson.getScopes());
         } else {
             showToast(getString(R.string.error_invalid_qr));
@@ -744,7 +750,8 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     }
 
     public enum QrCodeType {
-        CLAIM("Claim");
+        CLAIM("Claim"),
+        REUSE("Reuse");
 
         private String value;
 

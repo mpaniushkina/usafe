@@ -133,7 +133,7 @@
     <string name="about_terms_of_use">Terms of Use</string>
     <string name="about_terms_conditions">Terms &amp; Conditions</string>
     <string name="about_covr_id">Covr ID:</string>
-    <string name="about_cover_update_status_ok">Covr is up to date</string>
+    <string name="about_cover_update_status_ok">iAM is up to date</string>
     <string name="about_info">The iAM app is used for identification \nand authorization at web sites \nand in mobile apps.</string>
     <string name="about_date">Date Added: yyyy-mm-dd (%1$s)</string>
 

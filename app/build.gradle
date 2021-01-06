@@ -29,17 +29,13 @@ android {
         targetCompatibility global.javacCompatibility
     }
 
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
-
     defaultConfig {
         applicationId "${APPLICATION_ID}"
         minSdkVersion 20
         targetSdkVersion global.androidTargetSdkVersion
         versionCode global.versionCodeNumber
-        versionName global.versionNameString
+//        versionName global.versionNameString
+        versionName "1.0"
         archivesBaseName = "iAM-" + versionName
         multiDexEnabled true
     }
@@ -61,6 +57,8 @@ android {
             minifyEnabled false
             debuggable true
             signingConfig signingConfigs.debug
+//            buildConfigField("long", "VERSION_CODE", "${defaultConfig.versionCode}")
+//            buildConfigField("String","VERSION_NAME","\"${defaultConfig.versionName}\"")
         }
         preRelease {
             manifestPlaceholders = [appLinkHost: DEEPLINK_HOST_STAGE]
@@ -148,13 +146,19 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime:$global.lifecycleVer"
 
     // play services
-    implementation 'com.google.android.gms:play-services-base:17.4.0'
+    implementation 'com.google.android.gms:play-services-base:17.5.0'
     implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.google.android.gms:play-services-drive:17.0.0'
+    implementation 'com.squareup.okio:okio:2.2.2'
     //    firebase
     implementation 'com.google.firebase:firebase-core:18.0.0'
     implementation 'com.google.firebase:firebase-messaging:21.0.1'
     implementation 'com.google.firebase:firebase-analytics'
-//    implementation 'com.google.firebase:firebase-bom:26.2.0'
+    //    implementation ('com.google.firebase:firebase-bom:26.2.0')
+//    implementation 'com.google.firebase:firebase-analytics:18.0.0'
+//    implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
+//    implementation 'com.google.firebase:firebase-perf:19.0.11'
     //    core
     implementation "io.reactivex.rxjava2:rxandroid:$global.rxandroidVer"
     implementation "io.reactivex.rxjava2:rxjava:$global.rxjavaVer"
@@ -218,3 +222,5 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.firebase.firebase-perf'
+//apply plugin: 'com.google.firebase.crashlytics'

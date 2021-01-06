@@ -15,6 +15,7 @@ import com.covrsecurity.io.domain.entity.response.TransactionClaimResponseEntity
 import com.covrsecurity.io.domain.usecase.registred.AddConnectionUseCase;
 import com.covrsecurity.io.domain.usecase.registred.GetConnectionsUseCase;
 import com.covrsecurity.io.domain.usecase.registred.QrCodeClaimUseCase;
+import com.covrsecurity.io.domain.usecase.registred.QrCodeReuseUseCase;
 import com.covrsecurity.io.domain.usecase.registred.TransactionClaimCompleteUseCase;
 import com.covrsecurity.io.domain.usecase.unregistered.QrCodeConnectionUseCase;
 import com.covrsecurity.io.sdk.response.QrCodeConnectionResponse;
@@ -39,6 +40,7 @@ public class PartnershipViewModel extends BaseViewModel {
     private final AddConnectionUseCase addConnectionUseCase;
     private final QrCodeConnectionUseCase qrCodeConnectionUseCase;
     private final QrCodeClaimUseCase qrCodeClaimUseCase;
+    private final QrCodeReuseUseCase qrCodeReuseUseCase;
     private final TransactionClaimCompleteUseCase transactionClaimCompleteUseCase;
 
     @Nullable
@@ -47,12 +49,14 @@ public class PartnershipViewModel extends BaseViewModel {
     private final CompositeDisposable disposables = new CompositeDisposable();
 
     public PartnershipViewModel(GetConnectionsUseCase getConnectionsUseCase, AddConnectionUseCase addConnectionUseCase,
-                                QrCodeConnectionUseCase qrCodeConnectionUseCase, QrCodeClaimUseCase qrCodeClaimUseCase, TransactionClaimCompleteUseCase transactionClaimCompleteUseCase) {
+                                QrCodeConnectionUseCase qrCodeConnectionUseCase, QrCodeClaimUseCase qrCodeClaimUseCase,
+                                TransactionClaimCompleteUseCase transactionClaimCompleteUseCase, QrCodeReuseUseCase qrCodeReuseUseCase) {
         this.getConnectionsUseCase = getConnectionsUseCase;
         this.addConnectionUseCase = addConnectionUseCase;
         this.qrCodeConnectionUseCase = qrCodeConnectionUseCase;
         this.qrCodeClaimUseCase = qrCodeClaimUseCase;
         this.transactionClaimCompleteUseCase = transactionClaimCompleteUseCase;
+        this.qrCodeReuseUseCase = qrCodeReuseUseCase;
     }
 
     @Override
@@ -112,5 +116,14 @@ public class PartnershipViewModel extends BaseViewModel {
                         throwable -> qrCodeConnectionLiveData.setValue(BaseState.getErrorInstance(throwable))
                 );
         disposables.add(disposable);
+    }
+
+    public void reuseQrCode(String reference_id, int expires_at, String type, String status, String scopes) {
+        disposable = Single.just(new QrCodeClaimRequestEntity(reference_id, expires_at, type, status, scopes))
+                .flatMap(qrCodeReuseUseCase::execute)
+                .subscribe(
+                        response -> qrCodeClaimLiveData.setValue(BaseState.getSuccessInstance(response)),
+                        throwable -> qrCodeClaimLiveData.setValue(BaseState.getErrorInstance(throwable))
+                );
     }
 }
