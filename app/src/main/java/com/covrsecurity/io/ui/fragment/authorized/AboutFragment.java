@@ -51,8 +51,7 @@ public class AboutFragment extends FromMenuFragment<FragmentAboutBinding, StubVi
     @Override
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
-        mBinding.setVersion(getString(R.string.about_version, VersionUtils.versionCode(getActivity()),
-                VersionUtils.versionName(getActivity())));
+        mBinding.setVersion(getString(R.string.about_version, VersionUtils.versionName(getActivity())));
         mBinding.setPpClickListener(v -> {
             String privacyPolicyURL = (BuildConfig.DEBUG) ? getString(R.string.cfg_about_privacy_policy_dev)
                     : getString(R.string.cfg_about_privacy_policy);

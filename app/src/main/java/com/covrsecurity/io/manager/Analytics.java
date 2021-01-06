@@ -73,4 +73,7 @@ public class Analytics {
     public static final String EVENT_HISTORY_DELETE = "history_selective_removal";
     public static final String EVENT_SETTINGS_UPDATE = "settings_update";
     public static final String EVENT_COMPOSE_EMAIL = "compose_email";
+    public static final String EVENT_SKIP_TUTORIAL = "skip_tutorial";
+    public static final String EVENT_USE_WEAK_PIN = "use_weak_pin";
+    public static final String EVENT_USE_BIOMETRIC = "use_biometric";
 }

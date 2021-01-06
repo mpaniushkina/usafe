@@ -34,8 +34,7 @@ android {
         minSdkVersion 20
         targetSdkVersion global.androidTargetSdkVersion
         versionCode global.versionCodeNumber
-//        versionName global.versionNameString
-        versionName "1.0"
+        versionName global.versionNameString
         archivesBaseName = "iAM-" + versionName
         multiDexEnabled true
     }
