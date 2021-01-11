@@ -17,6 +17,7 @@ import com.covrsecurity.io.domain.usecase.registred.GetConnectionsUseCase;
 import com.covrsecurity.io.domain.usecase.registred.QrCodeClaimUseCase;
 import com.covrsecurity.io.domain.usecase.registred.QrCodeReuseUseCase;
 import com.covrsecurity.io.domain.usecase.registred.TransactionClaimCompleteUseCase;
+import com.covrsecurity.io.domain.usecase.registred.TransactionReuseCompleteUseCase;
 import com.covrsecurity.io.domain.usecase.unregistered.QrCodeConnectionUseCase;
 import com.covrsecurity.io.sdk.response.QrCodeConnectionResponse;
 import com.covrsecurity.io.ui.viewmodel.base.BaseState;
@@ -42,6 +43,7 @@ public class PartnershipViewModel extends BaseViewModel {
     private final QrCodeClaimUseCase qrCodeClaimUseCase;
     private final QrCodeReuseUseCase qrCodeReuseUseCase;
     private final TransactionClaimCompleteUseCase transactionClaimCompleteUseCase;
+    private final TransactionReuseCompleteUseCase transactionReuseCompleteUseCase;
 
     @Nullable
     private Disposable disposable;
@@ -50,13 +52,14 @@ public class PartnershipViewModel extends BaseViewModel {
 
     public PartnershipViewModel(GetConnectionsUseCase getConnectionsUseCase, AddConnectionUseCase addConnectionUseCase,
                                 QrCodeConnectionUseCase qrCodeConnectionUseCase, QrCodeClaimUseCase qrCodeClaimUseCase,
-                                TransactionClaimCompleteUseCase transactionClaimCompleteUseCase, QrCodeReuseUseCase qrCodeReuseUseCase) {
+                                TransactionClaimCompleteUseCase transactionClaimCompleteUseCase, QrCodeReuseUseCase qrCodeReuseUseCase, TransactionReuseCompleteUseCase transactionReuseCompleteUseCase) {
         this.getConnectionsUseCase = getConnectionsUseCase;
         this.addConnectionUseCase = addConnectionUseCase;
         this.qrCodeConnectionUseCase = qrCodeConnectionUseCase;
         this.qrCodeClaimUseCase = qrCodeClaimUseCase;
         this.transactionClaimCompleteUseCase = transactionClaimCompleteUseCase;
         this.qrCodeReuseUseCase = qrCodeReuseUseCase;
+        this.transactionReuseCompleteUseCase = transactionReuseCompleteUseCase;
     }
 
     @Override
@@ -124,6 +127,15 @@ public class PartnershipViewModel extends BaseViewModel {
                 .subscribe(
                         response -> qrCodeClaimLiveData.setValue(BaseState.getSuccessInstance(response)),
                         throwable -> qrCodeClaimLiveData.setValue(BaseState.getErrorInstance(throwable))
+                );
+    }
+
+    public void transactionReuseComplete(String referenceId, String companyRegPublicKey) {
+        disposable = Single.just(new TransactionClaimRequestEntity(referenceId, companyRegPublicKey))
+                .flatMap(transactionReuseCompleteUseCase::execute)
+                .subscribe(
+                        response -> transactionClaimLiveData.setValue(BaseState.getSuccessInstance(response)),
+                        throwable -> transactionClaimLiveData.setValue(BaseState.getErrorInstance(throwable))
                 );
     }
 }

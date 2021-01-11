@@ -1,5 +1,6 @@
 package com.covrsecurity.io.data.repository;
 
+import com.covrsecurity.io.common.ConstantsUtils;
 import com.covrsecurity.io.data.utils.EntityMapper;
 import com.covrsecurity.io.domain.entity.MerchantEntity;
 import com.covrsecurity.io.domain.entity.TransactionEntity;
@@ -25,6 +26,7 @@ import com.covrsecurity.io.domain.entity.response.PostQrCodeResponseEntity;
 import com.covrsecurity.io.domain.entity.response.QrCodeClaimResponseEntity;
 import com.covrsecurity.io.domain.entity.response.TransactionClaimResponseEntity;
 import com.covrsecurity.io.domain.entity.response.TransactionsResponseEntity;
+import com.covrsecurity.io.domain.repository.RegisteredRepository;
 import com.covrsecurity.io.sdk.CovrNewMainInterface;
 import com.covrsecurity.io.sdk.request.ChangePinCodeRequest;
 import com.covrsecurity.io.sdk.request.GetConnectionsRequest;
@@ -41,8 +43,6 @@ import com.covrsecurity.io.sdk.request.TransactionConfirmationRequest;
 import com.covrsecurity.io.sdk.request.ValidatePinCodeRequest;
 import com.covrsecurity.io.sdk.response.MerchantsSdk;
 import com.covrsecurity.io.sdk.response.Transaction;
-import com.covrsecurity.io.common.ConstantsUtils;
-import com.covrsecurity.io.domain.repository.RegisteredRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -230,6 +230,20 @@ public class RegisteredRepositoryImpl implements RegisteredRepository {
                 .flatMap(covrInterface::reuseQrCode)
                 .map(response -> new QrCodeClaimResponseEntity(
                         response.isValid()
+                ));
+    }
+
+    @Override
+    public Single<TransactionClaimResponseEntity> transactionReuseComplete(TransactionClaimRequestEntity requestEntity) {
+        return Single.just(requestEntity)
+                .map(entity -> new TransactionClaimCompleteRequest(entity.getReferenceId(), entity.getCompanyId()))
+                .flatMap(covrInterface::transactionReuseComplete)
+                .map(response -> new TransactionClaimResponseEntity(
+                        response.getId(),
+                        response.getUserName(),
+                        response.getCreatedDate(),
+                        getCompanyEntity(response.getMerchant()),
+                        response.getStatus()
                 ));
     }
 

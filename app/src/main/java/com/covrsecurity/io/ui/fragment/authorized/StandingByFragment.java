@@ -41,6 +41,7 @@ import com.covrsecurity.io.model.BiometricsVerification;
 import com.covrsecurity.io.model.QrCodeStringJson;
 import com.covrsecurity.io.model.deeplink.AuthorizationDeeplink;
 import com.covrsecurity.io.model.error.BioMetricDataProvideCancel;
+import com.covrsecurity.io.sdk.exception.ApiNetworkException;
 import com.covrsecurity.io.sdk.exception.BiometricVerificationAttemptsExhaustedException;
 import com.covrsecurity.io.sdk.utils.ThreadUtils;
 import com.covrsecurity.io.ui.activity.AuthorizedActivity;
@@ -248,6 +249,10 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                         showProgress();
                         addConnectionViewModel.transactionClaimComplete(response.getReferenceId(), response.getCompany().getId());
                     }
+                    if (response.getReferenceType().equals(QrCodeType.REUSE.getValue())) {
+                        showProgress();
+                        addConnectionViewModel.transactionReuseComplete(response.getReferenceId(), response.getCompany().getId());
+                    }
                 },
                 throwable -> {
                     hideProgress();
@@ -319,6 +324,9 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                     hideProgress();
                     Timber.e("" + throwable);
                     Timber.e(throwable);
+                    if (throwable instanceof ApiNetworkException) {
+                        showErrToast(throwable);
+                    }
                 }
         ));
     }

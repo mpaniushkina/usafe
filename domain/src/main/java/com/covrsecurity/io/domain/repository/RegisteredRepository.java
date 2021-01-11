@@ -54,6 +54,8 @@ public interface RegisteredRepository {
 
     Single<TransactionClaimResponseEntity> transactionClaimComplete(TransactionClaimRequestEntity requestEntity);
 
+    Single<TransactionClaimResponseEntity> transactionReuseComplete(TransactionClaimRequestEntity requestEntity);
+
     Single<QrCodeClaimResponseEntity> reuseQrCode(QrCodeClaimRequestEntity requestEntity);
 
     Single<PostQrCodeResponseEntity> addConnection(PostQrCodeRequestEntity requestEntity);
