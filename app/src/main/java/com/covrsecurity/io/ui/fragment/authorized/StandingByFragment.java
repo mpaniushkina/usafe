@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -238,20 +237,20 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                                 PendingRequestsAdapter.RemovalReason.APPROVED,
                                 Analytics.EVENT_REQUEST_VERIFY
                         );
+                        if (response.getReferenceType().equals(QrCodeType.CLAIM.getValue())) {
+                            showProgress();
+                            addConnectionViewModel.transactionClaimComplete(response.getReferenceId(), response.getCompany().getId());
+                        }
+                        if (response.getReferenceType().equals(QrCodeType.REUSE.getValue())) {
+                            showProgress();
+                            addConnectionViewModel.transactionReuseComplete(response.getReferenceId(), response.getCompany().getId());
+                        }
                     } else if (StatusEntity.REJECTED == response.getStatus()) {
                         onRemoveRequest(
                                 response,
                                 PendingRequestsAdapter.RemovalReason.REJECTED,
                                 Analytics.EVENT_REQUEST_DENY
                         );
-                    }
-                    if (response.getReferenceType().equals(QrCodeType.CLAIM.getValue())) {
-                        showProgress();
-                        addConnectionViewModel.transactionClaimComplete(response.getReferenceId(), response.getCompany().getId());
-                    }
-                    if (response.getReferenceType().equals(QrCodeType.REUSE.getValue())) {
-                        showProgress();
-                        addConnectionViewModel.transactionReuseComplete(response.getReferenceId(), response.getCompany().getId());
                     }
                 },
                 throwable -> {
@@ -424,11 +423,15 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         final String qrCode = ScanQrCodeDialog.parseQrCodeResult(data);
         if (qrCode.contains(QrCodeType.CLAIM.getValue())) {
             QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
-            addConnectionViewModel.verifyQrCodeClaim(qrCodeStringJson.getReference_id(), qrCodeStringJson.getExpires_at(),
+            addConnectionViewModel.claimQrCode(qrCodeStringJson.getReference_id(), qrCodeStringJson.getExpires_at(),
                     qrCodeStringJson.getType(), qrCodeStringJson.getStatus(), qrCodeStringJson.getScopes());
         } else if (qrCode.contains(QrCodeType.REUSE.getValue())) {
             QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
             addConnectionViewModel.reuseQrCode(qrCodeStringJson.getReference_id(), qrCodeStringJson.getExpires_at(),
+                    qrCodeStringJson.getType(), qrCodeStringJson.getStatus(), qrCodeStringJson.getScopes());
+        }  else if (qrCode.contains(QrCodeType.LOGIN.getValue())) {
+            QrCodeStringJson qrCodeStringJson = new Gson().fromJson(qrCode, QrCodeStringJson.class);
+            addConnectionViewModel.loginQrCode(qrCodeStringJson.getReference_id(), qrCodeStringJson.getExpires_at(),
                     qrCodeStringJson.getType(), qrCodeStringJson.getStatus(), qrCodeStringJson.getScopes());
         } else {
             showToast(getString(R.string.error_invalid_qr));
@@ -759,7 +762,8 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
 
     public enum QrCodeType {
         CLAIM("Claim"),
-        REUSE("Reuse");
+        REUSE("Reuse"),
+        LOGIN("Login");
 
         private String value;
 

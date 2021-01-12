@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.covrsecurity.io.domain.usecase.registred.AddConnectionUseCase;
 import com.covrsecurity.io.domain.usecase.registred.GetConnectionsUseCase;
 import com.covrsecurity.io.domain.usecase.registred.QrCodeClaimUseCase;
+import com.covrsecurity.io.domain.usecase.registred.QrCodeLoginUseCase;
 import com.covrsecurity.io.domain.usecase.registred.QrCodeReuseUseCase;
 import com.covrsecurity.io.domain.usecase.registred.TransactionClaimCompleteUseCase;
 import com.covrsecurity.io.domain.usecase.registred.TransactionReuseCompleteUseCase;
@@ -23,12 +24,13 @@ public class PartnershipViewModelFactory implements ViewModelProvider.Factory {
     private final TransactionClaimCompleteUseCase transactionClaimCompleteUseCase;
     private final QrCodeReuseUseCase qrCodeReuseUseCase;
     private final TransactionReuseCompleteUseCase transactionReuseCompleteUseCase;
+    private final QrCodeLoginUseCase qrCodeLoginUseCase;
 
     @Inject
     public PartnershipViewModelFactory(GetConnectionsUseCase getConnectionsUseCase, AddConnectionUseCase addConnectionUseCase,
                                        QrCodeConnectionUseCase qrCodeConnectionUseCase, QrCodeClaimUseCase qrCodeClaimUseCase,
                                        TransactionClaimCompleteUseCase transactionClaimCompleteUseCase, QrCodeReuseUseCase qrCodeReuseUseCase,
-                                       TransactionReuseCompleteUseCase transactionReuseCompleteUseCase) {
+                                       TransactionReuseCompleteUseCase transactionReuseCompleteUseCase, QrCodeLoginUseCase qrCodeLoginUseCase) {
         this.getConnectionsUseCase = getConnectionsUseCase;
         this.addConnectionUseCase = addConnectionUseCase;
         this.qrCodeConnectionUseCase = qrCodeConnectionUseCase;
@@ -36,6 +38,7 @@ public class PartnershipViewModelFactory implements ViewModelProvider.Factory {
         this.transactionClaimCompleteUseCase = transactionClaimCompleteUseCase;
         this.qrCodeReuseUseCase = qrCodeReuseUseCase;
         this.transactionReuseCompleteUseCase = transactionReuseCompleteUseCase;
+        this.qrCodeLoginUseCase = qrCodeLoginUseCase;
     }
 
     @NonNull
@@ -49,7 +52,8 @@ public class PartnershipViewModelFactory implements ViewModelProvider.Factory {
                     qrCodeClaimUseCase,
                     transactionClaimCompleteUseCase,
                     qrCodeReuseUseCase,
-                    transactionReuseCompleteUseCase
+                    transactionReuseCompleteUseCase,
+                    qrCodeLoginUseCase
             );
         } else {
             throw new IllegalArgumentException("ViewModel Not Found");

@@ -13,17 +13,17 @@ import javax.inject.Inject;
 
 import io.reactivex.Single;
 
-public class QrCodeClaimUseCase extends BaseRegisteredRepositoryUseCase implements
+public class QrCodeLoginUseCase extends BaseRegisteredRepositoryUseCase implements
         SingleUseCase<QrCodeClaimResponseEntity, QrCodeClaimRequestEntity> {
 
     @Inject
-    public QrCodeClaimUseCase(RegisteredRepository repository, ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread) {
+    public QrCodeLoginUseCase(RegisteredRepository repository, ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread) {
         super(repository, threadExecutor, postExecutionThread);
     }
 
     @Override
     public Single<QrCodeClaimResponseEntity> execute(@Nullable QrCodeClaimRequestEntity request) {
-        return repository.claimQrCode(request)
+        return repository.loginQrCode(request)
                 .subscribeOn(threadExecutorScheduler)
                 .observeOn(postExecutionThreadScheduler);
     }

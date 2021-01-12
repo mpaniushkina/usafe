@@ -200,10 +200,10 @@ public class RegisteredRepositoryImpl implements RegisteredRepository {
     }
 
     @Override
-    public Single<QrCodeClaimResponseEntity> verifyQrCodeClaim(QrCodeClaimRequestEntity requestEntity) {
+    public Single<QrCodeClaimResponseEntity> claimQrCode(QrCodeClaimRequestEntity requestEntity) {
         return Single.just(requestEntity)
                 .map(entity -> new QrCodeClaimRequest(entity.getReference_id(), entity.getExpires_at(), entity.getType(), entity.getStatus(), entity.getScopes()))
-                .flatMap(covrInterface::verifyQrCodeClaim)
+                .flatMap(covrInterface::claimQrCode)
                 .map(response -> new QrCodeClaimResponseEntity(
                         response.isValid()
                 ));
@@ -244,6 +244,16 @@ public class RegisteredRepositoryImpl implements RegisteredRepository {
                         response.getCreatedDate(),
                         getCompanyEntity(response.getMerchant()),
                         response.getStatus()
+                ));
+    }
+
+    @Override
+    public Single<QrCodeClaimResponseEntity> loginQrCode(QrCodeClaimRequestEntity requestEntity) {
+        return Single.just(requestEntity)
+                .map(entity -> new QrCodeClaimRequest(entity.getReference_id(), entity.getExpires_at(), entity.getType(), entity.getStatus(), entity.getScopes()))
+                .flatMap(covrInterface::loginQrCode)
+                .map(response -> new QrCodeClaimResponseEntity(
+                        response.isValid()
                 ));
     }
 

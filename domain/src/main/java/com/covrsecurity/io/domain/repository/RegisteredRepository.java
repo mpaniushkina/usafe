@@ -50,13 +50,15 @@ public interface RegisteredRepository {
 
     Single<TransactionEntity> postTransaction(TransactionConfirmationRequestEntity requestEntity);
 
-    Single<QrCodeClaimResponseEntity> verifyQrCodeClaim(QrCodeClaimRequestEntity requestEntity);
+    Single<QrCodeClaimResponseEntity> claimQrCode(QrCodeClaimRequestEntity requestEntity);
+
+    Single<QrCodeClaimResponseEntity> reuseQrCode(QrCodeClaimRequestEntity requestEntity);
+
+    Single<QrCodeClaimResponseEntity> loginQrCode(QrCodeClaimRequestEntity requestEntity);
 
     Single<TransactionClaimResponseEntity> transactionClaimComplete(TransactionClaimRequestEntity requestEntity);
 
     Single<TransactionClaimResponseEntity> transactionReuseComplete(TransactionClaimRequestEntity requestEntity);
-
-    Single<QrCodeClaimResponseEntity> reuseQrCode(QrCodeClaimRequestEntity requestEntity);
 
     Single<PostQrCodeResponseEntity> addConnection(PostQrCodeRequestEntity requestEntity);
 
