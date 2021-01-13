@@ -59,7 +59,7 @@ def param_version_name = "1.0" // env['version_name']
 ext.global = [
 //        versionCodeNumber       : env['BUILD_NUMBER'] as Integer ?: 1,
 //        versionNameString       : env['version_name'] + "." + (env['BUILD_NUMBER'] as Integer ?: 1),
-        versionNameString       : "1.0" + "." + "2",
+        versionNameString       : "1.0" + "." + "3",
         versionCodeNumber       : 479,
         versionName             : param_version_name + "." + 479,
         androidMinSdkVersion    : 20,

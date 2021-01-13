@@ -91,7 +91,7 @@ public class UnauthorizedActivity extends BaseActivity<LoginActivityBinding, Una
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme_NoActionBar);
+//        setTheme(R.style.AppTheme_NoActionBar);
         super.onCreate(savedInstanceState);
     }
 

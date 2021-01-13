@@ -436,7 +436,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         } else {
             showToast(getString(R.string.error_invalid_qr));
         }
-
     }
 
     @Override
