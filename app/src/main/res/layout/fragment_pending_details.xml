@@ -51,13 +51,25 @@
                 tools:text="Claim your identity"/>
 
             <TextView
+                android:id="@+id/pendingDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_below="@+id/pendingTitle"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/ten_dp"
+                tools:text="date"/>
+
+            <TextView
                 android:id="@+id/transactionOverlayMessageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_small"
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins_medium"
-                android:layout_below="@+id/pendingTitle"
+                android:layout_below="@+id/pendingDate"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginBottom="@dimen/ten_dp"
                 android:layout_marginStart="@dimen/twenty_dp"

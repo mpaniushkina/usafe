@@ -24,9 +24,11 @@ import com.covrsecurity.io.ui.adapter.PendingRequestsAdapter;
 import com.covrsecurity.io.ui.component.CircleTimer;
 import com.covrsecurity.io.ui.component.CovrCircleTimer;
 import com.covrsecurity.io.ui.fragment.BaseFragment;
+import com.covrsecurity.io.utils.DateTimeUtils;
 import com.covrsecurity.io.utils.SoundUtils;
 
 import org.jetbrains.annotations.NotNull;
+import org.joda.time.DateTime;
 
 import java.util.concurrent.TimeUnit;
 
@@ -76,6 +78,7 @@ public class PendingDetailsFragment extends BaseFragment<FragmentPendingDetailsB
         mBinding.pendingCompany.setText(transactionDetails.getCompany().getName());
         mBinding.pendingCompany.setTextAppearance(R.style.BoldText);
         mBinding.pendingTitle.setText(transactionDetails.getRequest().getTitle());
+        mBinding.pendingDate.setText(DateTimeUtils.getFormattedTime(new DateTime(transactionDetails.getCreated())));
         mBinding.transactionOverlayMessageText.setText(transactionDetails.getRequest().getMessage());
         mBinding.positiveButton.setText(transactionDetails.getRequest().getAccept().length() > 0 ?
                 transactionDetails.getRequest().getAccept() : getString(R.string.approve_btn));

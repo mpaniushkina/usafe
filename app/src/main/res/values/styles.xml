@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/blue</item>
         <item name="android:windowBackground">@color/blue</item>
         <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
+        <item name="android:forceDarkAllowed">false</item>
 
         <!--disable multitouch-->
         <item name="android:windowEnableSplitTouch">false</item>
@@ -25,6 +26,7 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:forceDarkAllowed">false</item>
     </style>
 
     <style name="AppTheme.Widget" />
