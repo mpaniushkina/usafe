@@ -42,6 +42,7 @@
             android:layout_marginStart="@dimen/twenty_dp"
             android:layout_marginEnd="@dimen/twenty_dp"
             android:paddingStart="@dimen/twenty_dp"
+            android:paddingEnd="@dimen/twenty_dp"
             android:paddingBottom="@dimen/twenty_dp"
             android:background="@drawable/background_pending_item">
 
