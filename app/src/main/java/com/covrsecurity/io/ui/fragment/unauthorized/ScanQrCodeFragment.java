@@ -64,9 +64,13 @@ public class ScanQrCodeFragment extends BaseUnauthorizedFragment<FragmentStartQr
     @Override
     public void onResume() {
         super.onResume();
-        UnauthorizedActivity unauthorizedActivity = getUnauthorizedActivity();
-        if (unauthorizedActivity == null) {
-            return;
+        if (isCameraPermissionsGranted()) {
+            sendScanIntent();
+        } else {
+            UnauthorizedActivity unauthorizedActivity = getUnauthorizedActivity();
+            if (unauthorizedActivity == null) {
+                return;
+            }
         }
     }
 

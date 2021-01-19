@@ -22,7 +22,7 @@
     <string name="error_login_generic">An error occurred during login.</string>
     <string name="error_unauthorized">An account with the same phone number is activated on another device.</string>
     <string name="error_http_unauthorized">Error 401</string>
-    <string name="error_rooted_device">We are sorry. Covr Security can not be installed on a Rooted device.</string>
+    <string name="error_rooted_device">We are sorry. iAM can not be installed on a Rooted device.</string>
     <string name="error_unknown">Unknown Error</string>
 
     <!-- Tutorial -->
