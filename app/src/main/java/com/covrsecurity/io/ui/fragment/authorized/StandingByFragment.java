@@ -379,8 +379,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     protected void initBinding(LayoutInflater inflater) {
         super.initBinding(inflater);
         mBinding.scanQrButton.setVisibility(View.VISIBLE);
-//        Animation progress = AnimationUtils.loadAnimation(getActivity(), R.anim.progress_anim);
-//        mBinding.progress.startAnimation(progress);
         mBinding.pendingRequestsRecyclerView.setLayoutManager(new SmoothLinearLayoutManager(getActivity()));
         mBinding.pendingRequestsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

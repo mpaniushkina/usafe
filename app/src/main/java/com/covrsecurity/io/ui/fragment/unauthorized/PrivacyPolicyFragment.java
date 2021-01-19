@@ -94,6 +94,7 @@ public class PrivacyPolicyFragment extends BaseUnauthorizedFragment<FragmentPriv
     private void improveWebViewPerformance() {
         WebSettings webSettings = mBinding.wvInfo.getSettings();
         mBinding.wvInfo.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        mBinding.wvInfo.setBackgroundColor(getResources().getColor(R.color.blue_bg));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             mBinding.wvInfo.setRendererPriorityPolicy(RENDERER_PRIORITY_BOUND, true);
         }

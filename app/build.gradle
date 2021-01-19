@@ -41,10 +41,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("../release.keystore")
-            storePassword "k@^jCuYPq9t:`#/cQn2my;Bd&v,DpJ"
-            keyAlias "CovrSecurity"
-            keyPassword "G5tQSZqW/C!@%~paBfPb29dkuhR?M6"
+            storeFile file("../release.jks")
+            storePassword "jYLpt1vDPdkS9qEh"
+            keyAlias "iamglobal"
+            keyPassword ",8DEgSJ!U1fo2cLb"
         }
     }
 

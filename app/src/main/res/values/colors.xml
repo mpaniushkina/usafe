@@ -8,6 +8,7 @@
     <color name="dark_blue">#2e3c4d</color> <!-- 2 -->
     <color name="blue">#2e3a4b</color> <!-- 2 -->
     <color name="dark_blue_bg">#2e3b4c</color>
+    <color name="blue_bg">#374a61</color>
     <color name="dark_bg">#212934</color>
     <color name="green_approved">#41b26c</color>
     <color name="green_alpha_50">#8041b26c</color>
