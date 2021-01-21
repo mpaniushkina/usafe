@@ -17,7 +17,7 @@ import com.covrsecurity.io.sdk.CovrNewMainInterface;
 import com.covrsecurity.io.utils.DatabaseOperationsWrapper;
 import com.covrsecurity.io.utils.LogUtil;
 import com.covrsecurity.io.utils.PRNGFixesUtils;
-import com.crashlytics.android.Crashlytics;
+//import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.security.ProviderInstaller;
@@ -32,7 +32,7 @@ import co.hyperverge.hypersnapsdk.objects.HyperSnapParams;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.DaggerApplication;
-import io.fabric.sdk.android.Fabric;
+//import io.fabric.sdk.android.Fabric;
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
 import io.github.inflationx.viewpump.ViewPump;
@@ -95,9 +95,8 @@ public class IamApp extends DaggerApplication implements
                                 .build()))
                 .build());
         Analytics.logEvent(this.getApplicationContext(), Analytics.EVENT_APP_LAUNCH);
-        Fabric.with(this, new Crashlytics());
+//        Fabric.with(this, new Crashlytics());
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-//            ProviderInstaller.installIfNeededAsync(this, new ProviderInstaller.ProviderInstallListener());
             try {
                 ProviderInstaller.installIfNeeded(getApplicationContext());
             } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
@@ -116,7 +115,7 @@ public class IamApp extends DaggerApplication implements
         try {
             AppAdapter.cleanAllCache();
         } catch (Throwable t) {
-            Crashlytics.logException(t);
+//            Crashlytics.logException(t);
             Timber.e(t);
         }
     }

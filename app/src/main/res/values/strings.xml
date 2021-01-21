@@ -503,7 +503,7 @@
         <item>Connected Services</item>
         <item>History</item>
         <item>Change PIN Code</item>
-        <item>Recovery</item>
+<!--        <item>Recovery</item>-->
 <!--        <item>Help</item>-->
     </string-array>
 

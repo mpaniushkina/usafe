@@ -131,9 +131,9 @@ public class MyAccountFragment extends BaseViewModelFragment<FragmentMyAccountBi
             case CHANGE_PIN_CODE_ITEM:
                 fragment = ChangeCodeFragment.newInstance(false);
                 break;
-            case RECOVERY_ITEM:
-                fragment = ScanFaceBiometricsFragment.newInstance();
-                break;
+//            case RECOVERY_ITEM:
+//                fragment = ScanFaceBiometricsFragment.newInstance();
+//                break;
 //            case HELP_ITEM:
 //                fragment = HelpFragment.newInstance();
 //                break;
