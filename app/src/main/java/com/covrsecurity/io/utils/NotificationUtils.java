@@ -67,7 +67,7 @@ public final class NotificationUtils {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         if (notificationManager.areNotificationsEnabled()) {
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                    .setSmallIcon(R.drawable.ic_notification)
+                    .setSmallIcon(R.drawable.iamlogo)
                     .setAutoCancel(true)
                     .setPriority(NotificationCompat.PRIORITY_MAX)
                     .setContentTitle(AppAdapter.resources().getString(R.string.app_name))
@@ -98,7 +98,7 @@ public final class NotificationUtils {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         if (notificationManager.areNotificationsEnabled()) {
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, CHANNEL_SILENT_ID)
-                    .setSmallIcon(R.drawable.ic_notification)
+                    .setSmallIcon(R.drawable.iamlogo)
                     .setAutoCancel(true)
                     .setPriority(NotificationCompat.PRIORITY_MIN)
                     .setContentTitle(AppAdapter.resources().getString(R.string.app_name))

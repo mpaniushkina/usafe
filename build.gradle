@@ -59,7 +59,7 @@ def param_version_name = "1.0" // env['version_name']
 ext.global = [
 //        versionCodeNumber       : env['BUILD_NUMBER'] as Integer ?: 1,
 //        versionNameString       : env['version_name'] + "." + (env['BUILD_NUMBER'] as Integer ?: 1),
-        versionNameString       : "1.0" + "." + "6",
+        versionNameString       : "1.0" + "." + "7",
         versionCodeNumber       : 479,
         versionName             : param_version_name + "." + 479,
         androidMinSdkVersion    : 20,
@@ -72,7 +72,6 @@ ext.global = [
         rxjavaVer         : '2.2.13',
         rxandroidVer      : '2.1.1',
         okhttp3Ver        : '4.2.2',
-//        work_version      : '2.3.0-beta01',
         work_version      : '2.3.4',
         daggerVer         : '2.22.1',
         lifecycleVer      : '2.1.0',
