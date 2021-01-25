@@ -57,5 +57,5 @@
     <dimen name="covr_vault_main_pager_adapter_text_size">12sp</dimen>
     <dimen name="covr_vault_main_pager_adapter_text_margin">6dp</dimen>
     <dimen name="covr_vault_main_pager_adapter_items_margin">8dp</dimen>
-    <dimen name="wizard_header">45dp</dimen>
+    <dimen name="wizard_header">40dp</dimen>
 </resources>

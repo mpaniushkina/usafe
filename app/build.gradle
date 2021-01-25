@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.firebase-perf'
+//apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion global.androidTargetSdkVersion
@@ -9,7 +12,7 @@ android {
         maven { url "https://dl.bintray.com/terrakok/terramaven" }
 //        maven { url "http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/" }
         maven { url 'https://zendesk.artifactoryonline.com/zendesk/repo' }
-        maven { url "https://zendesk.jfrog.io/zendesk/repo"}
+        maven { url "https://zendesk.jfrog.io/zendesk/repo" }
         maven { url "http://repo.pageturner-reader.org" }
         maven { url "https://jitpack.io" }
         maven { url 'https://maven.fabric.io/public' }
@@ -151,15 +154,20 @@ dependencies {
     implementation 'com.google.android.gms:play-services-drive:17.0.0'
     implementation 'com.squareup.okio:okio:2.2.2'
     //    firebase
-    implementation 'com.google.firebase:firebase-core:18.0.1'
+    implementation 'com.google.firebase:firebase-core:18.0.0'
+//    implementation ('com.google.firebase:firebase-bom:26.3.0')
+//    implementation platform('com.google.firebase:firebase-bom:26.3.0'){
+//        exclude module: 'protobuf-lite'
+//        exclude module: 'protobuf-java'
+//        exclude module: 'protobuf-javalite'
+//    }
     implementation 'com.google.firebase:firebase-messaging:21.0.1'
     implementation 'com.google.firebase:firebase-analytics'
-    implementation ('com.google.firebase:firebase-bom:26.3.0')
-    implementation "com.google.firebase:firebase-auth:20.0.2"
+//    implementation 'com.google.firebase:firebase-auth:20.0.2'
 //    implementation 'com.google.firebase:firebase-perf'
-//    implementation 'com.google.firebase:firebase-analytics:18.0.0'
+//    implementation 'com.google.firebase:firebase-analytics:18.0.1'
 //    implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
-//    implementation 'com.google.firebase:firebase-perf:19.1.0'
+    implementation 'com.google.firebase:firebase-perf:18.0.0'
     //    core
     implementation "io.reactivex.rxjava2:rxandroid:$global.rxandroidVer"
     implementation "io.reactivex.rxjava2:rxjava:$global.rxjavaVer"
@@ -213,15 +221,20 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     implementation('co.hyperverge:hypersnapsdk:3.2.6@aar', {
-        transitive=true
+        transitive = true
         exclude group: 'com.android.support', module: 'appcompat'
         exclude group: 'com.google.android.gms'
         exclude group: 'co.hyperverge', module: 'hypersnapsdk-instructions'
         exclude group: 'co.hyperverge', module: 'hypersnapsdk-qrscanner'
         exclude group: 'co.hyperverge', module: 'hypersnap-pdfconverter'
     })
+
+//    implementation('org.whispersystems:signal-protocol-java:2.6.2') {
+//        exclude module: 'protobuf-java'
+//    }
+//    implementation('com.google.firebase:firebase-firestore:21.3.1') {
+//        exclude module: 'protobuf-lite'
+//    }
+//    implementation 'com.google.protobuf:protobuf-lite:3.0.1'
 }
 
-apply plugin: 'com.google.gms.google-services'
-//apply plugin: 'com.google.firebase.firebase-perf'
-//apply plugin: 'com.google.firebase.crashlytics'
