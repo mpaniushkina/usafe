@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
+//apply plugin: 'io.fabric'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.firebase-perf'
-//apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion global.androidTargetSdkVersion
@@ -15,7 +15,7 @@ android {
         maven { url "https://zendesk.jfrog.io/zendesk/repo" }
         maven { url "http://repo.pageturner-reader.org" }
         maven { url "https://jitpack.io" }
-        maven { url 'https://maven.fabric.io/public' }
+//        maven { url 'https://maven.fabric.io/public' }
 
         maven {
             url "s3://hvsdk/android/releases"
@@ -58,9 +58,9 @@ android {
             applicationIdSuffix '.test'
             minifyEnabled false
             debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles fileTree('proguard').asList().toArray()
             signingConfig signingConfigs.debug
-//            buildConfigField("long", "VERSION_CODE", "${defaultConfig.versionCode}")
-//            buildConfigField("String","VERSION_NAME","\"${defaultConfig.versionName}\"")
         }
         preRelease {
             manifestPlaceholders = [appLinkHost: DEEPLINK_HOST_STAGE]
@@ -68,12 +68,14 @@ android {
             applicationIdSuffix '.test'
             minifyEnabled false
             debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles fileTree('proguard').asList().toArray()
             signingConfig signingConfigs.debug
         }
         debugRelease {
             manifestPlaceholders = [appLinkHost: DEEPLINK_HOST_PROD]
             resValue "string", "default_notification_channel_id", "${APPLICATION_ID}.notification.default"
-            minifyEnabled true // correct
+            minifyEnabled true
             debuggable true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             proguardFiles fileTree('proguard').asList().toArray()
@@ -82,7 +84,7 @@ android {
         release {
             manifestPlaceholders = [appLinkHost: DEEPLINK_HOST_PROD]
             resValue "string", "default_notification_channel_id", "${APPLICATION_ID}.notification.default"
-            minifyEnabled true // corrrect
+            minifyEnabled true
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             proguardFiles fileTree('proguard').asList().toArray()
@@ -154,19 +156,14 @@ dependencies {
     implementation 'com.google.android.gms:play-services-drive:17.0.0'
     implementation 'com.squareup.okio:okio:2.2.2'
     //    firebase
+    //TODO do not update the core version
     implementation 'com.google.firebase:firebase-core:18.0.0'
 //    implementation ('com.google.firebase:firebase-bom:26.3.0')
-//    implementation platform('com.google.firebase:firebase-bom:26.3.0'){
-//        exclude module: 'protobuf-lite'
-//        exclude module: 'protobuf-java'
-//        exclude module: 'protobuf-javalite'
-//    }
     implementation 'com.google.firebase:firebase-messaging:21.0.1'
     implementation 'com.google.firebase:firebase-analytics'
 //    implementation 'com.google.firebase:firebase-auth:20.0.2'
-//    implementation 'com.google.firebase:firebase-perf'
 //    implementation 'com.google.firebase:firebase-analytics:18.0.1'
-//    implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
+    implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
     implementation 'com.google.firebase:firebase-perf:18.0.0'
     //    core
     implementation "io.reactivex.rxjava2:rxandroid:$global.rxandroidVer"
@@ -229,12 +226,5 @@ dependencies {
         exclude group: 'co.hyperverge', module: 'hypersnap-pdfconverter'
     })
 
-//    implementation('org.whispersystems:signal-protocol-java:2.6.2') {
-//        exclude module: 'protobuf-java'
-//    }
-//    implementation('com.google.firebase:firebase-firestore:21.3.1') {
-//        exclude module: 'protobuf-lite'
-//    }
-//    implementation 'com.google.protobuf:protobuf-lite:3.0.1'
 }
 

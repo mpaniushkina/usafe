@@ -2,9 +2,6 @@ package com.covrsecurity.io.model;
 
 import java.util.UUID;
 
-/**
- * Created by alex on 2.5.16.
- */
 public final class Fields {
 
     public static final String MESSAGE = "message";
@@ -18,9 +15,6 @@ public final class Fields {
 
     public static final String COVR_SDK_ID = "userRegistrationSdk";
     public static final String COVR_SDK_SECRET = "secret";
-    //TODO old keys to be deleted
-//    public static final String COVR_SDK_QRCODE_ID = "2c52f297-d19b-474c-814a-f56590b4f32e";
-//    public static final String COVR_SDK_QRCODE_SECRET = "4dd8417e-e94b-4331-b215-2be44fbf634a";
 
     //TODO new keys
     public static final String COVR_SDK_QRCODE_ID = "d23857eb-c1c1-4b5b-bcc1-d2ec58d131f5";
