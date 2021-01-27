@@ -24,7 +24,7 @@
     <dimen name="personal_code_pager_margin">20dp</dimen>
     <dimen name="personal_code_pager_margin_vertical">16dp</dimen>
     <dimen name="personal_code_info_margin_top">30dp</dimen>
-    <dimen name="personal_code_header_margin">130dp</dimen>
+    <dimen name="personal_code_header_margin">160dp</dimen>
     <dimen name="margin_header">130dp</dimen>
     <dimen name="margin_green_line">140dp</dimen>
 

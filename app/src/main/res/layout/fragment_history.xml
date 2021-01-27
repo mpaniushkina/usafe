@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools">
 
     <data>
 
@@ -35,18 +36,6 @@
             android:layout_marginTop="@dimen/personal_code_header_margin"
             android:scrollbars="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-        <!--                <androidx.recyclerview.widget.RecyclerView-->
-        <!--                    android:id="@+id/partnership_expired_recycler_view"-->
-        <!--                    android:layout_width="match_parent"-->
-        <!--                    android:layout_height="match_parent"-->
-        <!--                    android:layout_below="@+id/tool_bar"-->
-        <!--                    android:layout_marginTop="@dimen/personal_code_header_margin"-->
-        <!--                    android:scrollbars="vertical"-->
-        <!--                    android:visibility="visible"-->
-        <!--                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
-
-        <!--            </RelativeLayout>-->
 
         <include
             android:id="@+id/progress_layout"

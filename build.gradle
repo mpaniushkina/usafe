@@ -30,13 +30,13 @@ allprojects {
         maven { url "http://dl.bintray.com/microsoftazuremobile/SDK" }
         def mavenProperties = new Properties()
         mavenProperties.load(new FileInputStream(rootProject.file("maven.properties")))
-//        maven {
-//            url mavenProperties['mavenRepoReadUrl']
-//            credentials {
-//                username mavenProperties['mavenRepoUsername']
-//                password mavenProperties['mavenRepoReadPassword']
-//            }
-//        }
+        maven {
+            url mavenProperties['mavenRepoReadUrl']
+            credentials {
+                username mavenProperties['mavenRepoUsername']
+                password mavenProperties['mavenRepoReadPassword']
+            }
+        }
         maven {
             url "s3://hvsdk/android/releases"
             credentials(AwsCredentials) {
@@ -52,14 +52,12 @@ task clean(type: Delete) {
 }
 
 def env = System.getenv()
-def number = 3 // env['BUILD_NUMBER']
-def final_number = number as Integer ?: 1
 def param_version_name = "1.0" // env['version_name']
 
 ext.global = [
 //        versionCodeNumber       : env['BUILD_NUMBER'] as Integer ?: 1,
 //        versionNameString       : env['version_name'] + "." + (env['BUILD_NUMBER'] as Integer ?: 1),
-        versionNameString       : "1.0" + "." + "8",
+        versionNameString       : "1.0" + "." + "10",
         versionCodeNumber       : 479,
         versionName             : param_version_name + "." + 479,
         androidMinSdkVersion    : 20,

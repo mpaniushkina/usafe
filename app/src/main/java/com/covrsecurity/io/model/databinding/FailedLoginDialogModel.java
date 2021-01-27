@@ -49,7 +49,7 @@ public class FailedLoginDialogModel extends BaseObservable {
                 getStrings(R.string.failed_attempts_warning_text_highlighted_chunk_2, R.string.failed_attempts_warning_text_highlighted_chunk_3) :
                 getStrings(R.string.failed_attempts_warning_text_highlighted_chunk_1);
 
-        @StringRes int warningTextId = lastAttempt ? R.string.failed_attempts_warning_text_last : R.string.failed_attempts_warning_text_5_2;
+        @StringRes int warningTextId = lastAttempt ? R.string.failed_attempts_warning_text_last : R.string.failed_attempts_warning_text_pin;
         mWarningTextSpannable = getSpannableText(getString(warningTextId), mHighlightedAttemptsText, AppAdapter.resources().getColor(R.color.red));
     }
 

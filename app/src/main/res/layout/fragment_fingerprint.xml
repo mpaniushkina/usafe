@@ -28,9 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tool_bar"
             android:layout_marginStart="@dimen/forty_dp"
-            android:layout_marginTop="@dimen/margin_green_line"
+            android:layout_marginTop="@dimen/personal_code_header_margin"
             android:gravity="left"
-            android:paddingTop="@dimen/twenty_dp"
             android:text="@string/fingerprint_info"
             android:textSize="@dimen/text_regular" />
 

@@ -416,7 +416,7 @@
     <string name="failed_attempts_please_proceed_carefully">Please proceed carefully!</string>
     <string name="failed_attempts_try_again_in">Try again in %s</string>
     <string name="failed_attempts_pin">You have entered the wrong PIN Code!</string>
-    <string name="failed_attempts_warning_text_pin">Note! If you fail the attempts left, your iAM app will be permanently locked. ALL data, history and connections will be securely deleted./nThere is absolutely NO possibility for this to be un-done or retrieved later.</string>
+    <string name="failed_attempts_warning_text_pin">Note! If you fail the attempts left, your iAM app will be permanently locked. ALL data, history and connections will be securely deleted. There is absolutely NO possibility for this to be un-done or retrieved later.</string>
 
     <string name="locked_screen_header_text">Your iAM app has been permanently locked.</string>
     <string name="locked_screen_main_text">All data, history and connections has been securely deleted. There is absolutely NO possibility these can be retrieved again.\n\nYou have to start from the beginning by performing a new set-up of Covr and adding all connections all over again.</string>

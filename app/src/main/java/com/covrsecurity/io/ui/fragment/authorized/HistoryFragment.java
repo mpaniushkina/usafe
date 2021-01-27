@@ -50,7 +50,6 @@ public class HistoryFragment extends FromMenuFragment<FragmentHistoryBinding, Hi
 
     private RecyclerViewPaginationListener mRecyclerViewPaginationListener;
     private HistoryAdapter mAdapter;
-    private HistoryAdapter mExpiredAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -77,7 +76,6 @@ public class HistoryFragment extends FromMenuFragment<FragmentHistoryBinding, Hi
     @Override
     public void onHistoryClick(TransactionEntity pendingTransaction) {
         mAdapter.setViewed(pendingTransaction);
-        mExpiredAdapter.setViewed(pendingTransaction);
         Fragment fragment = HistoryDetailsFragment.newInstance(pendingTransaction.getId(), pendingTransaction.getCompany().getCompanyId());
         replaceFragment(fragment, fragment.getArguments(), true);
     }

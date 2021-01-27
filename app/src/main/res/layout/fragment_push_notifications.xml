@@ -53,7 +53,7 @@
             android:layout_below="@+id/tool_bar"
             android:layout_marginStart="@dimen/thirty_dp"
             android:layout_marginEnd="@dimen/thirty_dp"
-            android:layout_marginTop="@dimen/margin_green_line"
+            android:layout_marginTop="@dimen/personal_code_header_margin"
             android:gravity="center"
             android:text="@string/settings_push_tip"
             android:textSize="@dimen/text_small" />

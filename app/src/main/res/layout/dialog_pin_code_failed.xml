@@ -18,8 +18,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingTop="@dimen/twenty_dp"
-        android:background="@color/dark_blue">
+        android:paddingTop="@dimen/twenty_dp">
 
         <TextView
             android:id="@+id/title"
@@ -39,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/six_dp"
             android:text="@string/failed_attempts_you_have_only"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_gravity="center"
             android:textSize="@dimen/text_regular" />
 
@@ -62,7 +61,7 @@
             android:id="@+id/attempt_footer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_gravity="center"
             android:textSize="@dimen/text_regular"
             bind:pluralText="@{R.plurals.failed_attempts_attempts_left}"
@@ -80,7 +79,7 @@
             android:paddingEnd="@dimen/sixteen_dp"
             android:paddingStart="@dimen/sixteen_dp"
             android:text="@{dialogModel.warningTextSpannable}"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_ultra_small"
             tools:ignore="MissingPrefix"
             tools:text="@string/failed_attempts_warning_text_pin" />
@@ -94,7 +93,7 @@
             android:layout_marginTop="@dimen/five_dp"
             android:text="@string/failed_attempts_please_proceed_carefully"
             android:textSize="@dimen/text_regular"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/okText"

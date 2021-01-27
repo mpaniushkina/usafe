@@ -27,12 +27,12 @@ public class TutorialFragment extends BaseUnauthorizedFragment<FragmentTutorialB
     public void onViewCreated(@NotNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mBinding.buttonCreateId.setOnClickListener((View buttonSetup) -> {
-//            checkForRootWithCallback((boolean isRooted) -> {
-//                if (!isRooted) {
+            checkForRootWithCallback((boolean isRooted) -> {
+                if (!isRooted) {
                     Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_SETUP_START);
                     replaceFragment(WizardFragment.newInstance(), null, true);
-//                }
-//            });
+                }
+            });
         });
         mBinding.buttonRecoverId.setOnClickListener(view1 -> {
             checkForRootWithCallback((boolean isRooted) -> {

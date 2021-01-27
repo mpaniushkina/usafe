@@ -22,7 +22,7 @@
                     android:scrollbars="vertical"
                     android:visibility="visible"
                     android:overScrollMode="never"
-                    android:layout_marginTop="@dimen/margin_header"
+                    android:layout_marginTop="@dimen/personal_code_header_margin"
                     android:layout_marginStart="@dimen/ten_dp"/>
 
 <!--        <include-->

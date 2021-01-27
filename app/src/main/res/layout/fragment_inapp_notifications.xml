@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tool_bar"
-            android:layout_marginTop="@dimen/margin_green_line"
+            android:layout_marginTop="@dimen/personal_code_header_margin"
             android:layout_marginStart="@dimen/twenty_dp"
             android:layout_marginEnd="@dimen/twenty_dp"
             android:gravity="center"
