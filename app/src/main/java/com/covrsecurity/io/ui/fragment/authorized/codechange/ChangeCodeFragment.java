@@ -209,16 +209,14 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
 
                         Log.w("ChangeCodeFragment", "validatePinCodeLiveData: attemptsLeft = " + attemptsLeft);
 
-                        mBinding.digitalKeyboard.shake();
+//                        mBinding.digitalKeyboard.shake();
+//                        mFailedLoginDialog = FailedLoginDialogFragment.getInstance(attemptsLeft, 0, false, true);
+//                        mFailedLoginDialog.show(getFragmentManager(), DIALOG_FAILED_LOGIN_TAG);
                         mBinding.personCodeLL.clearText();
 
                         ChangeCodeInfoPagerAdapter adapter = (ChangeCodeInfoPagerAdapter) mBinding.infoPager.getAdapter();
                         ChangeCodeInfoItem item = adapter.getItem(CURRENT_CODE_PAGE);
                         item.setRemainingAttempts(attemptsLeft);
-
-                        //TODO show dialog instead of red string when ui will be approved
-//                        mFailedPinCodeDialog = FailedPinCodeDialogFragment.getInstance(attemptsLeft,false, true);
-//                        mFailedPinCodeDialog.show(getFragmentManager(), DIALOG_FAILED_PIN_TAG);
                     } else if (throwable instanceof ChangePasswordLockException) {
 
                         ChangePasswordLockException changePasswordLockException = (ChangePasswordLockException) throwable;
@@ -230,16 +228,12 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                         long unlockTime = changePasswordLockException.getUnlockTime();
                         LockType lockType = changePasswordLockException.getLockType();
 
-                        mBinding.digitalKeyboard.shake();
+//                        mBinding.digitalKeyboard.shake();
                         mBinding.personCodeLL.clearText();
 
                         ChangeCodeInfoPagerAdapter adapter = (ChangeCodeInfoPagerAdapter) mBinding.infoPager.getAdapter();
                         ChangeCodeInfoItem item = adapter.getItem(CURRENT_CODE_PAGE);
                         item.setRemainingAttempts(attemptsLeft);
-
-                        //TODO show dialog instead of red string when ui will be approved
-//                        mFailedPinCodeDialog = FailedPinCodeDialogFragment.getInstance(attemptsLeft,false, true);
-//                        mFailedPinCodeDialog.show(getFragmentManager(), DIALOG_FAILED_PIN_TAG);
 
                         if (LockType.NOT_LOCKED != lockType) {
                             if (lockType == LockType.LOCKED_NO_TIME_OUT) {
@@ -250,7 +244,7 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                         }
                     } else if (throwable instanceof NoUserDataFoundException) {
                         Log.w("ChangeCodeFragment", "validatePinCodeLiveData " + throwable);
-                        mBinding.digitalKeyboard.shake();
+//                        mBinding.digitalKeyboard.shake();
                         mBinding.digitalKeyboard.setKeyboardListener(null);
                         Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_CODE_CHANGE_ATTEMPTS_EXCEEDED);
 
@@ -286,7 +280,7 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                 throwable -> {
                     hideProgress();
                     mBinding.personCodeLL.clearText();
-                    mBinding.digitalKeyboard.shake();
+//                    mBinding.digitalKeyboard.shake();
                     Timber.w(throwable.getMessage());
                     Toast.makeText(getActivity(), "" + throwable, Toast.LENGTH_SHORT).show();
                 }

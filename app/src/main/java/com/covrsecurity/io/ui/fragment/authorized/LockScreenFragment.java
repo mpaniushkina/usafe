@@ -160,13 +160,15 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
                         hideLockScreen();
                         AppAdapter.bus().postSticky(new NotificationHubConnectedEvent());
                     } else {
-                        mBinding.digitalKeyboard.shake();
+//                        mBinding.digitalKeyboard.shake();
                         mBinding.personCodeLL.clearText();
+//                        mFailedLoginDialog = FailedLoginDialogFragment.getInstance(attemptsLeft, 0, false, true);
+//                        mFailedLoginDialog.show(getFragmentManager(), DIALOG_FAILED_LOGIN_TAG);
                     }
                 },
                 throwable -> {
                     hideProgress();
-                    mBinding.digitalKeyboard.shake();
+//                    mBinding.digitalKeyboard.shake();
                     mBinding.personCodeLL.clearText();
                     if (throwable instanceof NoUserDataFoundException) {
                         AppAdapter.settings().dropAll();
@@ -213,7 +215,6 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
 
 
                 Single<Date> trueTimeSingle = TrueTimeUtils.initializeTrueTime()
-                        // TODO: 14.08.2018  retry if java.net.SocketTimeoutException
                         .retry(5)
                         .subscribeOn(Schedulers.io());
 
@@ -277,7 +278,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(password -> viewModel.unLock(password),
                                         throwable -> {
-                                            mBinding.digitalKeyboard.shake();
+//                                            mBinding.digitalKeyboard.shake();
                                             if (mDialogFailed == null) {
                                                 mDialogFailed = FingerprintAuthenticationFailedDialogFragment.getInstance(getString(R.string.fingerprint_something_wrong_happened_title), getString(R.string.fingerprint_dialog_failed_could_not_decrypt_description), null);
                                                 mDialogFailed.setDismissListener(() -> isDialogFailedAdded = false);
@@ -296,7 +297,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
                     @Override
                     public void onError(FingerprintRecognitionError error) {
                         if (error.getCause() == FingerprintRecognitionError.MAX_ATTEMPTS) {
-                            mBinding.digitalKeyboard.shake();
+//                            mBinding.digitalKeyboard.shake();
                             if (mDialogFailed == null) {
                                 mDialogFailed = FingerprintAuthenticationFailedDialogFragment.getInstance();
                                 mDialogFailed.setDismissListener(() -> isDialogFailedAdded = false);
@@ -346,8 +347,6 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
         setInfoMessageTimersCount(size);
     }
 
-
-    //TODO: null check here is hot hot fix...
     private void setInfoMessageTimersCount(int count) {
         Timber.d("Activity != null: %b", getActivity() != null);
         if (getActivity() != null) {
@@ -397,8 +396,6 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
         checkForRootWithCallback((boolean isRooted) -> {
             if (isRooted) {
                 Timber.e("Device is rooted. Logging out user");
-                // TODO: 05.06.2018
-//                AppAdapter.settings().dropAuthCookie();
                 startActivity(new Intent(getActivity(), UnauthorizedActivity.class)
                         .putExtra(ConstantsUtils.INTENT_KEY_FOR_TUTORIAL_FRAGMENT, true));
                 getActivity().finish();

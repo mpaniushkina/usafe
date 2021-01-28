@@ -150,7 +150,7 @@
             android:id="@+id/pending_requests_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin_green_line"
+            android:layout_marginTop="@dimen/personal_code_header_margin"
             android:layout_marginStart="@dimen/ten_dp"
             android:layout_marginEnd="@dimen/ten_dp"
             android:layout_below="@+id/top_bar"
