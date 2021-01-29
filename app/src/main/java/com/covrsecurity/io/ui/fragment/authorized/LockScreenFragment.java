@@ -52,10 +52,10 @@ import com.covrsecurity.io.ui.viewmodel.lockscreent.LockScreenViewModelFactory;
 import com.covrsecurity.io.utils.ActivityUtils;
 import com.covrsecurity.io.utils.ConnectivityUtils;
 import com.covrsecurity.io.utils.ConstantsUtils;
-import com.covrsecurity.io.utils.IamTools;
 import com.covrsecurity.io.utils.DialogUtils;
 import com.covrsecurity.io.utils.FingerprintUtils;
 import com.covrsecurity.io.utils.FragmentAnimationSet;
+import com.covrsecurity.io.utils.IamTools;
 import com.covrsecurity.io.utils.LogUtil;
 import com.covrsecurity.io.utils.TrueTimeUtils;
 import com.instacart.library.truetime.TrueTime;
@@ -117,6 +117,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
     private TimerTask timerTaskRefresh;
     private final Handler handler = new Handler();
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
+    private int loginAttemptsLeft = 0;
 
     @Override
     protected int getLayoutId() {
@@ -149,6 +150,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
                 response -> {
                     sharedViewModel.setAppUnLockedValue(response);
                     consumeAppUnlockTime(response);
+                    loginAttemptsLeft = response.getAttemptsLeft();
                 },
                 Timber::e
         ));
@@ -160,15 +162,13 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
                         hideLockScreen();
                         AppAdapter.bus().postSticky(new NotificationHubConnectedEvent());
                     } else {
-//                        mBinding.digitalKeyboard.shake();
+                        showFailedLoginDialog(loginAttemptsLeft, 0);
                         mBinding.personCodeLL.clearText();
-//                        mFailedLoginDialog = FailedLoginDialogFragment.getInstance(attemptsLeft, 0, false, true);
-//                        mFailedLoginDialog.show(getFragmentManager(), DIALOG_FAILED_LOGIN_TAG);
+                        viewModel.getAppUnlockTime();
                     }
                 },
                 throwable -> {
                     hideProgress();
-//                    mBinding.digitalKeyboard.shake();
                     mBinding.personCodeLL.clearText();
                     if (throwable instanceof NoUserDataFoundException) {
                         AppAdapter.settings().dropAll();
@@ -278,7 +278,6 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(password -> viewModel.unLock(password),
                                         throwable -> {
-//                                            mBinding.digitalKeyboard.shake();
                                             if (mDialogFailed == null) {
                                                 mDialogFailed = FingerprintAuthenticationFailedDialogFragment.getInstance(getString(R.string.fingerprint_something_wrong_happened_title), getString(R.string.fingerprint_dialog_failed_could_not_decrypt_description), null);
                                                 mDialogFailed.setDismissListener(() -> isDialogFailedAdded = false);
@@ -297,7 +296,6 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
                     @Override
                     public void onError(FingerprintRecognitionError error) {
                         if (error.getCause() == FingerprintRecognitionError.MAX_ATTEMPTS) {
-//                            mBinding.digitalKeyboard.shake();
                             if (mDialogFailed == null) {
                                 mDialogFailed = FingerprintAuthenticationFailedDialogFragment.getInstance();
                                 mDialogFailed.setDismissListener(() -> isDialogFailedAdded = false);
@@ -411,6 +409,7 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
             initFingerprintDialog();
             AppUnlockTimeEntity appUnlockTimeEntity = sharedViewModel.getAppUnlockTime();
             if (appUnlockTimeEntity != null) {
+                loginAttemptsLeft = appUnlockTimeEntity.getAttemptsLeft();
                 consumeAppUnlockTime(appUnlockTimeEntity);
             } else {
                 viewModel.getAppUnlockTime();
@@ -496,7 +495,6 @@ public class LockScreenFragment extends BaseViewModelFragment<FragmentLockscreen
         long curTime = TrueTime.now().getTime();
         long startTime = curTime - FIVE_SECONDS;
         long endTime = curTime + index * FIVE_SECONDS + r.nextInt(FIVE_SECONDS) + FIVETEEN_SECONDS;
-        //Timber.d("Timer info created %d - %d", startTime, endTime);
         return new TimerInfo(startTime, endTime);
     }
 

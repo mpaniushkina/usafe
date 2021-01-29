@@ -36,11 +36,9 @@ import com.covrsecurity.io.ui.activity.UnauthorizedActivity;
 import com.covrsecurity.io.ui.adapter.ChangeCodeInfoPagerAdapter;
 import com.covrsecurity.io.ui.component.PersonalCodeLayout;
 import com.covrsecurity.io.ui.dialog.FailedLoginDialogFragment;
-import com.covrsecurity.io.ui.dialog.FailedPinCodeDialogFragment;
 import com.covrsecurity.io.ui.dialog.FingerprintAuthenticationDialogFragment;
 import com.covrsecurity.io.ui.dialog.FingerprintAuthenticationFailedDialogFragment;
 import com.covrsecurity.io.ui.fragment.BaseChildFragment;
-import com.covrsecurity.io.ui.fragment.authorized.ChangeCodeInfoItem;
 import com.covrsecurity.io.ui.interfaces.IFingerprintAuthCallBack;
 import com.covrsecurity.io.ui.interfaces.IKeyboardListener;
 import com.covrsecurity.io.ui.viewmodel.appunlockedshared.AppUnLockedSharedViewModel;
@@ -83,7 +81,6 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
     private static final String DIALOG_FAILED_TAG = "DIALOG_FAILED_TAG";
     private static final String DIALOG_FAILED_LOGIN_TAG = "DIALOG_FAILED_LOGIN_TAG";
     private static final String CHECK_CODE_ONLY_EXTRA = "CHECK_CODE_ONLY_EXTRA";
-    private static final String DIALOG_FAILED_PIN_TAG = "DIALOG_FAILED_PIN_TAG";
     public static final String SETUP_FINGERPRINT_EXTRA = "SETUP_FINGERPRINT_EXTRA";
 
     public static Fragment newInstance(boolean checkCodeOnly) {
@@ -119,7 +116,6 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
     private FingerprintAuthenticationDialogFragment mDialogScanning;
     private FingerprintAuthenticationFailedDialogFragment mDialogFailed;
     private FailedLoginDialogFragment mFailedLoginDialog;
-    private FailedPinCodeDialogFragment mFailedPinCodeDialog;
     private boolean isDialogFailedAdded;
     private boolean checkCodeOnly;
     private boolean setupFingerprint;
@@ -209,14 +205,10 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
 
                         Log.w("ChangeCodeFragment", "validatePinCodeLiveData: attemptsLeft = " + attemptsLeft);
 
-//                        mBinding.digitalKeyboard.shake();
-//                        mFailedLoginDialog = FailedLoginDialogFragment.getInstance(attemptsLeft, 0, false, true);
-//                        mFailedLoginDialog.show(getFragmentManager(), DIALOG_FAILED_LOGIN_TAG);
+                        mFailedLoginDialog = FailedLoginDialogFragment.getInstance(attemptsLeft, 0, false, true);
+                        mFailedLoginDialog.show(getFragmentManager(), DIALOG_FAILED_LOGIN_TAG);
                         mBinding.personCodeLL.clearText();
 
-                        ChangeCodeInfoPagerAdapter adapter = (ChangeCodeInfoPagerAdapter) mBinding.infoPager.getAdapter();
-                        ChangeCodeInfoItem item = adapter.getItem(CURRENT_CODE_PAGE);
-                        item.setRemainingAttempts(attemptsLeft);
                     } else if (throwable instanceof ChangePasswordLockException) {
 
                         ChangePasswordLockException changePasswordLockException = (ChangePasswordLockException) throwable;
@@ -228,12 +220,7 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                         long unlockTime = changePasswordLockException.getUnlockTime();
                         LockType lockType = changePasswordLockException.getLockType();
 
-//                        mBinding.digitalKeyboard.shake();
                         mBinding.personCodeLL.clearText();
-
-                        ChangeCodeInfoPagerAdapter adapter = (ChangeCodeInfoPagerAdapter) mBinding.infoPager.getAdapter();
-                        ChangeCodeInfoItem item = adapter.getItem(CURRENT_CODE_PAGE);
-                        item.setRemainingAttempts(attemptsLeft);
 
                         if (LockType.NOT_LOCKED != lockType) {
                             if (lockType == LockType.LOCKED_NO_TIME_OUT) {
@@ -244,7 +231,6 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                         }
                     } else if (throwable instanceof NoUserDataFoundException) {
                         Log.w("ChangeCodeFragment", "validatePinCodeLiveData " + throwable);
-//                        mBinding.digitalKeyboard.shake();
                         mBinding.digitalKeyboard.setKeyboardListener(null);
                         Analytics.logEvent(AppAdapter.context(), Analytics.EVENT_CODE_CHANGE_ATTEMPTS_EXCEEDED);
 
@@ -280,7 +266,6 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
                 throwable -> {
                     hideProgress();
                     mBinding.personCodeLL.clearText();
-//                    mBinding.digitalKeyboard.shake();
                     Timber.w(throwable.getMessage());
                     Toast.makeText(getActivity(), "" + throwable, Toast.LENGTH_SHORT).show();
                 }
@@ -325,9 +310,6 @@ public class ChangeCodeFragment extends BaseChildFragment<FragmentChangeCodeCurr
         }
         if (mFailedLoginDialog != null) {
             mFailedLoginDialog.dismiss();
-        }
-        if (mFailedPinCodeDialog != null) {
-            mFailedPinCodeDialog.dismiss();
         }
         if (mDisposable != null) {
             mDisposable.dispose();
