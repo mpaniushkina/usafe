@@ -110,6 +110,7 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
     BiometricsSharedViewModelFactory sharedVmFactory;
 
     private PendingRequestsAdapter mPartnershipAdapter;
+    TransactionEntity transaction;
     private Animation hideButtonAnimation;
     private Animation showButtonAnimation;
     private long lastListInteractionTime = 0;
@@ -148,10 +149,12 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         sharedViewModel = ViewModelProviders.of(getActivity(), sharedVmFactory).get(BiometricsSharedViewModel.class);
         addConnectionViewModel = ViewModelProviders.of(getActivity(), addConnectionVmFactory).get(PartnershipViewModel.class);
         sharedViewModel.sharedLiveData.observe(this, new BaseObserver<>(
-                null,
+                this::showProgress,
                 response -> {
+                    showProgress();
                     closeChildFragment();
                     viewModel.postTransaction(response.getTransaction(), response.isAccept(), response.getBiometricsData());
+                    transaction = response.getTransaction();
                 },
                 throwable -> {
                     if (throwable instanceof BioMetricDataProvideCancel) {
@@ -229,7 +232,6 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
         viewModel.postTransactionLiveData.observe(this, new BaseObserver<>(
                 this::showProgress,
                 response -> {
-//                    hideProgress();
                     showProgress();
                     if (StatusEntity.ACCEPTED == response.getStatus()) {
                         onRemoveRequest(
@@ -254,14 +256,19 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                     }
                 },
                 throwable -> {
-                    hideProgress();
+                    showProgress();
                     Timber.w(throwable);
                     mPartnershipAdapter.resetActiveItem();
                     if (throwable instanceof BiometricVerificationAttemptsExhaustedException) {
+                        hideProgress();
                         loadAllData();
                     } else if (throwable instanceof ConnectException) {
+                        hideProgress();
                         showNoInternetDialog();
                     } else {
+                        Fragment fragment = PendingDetailsFragment.newInstance(transaction, mPartnershipAdapter.currentTime());
+                        replaceFragment(fragment, fragment.getArguments(), true);
+                        hideProgress();
                         showErrToast(throwable);
                     }
                 }
