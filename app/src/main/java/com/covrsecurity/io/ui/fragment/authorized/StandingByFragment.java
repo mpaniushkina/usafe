@@ -266,9 +266,9 @@ public class StandingByFragment extends BaseViewModelFragment<FragmentStandingBy
                         hideProgress();
                         showNoInternetDialog();
                     } else {
+                        showProgress();
                         Fragment fragment = PendingDetailsFragment.newInstance(transaction, mPartnershipAdapter.currentTime());
                         replaceFragment(fragment, fragment.getArguments(), true);
-                        hideProgress();
                         showErrToast(throwable);
                     }
                 }

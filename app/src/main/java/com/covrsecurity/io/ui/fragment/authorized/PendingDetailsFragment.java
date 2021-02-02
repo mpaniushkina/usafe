@@ -71,6 +71,7 @@ public class PendingDetailsFragment extends BaseFragment<FragmentPendingDetailsB
     @Override
     public void onViewCreated(@NotNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        hideProgress();
         TextView titleView = view.findViewById(R.id.title);
         titleView.setText(R.string.transaction_details_title);
         LinearLayout backButton = view.findViewById(R.id.tool_left_button);
