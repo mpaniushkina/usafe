@@ -491,6 +491,9 @@
     <string name="transaction_has_expired">Transaction has expired</string>
     <string name="transaction_details_title">Transaction Details</string>
 
+<!--    Google Drive-->
+    <string name="google_drive_iam">iAMDrive</string>
+
     <string-array name="setting_names">
         <item>About iAM</item>
         <item>UnLock with Biometrics</item>
